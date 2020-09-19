@@ -1,7 +1,7 @@
 version: "2.1"
 services:
   portainer:
-    image: portainer/portainer
+    image: portainer/portainer-ce
     container_name: portainer
     ports:
       - 9000:9000
