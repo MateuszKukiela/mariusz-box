@@ -1,5 +1,15 @@
 version: "2.1"
 services:
+  portainer:
+    image: portainer/portainer
+    container_name: portainer
+    ports:
+      - 9000:9000
+    volumes:
+      - ${ROOT_APPDATA}/portainer:/data portainer/portainer-ce
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: always
+
   plex:
     image: linuxserver/plex
     container_name: plex
@@ -122,9 +132,3 @@ services:
     ports:
       - 443:443
     restart: unless-stopped
-
-# test message
-
-
-
-  
