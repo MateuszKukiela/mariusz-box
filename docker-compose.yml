@@ -1,13 +1,130 @@
-version: "2.4"
+version: "2.1"
 services:
-  plex-server:
-    container_name: plex-server
-    image: plexinc/pms-docker:latest
-    restart: unless-stopped
-    environment:
-      - TZ=${TZ} # timezone, defined in .env
+  plex:
+    image: linuxserver/plex
+    container_name: plex
     network_mode: host
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - VERSION=docker
+      - UMASK_SET=022 #optional
+#      - PLEX_CLAIM= #optional
     volumes:
-      - ${ROOT}/config/plex/db:/config # plex database
-      - ${ROOT}/config/plex/transcode:/transcode # temp transcoded files
-      - ${ROOT}/complete:/data # media library
+      - ${ROOT_APPDATA}/plex:/config
+      - ${ROOT_MEDIA}/tv:/tv
+      - ${ROOT_MEDIA}/movies:/movies
+    restart: unless-stopped
+
+  tautulli:
+    image: linuxserver/tautulli
+    container_name: tautulli
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ${ROOT_APPDATA}/tautulli:/config
+      - ${ROOT_APPDATA}/plex/logs:/logs
+    ports:
+      - 8181:8181
+    restart: unless-stopped
+
+  deluge:
+    image: linuxserver/deluge
+    container_name: deluge
+    network_mode: host
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - UMASK_SET=022 #optional
+#      - DELUGE_LOGLEVEL=error #optional
+    volumes:
+      - ${ROOT_APPDATA}/deluge:/config
+      - ${ROOT_MEDIA}/downloads:/downloads
+    restart: unless-stopped
+
+  jackett:
+    image: linuxserver/jackett
+    container_name: jackett
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+#      - AUTO_UPDATE=true #optional
+#      - RUN_OPTS=run options here #optional
+    volumes:
+      - ${ROOT_APPDATA}/jackett:/config
+      - ${ROOT_APPDATA}/jackett/blackhole:/downloads
+    ports:
+      - 9117:9117
+    restart: unless-stopped
+
+  sonarr:
+    image: linuxserver/sonarr
+    container_name: sonarr
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - UMASK_SET=022 #optional
+    volumes:
+      - ${ROOT_APPDATA}/sonarr:/config
+      - ${ROOT_MEDIA}/tv:/tv
+      - ${ROOT_MEDIA}/downloads:/downloads
+    ports:
+      - 8989:8989
+    restart: unless-stopped
+
+  radarr:
+    image: linuxserver/radarr
+    container_name: radarr
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - UMASK_SET=022 #optional
+    volumes:
+      - ${ROOT_APPDATA}/radarr:/config
+      - ${ROOT_MEDIA}/movies:/movies
+      - ${ROOT_MEDIA}/downloads:/downloads
+    ports:
+      - 7878:7878
+    restart: unless-stopped
+
+  bazarr:
+    image: linuxserver/bazarr
+    container_name: bazarr
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - UMASK_SET=022 #optional
+    volumes:
+      - ${ROOT_APPDATA}/bazarr:/config
+      - ${ROOT_MEDIA}/movies:/movies
+      - ${ROOT_MEDIA}/tv:/tv
+    ports:
+      - 6767:6767
+    restart: unless-stopped
+
+  nextcloud:
+    image: linuxserver/nextcloud
+    container_name: nextcloud
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ${ROOT_APPDATA}/nextcloud:/config
+      - ${ROOT_NEXTCLOUD}:/data
+    ports:
+      - 443:443
+    restart: unless-stopped
+
+
+
+
+
+  
