@@ -132,3 +132,17 @@ services:
     ports:
       - 443:443
     restart: unless-stopped
+
+  heimdall:
+    image: linuxserver/heimdall
+    container_name: heimdall
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ${ROOT_APPDATA}/heimdall:/config
+    ports:
+      - 80:80
+      - 443:443
+    restart: unless-stopped
