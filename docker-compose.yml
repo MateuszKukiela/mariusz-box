@@ -24,6 +24,7 @@ services:
       - ${ROOT_APPDATA}/plex:/config
       - ${ROOT_MEDIA}/tv:/tv
       - ${ROOT_MEDIA}/movies:/movies
+      - ${ROOT_MEDIA}/porn:/porn
     restart: unless-stopped
 
   tautulli:
@@ -53,6 +54,10 @@ services:
     volumes:
       - ${ROOT_APPDATA}/deluge:/config
       - ${ROOT_MEDIA}/downloads:/downloads
+      - ${ROOT_MEDIA}/porn:/porn
+      - ${ROOT_MEDIA}/movies:/movies
+      - ${ROOT_MEDIA}/tv:/tv
+      - ${ROOT_MEDIA}/other:/other
     restart: unless-stopped
 
   jackett:
