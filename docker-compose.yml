@@ -135,7 +135,7 @@ services:
       - ${ROOT_APPDATA}/nextcloud:/config
       - ${ROOT_NEXTCLOUD}:/data
     ports:
-      - 443:443
+      - 443:4433
     restart: unless-stopped
 
   heimdall:
