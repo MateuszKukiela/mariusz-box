@@ -1,2 +1,4 @@
 /.idea
 /appdata/nextcloud
+/appdata/plex/Library/*
+!*/appdata/plex/Library/Application\ Support/Plex\ Media\ Server/Preferences.xml

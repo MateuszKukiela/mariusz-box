@@ -1,0 +1,91 @@
+2020-10-04 18:56:00 - INFO    :: MainThread : Starting Tautulli v2.5.6
+2020-10-04 18:56:00 - INFO    :: MainThread : [Docker] Linux ***-***-***-***-amd64 (#1 SMP Debian ***-***-***-*** (2020-09-17))
+2020-10-04 18:56:00 - INFO    :: MainThread : Europe/Warsaw (UTC+0200)
+2020-10-04 18:56:00 - INFO    :: MainThread : Python 3.8.5 (default, Jul 20 2020, 23:11:29) [GCC 9.3.0]
+2020-10-04 18:56:00 - INFO    :: MainThread : Program Dir: /app/tautulli
+2020-10-04 18:56:00 - INFO    :: MainThread : Config File: /config/config.ini
+2020-10-04 18:56:00 - INFO    :: MainThread : Database File: /config/tautulli.db
+2020-10-04 18:56:00 - INFO    :: MainThread : Checking if the database upgrades are required...
+2020-10-04 18:56:00 - DEBUG   :: MainThread : Altering database. Updating database table sessions.
+2020-10-04 18:56:00 - DEBUG   :: MainThread : Altering database. Updating database table notify_log.
+2020-10-04 18:56:00 - DEBUG   :: MainThread : User 'Local' does not exist. Adding user.
+2020-10-04 18:56:00 - INFO    :: MainThread : Checking if configuration upgrades are required...
+2020-10-04 18:56:00 - DEBUG   :: MainThread : Generating UUID...
+2020-10-04 18:56:00 - INFO    :: MainThread : Tautulli Config :: Writing configuration to file
+2020-10-04 18:56:00 - DEBUG   :: MainThread : Generating API key...
+2020-10-04 18:56:00 - INFO    :: MainThread : Tautulli Config :: Writing configuration to file
+2020-10-04 18:56:00 - DEBUG   :: MainThread : Generating JWT secret...
+2020-10-04 18:56:00 - INFO    :: MainThread : Tautulli Config :: Writing configuration to file
+2020-10-04 18:56:00 - INFO    :: MainThread : Retrieving latest version information from GitHub
+2020-10-04 18:56:00 - DEBUG   :: MainThread : Requesting URL via GET method: https://api.github.com/repos/Tautulli/Tautulli/commits/master
+2020-10-04 18:56:00 - DEBUG   :: MainThread : Latest version is 14b98a32e085d969f010f0249c3d2f660db50880
+2020-10-04 18:56:00 - INFO    :: MainThread : Comparing currently installed version with latest GitHub version
+2020-10-04 18:56:00 - DEBUG   :: MainThread : Requesting URL via GET method: https://api.github.com/repos/Tautulli/Tautulli/compare/14b98a32e085d969f010f0249c3d2f660db50880...v2.5.6
+2020-10-04 18:56:00 - DEBUG   :: MainThread : In total, 0 commits behind
+2020-10-04 18:56:00 - INFO    :: MainThread : Tautulli is up to date
+2020-10-04 18:56:00 - INFO    :: MainThread : Tautulli Config :: Writing configuration to file
+2020-10-04 18:56:00 - INFO    :: MainThread : Tautulli NotificationHandler :: Starting background notification handler (2 threads).
+2020-10-04 18:56:00 - INFO    :: MainThread : Tautulli WebStart :: Initializing Tautulli web server...
+2020-10-04 18:56:00 - INFO    :: MainThread : Tautulli WebStart :: Starting Tautulli web server on http://0.0.0.0:8181/
+2020-10-04 18:56:01 - INFO    :: MainThread : Tautulli is ready!
+2020-10-04 19:59:11 - INFO    :: CP Server Thread-11 : Tautulli Config :: Writing configuration to file
+2020-10-04 19:59:37 - INFO    :: CP Server Thread-5 : Tautulli Config :: Writing configuration to file
+2020-10-04 19:59:37 - INFO    :: CP Server Thread-5 : Tautulli PlexTV :: Requesting resources for server...
+2020-10-04 19:59:37 - DEBUG   :: CP Server Thread-5 : Tautulli PlexTV :: Plex Pass subscription not found.
+2020-10-04 19:59:37 - INFO    :: CP Server Thread-5 : Tautulli Config :: Writing configuration to file
+2020-10-04 19:59:37 - INFO    :: CP Server Thread-5 : Tautulli PlexTV :: Using user-defined URL.
+2020-10-04 19:59:37 - INFO    :: CP Server Thread-5 : Tautulli PlexTV :: Selected server: mariusz-3.0 (http://192.168.8.11:32400) (Linux - Version 1.20.1.3252-a78fef9a9)
+2020-10-04 19:59:37 - INFO    :: CP Server Thread-5 : Tautulli Config :: Writing configuration to file
+2020-10-04 19:59:37 - INFO    :: CP Server Thread-5 : Tautulli WebStart :: Restarting Tautulli web server...
+2020-10-04 19:59:38 - INFO    :: CP Server Thread-5 : Tautulli WebStart :: Stopping Tautulli web server...
+2020-10-04 19:59:38 - INFO    :: CP Server Thread-5 : Tautulli WebStart :: Initializing Tautulli web server...
+2020-10-04 19:59:38 - INFO    :: CP Server Thread-5 : Tautulli WebStart :: Web server authentication is enabled: Tautulli admin (username is 'root') and Plex admin.
+2020-10-04 19:59:38 - INFO    :: CP Server Thread-5 : Tautulli WebStart :: Starting Tautulli web server on http://0.0.0.0:8181/
+2020-10-04 19:59:38 - WARNING :: CP Server Thread-5 : Tautulli Users :: Unable to retrieve user 4261413 from database. Requesting user list refresh.
+2020-10-04 19:59:38 - INFO    :: CP Server Thread-5 : Tautulli Users :: Requesting users list refresh...
+2020-10-04 19:59:39 - INFO    :: CP Server Thread-5 : Tautulli Users :: Users list refreshed.
+2020-10-04 19:59:39 - DEBUG   :: CP Server Thread-5 : Tautulli Monitor :: Checking for active streams.
+2020-10-04 19:59:39 - DEBUG   :: CP Server Thread-5 : Tautulli Monitor :: Session 11 started by user 4261413 (robomatix) with ratingKey 13 (blacklight-suspension).
+2020-10-04 19:59:39 - INFO    :: Thread-25 : Tautulli WebSocket :: Opening websocket.
+2020-10-04 19:59:39 - INFO    :: CP Server Thread-5 : Scheduled background task: Check GitHub for updates
+2020-10-04 19:59:39 - INFO    :: CP Server Thread-5 : Scheduled background task: Optimize Tautulli database
+2020-10-04 19:59:39 - INFO    :: CP Server Thread-5 : Scheduled background task: Backup Tautulli database
+2020-10-04 19:59:39 - INFO    :: CP Server Thread-5 : Scheduled background task: Backup Tautulli config
+2020-10-04 19:59:39 - INFO    :: CP Server Thread-5 : Scheduled background task: Check for server response
+2020-10-04 19:59:39 - INFO    :: Thread-26 : Tautulli Libraries :: Requesting libraries list refresh...
+2020-10-04 19:59:39 - INFO    :: Thread-27 : Tautulli Users :: Requesting users list refresh...
+2020-10-04 19:59:39 - INFO    :: Thread-25 : Tautulli WebSocket :: Ready
+2020-10-04 19:59:39 - INFO    :: Thread-25 : Scheduled background task: Refresh Plex server URLs
+2020-10-04 19:59:39 - INFO    :: Thread-25 : Scheduled background task: Refresh users list
+2020-10-04 19:59:39 - INFO    :: Thread-25 : Scheduled background task: Refresh libraries list
+2020-10-04 19:59:39 - INFO    :: Thread-25 : Removed background task: Check for server response
+2020-10-04 19:59:39 - DEBUG   :: Thread-26 : Tautulli Pmsconnect :: No library data.
+2020-10-04 19:59:39 - DEBUG   :: Thread-26 : Tautulli Pmsconnect :: No library data.
+2020-10-04 19:59:39 - DEBUG   :: Thread-26 : Tautulli Pmsconnect :: No library data.
+2020-10-04 19:59:39 - DEBUG   :: Thread-26 : Tautulli Pmsconnect :: No library data.
+2020-10-04 19:59:39 - INFO    :: Thread-26 : Tautulli Config :: Writing configuration to file
+2020-10-04 19:59:39 - INFO    :: Thread-26 : Tautulli Libraries :: Libraries list refreshed.
+2020-10-04 19:59:46 - INFO    :: Thread-27 : Tautulli Users :: Users list refreshed.
+2020-10-04 19:59:57 - DEBUG   :: Thread-25 : Tautulli ActivityHandler :: Session 11 stopped.
+2020-10-04 19:59:57 - DEBUG   :: Thread-25 : Tautulli ActivityProcessor :: Play duration for session 11 ratingKey 13 is 0 secs which is less than 120 seconds, so we're not logging it.
+2020-10-04 19:59:57 - DEBUG   :: Thread-25 : Tautulli ActivityHandler :: Removing sessionKey 11 ratingKey 13 from session queue
+2020-10-04 19:59:57 - DEBUG   :: Thread-25 : Tautulli ActivityHandler :: Session 12 started by user 4261413 (robomatix) with ratingKey 15 (bondage-blues).
+2020-10-04 19:59:58 - DEBUG   :: CP Server Thread-23 : Tautulli WebAuth :: Admin user 'root' logged into Tautulli using form login.
+2020-10-04 19:59:58 - INFO    :: CP Server Thread-18 : Tautulli Config :: Writing configuration to file
+2020-10-04 20:00:02 - DEBUG   :: Thread-25 : Tautulli ActivityHandler :: Session 12 is buffering.
+2020-10-04 20:00:02 - DEBUG   :: Thread-25 : Tautulli ActivityHandler :: Session 12 buffer count is 1.
+2020-10-04 20:00:02 - DEBUG   :: Thread-25 : Tautulli ActivityHandler :: Session 12 has changed transcode decision.
+2020-10-04 20:00:04 - DEBUG   :: Thread-25 : Tautulli ActivityHandler :: Session 12 is buffering.
+2020-10-04 20:00:04 - DEBUG   :: Thread-25 : Tautulli ActivityHandler :: Session 12 buffer count is 2.
+2020-10-04 20:00:09 - DEBUG   :: Thread-25 : Tautulli ActivityHandler :: Session 12 stopped.
+2020-10-04 20:00:09 - DEBUG   :: Thread-25 : Tautulli ActivityProcessor :: Play duration for session 12 ratingKey 15 is 12 secs which is less than 120 seconds, so we're not logging it.
+2020-10-04 20:00:09 - DEBUG   :: Thread-25 : Tautulli ActivityHandler :: Removing sessionKey 12 ratingKey 15 from session queue
+2020-10-04 20:00:30 - DEBUG   :: CP Server Thread-24 : Tautulli PlexTV :: Plex Pass subscription not found.
+2020-10-04 20:00:30 - INFO    :: CP Server Thread-24 : Tautulli Config :: Writing configuration to file
+2020-10-04 20:00:45 - DEBUG   :: CP Server Thread-23 : Tautulli WebAuth :: Invalid Plex OAuth login attempt.
+2020-10-04 20:01:40 - DEBUG   :: CP Server Thread-22 : Tautulli WebAuth :: Admin user 'root' logged into Tautulli using form login.
+2020-10-04 20:02:25 - WARNING :: CP Server Thread-21 : Failed to access uri endpoint /servers/****************/sync_lists. Status code 401
+2020-10-04 20:02:25 - WARNING :: CP Server Thread-21 : Tautulli PlexTV :: Unable to parse XML for get_synced_items: 'NoneType' object has no attribute 'getElementsByTagName'.
+2020-10-04 20:02:25 - WARNING :: CP Server Thread-21 : Unable to retrieve data for get_sync.
+2020-10-04 20:02:30 - DEBUG   :: CP Server Thread-22 : Tautulli PlexTV :: Plex Pass subscription not found.
+2020-10-04 20:02:30 - INFO    :: CP Server Thread-22 : Tautulli Config :: Writing configuration to file
