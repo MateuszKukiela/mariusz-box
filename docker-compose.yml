@@ -150,3 +150,13 @@ services:
     ports:
       - 80:80
     restart: unless-stopped
+
+  homeassistant:
+    container_name: home-assistant
+    image: homeassistant/home-assistant:stable
+    volumes:
+      - ${ROOT_APPDATA}/homeassistant:/config
+    environment:
+      - TZ=${TZ}
+    restart: unless-stopped
+    network_mode: host
