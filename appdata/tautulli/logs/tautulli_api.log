@@ -1034,3 +1034,19 @@
 2020-10-05 15:02:50 - DEBUG   :: CP Server Thread-5 : Tautulli APIv2 :: Cleaned kwargs: {}
 2020-10-05 15:07:33 - DEBUG   :: CP Server Thread-7 : Tautulli APIv2 :: API called with kwargs: {'apikey': '****************', 'cmd': 'get_activity'}
 2020-10-05 15:07:33 - DEBUG   :: CP Server Thread-7 : Tautulli APIv2 :: Cleaned kwargs: {}
+2020-10-06 10:44:45 - DEBUG   :: CP Server Thread-7 : Tautulli APIv2 :: API called with kwargs: {'apikey': '****************', 'cmd': 'get_activity'}
+2020-10-06 10:44:45 - DEBUG   :: CP Server Thread-7 : Tautulli APIv2 :: Cleaned kwargs: {}
+2020-10-06 10:44:57 - DEBUG   :: CP Server Thread-9 : Tautulli APIv2 :: API called with kwargs: {'apikey': '****************', 'cmd': 'get_activity'}
+2020-10-06 10:44:57 - DEBUG   :: CP Server Thread-9 : Tautulli APIv2 :: Cleaned kwargs: {}
+2020-10-06 10:45:07 - DEBUG   :: CP Server Thread-11 : Tautulli APIv2 :: API called with kwargs: {'apikey': '****************', 'cmd': 'get_activity'}
+2020-10-06 10:45:07 - DEBUG   :: CP Server Thread-11 : Tautulli APIv2 :: Cleaned kwargs: {}
+2020-10-06 10:45:18 - DEBUG   :: CP Server Thread-13 : Tautulli APIv2 :: API called with kwargs: {'apikey': '****************', 'cmd': 'get_activity'}
+2020-10-06 10:45:18 - DEBUG   :: CP Server Thread-13 : Tautulli APIv2 :: Cleaned kwargs: {}
+2020-10-06 10:49:25 - DEBUG   :: CP Server Thread-7 : Tautulli APIv2 :: API called with kwargs: {'apikey': '****************', 'cmd': 'get_activity'}
+2020-10-06 10:49:25 - DEBUG   :: CP Server Thread-7 : Tautulli APIv2 :: Cleaned kwargs: {}
+2020-10-06 10:52:45 - DEBUG   :: CP Server Thread-9 : Tautulli APIv2 :: API called with kwargs: {'apikey': '****************', 'cmd': 'get_activity'}
+2020-10-06 10:52:45 - DEBUG   :: CP Server Thread-9 : Tautulli APIv2 :: Cleaned kwargs: {}
+2020-10-06 10:52:52 - DEBUG   :: CP Server Thread-11 : Tautulli APIv2 :: API called with kwargs: {'apikey': '****************', 'cmd': 'get_activity'}
+2020-10-06 10:52:52 - DEBUG   :: CP Server Thread-11 : Tautulli APIv2 :: Cleaned kwargs: {}
+2020-10-06 10:53:01 - DEBUG   :: CP Server Thread-13 : Tautulli APIv2 :: API called with kwargs: {'apikey': '****************', 'cmd': 'get_activity'}
+2020-10-06 10:53:01 - DEBUG   :: CP Server Thread-13 : Tautulli APIv2 :: Cleaned kwargs: {}

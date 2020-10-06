@@ -2,3 +2,6 @@
 06/10/2020 05:00:02|INFO    |root                            |BAZARR All existing movie subtitles indexed from disk.|
 06/10/2020 05:36:20|INFO    |root                            |BAZARR Finished searching for missing Movies Subtitles. Check History for more information.|
 06/10/2020 08:36:20|INFO    |root                            |BAZARR Finished searching for missing Movies Subtitles. Check History for more information.|
+06/10/2020 10:43:35|INFO    |root                            |BAZARR is started and waiting for request on http://0.***.***.***:6767/|
+06/10/2020 10:44:32|INFO    |root                            |BAZARR is started and waiting for request on http://0.***.***.***:6767/|
+06/10/2020 10:49:14|INFO    |root                            |BAZARR is started and waiting for request on http://0.***.***.***:6767/|

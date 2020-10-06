@@ -79,7 +79,7 @@ services:
       - ${ROOT_MEDIA}/other:/other    
       - ${ROOT_MEDIA}/watch:/watch
     ports:
-      - 9091:9091
+      - 8112:9091
       - 51413:51413
       - 51413:51413/udp
     restart: unless-stopped

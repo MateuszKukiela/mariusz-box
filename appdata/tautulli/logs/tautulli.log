@@ -1118,3 +1118,176 @@
 2020-10-06 09:31:34 - INFO    :: Thread-20 : Tautulli PlexTV :: Selected server: mariusz-3.0 (http://192.168.8.11:32400) (Linux - Version 1.20.1.3252-a78fef9a9)
 2020-10-06 09:31:34 - INFO    :: Thread-20 : Tautulli Config :: Writing configuration to file
 2020-10-06 09:31:34 - INFO    :: Thread-19 : Tautulli Users :: Users list refreshed.
+2020-10-06 10:43:22 - INFO    :: MainThread : Signal 15 caught, saving and exiting...
+2020-10-06 10:43:22 - INFO    :: MainThread : Tautulli WebStart :: Stopping Tautulli web server...
+2020-10-06 10:43:22 - INFO    :: MainThread : Tautulli WebSocket :: Disconnecting websocket...
+2020-10-06 10:43:23 - DEBUG   :: Thread-3 : Tautulli WebSocket :: Leaving thread.
+2020-10-06 10:43:23 - INFO    :: MainThread : Tautulli Config :: Writing configuration to file
+2020-10-06 10:43:23 - INFO    :: Thread-1 : Tautulli NotificationHandler :: Notification thread exiting...
+2020-10-06 10:43:23 - INFO    :: Thread-2 : Tautulli NotificationHandler :: Notification thread exiting...
+2020-10-06 10:43:23 - INFO    :: MainThread : Tautulli is shutting down...
+2020-10-06 10:43:31 - INFO    :: MainThread : Starting Tautulli v2.5.6
+2020-10-06 10:43:31 - INFO    :: MainThread : [Docker] Linux ***-***-***-***-amd64 (#1 SMP Debian ***-***-***-*** (2020-09-17))
+2020-10-06 10:43:31 - INFO    :: MainThread : Europe/Warsaw (UTC+0200)
+2020-10-06 10:43:31 - INFO    :: MainThread : Python 3.8.5 (default, Jul 20 2020, 23:11:29) [GCC 9.3.0]
+2020-10-06 10:43:31 - INFO    :: MainThread : Program Dir: /app/tautulli
+2020-10-06 10:43:31 - INFO    :: MainThread : Config File: /config/config.ini
+2020-10-06 10:43:31 - INFO    :: MainThread : Database File: /config/tautulli.db
+2020-10-06 10:43:31 - INFO    :: MainThread : Checking if the database upgrades are required...
+2020-10-06 10:43:31 - INFO    :: MainThread : Checking if configuration upgrades are required...
+2020-10-06 10:43:31 - INFO    :: MainThread : Retrieving latest version information from GitHub
+2020-10-06 10:43:31 - DEBUG   :: MainThread : Requesting URL via GET method: https://api.github.com/repos/Tautulli/Tautulli/commits/master
+2020-10-06 10:43:31 - DEBUG   :: MainThread : Latest version is 14b98a32e085d969f010f0249c3d2f660db50880
+2020-10-06 10:43:31 - INFO    :: MainThread : Comparing currently installed version with latest GitHub version
+2020-10-06 10:43:31 - DEBUG   :: MainThread : Requesting URL via GET method: https://api.github.com/repos/Tautulli/Tautulli/compare/14b98a32e085d969f010f0249c3d2f660db50880...v2.5.6
+2020-10-06 10:43:31 - DEBUG   :: MainThread : In total, 0 commits behind
+2020-10-06 10:43:31 - INFO    :: MainThread : Tautulli is up to date
+2020-10-06 10:43:31 - INFO    :: MainThread : Tautulli PlexTV :: Requesting resources for server...
+2020-10-06 10:43:32 - DEBUG   :: MainThread : Tautulli PlexTV :: Plex Pass subscription not found.
+2020-10-06 10:43:32 - INFO    :: MainThread : Tautulli Config :: Writing configuration to file
+2020-10-06 10:43:32 - INFO    :: MainThread : Tautulli PlexTV :: Using user-defined URL.
+2020-10-06 10:43:32 - INFO    :: MainThread : Tautulli PlexTV :: Selected server: mariusz-3.0 (http://192.168.8.11:32400) (Linux - Version 1.20.1.3252-a78fef9a9)
+2020-10-06 10:43:32 - INFO    :: MainThread : Tautulli Config :: Writing configuration to file
+2020-10-06 10:43:32 - INFO    :: MainThread : Tautulli Users :: Requesting users list refresh...
+2020-10-06 10:43:33 - INFO    :: MainThread : Tautulli Users :: Users list refreshed.
+2020-10-06 10:43:33 - INFO    :: MainThread : Tautulli Libraries :: Requesting libraries list refresh...
+2020-10-06 10:43:33 - DEBUG   :: MainThread : Tautulli Pmsconnect :: No library data.
+2020-10-06 10:43:33 - DEBUG   :: MainThread : Tautulli Pmsconnect :: No library data.
+2020-10-06 10:43:33 - DEBUG   :: MainThread : Tautulli Pmsconnect :: No library data.
+2020-10-06 10:43:33 - INFO    :: MainThread : Tautulli Config :: Writing configuration to file
+2020-10-06 10:43:33 - INFO    :: MainThread : Tautulli Libraries :: Libraries list refreshed.
+2020-10-06 10:43:33 - INFO    :: MainThread : Tautulli NotificationHandler :: Starting background notification handler (2 threads).
+2020-10-06 10:43:33 - DEBUG   :: MainThread : Tautulli Monitor :: Checking for active streams.
+2020-10-06 10:43:33 - INFO    :: Thread-3 : Tautulli WebSocket :: Opening websocket.
+2020-10-06 10:43:33 - INFO    :: Thread-3 : Tautulli WebSocket :: Ready
+2020-10-06 10:43:33 - INFO    :: Thread-3 : Scheduled background task: Check GitHub for updates
+2020-10-06 10:43:33 - INFO    :: Thread-3 : Scheduled background task: Optimize Tautulli database
+2020-10-06 10:43:33 - INFO    :: Thread-3 : Scheduled background task: Backup Tautulli database
+2020-10-06 10:43:33 - INFO    :: Thread-3 : Scheduled background task: Backup Tautulli config
+2020-10-06 10:43:33 - INFO    :: Thread-3 : Scheduled background task: Refresh Plex server URLs
+2020-10-06 10:43:33 - INFO    :: Thread-3 : Scheduled background task: Refresh users list
+2020-10-06 10:43:33 - INFO    :: Thread-3 : Scheduled background task: Refresh libraries list
+2020-10-06 10:43:33 - INFO    :: MainThread : Tautulli WebStart :: Initializing Tautulli web server...
+2020-10-06 10:43:33 - INFO    :: MainThread : Tautulli WebStart :: Web server authentication is enabled: Tautulli admin (username is 'root') and Plex admin.
+2020-10-06 10:43:33 - INFO    :: MainThread : Tautulli WebStart :: Starting Tautulli web server on http://0.0.0.0:8181/
+2020-10-06 10:43:33 - INFO    :: MainThread : Tautulli is ready!
+2020-10-06 10:43:42 - INFO    :: MainThread : Signal 15 caught, saving and exiting...
+2020-10-06 10:43:42 - INFO    :: MainThread : Tautulli WebStart :: Stopping Tautulli web server...
+2020-10-06 10:43:42 - WARNING :: Thread-3 : Tautulli WebSocket :: Connection has closed.
+2020-10-06 10:43:42 - WARNING :: Thread-3 : Tautulli WebSocket :: Reconnection attempt 1.
+2020-10-06 10:43:42 - ERROR   :: Thread-3 : Tautulli WebSocket :: [Errno 104] Connection reset by peer.
+2020-10-06 10:43:42 - INFO    :: MainThread : Tautulli WebSocket :: Disconnecting websocket...
+2020-10-06 10:43:42 - INFO    :: MainThread : Tautulli Config :: Writing configuration to file
+2020-10-06 10:43:42 - INFO    :: Thread-1 : Tautulli NotificationHandler :: Notification thread exiting...
+2020-10-06 10:43:42 - INFO    :: Thread-2 : Tautulli NotificationHandler :: Notification thread exiting...
+2020-10-06 10:43:42 - INFO    :: MainThread : Tautulli is shutting down...
+2020-10-06 10:44:28 - INFO    :: MainThread : Starting Tautulli v2.5.6
+2020-10-06 10:44:28 - INFO    :: MainThread : [Docker] Linux ***-***-***-***-amd64 (#1 SMP Debian ***-***-***-*** (2020-09-17))
+2020-10-06 10:44:28 - INFO    :: MainThread : Europe/Warsaw (UTC+0200)
+2020-10-06 10:44:28 - INFO    :: MainThread : Python 3.8.5 (default, Jul 20 2020, 23:11:29) [GCC 9.3.0]
+2020-10-06 10:44:28 - INFO    :: MainThread : Program Dir: /app/tautulli
+2020-10-06 10:44:28 - INFO    :: MainThread : Config File: /config/config.ini
+2020-10-06 10:44:28 - INFO    :: MainThread : Database File: /config/tautulli.db
+2020-10-06 10:44:28 - INFO    :: MainThread : Checking if the database upgrades are required...
+2020-10-06 10:44:28 - INFO    :: MainThread : Checking if configuration upgrades are required...
+2020-10-06 10:44:28 - INFO    :: MainThread : Retrieving latest version information from GitHub
+2020-10-06 10:44:28 - DEBUG   :: MainThread : Requesting URL via GET method: https://api.github.com/repos/Tautulli/Tautulli/commits/master
+2020-10-06 10:44:28 - DEBUG   :: MainThread : Latest version is 14b98a32e085d969f010f0249c3d2f660db50880
+2020-10-06 10:44:28 - INFO    :: MainThread : Comparing currently installed version with latest GitHub version
+2020-10-06 10:44:28 - DEBUG   :: MainThread : Requesting URL via GET method: https://api.github.com/repos/Tautulli/Tautulli/compare/14b98a32e085d969f010f0249c3d2f660db50880...v2.5.6
+2020-10-06 10:44:28 - DEBUG   :: MainThread : In total, 0 commits behind
+2020-10-06 10:44:28 - INFO    :: MainThread : Tautulli is up to date
+2020-10-06 10:44:28 - INFO    :: MainThread : Tautulli PlexTV :: Requesting resources for server...
+2020-10-06 10:44:29 - DEBUG   :: MainThread : Tautulli PlexTV :: Plex Pass subscription not found.
+2020-10-06 10:44:29 - INFO    :: MainThread : Tautulli Config :: Writing configuration to file
+2020-10-06 10:44:29 - INFO    :: MainThread : Tautulli PlexTV :: Using user-defined URL.
+2020-10-06 10:44:29 - INFO    :: MainThread : Tautulli PlexTV :: Selected server: mariusz-3.0 (http://192.168.8.11:32400) (Linux - Version 1.20.1.3252-a78fef9a9)
+2020-10-06 10:44:29 - INFO    :: MainThread : Tautulli Config :: Writing configuration to file
+2020-10-06 10:44:29 - INFO    :: MainThread : Tautulli Users :: Requesting users list refresh...
+2020-10-06 10:44:30 - INFO    :: MainThread : Tautulli Users :: Users list refreshed.
+2020-10-06 10:44:30 - INFO    :: MainThread : Tautulli Libraries :: Requesting libraries list refresh...
+2020-10-06 10:44:30 - DEBUG   :: MainThread : Tautulli Pmsconnect :: No library data.
+2020-10-06 10:44:30 - DEBUG   :: MainThread : Tautulli Pmsconnect :: No library data.
+2020-10-06 10:44:30 - DEBUG   :: MainThread : Tautulli Pmsconnect :: No library data.
+2020-10-06 10:44:30 - INFO    :: MainThread : Tautulli Config :: Writing configuration to file
+2020-10-06 10:44:30 - INFO    :: MainThread : Tautulli Libraries :: Libraries list refreshed.
+2020-10-06 10:44:30 - INFO    :: MainThread : Tautulli NotificationHandler :: Starting background notification handler (2 threads).
+2020-10-06 10:44:30 - DEBUG   :: MainThread : Tautulli Monitor :: Checking for active streams.
+2020-10-06 10:44:30 - INFO    :: Thread-3 : Tautulli WebSocket :: Opening websocket.
+2020-10-06 10:44:30 - INFO    :: Thread-3 : Tautulli WebSocket :: Ready
+2020-10-06 10:44:30 - INFO    :: Thread-3 : Scheduled background task: Check GitHub for updates
+2020-10-06 10:44:30 - INFO    :: Thread-3 : Scheduled background task: Optimize Tautulli database
+2020-10-06 10:44:30 - INFO    :: Thread-3 : Scheduled background task: Backup Tautulli database
+2020-10-06 10:44:30 - INFO    :: Thread-3 : Scheduled background task: Backup Tautulli config
+2020-10-06 10:44:30 - INFO    :: Thread-3 : Scheduled background task: Refresh Plex server URLs
+2020-10-06 10:44:30 - INFO    :: Thread-3 : Scheduled background task: Refresh users list
+2020-10-06 10:44:30 - INFO    :: Thread-3 : Scheduled background task: Refresh libraries list
+2020-10-06 10:44:30 - INFO    :: MainThread : Tautulli WebStart :: Initializing Tautulli web server...
+2020-10-06 10:44:30 - INFO    :: MainThread : Tautulli WebStart :: Web server authentication is enabled: Tautulli admin (username is 'root') and Plex admin.
+2020-10-06 10:44:30 - INFO    :: MainThread : Tautulli WebStart :: Starting Tautulli web server on http://0.0.0.0:8181/
+2020-10-06 10:44:30 - INFO    :: MainThread : Tautulli is ready!
+2020-10-06 10:45:20 - INFO    :: MainThread : Signal 15 caught, saving and exiting...
+2020-10-06 10:45:20 - INFO    :: MainThread : Tautulli WebStart :: Stopping Tautulli web server...
+2020-10-06 10:45:20 - WARNING :: Thread-3 : Tautulli WebSocket :: Connection has closed.
+2020-10-06 10:45:20 - WARNING :: Thread-3 : Tautulli WebSocket :: Reconnection attempt 1.
+2020-10-06 10:45:20 - ERROR   :: Thread-3 : Tautulli WebSocket :: [Errno 104] Connection reset by peer.
+2020-10-06 10:45:20 - INFO    :: MainThread : Tautulli WebSocket :: Disconnecting websocket...
+2020-10-06 10:45:20 - INFO    :: MainThread : Tautulli Config :: Writing configuration to file
+2020-10-06 10:45:20 - INFO    :: Thread-2 : Tautulli NotificationHandler :: Notification thread exiting...
+2020-10-06 10:45:20 - INFO    :: Thread-1 : Tautulli NotificationHandler :: Notification thread exiting...
+2020-10-06 10:45:20 - INFO    :: MainThread : Tautulli is shutting down...
+2020-10-06 10:49:11 - INFO    :: MainThread : Starting Tautulli v2.5.6
+2020-10-06 10:49:11 - INFO    :: MainThread : [Docker] Linux ***-***-***-***-amd64 (#1 SMP Debian ***-***-***-*** (2020-09-17))
+2020-10-06 10:49:11 - INFO    :: MainThread : Europe/Warsaw (UTC+0200)
+2020-10-06 10:49:11 - INFO    :: MainThread : Python 3.8.5 (default, Jul 20 2020, 23:11:29) [GCC 9.3.0]
+2020-10-06 10:49:11 - INFO    :: MainThread : Program Dir: /app/tautulli
+2020-10-06 10:49:11 - INFO    :: MainThread : Config File: /config/config.ini
+2020-10-06 10:49:11 - INFO    :: MainThread : Database File: /config/tautulli.db
+2020-10-06 10:49:11 - INFO    :: MainThread : Checking if the database upgrades are required...
+2020-10-06 10:49:11 - INFO    :: MainThread : Checking if configuration upgrades are required...
+2020-10-06 10:49:11 - INFO    :: MainThread : Retrieving latest version information from GitHub
+2020-10-06 10:49:11 - DEBUG   :: MainThread : Requesting URL via GET method: https://api.github.com/repos/Tautulli/Tautulli/commits/master
+2020-10-06 10:49:11 - DEBUG   :: MainThread : Latest version is 14b98a32e085d969f010f0249c3d2f660db50880
+2020-10-06 10:49:11 - INFO    :: MainThread : Comparing currently installed version with latest GitHub version
+2020-10-06 10:49:11 - DEBUG   :: MainThread : Requesting URL via GET method: https://api.github.com/repos/Tautulli/Tautulli/compare/14b98a32e085d969f010f0249c3d2f660db50880...v2.5.6
+2020-10-06 10:49:11 - DEBUG   :: MainThread : In total, 0 commits behind
+2020-10-06 10:49:11 - INFO    :: MainThread : Tautulli is up to date
+2020-10-06 10:49:11 - INFO    :: MainThread : Tautulli PlexTV :: Requesting resources for server...
+2020-10-06 10:49:12 - DEBUG   :: MainThread : Tautulli PlexTV :: Plex Pass subscription not found.
+2020-10-06 10:49:12 - INFO    :: MainThread : Tautulli Config :: Writing configuration to file
+2020-10-06 10:49:12 - INFO    :: MainThread : Tautulli PlexTV :: Using user-defined URL.
+2020-10-06 10:49:12 - INFO    :: MainThread : Tautulli PlexTV :: Selected server: mariusz-3.0 (http://192.168.8.11:32400) (Linux - Version 1.20.1.3252-a78fef9a9)
+2020-10-06 10:49:12 - INFO    :: MainThread : Tautulli Config :: Writing configuration to file
+2020-10-06 10:49:12 - INFO    :: MainThread : Tautulli Users :: Requesting users list refresh...
+2020-10-06 10:49:13 - INFO    :: MainThread : Tautulli Users :: Users list refreshed.
+2020-10-06 10:49:13 - INFO    :: MainThread : Tautulli Libraries :: Requesting libraries list refresh...
+2020-10-06 10:49:13 - DEBUG   :: MainThread : Tautulli Pmsconnect :: No library data.
+2020-10-06 10:49:13 - DEBUG   :: MainThread : Tautulli Pmsconnect :: No library data.
+2020-10-06 10:49:13 - DEBUG   :: MainThread : Tautulli Pmsconnect :: No library data.
+2020-10-06 10:49:13 - INFO    :: MainThread : Tautulli Config :: Writing configuration to file
+2020-10-06 10:49:13 - INFO    :: MainThread : Tautulli Libraries :: Libraries list refreshed.
+2020-10-06 10:49:13 - INFO    :: MainThread : Tautulli NotificationHandler :: Starting background notification handler (2 threads).
+2020-10-06 10:49:13 - DEBUG   :: MainThread : Tautulli Monitor :: Checking for active streams.
+2020-10-06 10:49:13 - INFO    :: Thread-3 : Tautulli WebSocket :: Opening websocket.
+2020-10-06 10:49:13 - INFO    :: Thread-3 : Tautulli WebSocket :: Ready
+2020-10-06 10:49:13 - INFO    :: Thread-3 : Scheduled background task: Check GitHub for updates
+2020-10-06 10:49:13 - INFO    :: Thread-3 : Scheduled background task: Optimize Tautulli database
+2020-10-06 10:49:13 - INFO    :: Thread-3 : Scheduled background task: Backup Tautulli database
+2020-10-06 10:49:13 - INFO    :: Thread-3 : Scheduled background task: Backup Tautulli config
+2020-10-06 10:49:13 - INFO    :: Thread-3 : Scheduled background task: Refresh Plex server URLs
+2020-10-06 10:49:13 - INFO    :: Thread-3 : Scheduled background task: Refresh users list
+2020-10-06 10:49:13 - INFO    :: Thread-3 : Scheduled background task: Refresh libraries list
+2020-10-06 10:49:13 - INFO    :: MainThread : Tautulli WebStart :: Initializing Tautulli web server...
+2020-10-06 10:49:13 - INFO    :: MainThread : Tautulli WebStart :: Web server authentication is enabled: Tautulli admin (username is 'root') and Plex admin.
+2020-10-06 10:49:13 - INFO    :: MainThread : Tautulli WebStart :: Starting Tautulli web server on http://0.0.0.0:8181/
+2020-10-06 10:49:13 - INFO    :: MainThread : Tautulli is ready!
+2020-10-06 10:56:22 - INFO    :: MainThread : Signal 15 caught, saving and exiting...
+2020-10-06 10:56:22 - INFO    :: MainThread : Tautulli WebStart :: Stopping Tautulli web server...
+2020-10-06 10:56:22 - WARNING :: Thread-3 : Tautulli WebSocket :: Connection has closed.
+2020-10-06 10:56:22 - WARNING :: Thread-3 : Tautulli WebSocket :: Reconnection attempt 1.
+2020-10-06 10:56:22 - ERROR   :: Thread-3 : Tautulli WebSocket :: [Errno 111] Connection refused.
+2020-10-06 10:56:22 - INFO    :: MainThread : Tautulli WebSocket :: Disconnecting websocket...
+2020-10-06 10:56:22 - INFO    :: MainThread : Tautulli Config :: Writing configuration to file
+2020-10-06 10:56:22 - INFO    :: Thread-1 : Tautulli NotificationHandler :: Notification thread exiting...
+2020-10-06 10:56:22 - INFO    :: Thread-2 : Tautulli NotificationHandler :: Notification thread exiting...
+2020-10-06 10:56:22 - INFO    :: MainThread : Tautulli is shutting down...

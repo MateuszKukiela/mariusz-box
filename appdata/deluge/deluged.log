@@ -2689,3 +2689,13 @@
 23:30:02 [WARNING ][deluge.core.torrentmanager    :1617] on_alert_performance: Knives Out (2019) [REPACK] [2160p] [4K] [BluRay] [7.1] [YTS.MX]: performance warning: max outstanding piece requests reached, outstanding_request_limit_reached
 23:30:03 [WARNING ][deluge.core.torrentmanager    :1617] on_alert_performance: Knives Out (2019) [REPACK] [2160p] [4K] [BluRay] [7.1] [YTS.MX]: performance warning: max outstanding piece requests reached, outstanding_request_limit_reached
 23:34:19 [INFO    ][deluge.core.torrentmanager    :768 ] Torrent Knives Out (2019) [REPACK] [2160p] [4K] [BluRay] [7.1] [YTS.MX] removed by user: localclient
+10:46:56 [INFO    ][twisted                       :154 ] Received SIGTERM, shutting down.
+10:46:56 [INFO    ][deluge.core.rpcserver         :197 ] Deluge client disconnected: Connection to the other side was lost in a non-clean fashion: Connection lost.
+10:46:56 [INFO    ][deluge.core.daemon            :176 ] Deluge daemon shutting down, waiting for components to shutdown...
+10:46:56 [INFO    ][deluge.core.core              :307 ] Saving the session.state at: /config/session.state
+10:46:56 [INFO    ][deluge.pluginmanagerbase      :250 ] Plugin Label disabled...
+10:46:56 [INFO    ][twisted                       :154 ] (TLS Port 58846 Closed)
+10:46:56 [INFO    ][twisted                       :154 ] Stopping factory <twisted.internet.protocol.Factory object at 0x7fb4ab60bb38>
+10:46:56 [INFO    ][twisted                       :154 ] Main loop terminated.
+10:46:56 [INFO    ][deluge.core.daemon            :168 ] Deluge daemon shutdown successfully
+10:46:56 [INFO    ][deluge.core.daemon_entry      :137 ] Exiting...

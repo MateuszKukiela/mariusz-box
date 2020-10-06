@@ -1142,3 +1142,140 @@
 20-10-6 10:29:15.3|Info|RssSyncService|Starting RSS Sync
 20-10-6 10:29:16.6|Info|DownloadDecisionMaker|Processing 20 releases
 20-10-6 10:29:16.6|Info|RssSyncService|RSS Sync Completed. Reports found: 20, Reports grabbed: 0
+20-10-6 10:43:28.6|Info|Bootstrap|Starting Sonarr - /app/sonarr/bin/NzbDrone.exe - Version 2.0.0.5344
+20-10-6 10:43:29.4|Info|AppFolderInfo|Data directory is being overridden to [/config]
+20-10-6 10:43:29.6|Info|Router|Application mode: Interactive
+20-10-6 10:43:29.8|Info|MigrationLogger|*** Migrating data source=/config/nzbdrone.db;cache size=-10000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3 ***
+20-10-6 10:43:30.0|Info|MigrationLogger|*** Migrating data source=/config/logs.db;cache size=-10000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3 ***
+20-10-6 10:43:30.1|Info|OwinHostController|Listening on the following URLs:
+20-10-6 10:43:30.1|Info|OwinHostController|  http://*:8989/
+20-10-6 10:43:30.3|Info|NancyBootstrapper|Starting Web Server
+20-10-6 10:44:27.5|Info|Bootstrap|Starting Sonarr - /app/sonarr/bin/NzbDrone.exe - Version 2.0.0.5344
+20-10-6 10:44:28.1|Info|AppFolderInfo|Data directory is being overridden to [/config]
+20-10-6 10:44:28.2|Info|Router|Application mode: Interactive
+20-10-6 10:44:28.4|Info|MigrationLogger|*** Migrating data source=/config/nzbdrone.db;cache size=-10000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3 ***
+20-10-6 10:44:28.6|Info|MigrationLogger|*** Migrating data source=/config/logs.db;cache size=-10000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3 ***
+20-10-6 10:44:28.7|Info|OwinHostController|Listening on the following URLs:
+20-10-6 10:44:28.7|Info|OwinHostController|  http://*:8989/
+20-10-6 10:44:28.9|Info|NancyBootstrapper|Starting Web Server
+20-10-6 10:45:00.2|Info|RssSyncService|Starting RSS Sync
+20-10-6 10:45:02.1|Info|DownloadDecisionMaker|Processing 25 releases
+20-10-6 10:45:02.4|Info|RssSyncService|RSS Sync Completed. Reports found: 25, Reports grabbed: 0
+20-10-6 10:49:10.2|Info|Bootstrap|Starting Sonarr - /app/sonarr/bin/NzbDrone.exe - Version 2.0.0.5344
+20-10-6 10:49:11.0|Info|AppFolderInfo|Data directory is being overridden to [/config]
+20-10-6 10:49:11.2|Info|Router|Application mode: Interactive
+20-10-6 10:49:11.4|Info|MigrationLogger|*** Migrating data source=/config/nzbdrone.db;cache size=-10000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3 ***
+20-10-6 10:49:11.6|Info|MigrationLogger|*** Migrating data source=/config/logs.db;cache size=-10000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3 ***
+20-10-6 10:49:11.6|Info|OwinHostController|Listening on the following URLs:
+20-10-6 10:49:11.6|Info|OwinHostController|  http://*:8989/
+20-10-6 10:49:11.8|Info|NancyBootstrapper|Starting Web Server
+20-10-6 10:49:43.2|Warn|DownloadMonitoringService|Unable to retrieve queue and history items from deluge
+
+[v2.0.0.5344] Newtonsoft.Json.JsonReaderException: Unexpected character encountered while parsing value: <. Path '', line 0, position 0. (Json snippet '<--error--><h1>301: Moved Perma') ---> Newtonsoft.Json.JsonReaderException: Unexpected character encountered while parsing value: <. Path '', line 0, position 0.
+  at Newtonsoft.Json.JsonTextReader.ParseValue () [0x002b3] in <c5b8b1476b514bcaad468ae001c1fb99>:0 
+  at Newtonsoft.Json.JsonTextReader.Read () [0x0004c] in <c5b8b1476b514bcaad468ae001c1fb99>:0 
+  at Newtonsoft.Json.JsonReader.ReadAndMoveToContent () [0x00000] in <c5b8b1476b514bcaad468ae001c1fb99>:0 
+  at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.ReadForType (Newtonsoft.Json.JsonReader reader, Newtonsoft.Json.Serialization.JsonContract contract, System.Boolean hasConverter) [0x00043] in <c5b8b1476b514bcaad468ae001c1fb99>:0 
+  at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize (Newtonsoft.Json.JsonReader reader, System.Type objectType, System.Boolean checkAdditionalContent) [0x000d9] in <c5b8b1476b514bcaad468ae001c1fb99>:0 
+  at Newtonsoft.Json.JsonSerializer.DeserializeInternal (Newtonsoft.Json.JsonReader reader, System.Type objectType) [0x00053] in <c5b8b1476b514bcaad468ae001c1fb99>:0 
+  at Newtonsoft.Json.JsonSerializer.Deserialize (Newtonsoft.Json.JsonReader reader, System.Type objectType) [0x00000] in <c5b8b1476b514bcaad468ae001c1fb99>:0 
+  at Newtonsoft.Json.JsonConvert.DeserializeObject (System.String value, System.Type type, Newtonsoft.Json.JsonSerializerSettings settings) [0x0002d] in <c5b8b1476b514bcaad468ae001c1fb99>:0 
+  at Newtonsoft.Json.JsonConvert.DeserializeObject[T] (System.String value, Newtonsoft.Json.JsonSerializerSettings settings) [0x00000] in <c5b8b1476b514bcaad468ae001c1fb99>:0 
+  at NzbDrone.Common.Serializer.Json.Deserialize[T] (System.String json) [0x00000] in C:\BuildAgent\work\5d7581516c0ee5b3\src\NzbDrone.Common\Serializer\Json.cs:40 
+   --- End of inner exception stack trace ---
+  at NzbDrone.Common.Serializer.Json.Deserialize[T] (System.String json) [0x0000e] in C:\BuildAgent\work\5d7581516c0ee5b3\src\NzbDrone.Common\Serializer\Json.cs:44 
+  at NzbDrone.Core.Download.Clients.Deluge.DelugeProxy.AuthenticateClient (NzbDrone.Common.Http.JsonRpcRequestBuilder requestBuilder, NzbDrone.Core.Download.Clients.Deluge.DelugeSettings settings, System.Boolean reauthenticate) [0x00067] in C:\BuildAgent\work\5d7581516c0ee5b3\src\NzbDrone.Core\Download\Clients\Deluge\DelugeProxy.cs:291 
+  at NzbDrone.Core.Download.Clients.Deluge.DelugeProxy.BuildRequest (NzbDrone.Core.Download.Clients.Deluge.DelugeSettings settings) [0x0006d] in C:\BuildAgent\work\5d7581516c0ee5b3\src\NzbDrone.Core\Download\Clients\Deluge\DelugeProxy.cs:203 
+  at NzbDrone.Core.Download.Clients.Deluge.DelugeProxy.ProcessRequest[TResult] (NzbDrone.Core.Download.Clients.Deluge.DelugeSettings settings, System.String method, System.Object[] arguments) [0x00000] in C:\BuildAgent\work\5d7581516c0ee5b3\src\NzbDrone.Core\Download\Clients\Deluge\DelugeProxy.cs:210 
+  at NzbDrone.Core.Download.Clients.Deluge.DelugeProxy.GetTorrentsByLabel (System.String label, NzbDrone.Core.Download.Clients.Deluge.DelugeSettings settings) [0x00012] in C:\BuildAgent\work\5d7581516c0ee5b3\src\NzbDrone.Core\Download\Clients\Deluge\DelugeProxy.cs:96 
+  at NzbDrone.Core.Download.Clients.Deluge.Deluge.GetItems () [0x00012] in C:\BuildAgent\work\5d7581516c0ee5b3\src\NzbDrone.Core\Download\Clients\Deluge\Deluge.cs:96 
+  at NzbDrone.Core.Download.TrackedDownloads.DownloadMonitoringService.ProcessClientDownloads (NzbDrone.Core.Download.IDownloadClient downloadClient) [0x0000c] in C:\BuildAgent\work\5d7581516c0ee5b3\src\NzbDrone.Core\Download\TrackedDownloads\DownloadMonitoringService.cs:89 
+
+20-10-6 10:51:13.1|Warn|DownloadMonitoringService|Unable to retrieve queue and history items from deluge
+
+[v2.0.0.5344] Newtonsoft.Json.JsonReaderException: Unexpected character encountered while parsing value: <. Path '', line 0, position 0. (Json snippet '<--error--><h1>301: Moved Perma') ---> Newtonsoft.Json.JsonReaderException: Unexpected character encountered while parsing value: <. Path '', line 0, position 0.
+  at Newtonsoft.Json.JsonTextReader.ParseValue () [0x002b3] in <c5b8b1476b514bcaad468ae001c1fb99>:0 
+  at Newtonsoft.Json.JsonTextReader.Read () [0x0004c] in <c5b8b1476b514bcaad468ae001c1fb99>:0 
+  at Newtonsoft.Json.JsonReader.ReadAndMoveToContent () [0x00000] in <c5b8b1476b514bcaad468ae001c1fb99>:0 
+  at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.ReadForType (Newtonsoft.Json.JsonReader reader, Newtonsoft.Json.Serialization.JsonContract contract, System.Boolean hasConverter) [0x00043] in <c5b8b1476b514bcaad468ae001c1fb99>:0 
+  at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize (Newtonsoft.Json.JsonReader reader, System.Type objectType, System.Boolean checkAdditionalContent) [0x000d9] in <c5b8b1476b514bcaad468ae001c1fb99>:0 
+  at Newtonsoft.Json.JsonSerializer.DeserializeInternal (Newtonsoft.Json.JsonReader reader, System.Type objectType) [0x00053] in <c5b8b1476b514bcaad468ae001c1fb99>:0 
+  at Newtonsoft.Json.JsonSerializer.Deserialize (Newtonsoft.Json.JsonReader reader, System.Type objectType) [0x00000] in <c5b8b1476b514bcaad468ae001c1fb99>:0 
+  at Newtonsoft.Json.JsonConvert.DeserializeObject (System.String value, System.Type type, Newtonsoft.Json.JsonSerializerSettings settings) [0x0002d] in <c5b8b1476b514bcaad468ae001c1fb99>:0 
+  at Newtonsoft.Json.JsonConvert.DeserializeObject[T] (System.String value, Newtonsoft.Json.JsonSerializerSettings settings) [0x00000] in <c5b8b1476b514bcaad468ae001c1fb99>:0 
+  at NzbDrone.Common.Serializer.Json.Deserialize[T] (System.String json) [0x00000] in C:\BuildAgent\work\5d7581516c0ee5b3\src\NzbDrone.Common\Serializer\Json.cs:40 
+   --- End of inner exception stack trace ---
+  at NzbDrone.Common.Serializer.Json.Deserialize[T] (System.String json) [0x0000e] in C:\BuildAgent\work\5d7581516c0ee5b3\src\NzbDrone.Common\Serializer\Json.cs:44 
+  at NzbDrone.Core.Download.Clients.Deluge.DelugeProxy.AuthenticateClient (NzbDrone.Common.Http.JsonRpcRequestBuilder requestBuilder, NzbDrone.Core.Download.Clients.Deluge.DelugeSettings settings, System.Boolean reauthenticate) [0x00067] in C:\BuildAgent\work\5d7581516c0ee5b3\src\NzbDrone.Core\Download\Clients\Deluge\DelugeProxy.cs:291 
+  at NzbDrone.Core.Download.Clients.Deluge.DelugeProxy.BuildRequest (NzbDrone.Core.Download.Clients.Deluge.DelugeSettings settings) [0x0006d] in C:\BuildAgent\work\5d7581516c0ee5b3\src\NzbDrone.Core\Download\Clients\Deluge\DelugeProxy.cs:203 
+  at NzbDrone.Core.Download.Clients.Deluge.DelugeProxy.ProcessRequest[TResult] (NzbDrone.Core.Download.Clients.Deluge.DelugeSettings settings, System.String method, System.Object[] arguments) [0x00000] in C:\BuildAgent\work\5d7581516c0ee5b3\src\NzbDrone.Core\Download\Clients\Deluge\DelugeProxy.cs:210 
+  at NzbDrone.Core.Download.Clients.Deluge.DelugeProxy.GetTorrentsByLabel (System.String label, NzbDrone.Core.Download.Clients.Deluge.DelugeSettings settings) [0x00012] in C:\BuildAgent\work\5d7581516c0ee5b3\src\NzbDrone.Core\Download\Clients\Deluge\DelugeProxy.cs:96 
+  at NzbDrone.Core.Download.Clients.Deluge.Deluge.GetItems () [0x00012] in C:\BuildAgent\work\5d7581516c0ee5b3\src\NzbDrone.Core\Download\Clients\Deluge\Deluge.cs:96 
+  at NzbDrone.Core.Download.TrackedDownloads.DownloadMonitoringService.ProcessClientDownloads (NzbDrone.Core.Download.IDownloadClient downloadClient) [0x0000c] in C:\BuildAgent\work\5d7581516c0ee5b3\src\NzbDrone.Core\Download\TrackedDownloads\DownloadMonitoringService.cs:89 
+
+20-10-6 10:52:13.2|Warn|DownloadMonitoringService|Unable to retrieve queue and history items from deluge
+
+[v2.0.0.5344] Newtonsoft.Json.JsonReaderException: Unexpected character encountered while parsing value: <. Path '', line 0, position 0. (Json snippet '<--error--><h1>301: Moved Perma') ---> Newtonsoft.Json.JsonReaderException: Unexpected character encountered while parsing value: <. Path '', line 0, position 0.
+  at Newtonsoft.Json.JsonTextReader.ParseValue () [0x002b3] in <c5b8b1476b514bcaad468ae001c1fb99>:0 
+  at Newtonsoft.Json.JsonTextReader.Read () [0x0004c] in <c5b8b1476b514bcaad468ae001c1fb99>:0 
+  at Newtonsoft.Json.JsonReader.ReadAndMoveToContent () [0x00000] in <c5b8b1476b514bcaad468ae001c1fb99>:0 
+  at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.ReadForType (Newtonsoft.Json.JsonReader reader, Newtonsoft.Json.Serialization.JsonContract contract, System.Boolean hasConverter) [0x00043] in <c5b8b1476b514bcaad468ae001c1fb99>:0 
+  at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize (Newtonsoft.Json.JsonReader reader, System.Type objectType, System.Boolean checkAdditionalContent) [0x000d9] in <c5b8b1476b514bcaad468ae001c1fb99>:0 
+  at Newtonsoft.Json.JsonSerializer.DeserializeInternal (Newtonsoft.Json.JsonReader reader, System.Type objectType) [0x00053] in <c5b8b1476b514bcaad468ae001c1fb99>:0 
+  at Newtonsoft.Json.JsonSerializer.Deserialize (Newtonsoft.Json.JsonReader reader, System.Type objectType) [0x00000] in <c5b8b1476b514bcaad468ae001c1fb99>:0 
+  at Newtonsoft.Json.JsonConvert.DeserializeObject (System.String value, System.Type type, Newtonsoft.Json.JsonSerializerSettings settings) [0x0002d] in <c5b8b1476b514bcaad468ae001c1fb99>:0 
+  at Newtonsoft.Json.JsonConvert.DeserializeObject[T] (System.String value, Newtonsoft.Json.JsonSerializerSettings settings) [0x00000] in <c5b8b1476b514bcaad468ae001c1fb99>:0 
+  at NzbDrone.Common.Serializer.Json.Deserialize[T] (System.String json) [0x00000] in C:\BuildAgent\work\5d7581516c0ee5b3\src\NzbDrone.Common\Serializer\Json.cs:40 
+   --- End of inner exception stack trace ---
+  at NzbDrone.Common.Serializer.Json.Deserialize[T] (System.String json) [0x0000e] in C:\BuildAgent\work\5d7581516c0ee5b3\src\NzbDrone.Common\Serializer\Json.cs:44 
+  at NzbDrone.Core.Download.Clients.Deluge.DelugeProxy.AuthenticateClient (NzbDrone.Common.Http.JsonRpcRequestBuilder requestBuilder, NzbDrone.Core.Download.Clients.Deluge.DelugeSettings settings, System.Boolean reauthenticate) [0x00067] in C:\BuildAgent\work\5d7581516c0ee5b3\src\NzbDrone.Core\Download\Clients\Deluge\DelugeProxy.cs:291 
+  at NzbDrone.Core.Download.Clients.Deluge.DelugeProxy.BuildRequest (NzbDrone.Core.Download.Clients.Deluge.DelugeSettings settings) [0x0006d] in C:\BuildAgent\work\5d7581516c0ee5b3\src\NzbDrone.Core\Download\Clients\Deluge\DelugeProxy.cs:203 
+  at NzbDrone.Core.Download.Clients.Deluge.DelugeProxy.ProcessRequest[TResult] (NzbDrone.Core.Download.Clients.Deluge.DelugeSettings settings, System.String method, System.Object[] arguments) [0x00000] in C:\BuildAgent\work\5d7581516c0ee5b3\src\NzbDrone.Core\Download\Clients\Deluge\DelugeProxy.cs:210 
+  at NzbDrone.Core.Download.Clients.Deluge.DelugeProxy.GetTorrentsByLabel (System.String label, NzbDrone.Core.Download.Clients.Deluge.DelugeSettings settings) [0x00012] in C:\BuildAgent\work\5d7581516c0ee5b3\src\NzbDrone.Core\Download\Clients\Deluge\DelugeProxy.cs:96 
+  at NzbDrone.Core.Download.Clients.Deluge.Deluge.GetItems () [0x00012] in C:\BuildAgent\work\5d7581516c0ee5b3\src\NzbDrone.Core\Download\Clients\Deluge\Deluge.cs:96 
+  at NzbDrone.Core.Download.TrackedDownloads.DownloadMonitoringService.ProcessClientDownloads (NzbDrone.Core.Download.IDownloadClient downloadClient) [0x0000c] in C:\BuildAgent\work\5d7581516c0ee5b3\src\NzbDrone.Core\Download\TrackedDownloads\DownloadMonitoringService.cs:89 
+
+20-10-6 10:53:43.2|Warn|DownloadMonitoringService|Unable to retrieve queue and history items from deluge
+
+[v2.0.0.5344] Newtonsoft.Json.JsonReaderException: Unexpected character encountered while parsing value: <. Path '', line 0, position 0. (Json snippet '<--error--><h1>301: Moved Perma') ---> Newtonsoft.Json.JsonReaderException: Unexpected character encountered while parsing value: <. Path '', line 0, position 0.
+  at Newtonsoft.Json.JsonTextReader.ParseValue () [0x002b3] in <c5b8b1476b514bcaad468ae001c1fb99>:0 
+  at Newtonsoft.Json.JsonTextReader.Read () [0x0004c] in <c5b8b1476b514bcaad468ae001c1fb99>:0 
+  at Newtonsoft.Json.JsonReader.ReadAndMoveToContent () [0x00000] in <c5b8b1476b514bcaad468ae001c1fb99>:0 
+  at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.ReadForType (Newtonsoft.Json.JsonReader reader, Newtonsoft.Json.Serialization.JsonContract contract, System.Boolean hasConverter) [0x00043] in <c5b8b1476b514bcaad468ae001c1fb99>:0 
+  at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize (Newtonsoft.Json.JsonReader reader, System.Type objectType, System.Boolean checkAdditionalContent) [0x000d9] in <c5b8b1476b514bcaad468ae001c1fb99>:0 
+  at Newtonsoft.Json.JsonSerializer.DeserializeInternal (Newtonsoft.Json.JsonReader reader, System.Type objectType) [0x00053] in <c5b8b1476b514bcaad468ae001c1fb99>:0 
+  at Newtonsoft.Json.JsonSerializer.Deserialize (Newtonsoft.Json.JsonReader reader, System.Type objectType) [0x00000] in <c5b8b1476b514bcaad468ae001c1fb99>:0 
+  at Newtonsoft.Json.JsonConvert.DeserializeObject (System.String value, System.Type type, Newtonsoft.Json.JsonSerializerSettings settings) [0x0002d] in <c5b8b1476b514bcaad468ae001c1fb99>:0 
+  at Newtonsoft.Json.JsonConvert.DeserializeObject[T] (System.String value, Newtonsoft.Json.JsonSerializerSettings settings) [0x00000] in <c5b8b1476b514bcaad468ae001c1fb99>:0 
+  at NzbDrone.Common.Serializer.Json.Deserialize[T] (System.String json) [0x00000] in C:\BuildAgent\work\5d7581516c0ee5b3\src\NzbDrone.Common\Serializer\Json.cs:40 
+   --- End of inner exception stack trace ---
+  at NzbDrone.Common.Serializer.Json.Deserialize[T] (System.String json) [0x0000e] in C:\BuildAgent\work\5d7581516c0ee5b3\src\NzbDrone.Common\Serializer\Json.cs:44 
+  at NzbDrone.Core.Download.Clients.Deluge.DelugeProxy.AuthenticateClient (NzbDrone.Common.Http.JsonRpcRequestBuilder requestBuilder, NzbDrone.Core.Download.Clients.Deluge.DelugeSettings settings, System.Boolean reauthenticate) [0x00067] in C:\BuildAgent\work\5d7581516c0ee5b3\src\NzbDrone.Core\Download\Clients\Deluge\DelugeProxy.cs:291 
+  at NzbDrone.Core.Download.Clients.Deluge.DelugeProxy.BuildRequest (NzbDrone.Core.Download.Clients.Deluge.DelugeSettings settings) [0x0006d] in C:\BuildAgent\work\5d7581516c0ee5b3\src\NzbDrone.Core\Download\Clients\Deluge\DelugeProxy.cs:203 
+  at NzbDrone.Core.Download.Clients.Deluge.DelugeProxy.ProcessRequest[TResult] (NzbDrone.Core.Download.Clients.Deluge.DelugeSettings settings, System.String method, System.Object[] arguments) [0x00000] in C:\BuildAgent\work\5d7581516c0ee5b3\src\NzbDrone.Core\Download\Clients\Deluge\DelugeProxy.cs:210 
+  at NzbDrone.Core.Download.Clients.Deluge.DelugeProxy.GetTorrentsByLabel (System.String label, NzbDrone.Core.Download.Clients.Deluge.DelugeSettings settings) [0x00012] in C:\BuildAgent\work\5d7581516c0ee5b3\src\NzbDrone.Core\Download\Clients\Deluge\DelugeProxy.cs:96 
+  at NzbDrone.Core.Download.Clients.Deluge.Deluge.GetItems () [0x00012] in C:\BuildAgent\work\5d7581516c0ee5b3\src\NzbDrone.Core\Download\Clients\Deluge\Deluge.cs:96 
+  at NzbDrone.Core.Download.TrackedDownloads.DownloadMonitoringService.ProcessClientDownloads (NzbDrone.Core.Download.IDownloadClient downloadClient) [0x0000c] in C:\BuildAgent\work\5d7581516c0ee5b3\src\NzbDrone.Core\Download\TrackedDownloads\DownloadMonitoringService.cs:89 
+
+20-10-6 10:55:13.2|Warn|DownloadMonitoringService|Unable to retrieve queue and history items from deluge
+
+[v2.0.0.5344] Newtonsoft.Json.JsonReaderException: Unexpected character encountered while parsing value: <. Path '', line 0, position 0. (Json snippet '<--error--><h1>301: Moved Perma') ---> Newtonsoft.Json.JsonReaderException: Unexpected character encountered while parsing value: <. Path '', line 0, position 0.
+  at Newtonsoft.Json.JsonTextReader.ParseValue () [0x002b3] in <c5b8b1476b514bcaad468ae001c1fb99>:0 
+  at Newtonsoft.Json.JsonTextReader.Read () [0x0004c] in <c5b8b1476b514bcaad468ae001c1fb99>:0 
+  at Newtonsoft.Json.JsonReader.ReadAndMoveToContent () [0x00000] in <c5b8b1476b514bcaad468ae001c1fb99>:0 
+  at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.ReadForType (Newtonsoft.Json.JsonReader reader, Newtonsoft.Json.Serialization.JsonContract contract, System.Boolean hasConverter) [0x00043] in <c5b8b1476b514bcaad468ae001c1fb99>:0 
+  at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize (Newtonsoft.Json.JsonReader reader, System.Type objectType, System.Boolean checkAdditionalContent) [0x000d9] in <c5b8b1476b514bcaad468ae001c1fb99>:0 
+  at Newtonsoft.Json.JsonSerializer.DeserializeInternal (Newtonsoft.Json.JsonReader reader, System.Type objectType) [0x00053] in <c5b8b1476b514bcaad468ae001c1fb99>:0 
+  at Newtonsoft.Json.JsonSerializer.Deserialize (Newtonsoft.Json.JsonReader reader, System.Type objectType) [0x00000] in <c5b8b1476b514bcaad468ae001c1fb99>:0 
+  at Newtonsoft.Json.JsonConvert.DeserializeObject (System.String value, System.Type type, Newtonsoft.Json.JsonSerializerSettings settings) [0x0002d] in <c5b8b1476b514bcaad468ae001c1fb99>:0 
+  at Newtonsoft.Json.JsonConvert.DeserializeObject[T] (System.String value, Newtonsoft.Json.JsonSerializerSettings settings) [0x00000] in <c5b8b1476b514bcaad468ae001c1fb99>:0 
+  at NzbDrone.Common.Serializer.Json.Deserialize[T] (System.String json) [0x00000] in C:\BuildAgent\work\5d7581516c0ee5b3\src\NzbDrone.Common\Serializer\Json.cs:40 
+   --- End of inner exception stack trace ---
+  at NzbDrone.Common.Serializer.Json.Deserialize[T] (System.String json) [0x0000e] in C:\BuildAgent\work\5d7581516c0ee5b3\src\NzbDrone.Common\Serializer\Json.cs:44 
+  at NzbDrone.Core.Download.Clients.Deluge.DelugeProxy.AuthenticateClient (NzbDrone.Common.Http.JsonRpcRequestBuilder requestBuilder, NzbDrone.Core.Download.Clients.Deluge.DelugeSettings settings, System.Boolean reauthenticate) [0x00067] in C:\BuildAgent\work\5d7581516c0ee5b3\src\NzbDrone.Core\Download\Clients\Deluge\DelugeProxy.cs:291 
+  at NzbDrone.Core.Download.Clients.Deluge.DelugeProxy.BuildRequest (NzbDrone.Core.Download.Clients.Deluge.DelugeSettings settings) [0x0006d] in C:\BuildAgent\work\5d7581516c0ee5b3\src\NzbDrone.Core\Download\Clients\Deluge\DelugeProxy.cs:203 
+  at NzbDrone.Core.Download.Clients.Deluge.DelugeProxy.ProcessRequest[TResult] (NzbDrone.Core.Download.Clients.Deluge.DelugeSettings settings, System.String method, System.Object[] arguments) [0x00000] in C:\BuildAgent\work\5d7581516c0ee5b3\src\NzbDrone.Core\Download\Clients\Deluge\DelugeProxy.cs:210 
+  at NzbDrone.Core.Download.Clients.Deluge.DelugeProxy.GetTorrentsByLabel (System.String label, NzbDrone.Core.Download.Clients.Deluge.DelugeSettings settings) [0x00012] in C:\BuildAgent\work\5d7581516c0ee5b3\src\NzbDrone.Core\Download\Clients\Deluge\DelugeProxy.cs:96 
+  at NzbDrone.Core.Download.Clients.Deluge.Deluge.GetItems () [0x00012] in C:\BuildAgent\work\5d7581516c0ee5b3\src\NzbDrone.Core\Download\Clients\Deluge\Deluge.cs:96 
+  at NzbDrone.Core.Download.TrackedDownloads.DownloadMonitoringService.ProcessClientDownloads (NzbDrone.Core.Download.IDownloadClient downloadClient) [0x0000c] in C:\BuildAgent\work\5d7581516c0ee5b3\src\NzbDrone.Core\Download\TrackedDownloads\DownloadMonitoringService.cs:89 
+

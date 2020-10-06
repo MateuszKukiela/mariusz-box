@@ -1172,3 +1172,184 @@
 2020-10-6 09:36:35.7|Info|RssSyncService|RSS Sync Completed. Reports found: 100, Reports grabbed: 0
 2020-10-6 10:20:02.0|Info|PreDBService|Starting PreDB Sync
 2020-10-6 10:20:02.0|Info|NetImportSearchService|No lists are enabled for auto-import.
+2020-10-6 10:37:02.5|Info|RssSyncService|Starting RSS Sync
+2020-10-6 10:37:03.3|Info|DownloadDecisionMaker|Processing 100 releases
+2020-10-6 10:37:06.7|Info|RssSyncService|RSS Sync Completed. Reports found: 100, Reports grabbed: 0
+2020-10-6 10:43:28.6|Info|Bootstrap|Starting Radarr - /app/radarr/bin/Radarr.exe - Version 0.2.0.1504
+2020-10-6 10:43:29.4|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2020-10-6 10:43:29.5|Info|Router|Application mode: Interactive
+2020-10-6 10:43:29.8|Info|MigrationLogger|*** Migrating data source=/config/nzbdrone.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3 ***
+2020-10-6 10:43:30.1|Info|MigrationLogger|*** Migrating data source=/config/logs.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3 ***
+2020-10-6 10:43:30.1|Info|OwinHostController|Listening on the following URLs:
+2020-10-6 10:43:30.1|Info|OwinHostController|  http://*:7878/
+2020-10-6 10:43:30.3|Info|NancyBootstrapper|Starting Web Server
+2020-10-6 10:43:31.5|Info|CommandExecutor|Starting 2 threads for tasks.
+2020-10-6 10:44:27.4|Info|Bootstrap|Starting Radarr - /app/radarr/bin/Radarr.exe - Version 0.2.0.1504
+2020-10-6 10:44:28.0|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2020-10-6 10:44:28.2|Info|Router|Application mode: Interactive
+2020-10-6 10:44:28.4|Info|MigrationLogger|*** Migrating data source=/config/nzbdrone.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3 ***
+2020-10-6 10:44:28.6|Info|MigrationLogger|*** Migrating data source=/config/logs.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3 ***
+2020-10-6 10:44:28.6|Info|OwinHostController|Listening on the following URLs:
+2020-10-6 10:44:28.6|Info|OwinHostController|  http://*:7878/
+2020-10-6 10:44:28.8|Info|NancyBootstrapper|Starting Web Server
+2020-10-6 10:44:30.0|Info|CommandExecutor|Starting 2 threads for tasks.
+2020-10-6 10:49:09.6|Info|Bootstrap|Starting Radarr - /app/radarr/bin/Radarr.exe - Version 0.2.0.1504
+2020-10-6 10:49:10.4|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2020-10-6 10:49:10.5|Info|Router|Application mode: Interactive
+2020-10-6 10:49:10.7|Info|MigrationLogger|*** Migrating data source=/config/nzbdrone.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3 ***
+2020-10-6 10:49:10.9|Info|MigrationLogger|*** Migrating data source=/config/logs.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3 ***
+2020-10-6 10:49:11.0|Info|OwinHostController|Listening on the following URLs:
+2020-10-6 10:49:11.0|Info|OwinHostController|  http://*:7878/
+2020-10-6 10:49:11.1|Info|NancyBootstrapper|Starting Web Server
+2020-10-6 10:49:12.5|Info|CommandExecutor|Starting 2 threads for tasks.
+2020-10-6 10:49:18.9|Error|DownloadClientCheck|Unable to communicate with deluge.
+
+[v0.2.0.1504] Newtonsoft.Json.JsonReaderException: Unexpected character encountered while parsing value: <. Path '', line 0, position 0.
+  at Newtonsoft.Json.JsonTextReader.ParseValue () [0x002b3] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.JsonTextReader.Read () [0x0004c] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.JsonReader.ReadAndMoveToContent () [0x00000] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.ReadForType (Newtonsoft.Json.JsonReader reader, Newtonsoft.Json.Serialization.JsonContract contract, System.Boolean hasConverter) [0x00043] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize (Newtonsoft.Json.JsonReader reader, System.Type objectType, System.Boolean checkAdditionalContent) [0x000d9] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.JsonSerializer.DeserializeInternal (Newtonsoft.Json.JsonReader reader, System.Type objectType) [0x00053] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.JsonSerializer.Deserialize (Newtonsoft.Json.JsonReader reader, System.Type objectType) [0x00000] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.JsonConvert.DeserializeObject (System.String value, System.Type type, Newtonsoft.Json.JsonSerializerSettings settings) [0x0002d] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.JsonConvert.DeserializeObject[T] (System.String value, Newtonsoft.Json.JsonSerializerSettings settings) [0x00000] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at NzbDrone.Common.Serializer.Json.Deserialize[T] (System.String json) [0x00000] in C:\projects\radarr-usby1\src\NzbDrone.Common\Serializer\Json.cs:37 
+  at NzbDrone.Core.Download.Clients.Deluge.DelugeProxy.AuthenticateClient (NzbDrone.Common.Http.JsonRpcRequestBuilder requestBuilder, NzbDrone.Core.Download.Clients.Deluge.DelugeSettings settings, System.Boolean reauthenticate) [0x00067] in C:\projects\radarr-usby1\src\NzbDrone.Core\Download\Clients\Deluge\DelugeProxy.cs:285 
+  at NzbDrone.Core.Download.Clients.Deluge.DelugeProxy.BuildRequest (NzbDrone.Core.Download.Clients.Deluge.DelugeSettings settings) [0x0006b] in C:\projects\radarr-usby1\src\NzbDrone.Core\Download\Clients\Deluge\DelugeProxy.cs:197 
+  at NzbDrone.Core.Download.Clients.Deluge.DelugeProxy.ProcessRequest[TResult] (NzbDrone.Core.Download.Clients.Deluge.DelugeSettings settings, System.String method, System.Object[] arguments) [0x00000] in C:\projects\radarr-usby1\src\NzbDrone.Core\Download\Clients\Deluge\DelugeProxy.cs:204 
+  at NzbDrone.Core.Download.Clients.Deluge.DelugeProxy.GetTorrentsByLabel (System.String label, NzbDrone.Core.Download.Clients.Deluge.DelugeSettings settings) [0x00012] in C:\projects\radarr-usby1\src\NzbDrone.Core\Download\Clients\Deluge\DelugeProxy.cs:96 
+  at NzbDrone.Core.Download.Clients.Deluge.Deluge.GetItems () [0x00012] in C:\projects\radarr-usby1\src\NzbDrone.Core\Download\Clients\Deluge\Deluge.cs:86 
+  at NzbDrone.Core.HealthCheck.Checks.DownloadClientCheck.Check () [0x0003d] in C:\projects\radarr-usby1\src\NzbDrone.Core\HealthCheck\Checks\DownloadClientCheck.cs:32 
+
+2020-10-6 10:49:19.1|Error|TaskExtensions|Task Error
+
+[v0.2.0.1504] Newtonsoft.Json.JsonReaderException: Unexpected character encountered while parsing value: <. Path '', line 0, position 0.
+  at Newtonsoft.Json.JsonTextReader.ParseValue () [0x002b3] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.JsonTextReader.Read () [0x0004c] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.JsonReader.ReadAndMoveToContent () [0x00000] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.ReadForType (Newtonsoft.Json.JsonReader reader, Newtonsoft.Json.Serialization.JsonContract contract, System.Boolean hasConverter) [0x00043] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize (Newtonsoft.Json.JsonReader reader, System.Type objectType, System.Boolean checkAdditionalContent) [0x000d9] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.JsonSerializer.DeserializeInternal (Newtonsoft.Json.JsonReader reader, System.Type objectType) [0x00053] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.JsonSerializer.Deserialize (Newtonsoft.Json.JsonReader reader, System.Type objectType) [0x00000] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.JsonConvert.DeserializeObject (System.String value, System.Type type, Newtonsoft.Json.JsonSerializerSettings settings) [0x0002d] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.JsonConvert.DeserializeObject[T] (System.String value, Newtonsoft.Json.JsonSerializerSettings settings) [0x00000] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at NzbDrone.Common.Serializer.Json.Deserialize[T] (System.String json) [0x00000] in C:\projects\radarr-usby1\src\NzbDrone.Common\Serializer\Json.cs:37 
+  at NzbDrone.Core.Download.Clients.Deluge.DelugeProxy.AuthenticateClient (NzbDrone.Common.Http.JsonRpcRequestBuilder requestBuilder, NzbDrone.Core.Download.Clients.Deluge.DelugeSettings settings, System.Boolean reauthenticate) [0x00067] in C:\projects\radarr-usby1\src\NzbDrone.Core\Download\Clients\Deluge\DelugeProxy.cs:285 
+  at NzbDrone.Core.Download.Clients.Deluge.DelugeProxy.BuildRequest (NzbDrone.Core.Download.Clients.Deluge.DelugeSettings settings) [0x0006b] in C:\projects\radarr-usby1\src\NzbDrone.Core\Download\Clients\Deluge\DelugeProxy.cs:197 
+  at NzbDrone.Core.Download.Clients.Deluge.DelugeProxy.ProcessRequest[TResult] (NzbDrone.Core.Download.Clients.Deluge.DelugeSettings settings, System.String method, System.Object[] arguments) [0x00000] in C:\projects\radarr-usby1\src\NzbDrone.Core\Download\Clients\Deluge\DelugeProxy.cs:204 
+  at NzbDrone.Core.Download.Clients.Deluge.DelugeProxy.GetConfig (NzbDrone.Core.Download.Clients.Deluge.DelugeSettings settings) [0x00000] in C:\projects\radarr-usby1\src\NzbDrone.Core\Download\Clients\Deluge\DelugeProxy.cs:74 
+  at NzbDrone.Core.Download.Clients.Deluge.Deluge.GetStatus () [0x00000] in C:\projects\radarr-usby1\src\NzbDrone.Core\Download\Clients\Deluge\Deluge.cs:154 
+  at NzbDrone.Core.HealthCheck.Checks.ImportMechanismCheck+<>c.<Check>b__3_0 (NzbDrone.Core.Download.IDownloadClient v) [0x00000] in C:\projects\radarr-usby1\src\NzbDrone.Core\HealthCheck\Checks\ImportMechanismCheck.cs:32 
+  at System.Linq.Enumerable+SelectListIterator`2[TSource,TResult].ToList () [0x0002a] in <798dd06330af4ca3886d7d2be5573af7>:0 
+  at System.Linq.Enumerable.ToList[TSource] (System.Collections.Generic.IEnumerable`1[T] source) [0x0001f] in <798dd06330af4ca3886d7d2be5573af7>:0 
+  at NzbDrone.Core.HealthCheck.Checks.ImportMechanismCheck.Check () [0x0001c] in C:\projects\radarr-usby1\src\NzbDrone.Core\HealthCheck\Checks\ImportMechanismCheck.cs:32 
+  at NzbDrone.Core.HealthCheck.HealthCheckService+<>c.<PerformHealthCheck>b__7_0 (NzbDrone.Core.HealthCheck.IProvideHealthCheck c) [0x00000] in C:\projects\radarr-usby1\src\NzbDrone.Core\HealthCheck\HealthCheckService.cs:58 
+  at System.Linq.Enumerable+WhereSelectEnumerableIterator`2[TSource,TResult].ToList () [0x00029] in <798dd06330af4ca3886d7d2be5573af7>:0 
+  at System.Linq.Enumerable.ToList[TSource] (System.Collections.Generic.IEnumerable`1[T] source) [0x0001f] in <798dd06330af4ca3886d7d2be5573af7>:0 
+  at NzbDrone.Core.HealthCheck.HealthCheckService.PerformHealthCheck (System.Func`2[T,TResult] predicate) [0x00000] in C:\projects\radarr-usby1\src\NzbDrone.Core\HealthCheck\HealthCheckService.cs:57 
+  at NzbDrone.Core.HealthCheck.HealthCheckService.HandleAsync (NzbDrone.Core.Lifecycle.ApplicationStartedEvent message) [0x00000] in C:\projects\radarr-usby1\src\NzbDrone.Core\HealthCheck\HealthCheckService.cs:84 
+  at NzbDrone.Core.Messaging.Events.EventAggregator+<>c__DisplayClass4_1`1[TEvent].<PublishEvent>b__1 () [0x00035] in C:\projects\radarr-usby1\src\NzbDrone.Core\Messaging\Events\EventAggregator.cs:72 
+  at System.Threading.Tasks.Task.InnerInvoke () [0x0000f] in <254335e8c4aa42e3923a8ba0d5ce8650>:0 
+  at System.Threading.Tasks.Task.Execute () [0x00000] in <254335e8c4aa42e3923a8ba0d5ce8650>:0 
+
+2020-10-6 10:49:42.6|Warn|DownloadMonitoringService|Unable to retrieve queue and history items from deluge
+
+[v0.2.0.1504] Newtonsoft.Json.JsonReaderException: Unexpected character encountered while parsing value: <. Path '', line 0, position 0.
+  at Newtonsoft.Json.JsonTextReader.ParseValue () [0x002b3] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.JsonTextReader.Read () [0x0004c] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.JsonReader.ReadAndMoveToContent () [0x00000] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.ReadForType (Newtonsoft.Json.JsonReader reader, Newtonsoft.Json.Serialization.JsonContract contract, System.Boolean hasConverter) [0x00043] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize (Newtonsoft.Json.JsonReader reader, System.Type objectType, System.Boolean checkAdditionalContent) [0x000d9] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.JsonSerializer.DeserializeInternal (Newtonsoft.Json.JsonReader reader, System.Type objectType) [0x00053] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.JsonSerializer.Deserialize (Newtonsoft.Json.JsonReader reader, System.Type objectType) [0x00000] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.JsonConvert.DeserializeObject (System.String value, System.Type type, Newtonsoft.Json.JsonSerializerSettings settings) [0x0002d] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.JsonConvert.DeserializeObject[T] (System.String value, Newtonsoft.Json.JsonSerializerSettings settings) [0x00000] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at NzbDrone.Common.Serializer.Json.Deserialize[T] (System.String json) [0x00000] in C:\projects\radarr-usby1\src\NzbDrone.Common\Serializer\Json.cs:37 
+  at NzbDrone.Core.Download.Clients.Deluge.DelugeProxy.AuthenticateClient (NzbDrone.Common.Http.JsonRpcRequestBuilder requestBuilder, NzbDrone.Core.Download.Clients.Deluge.DelugeSettings settings, System.Boolean reauthenticate) [0x00067] in C:\projects\radarr-usby1\src\NzbDrone.Core\Download\Clients\Deluge\DelugeProxy.cs:285 
+  at NzbDrone.Core.Download.Clients.Deluge.DelugeProxy.BuildRequest (NzbDrone.Core.Download.Clients.Deluge.DelugeSettings settings) [0x0006b] in C:\projects\radarr-usby1\src\NzbDrone.Core\Download\Clients\Deluge\DelugeProxy.cs:197 
+  at NzbDrone.Core.Download.Clients.Deluge.DelugeProxy.ProcessRequest[TResult] (NzbDrone.Core.Download.Clients.Deluge.DelugeSettings settings, System.String method, System.Object[] arguments) [0x00000] in C:\projects\radarr-usby1\src\NzbDrone.Core\Download\Clients\Deluge\DelugeProxy.cs:204 
+  at NzbDrone.Core.Download.Clients.Deluge.DelugeProxy.GetTorrentsByLabel (System.String label, NzbDrone.Core.Download.Clients.Deluge.DelugeSettings settings) [0x00012] in C:\projects\radarr-usby1\src\NzbDrone.Core\Download\Clients\Deluge\DelugeProxy.cs:96 
+  at NzbDrone.Core.Download.Clients.Deluge.Deluge.GetItems () [0x00012] in C:\projects\radarr-usby1\src\NzbDrone.Core\Download\Clients\Deluge\Deluge.cs:86 
+  at NzbDrone.Core.Download.TrackedDownloads.DownloadMonitoringService.ProcessClientDownloads (NzbDrone.Core.Download.IDownloadClient downloadClient) [0x0000c] in C:\projects\radarr-usby1\src\NzbDrone.Core\Download\TrackedDownloads\DownloadMonitoringService.cs:86 
+
+2020-10-6 10:51:12.7|Warn|DownloadMonitoringService|Unable to retrieve queue and history items from deluge
+
+[v0.2.0.1504] Newtonsoft.Json.JsonReaderException: Unexpected character encountered while parsing value: <. Path '', line 0, position 0.
+  at Newtonsoft.Json.JsonTextReader.ParseValue () [0x002b3] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.JsonTextReader.Read () [0x0004c] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.JsonReader.ReadAndMoveToContent () [0x00000] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.ReadForType (Newtonsoft.Json.JsonReader reader, Newtonsoft.Json.Serialization.JsonContract contract, System.Boolean hasConverter) [0x00043] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize (Newtonsoft.Json.JsonReader reader, System.Type objectType, System.Boolean checkAdditionalContent) [0x000d9] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.JsonSerializer.DeserializeInternal (Newtonsoft.Json.JsonReader reader, System.Type objectType) [0x00053] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.JsonSerializer.Deserialize (Newtonsoft.Json.JsonReader reader, System.Type objectType) [0x00000] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.JsonConvert.DeserializeObject (System.String value, System.Type type, Newtonsoft.Json.JsonSerializerSettings settings) [0x0002d] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.JsonConvert.DeserializeObject[T] (System.String value, Newtonsoft.Json.JsonSerializerSettings settings) [0x00000] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at NzbDrone.Common.Serializer.Json.Deserialize[T] (System.String json) [0x00000] in C:\projects\radarr-usby1\src\NzbDrone.Common\Serializer\Json.cs:37 
+  at NzbDrone.Core.Download.Clients.Deluge.DelugeProxy.AuthenticateClient (NzbDrone.Common.Http.JsonRpcRequestBuilder requestBuilder, NzbDrone.Core.Download.Clients.Deluge.DelugeSettings settings, System.Boolean reauthenticate) [0x00067] in C:\projects\radarr-usby1\src\NzbDrone.Core\Download\Clients\Deluge\DelugeProxy.cs:285 
+  at NzbDrone.Core.Download.Clients.Deluge.DelugeProxy.BuildRequest (NzbDrone.Core.Download.Clients.Deluge.DelugeSettings settings) [0x0006b] in C:\projects\radarr-usby1\src\NzbDrone.Core\Download\Clients\Deluge\DelugeProxy.cs:197 
+  at NzbDrone.Core.Download.Clients.Deluge.DelugeProxy.ProcessRequest[TResult] (NzbDrone.Core.Download.Clients.Deluge.DelugeSettings settings, System.String method, System.Object[] arguments) [0x00000] in C:\projects\radarr-usby1\src\NzbDrone.Core\Download\Clients\Deluge\DelugeProxy.cs:204 
+  at NzbDrone.Core.Download.Clients.Deluge.DelugeProxy.GetTorrentsByLabel (System.String label, NzbDrone.Core.Download.Clients.Deluge.DelugeSettings settings) [0x00012] in C:\projects\radarr-usby1\src\NzbDrone.Core\Download\Clients\Deluge\DelugeProxy.cs:96 
+  at NzbDrone.Core.Download.Clients.Deluge.Deluge.GetItems () [0x00012] in C:\projects\radarr-usby1\src\NzbDrone.Core\Download\Clients\Deluge\Deluge.cs:86 
+  at NzbDrone.Core.Download.TrackedDownloads.DownloadMonitoringService.ProcessClientDownloads (NzbDrone.Core.Download.IDownloadClient downloadClient) [0x0000c] in C:\projects\radarr-usby1\src\NzbDrone.Core\Download\TrackedDownloads\DownloadMonitoringService.cs:86 
+
+2020-10-6 10:52:42.7|Warn|DownloadMonitoringService|Unable to retrieve queue and history items from deluge
+
+[v0.2.0.1504] Newtonsoft.Json.JsonReaderException: Unexpected character encountered while parsing value: <. Path '', line 0, position 0.
+  at Newtonsoft.Json.JsonTextReader.ParseValue () [0x002b3] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.JsonTextReader.Read () [0x0004c] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.JsonReader.ReadAndMoveToContent () [0x00000] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.ReadForType (Newtonsoft.Json.JsonReader reader, Newtonsoft.Json.Serialization.JsonContract contract, System.Boolean hasConverter) [0x00043] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize (Newtonsoft.Json.JsonReader reader, System.Type objectType, System.Boolean checkAdditionalContent) [0x000d9] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.JsonSerializer.DeserializeInternal (Newtonsoft.Json.JsonReader reader, System.Type objectType) [0x00053] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.JsonSerializer.Deserialize (Newtonsoft.Json.JsonReader reader, System.Type objectType) [0x00000] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.JsonConvert.DeserializeObject (System.String value, System.Type type, Newtonsoft.Json.JsonSerializerSettings settings) [0x0002d] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.JsonConvert.DeserializeObject[T] (System.String value, Newtonsoft.Json.JsonSerializerSettings settings) [0x00000] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at NzbDrone.Common.Serializer.Json.Deserialize[T] (System.String json) [0x00000] in C:\projects\radarr-usby1\src\NzbDrone.Common\Serializer\Json.cs:37 
+  at NzbDrone.Core.Download.Clients.Deluge.DelugeProxy.AuthenticateClient (NzbDrone.Common.Http.JsonRpcRequestBuilder requestBuilder, NzbDrone.Core.Download.Clients.Deluge.DelugeSettings settings, System.Boolean reauthenticate) [0x00067] in C:\projects\radarr-usby1\src\NzbDrone.Core\Download\Clients\Deluge\DelugeProxy.cs:285 
+  at NzbDrone.Core.Download.Clients.Deluge.DelugeProxy.BuildRequest (NzbDrone.Core.Download.Clients.Deluge.DelugeSettings settings) [0x0006b] in C:\projects\radarr-usby1\src\NzbDrone.Core\Download\Clients\Deluge\DelugeProxy.cs:197 
+  at NzbDrone.Core.Download.Clients.Deluge.DelugeProxy.ProcessRequest[TResult] (NzbDrone.Core.Download.Clients.Deluge.DelugeSettings settings, System.String method, System.Object[] arguments) [0x00000] in C:\projects\radarr-usby1\src\NzbDrone.Core\Download\Clients\Deluge\DelugeProxy.cs:204 
+  at NzbDrone.Core.Download.Clients.Deluge.DelugeProxy.GetTorrentsByLabel (System.String label, NzbDrone.Core.Download.Clients.Deluge.DelugeSettings settings) [0x00012] in C:\projects\radarr-usby1\src\NzbDrone.Core\Download\Clients\Deluge\DelugeProxy.cs:96 
+  at NzbDrone.Core.Download.Clients.Deluge.Deluge.GetItems () [0x00012] in C:\projects\radarr-usby1\src\NzbDrone.Core\Download\Clients\Deluge\Deluge.cs:86 
+  at NzbDrone.Core.Download.TrackedDownloads.DownloadMonitoringService.ProcessClientDownloads (NzbDrone.Core.Download.IDownloadClient downloadClient) [0x0000c] in C:\projects\radarr-usby1\src\NzbDrone.Core\Download\TrackedDownloads\DownloadMonitoringService.cs:86 
+
+2020-10-6 10:54:12.7|Warn|DownloadMonitoringService|Unable to retrieve queue and history items from deluge
+
+[v0.2.0.1504] Newtonsoft.Json.JsonReaderException: Unexpected character encountered while parsing value: <. Path '', line 0, position 0.
+  at Newtonsoft.Json.JsonTextReader.ParseValue () [0x002b3] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.JsonTextReader.Read () [0x0004c] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.JsonReader.ReadAndMoveToContent () [0x00000] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.ReadForType (Newtonsoft.Json.JsonReader reader, Newtonsoft.Json.Serialization.JsonContract contract, System.Boolean hasConverter) [0x00043] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize (Newtonsoft.Json.JsonReader reader, System.Type objectType, System.Boolean checkAdditionalContent) [0x000d9] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.JsonSerializer.DeserializeInternal (Newtonsoft.Json.JsonReader reader, System.Type objectType) [0x00053] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.JsonSerializer.Deserialize (Newtonsoft.Json.JsonReader reader, System.Type objectType) [0x00000] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.JsonConvert.DeserializeObject (System.String value, System.Type type, Newtonsoft.Json.JsonSerializerSettings settings) [0x0002d] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.JsonConvert.DeserializeObject[T] (System.String value, Newtonsoft.Json.JsonSerializerSettings settings) [0x00000] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at NzbDrone.Common.Serializer.Json.Deserialize[T] (System.String json) [0x00000] in C:\projects\radarr-usby1\src\NzbDrone.Common\Serializer\Json.cs:37 
+  at NzbDrone.Core.Download.Clients.Deluge.DelugeProxy.AuthenticateClient (NzbDrone.Common.Http.JsonRpcRequestBuilder requestBuilder, NzbDrone.Core.Download.Clients.Deluge.DelugeSettings settings, System.Boolean reauthenticate) [0x00067] in C:\projects\radarr-usby1\src\NzbDrone.Core\Download\Clients\Deluge\DelugeProxy.cs:285 
+  at NzbDrone.Core.Download.Clients.Deluge.DelugeProxy.BuildRequest (NzbDrone.Core.Download.Clients.Deluge.DelugeSettings settings) [0x0006b] in C:\projects\radarr-usby1\src\NzbDrone.Core\Download\Clients\Deluge\DelugeProxy.cs:197 
+  at NzbDrone.Core.Download.Clients.Deluge.DelugeProxy.ProcessRequest[TResult] (NzbDrone.Core.Download.Clients.Deluge.DelugeSettings settings, System.String method, System.Object[] arguments) [0x00000] in C:\projects\radarr-usby1\src\NzbDrone.Core\Download\Clients\Deluge\DelugeProxy.cs:204 
+  at NzbDrone.Core.Download.Clients.Deluge.DelugeProxy.GetTorrentsByLabel (System.String label, NzbDrone.Core.Download.Clients.Deluge.DelugeSettings settings) [0x00012] in C:\projects\radarr-usby1\src\NzbDrone.Core\Download\Clients\Deluge\DelugeProxy.cs:96 
+  at NzbDrone.Core.Download.Clients.Deluge.Deluge.GetItems () [0x00012] in C:\projects\radarr-usby1\src\NzbDrone.Core\Download\Clients\Deluge\Deluge.cs:86 
+  at NzbDrone.Core.Download.TrackedDownloads.DownloadMonitoringService.ProcessClientDownloads (NzbDrone.Core.Download.IDownloadClient downloadClient) [0x0000c] in C:\projects\radarr-usby1\src\NzbDrone.Core\Download\TrackedDownloads\DownloadMonitoringService.cs:86 
+
+2020-10-6 10:55:42.7|Warn|DownloadMonitoringService|Unable to retrieve queue and history items from deluge
+
+[v0.2.0.1504] Newtonsoft.Json.JsonReaderException: Unexpected character encountered while parsing value: <. Path '', line 0, position 0.
+  at Newtonsoft.Json.JsonTextReader.ParseValue () [0x002b3] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.JsonTextReader.Read () [0x0004c] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.JsonReader.ReadAndMoveToContent () [0x00000] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.ReadForType (Newtonsoft.Json.JsonReader reader, Newtonsoft.Json.Serialization.JsonContract contract, System.Boolean hasConverter) [0x00043] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize (Newtonsoft.Json.JsonReader reader, System.Type objectType, System.Boolean checkAdditionalContent) [0x000d9] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.JsonSerializer.DeserializeInternal (Newtonsoft.Json.JsonReader reader, System.Type objectType) [0x00053] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.JsonSerializer.Deserialize (Newtonsoft.Json.JsonReader reader, System.Type objectType) [0x00000] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.JsonConvert.DeserializeObject (System.String value, System.Type type, Newtonsoft.Json.JsonSerializerSettings settings) [0x0002d] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at Newtonsoft.Json.JsonConvert.DeserializeObject[T] (System.String value, Newtonsoft.Json.JsonSerializerSettings settings) [0x00000] in <1fa899c21f554672afbc630cc93b185e>:0 
+  at NzbDrone.Common.Serializer.Json.Deserialize[T] (System.String json) [0x00000] in C:\projects\radarr-usby1\src\NzbDrone.Common\Serializer\Json.cs:37 
+  at NzbDrone.Core.Download.Clients.Deluge.DelugeProxy.AuthenticateClient (NzbDrone.Common.Http.JsonRpcRequestBuilder requestBuilder, NzbDrone.Core.Download.Clients.Deluge.DelugeSettings settings, System.Boolean reauthenticate) [0x00067] in C:\projects\radarr-usby1\src\NzbDrone.Core\Download\Clients\Deluge\DelugeProxy.cs:285 
+  at NzbDrone.Core.Download.Clients.Deluge.DelugeProxy.BuildRequest (NzbDrone.Core.Download.Clients.Deluge.DelugeSettings settings) [0x0006b] in C:\projects\radarr-usby1\src\NzbDrone.Core\Download\Clients\Deluge\DelugeProxy.cs:197 
+  at NzbDrone.Core.Download.Clients.Deluge.DelugeProxy.ProcessRequest[TResult] (NzbDrone.Core.Download.Clients.Deluge.DelugeSettings settings, System.String method, System.Object[] arguments) [0x00000] in C:\projects\radarr-usby1\src\NzbDrone.Core\Download\Clients\Deluge\DelugeProxy.cs:204 
+  at NzbDrone.Core.Download.Clients.Deluge.DelugeProxy.GetTorrentsByLabel (System.String label, NzbDrone.Core.Download.Clients.Deluge.DelugeSettings settings) [0x00012] in C:\projects\radarr-usby1\src\NzbDrone.Core\Download\Clients\Deluge\DelugeProxy.cs:96 
+  at NzbDrone.Core.Download.Clients.Deluge.Deluge.GetItems () [0x00012] in C:\projects\radarr-usby1\src\NzbDrone.Core\Download\Clients\Deluge\Deluge.cs:86 
+  at NzbDrone.Core.Download.TrackedDownloads.DownloadMonitoringService.ProcessClientDownloads (NzbDrone.Core.Download.IDownloadClient downloadClient) [0x0000c] in C:\projects\radarr-usby1\src\NzbDrone.Core\Download\TrackedDownloads\DownloadMonitoringService.cs:86 
+
