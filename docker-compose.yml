@@ -59,29 +59,27 @@ services:
 #      - ${ROOT_MEDIA}/tv:/tv
 #      - ${ROOT_MEDIA}/other:/other
 #    restart: unless-stopped
-    
-  transmission:
-    image: linuxserver/transmission
-    container_name: transmission
+
+  qbittorrent:
+    image: linuxserver/qbittorrent
+    container_name: qbittorrent
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
       - TZ=${TZ}
-      - TRANSMISSION_WEB_HOME=/combustion-release/ #optional
-#      - USER=username #optional
-#      - PASS=password #optional
+      - UMASK_SET=022
+      - WEBUI_PORT=8080
     volumes:
-      - ${ROOT_APPDATA}/transmission:/config
+      - ${ROOT_APPDATA}/qbittorrent:/config
       - ${ROOT_MEDIA}/downloads:/downloads
       - ${ROOT_MEDIA}/porn:/porn
       - ${ROOT_MEDIA}/movies:/movies
       - ${ROOT_MEDIA}/tv:/tv
-      - ${ROOT_MEDIA}/other:/other    
-      - ${ROOT_MEDIA}/watch:/watch
+      - ${ROOT_MEDIA}/other:/other
     ports:
-      - 8112:9091
-      - 51413:51413
-      - 51413:51413/udp
+      - 6881:6881
+      - 6881:6881/udp
+      - 8112:8080
     restart: unless-stopped
 
   jackett:
