@@ -1,0 +1,37 @@
+05/10/2020 00:49:35|INFO    |root                            |BAZARR is started and waiting for request on http://0.***.***.***:6767/|
+05/10/2020 00:51:15|INFO    |root                            |BAZARR is started and waiting for request on http://0.***.***.***:6767/|
+05/10/2020 03:26:41|INFO    |root                            |BAZARR Finished searching for missing Movies Subtitles. Check History for more information.|
+05/10/2020 05:00:01|INFO    |root                            |BAZARR All existing movie subtitles indexed from disk.|
+05/10/2020 06:26:41|INFO    |root                            |BAZARR Finished searching for missing Movies Subtitles. Check History for more information.|
+05/10/2020 09:26:41|INFO    |root                            |BAZARR Finished searching for missing Movies Subtitles. Check History for more information.|
+05/10/2020 09:31:35|INFO    |root                            |BAZARR is started and waiting for request on http://0.***.***.***:6767/|
+05/10/2020 12:13:59|INFO    |root                            |BAZARR Finished searching for missing Movies Subtitles. Check History for more information.|
+05/10/2020 13:06:32|INFO    |root                            |Throttling napisy24 for 10 minutes, until 20/10/05 13:16, because of: AuthenticationError. Exception info: 'Login failed'|
+05/10/2020 13:18:22|INFO    |root                            |Using napisy24 again after 10 minutes, (disabled because: AuthenticationError)|
+05/10/2020 13:18:23|INFO    |root                            |Throttling napisy24 for 10 minutes, until 20/10/05 13:28, because of: AuthenticationError. Exception info: 'Login failed'|
+05/10/2020 13:18:29|INFO    |root                            |BAZARR Running cache maintenance|
+05/10/2020 13:18:32|INFO    |root                            |BAZARR All existing movie subtitles indexed from disk.|
+05/10/2020 13:18:51|INFO    |root                            |BAZARR Finished searching for missing Movies Subtitles. Check History for more information.|
+05/10/2020 13:33:23|INFO    |root                            |Using napisy24 again after 10 minutes, (disabled because: AuthenticationError)|
+05/10/2020 13:33:23|INFO    |root                            |Throttling napisy24 for 10 minutes, until 20/10/05 13:43, because of: AuthenticationError. Exception info: 'Login failed'|
+05/10/2020 14:21:53|INFO    |root                            |Using napisy24 again after 10 minutes, (disabled because: AuthenticationError)|
+05/10/2020 14:23:36|INFO    |root                            |BAZARR All existing movie subtitles indexed from disk.|
+05/10/2020 14:23:39|INFO    |root                            |BAZARR Running cache maintenance|
+05/10/2020 14:23:40|INFO    |root                            |BAZARR Running cache maintenance|
+05/10/2020 14:23:47|INFO    |root                            |BAZARR Finished searching for missing Movies Subtitles. Check History for more information.|
+05/10/2020 14:26:02|INFO    |root                            |BAZARR Finished searching for missing Movies Subtitles. Check History for more information.|
+05/10/2020 14:27:13|INFO    |root                            |BAZARR is started and waiting for request on http://0.***.***.***:6767/|
+05/10/2020 14:27:37|INFO    |root                            |Throttling napisy24 for 10 minutes, until 20/10/05 14:37, because of: AuthenticationError. Exception info: 'Login failed'|
+05/10/2020 17:07:14|INFO    |root                            |BAZARR Finished searching for missing Movies Subtitles. Check History for more information.|
+05/10/2020 20:07:14|INFO    |root                            |BAZARR Finished searching for missing Movies Subtitles. Check History for more information.|
+05/10/2020 23:07:14|INFO    |root                            |BAZARR Finished searching for missing Movies Subtitles. Check History for more information.|
+05/10/2020 23:35:35|INFO    |root                            |Using napisy24 again after 10 minutes, (disabled because: AuthenticationError)|
+05/10/2020 23:35:35|INFO    |root                            |Throttling napisy24 for 10 minutes, until 20/10/05 23:45, because of: AuthenticationError. Exception info: 'Login failed'|
+05/10/2020 23:35:38|INFO    |root                            |BAZARR Finished searching for missing Movies Subtitles. Check History for more information.|
+05/10/2020 23:35:40|INFO    |root                            |BAZARR Finished searching for missing Movies Subtitles. Check History for more information.|
+05/10/2020 23:35:41|INFO    |root                            |BAZARR Finished searching for missing Movies Subtitles. Check History for more information.|
+05/10/2020 23:35:44|INFO    |root                            |BAZARR Finished searching for missing Movies Subtitles. Check History for more information.|
+05/10/2020 23:35:45|INFO    |root                            |BAZARR Finished searching for missing Movies Subtitles. Check History for more information.|
+05/10/2020 23:36:16|INFO    |root                            |BAZARR Finished searching for missing Movies Subtitles. Check History for more information.|
+05/10/2020 23:36:18|INFO    |root                            |BAZARR Finished searching for missing Movies Subtitles. Check History for more information.|
+05/10/2020 23:36:20|INFO    |root                            |BAZARR Finished searching for missing Movies Subtitles. Check History for more information.|

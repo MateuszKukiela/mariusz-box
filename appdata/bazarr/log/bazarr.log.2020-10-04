@@ -1,0 +1,9 @@
+04/10/2020 18:55:36|INFO    |root                            |BAZARR Database created successfully|
+04/10/2020 18:55:48|INFO    |root                            |BAZARR is started and waiting for request on http://0.***.***.***:6767/|
+04/10/2020 20:48:54|WARNING |apscheduler.executors.default   |Run time of job "Update Movie list from Radarr (trigger: interval[0:05:00], next run at: 2020-10-04 20:53:29 CEST)" was missed by 0:00:24.153138|
+04/10/2020 21:04:22|INFO    |root                            |Throttling napisy24 for 10 minutes, until 20/10/04 21:14, because of: AuthenticationError. Exception info: 'Login failed'|
+04/10/2020 21:18:30|INFO    |root                            |Using napisy24 again after 10 minutes, (disabled because: AuthenticationError)|
+04/10/2020 21:36:56|INFO    |root                            |BAZARR is started and waiting for request on http://0.***.***.***:6767/|
+04/10/2020 21:47:05|WARNING |apscheduler.executors.default   |Run time of job "Update Movie list from Radarr (trigger: interval[0:05:00], next run at: 2020-10-04 21:51:47 CEST)" was missed by 0:00:18.287720|
+04/10/2020 22:18:13|INFO    |root                            |BAZARR is started and waiting for request on http://0.***.***.***:6767/|
+04/10/2020 23:34:43|INFO    |root                            |BAZARR is started and waiting for request on http://0.***.***.***:6767/|

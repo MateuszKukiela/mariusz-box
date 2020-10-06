@@ -57,3 +57,396 @@
 2020-10-04 20:21:30.5474 Info Found 99 (0 new) releases from YTS 
 2020-10-04 20:27:47.9523 Info Found 9 (0 new) releases from The Pirate Bay 
 2020-10-04 20:27:50.8802 Info Found 9 (0 new) releases from The Pirate Bay 
+2020-10-04 20:37:13.3803 Info Found 3 (3 new) releases from YTS 
+2020-10-04 20:40:21.2361 Info Found 3 (0 new) releases from YTS 
+2020-10-04 20:40:52.4310 Info Found 8 (1 new) releases from The Pirate Bay 
+2020-10-04 20:41:43.6417 Info Found 3 (0 new) releases from YTS 
+2020-10-04 20:48:54.1881 Warn Heartbeat took longer than "00:00:01" at "10/04/2020 18:47:32 +00:00". This could be caused by thread pool starvation. 
+2020-10-04 20:48:54.1881 Warn Heartbeat took longer than "00:00:01" at "10/04/2020 18:47:32 +00:00". This could be caused by thread pool starvation. 
+2020-10-04 20:56:04.7628 Info Found 99 (0 new) releases from YTS 
+2020-10-04 20:56:04.8381 Info Found 27 (21 new) releases from The Pirate Bay 
+2020-10-04 20:56:08.2322 Info Checking for updates... Jackett variant: CoreLinuxAmdx64 
+2020-10-04 20:56:08.2322 Info Skipping update check as it is disabled. 
+2020-10-04 21:06:53.3743 Info Found 2 (2 new) releases from YTS 
+2020-10-04 21:07:01.7998 Info Found 2 (0 new) releases from YTS 
+2020-10-04 21:11:26.9779 Info Found 38 (13 new) releases from The Pirate Bay 
+2020-10-04 21:14:12.3842 Info Checking for updates... Jackett variant: CoreLinuxAmdx64 
+2020-10-04 21:14:12.3842 Info Skipping update check as it is disabled. 
+2020-10-04 21:26:57.5401 Info Found 39 (1 new) releases from The Pirate Bay 
+2020-10-04 21:36:50.0068 Info Starting Jackett v0.16.1559.0 
+2020-10-04 21:36:51.4004 Info Environment version: 3.1.8 (/app/Jackett/) 
+2020-10-04 21:36:51.4004 Info OS version: Unix 4.19.0.11 (64bit OS) (64bit process) 
+2020-10-04 21:36:51.4004 Info Jackett variant: CoreLinuxAmdx64 
+2020-10-04 21:36:51.4017 Info File /etc/issue: Ubuntu 18.04.5 LTS \n \l 
+2020-10-04 21:36:51.4017 Info Running in Docker: Yes (image build: v0.16.1549-ls20) 
+2020-10-04 21:36:51.4017 Info ThreadPool MaxThreads: 32767 workerThreads, 1000 completionPortThreads 
+2020-10-04 21:36:51.4017 Info App config/log directory: /config/Jackett 
+2020-10-04 21:36:51.4017 Info Using proxy: Disabled 
+2020-10-04 21:36:51.4102 Info Using HTTP Client: HttpWebClient2 
+2020-10-04 21:36:51.6923 Info Loading Cardigann definitions from: /config/cardigann/definitions/, /etc/xdg/cardigan/definitions/, /app/Jackett/Definitions 
+2020-10-04 21:36:54.5081 Info Cardigann definitions loaded: abnormal, alpharatio, anidex, anidub, animebytes, animetorrents, anthelion, avistaz, awesomehd, bakabt, bb, bitcityreloaded, bithdtv, bjshare, broadcasthenet, brokenstones, cgpeers, cinecalidad, cinemaz, corsarored, danishbits, dicmusic, digitalcore, digitalhive, divxtotal, elitetracker, epublibre, exoticaz, filelist, funfile, fuzer, gazellegames, gimmepeers, hdbitsapi, hdonly, hdspace, hdtorrents, hebits, icetorrent, immortalseed, internetarchive, iptorrents, libble, lostfilm, mejortorrent, milkie, morethantv, myamity, myanonamouse, ncore, nebulance, newpct, newrealworld, norbits, nordicbits, notwhatcd, orpheus, partis, passthepopcorn, piratethenet, pixelhd, polishtracker, pornolab, pretome, privatehd, psytorrents, rarbg, redacted, revolutiontt, rutracker, scenefz, scenehd, scenetime, secretcinema, shazbat, showrss, solidtorrents, speedcd, superbits, thepiratebay, toloka, torrentbytes, torrentday, torrentech, torrentheaven, torrentleech, torrentnetwork, torrentscsv, torrentseeds, torrentsyndikat, tvstore, tvvault, xspeeds, xthor, xtremezone, yts, animetosho, esharenet, 52pt, hdroute, pornbay, gamestorrents, torrentland, cztorrent, shareuniversity, 7torrents, crazyhd, femdomcult, crnaberza, cinemamovies, polishsource, mactorrents, btetree, learnflakes, theunknown, rapidzona, RockBox, anisource, pier720, finelite, hdme, nbtorrents, torrentproject2, 3dtorrents, unionfansub, legacyhd, torrent9clone, thegeeks, demonoid, torrentdownloads, hdcity, hdchina, fouducinema, girotorrent, hdspain, empornium, generationfree, thefallingangels, Bittorrentfiles, torrentsectorcrew, mteamtp, btsow, fantasticheaven, concen, iv-torrents, chdbits, movcr, tapochek, chilebt, redstartorrent, torrentlt, hdcenter, torrentfunk, gay-torrentsorg, pleasuredome, gigatorrents, empornium2fa, marinetracker, hddolby, rintor, asgaard, onlineselfeducation, cinematik, uhdbits, magnet4you, xwtorrents, dark-shadow, ehentai, witchhunter, theplace, hdreactor, piratbitl, parnuxi, pixelcove, microbit, kinorun, zooqle, yourbittorrent, pornbits, theoccult, xbytesv2, turktorrent, zelkaorg, torrentbomb, btnext, exkinoray, beyond-hd, hdtorrentsit, theshinning, cartoonchaos, majomparade, tvchaosuk, arabp2p, btdigg, pornotor, rutracker-ru, darmowetorenty, rutor, noname-club, torrent-explosiv, idope, teamos, aftershock, bithumen, mvgroupmain, keepfriends, monova, xxxtorrents, shellife, teamhd, immortuos, rainbowtracker, backups, casstudiotv, cpasbienclone, torrentview, riperam, thehorrorcharnel, linuxtracker, ptmsg, uniondht, crazyspirits, erzsebet, pterclub, torrenting, netlab, audiobookbay, lechaudron, siambit, 32pages, underversel, torrent4you, btgigs, documentarytorrents, shareisland, sexypics, hdolimpo, tenyardtracker, u2, gay-torrents, jptv, bitspyder, totheglory, tasmanit, acidlounge, kinonavse100, racing4everyone, tekno3d, exttorrents, darktracker, metaltracker, fullmixmusic, pornorip, purovicio, rptorrents, cooltorrent, greekteam, dxp, bitturk, diablotorrent, extremetorrents, booktracker, baibako, acgsou, torrentquest, losslessclub, aidoruonline, sukebei-pantsu, legittorrents, hdhome, datascene, torrent-turk, proporno, myspleen, nethd, hdc, hddisk, torrent9, zetorrents, ebooks-shares, kinozal, Channelx, trezzor, frozenlayer, hdturk, dmhy, xxxadulttorrent, hdbits, 1ptbar, r3vwtf, btschool, arabafenice, onejav, magnetdl, Das-Unerwartete, extremebits, newstudio, nntt, filebase, trancetraffic, xwtclassics, finvip, asylumshare, karagarga, nyaa-pantsu, torrentdb, lesaloon, eztv, thevault, zamundanet, yingk, yggcookie, hdbitscom, carpathians, topnow, hqsource, torrentz2, tokyotosho, concertos, bibliotik, yggtorrent, leaguehd, moviesdvdr, film-paleis, nitro, 4thd, twilight, hush, 3changtrai, broadcity, bithorlo, torrentv, linkomanija, seedfile, funkytorrents, totallykids, haidan, underverse, newstudiol, scenerush, hellastz, 3evils, sktorrent, ilcorsaroblu, pornleech, kickasstorrent, bwtorrents, mvgroupforum, elitetorrent-biz, efectodoppler, hachede, vizuk, aniRena, tellytorrent, torrentfactory, ydypt, bit-titan, pctorrent, desireleasers, oshenpt, audionews, bigfangroup, world-of-tomorrow, torrentccf, sdbits, omgwtftrackr, dxdhd, pwtorrents, hd4fans, xiteme, sharewood, fanoin, rus-media, 2fast4you, bluebirdhd, toros, ptsbao, p2pelite, gaytorrentru, desitorrents, korsar, arenabg, tjupt, hdzone, torlock, wihd, freetorrent, pussytorrents, ttsweb, retroflix, hamsterstudio, glodls, estone, extratorrent-cd, unlimitz, wdt, hdsky, cinemageddon, ptfiles, leporno, springsunday, torrenthr, sdkino, sukebeinyaasi, torrentgalaxyorg, dragonworldreloaded, dimeadozen, kickasstorrent-kathow, deildu, xxxtor, jpopsuki, acgrip, ibit, totheglorycookie, tribalmixes, mypornclub, sosulki, insanetracker, soundpark, hdforever, mononokebt, pthome, bigtower, bigtorrent, magico, piratadigital, scenepalace, classix, pirateiro, greekdiamond, torrentseed, divteam, pornforall, torrentoyunindir, theshow, aither, torrentparadise, beitai, limetorrents, blutopia, xfsub, hon3yhd, extremlymtorrents, turkseed, brasiltracker, gktorrent, proaudiotorrents, pornolive, amigosshare, snowpt, mma-torrents, netcosmo, spacetorrent, ethor, rustorka, hdu, torrentbd, beyond-hd-oneurl, ast4u, torrentz2k, mteamtp2fa, 0daykiev, hdstreet, theaudioscene, itorrent, isohunt2, prostylex, boxingtorrents, torrentdownload, spiritofrevolution, horrorsite, ettv, sktorrent-org, ztracker, epizod, torrentslocal, sportscult, torrent-pirat, nyaasi, muziekfabriek, libranet, focusx, newretro, bitru, piratbit, soulvoice, ccfbits, oxtorrent, ourbits, speedmasterhd, selezen, audiobooktorrents, shokweb, tlfbits, torrentleech-pl, cpasbien, romanianmetaltorrents, ilcorsaronero, eniahd, twilightszoom, lastfiles, btdb, uniongang, ebookparadijs, speedtorrentreloaded, cilipro, galeriens, gfxpeers, hdarea, racingforme, puntorrent, rintornet, takeabyte, asiancinema, trupornolabs, hdtime, carphunter, torrentkitty, 1337x, brobits, skytorrentsclone, erzsebetpl, peersfm, firebit, p2pbg, onlyscene, casatorrent, theempire, mnv 
+2020-10-04 21:36:54.5097 Info Adding aggregate indexer 
+2020-10-04 21:36:54.8772 Info Jackett startup finished in 6.675 s 
+2020-10-04 21:42:25.1746 Info Found 34 (1 new) releases from The Pirate Bay 
+2020-10-04 22:18:06.6684 Info Starting Jackett v0.16.1559.0 
+2020-10-04 22:18:08.0333 Info Environment version: 3.1.8 (/app/Jackett/) 
+2020-10-04 22:18:08.0333 Info OS version: Unix 4.19.0.11 (64bit OS) (64bit process) 
+2020-10-04 22:18:08.0333 Info Jackett variant: CoreLinuxAmdx64 
+2020-10-04 22:18:08.0333 Info File /etc/issue: Ubuntu 18.04.5 LTS \n \l 
+2020-10-04 22:18:08.0333 Info Running in Docker: Yes (image build: v0.16.1549-ls20) 
+2020-10-04 22:18:08.0333 Info ThreadPool MaxThreads: 32767 workerThreads, 1000 completionPortThreads 
+2020-10-04 22:18:08.0333 Info App config/log directory: /config/Jackett 
+2020-10-04 22:18:08.0333 Info Using proxy: Disabled 
+2020-10-04 22:18:08.0429 Info Using HTTP Client: HttpWebClient2 
+2020-10-04 22:18:08.2834 Info Loading Cardigann definitions from: /config/cardigann/definitions/, /etc/xdg/cardigan/definitions/, /app/Jackett/Definitions 
+2020-10-04 22:18:11.0611 Info Cardigann definitions loaded: abnormal, alpharatio, anidex, anidub, animebytes, animetorrents, anthelion, avistaz, awesomehd, bakabt, bb, bitcityreloaded, bithdtv, bjshare, broadcasthenet, brokenstones, cgpeers, cinecalidad, cinemaz, corsarored, danishbits, dicmusic, digitalcore, digitalhive, divxtotal, elitetracker, epublibre, exoticaz, filelist, funfile, fuzer, gazellegames, gimmepeers, hdbitsapi, hdonly, hdspace, hdtorrents, hebits, icetorrent, immortalseed, internetarchive, iptorrents, libble, lostfilm, mejortorrent, milkie, morethantv, myamity, myanonamouse, ncore, nebulance, newpct, newrealworld, norbits, nordicbits, notwhatcd, orpheus, partis, passthepopcorn, piratethenet, pixelhd, polishtracker, pornolab, pretome, privatehd, psytorrents, rarbg, redacted, revolutiontt, rutracker, scenefz, scenehd, scenetime, secretcinema, shazbat, showrss, solidtorrents, speedcd, superbits, thepiratebay, toloka, torrentbytes, torrentday, torrentech, torrentheaven, torrentleech, torrentnetwork, torrentscsv, torrentseeds, torrentsyndikat, tvstore, tvvault, xspeeds, xthor, xtremezone, yts, animetosho, esharenet, 52pt, hdroute, pornbay, gamestorrents, torrentland, cztorrent, shareuniversity, 7torrents, crazyhd, femdomcult, crnaberza, cinemamovies, polishsource, mactorrents, btetree, learnflakes, theunknown, rapidzona, RockBox, anisource, pier720, finelite, hdme, nbtorrents, torrentproject2, 3dtorrents, unionfansub, legacyhd, torrent9clone, thegeeks, demonoid, torrentdownloads, hdcity, hdchina, fouducinema, girotorrent, hdspain, empornium, generationfree, thefallingangels, Bittorrentfiles, torrentsectorcrew, mteamtp, btsow, fantasticheaven, concen, iv-torrents, chdbits, movcr, tapochek, chilebt, redstartorrent, torrentlt, hdcenter, torrentfunk, gay-torrentsorg, pleasuredome, gigatorrents, empornium2fa, marinetracker, hddolby, rintor, asgaard, onlineselfeducation, cinematik, uhdbits, magnet4you, xwtorrents, dark-shadow, ehentai, witchhunter, theplace, hdreactor, piratbitl, parnuxi, pixelcove, microbit, kinorun, zooqle, yourbittorrent, pornbits, theoccult, xbytesv2, turktorrent, zelkaorg, torrentbomb, btnext, exkinoray, beyond-hd, hdtorrentsit, theshinning, cartoonchaos, majomparade, tvchaosuk, arabp2p, btdigg, pornotor, rutracker-ru, darmowetorenty, rutor, noname-club, torrent-explosiv, idope, teamos, aftershock, bithumen, mvgroupmain, keepfriends, monova, xxxtorrents, shellife, teamhd, immortuos, rainbowtracker, backups, casstudiotv, cpasbienclone, torrentview, riperam, thehorrorcharnel, linuxtracker, ptmsg, uniondht, crazyspirits, erzsebet, pterclub, torrenting, netlab, audiobookbay, lechaudron, siambit, 32pages, underversel, torrent4you, btgigs, documentarytorrents, shareisland, sexypics, hdolimpo, tenyardtracker, u2, gay-torrents, jptv, bitspyder, totheglory, tasmanit, acidlounge, kinonavse100, racing4everyone, tekno3d, exttorrents, darktracker, metaltracker, fullmixmusic, pornorip, purovicio, rptorrents, cooltorrent, greekteam, dxp, bitturk, diablotorrent, extremetorrents, booktracker, baibako, acgsou, torrentquest, losslessclub, aidoruonline, sukebei-pantsu, legittorrents, hdhome, datascene, torrent-turk, proporno, myspleen, nethd, hdc, hddisk, torrent9, zetorrents, ebooks-shares, kinozal, Channelx, trezzor, frozenlayer, hdturk, dmhy, xxxadulttorrent, hdbits, 1ptbar, r3vwtf, btschool, arabafenice, onejav, magnetdl, Das-Unerwartete, extremebits, newstudio, nntt, filebase, trancetraffic, xwtclassics, finvip, asylumshare, karagarga, nyaa-pantsu, torrentdb, lesaloon, eztv, thevault, zamundanet, yingk, yggcookie, hdbitscom, carpathians, topnow, hqsource, torrentz2, tokyotosho, concertos, bibliotik, yggtorrent, leaguehd, moviesdvdr, film-paleis, nitro, 4thd, twilight, hush, 3changtrai, broadcity, bithorlo, torrentv, linkomanija, seedfile, funkytorrents, totallykids, haidan, underverse, newstudiol, scenerush, hellastz, 3evils, sktorrent, ilcorsaroblu, pornleech, kickasstorrent, bwtorrents, mvgroupforum, elitetorrent-biz, efectodoppler, hachede, vizuk, aniRena, tellytorrent, torrentfactory, ydypt, bit-titan, pctorrent, desireleasers, oshenpt, audionews, bigfangroup, world-of-tomorrow, torrentccf, sdbits, omgwtftrackr, dxdhd, pwtorrents, hd4fans, xiteme, sharewood, fanoin, rus-media, 2fast4you, bluebirdhd, toros, ptsbao, p2pelite, gaytorrentru, desitorrents, korsar, arenabg, tjupt, hdzone, torlock, wihd, freetorrent, pussytorrents, ttsweb, retroflix, hamsterstudio, glodls, estone, extratorrent-cd, unlimitz, wdt, hdsky, cinemageddon, ptfiles, leporno, springsunday, torrenthr, sdkino, sukebeinyaasi, torrentgalaxyorg, dragonworldreloaded, dimeadozen, kickasstorrent-kathow, deildu, xxxtor, jpopsuki, acgrip, ibit, totheglorycookie, tribalmixes, mypornclub, sosulki, insanetracker, soundpark, hdforever, mononokebt, pthome, bigtower, bigtorrent, magico, piratadigital, scenepalace, classix, pirateiro, greekdiamond, torrentseed, divteam, pornforall, torrentoyunindir, theshow, aither, torrentparadise, beitai, limetorrents, blutopia, xfsub, hon3yhd, extremlymtorrents, turkseed, brasiltracker, gktorrent, proaudiotorrents, pornolive, amigosshare, snowpt, mma-torrents, netcosmo, spacetorrent, ethor, rustorka, hdu, torrentbd, beyond-hd-oneurl, ast4u, torrentz2k, mteamtp2fa, 0daykiev, hdstreet, theaudioscene, itorrent, isohunt2, prostylex, boxingtorrents, torrentdownload, spiritofrevolution, horrorsite, ettv, sktorrent-org, ztracker, epizod, torrentslocal, sportscult, torrent-pirat, nyaasi, muziekfabriek, libranet, focusx, newretro, bitru, piratbit, soulvoice, ccfbits, oxtorrent, ourbits, speedmasterhd, selezen, audiobooktorrents, shokweb, tlfbits, torrentleech-pl, cpasbien, romanianmetaltorrents, ilcorsaronero, eniahd, twilightszoom, lastfiles, btdb, uniongang, ebookparadijs, speedtorrentreloaded, cilipro, galeriens, gfxpeers, hdarea, racingforme, puntorrent, rintornet, takeabyte, asiancinema, trupornolabs, hdtime, carphunter, torrentkitty, 1337x, brobits, skytorrentsclone, erzsebetpl, peersfm, firebit, p2pbg, onlyscene, casatorrent, theempire, mnv 
+2020-10-04 22:18:11.0611 Info Adding aggregate indexer 
+2020-10-04 22:18:11.3825 Info Jackett startup finished in 6.600 s 
+2020-10-04 22:18:41.5693 Info Found 99 (1 new) releases from YTS 
+2020-10-04 22:18:41.8377 Info Found 26 (1 new) releases from The Pirate Bay 
+2020-10-04 22:34:11.6813 Info Found 23 (5 new) releases from The Pirate Bay 
+2020-10-04 22:49:42.5355 Info Found 18 (2 new) releases from The Pirate Bay 
+2020-10-04 23:05:12.6547 Info Found 17 (0 new) releases from The Pirate Bay 
+2020-10-04 23:18:08.8358 Info Found 3 (3 new) releases from YTS 
+2020-10-04 23:18:11.0893 Info Checking for updates... Jackett variant: CoreLinuxAmdx64 
+2020-10-04 23:18:11.0893 Info Skipping update check as it is disabled. 
+2020-10-04 23:19:12.0654 Info Found 99 (0 new) releases from YTS 
+2020-10-04 23:20:43.2035 Info Found 19 (12 new) releases from The Pirate Bay 
+2020-10-04 23:34:36.5209 Info Starting Jackett v0.16.1559.0 
+2020-10-04 23:34:37.9598 Info Environment version: 3.1.8 (/app/Jackett/) 
+2020-10-04 23:34:37.9612 Info OS version: Unix 4.19.0.11 (64bit OS) (64bit process) 
+2020-10-04 23:34:37.9612 Info Jackett variant: CoreLinuxAmdx64 
+2020-10-04 23:34:37.9612 Info File /etc/issue: Ubuntu 18.04.5 LTS \n \l 
+2020-10-04 23:34:37.9612 Info Running in Docker: Yes (image build: v0.16.1549-ls20) 
+2020-10-04 23:34:37.9612 Info ThreadPool MaxThreads: 32767 workerThreads, 1000 completionPortThreads 
+2020-10-04 23:34:37.9612 Info App config/log directory: /config/Jackett 
+2020-10-04 23:34:37.9612 Info Using proxy: Disabled 
+2020-10-04 23:34:37.9738 Info Using HTTP Client: HttpWebClient2 
+2020-10-04 23:34:38.3132 Info Loading Cardigann definitions from: /config/cardigann/definitions/, /etc/xdg/cardigan/definitions/, /app/Jackett/Definitions 
+2020-10-04 23:34:41.0770 Info Cardigann definitions loaded: abnormal, alpharatio, anidex, anidub, animebytes, animetorrents, anthelion, avistaz, awesomehd, bakabt, bb, bitcityreloaded, bithdtv, bjshare, broadcasthenet, brokenstones, cgpeers, cinecalidad, cinemaz, corsarored, danishbits, dicmusic, digitalcore, digitalhive, divxtotal, elitetracker, epublibre, exoticaz, filelist, funfile, fuzer, gazellegames, gimmepeers, hdbitsapi, hdonly, hdspace, hdtorrents, hebits, icetorrent, immortalseed, internetarchive, iptorrents, libble, lostfilm, mejortorrent, milkie, morethantv, myamity, myanonamouse, ncore, nebulance, newpct, newrealworld, norbits, nordicbits, notwhatcd, orpheus, partis, passthepopcorn, piratethenet, pixelhd, polishtracker, pornolab, pretome, privatehd, psytorrents, rarbg, redacted, revolutiontt, rutracker, scenefz, scenehd, scenetime, secretcinema, shazbat, showrss, solidtorrents, speedcd, superbits, thepiratebay, toloka, torrentbytes, torrentday, torrentech, torrentheaven, torrentleech, torrentnetwork, torrentscsv, torrentseeds, torrentsyndikat, tvstore, tvvault, xspeeds, xthor, xtremezone, yts, animetosho, esharenet, 52pt, hdroute, pornbay, gamestorrents, torrentland, cztorrent, shareuniversity, 7torrents, crazyhd, femdomcult, crnaberza, cinemamovies, polishsource, mactorrents, btetree, learnflakes, theunknown, rapidzona, RockBox, anisource, pier720, finelite, hdme, nbtorrents, torrentproject2, 3dtorrents, unionfansub, legacyhd, torrent9clone, thegeeks, demonoid, torrentdownloads, hdcity, hdchina, fouducinema, girotorrent, hdspain, empornium, generationfree, thefallingangels, Bittorrentfiles, torrentsectorcrew, mteamtp, btsow, fantasticheaven, concen, iv-torrents, chdbits, movcr, tapochek, chilebt, redstartorrent, torrentlt, hdcenter, torrentfunk, gay-torrentsorg, pleasuredome, gigatorrents, empornium2fa, marinetracker, hddolby, rintor, asgaard, onlineselfeducation, cinematik, uhdbits, magnet4you, xwtorrents, dark-shadow, ehentai, witchhunter, theplace, hdreactor, piratbitl, parnuxi, pixelcove, microbit, kinorun, zooqle, yourbittorrent, pornbits, theoccult, xbytesv2, turktorrent, zelkaorg, torrentbomb, btnext, exkinoray, beyond-hd, hdtorrentsit, theshinning, cartoonchaos, majomparade, tvchaosuk, arabp2p, btdigg, pornotor, rutracker-ru, darmowetorenty, rutor, noname-club, torrent-explosiv, idope, teamos, aftershock, bithumen, mvgroupmain, keepfriends, monova, xxxtorrents, shellife, teamhd, immortuos, rainbowtracker, backups, casstudiotv, cpasbienclone, torrentview, riperam, thehorrorcharnel, linuxtracker, ptmsg, uniondht, crazyspirits, erzsebet, pterclub, torrenting, netlab, audiobookbay, lechaudron, siambit, 32pages, underversel, torrent4you, btgigs, documentarytorrents, shareisland, sexypics, hdolimpo, tenyardtracker, u2, gay-torrents, jptv, bitspyder, totheglory, tasmanit, acidlounge, kinonavse100, racing4everyone, tekno3d, exttorrents, darktracker, metaltracker, fullmixmusic, pornorip, purovicio, rptorrents, cooltorrent, greekteam, dxp, bitturk, diablotorrent, extremetorrents, booktracker, baibako, acgsou, torrentquest, losslessclub, aidoruonline, sukebei-pantsu, legittorrents, hdhome, datascene, torrent-turk, proporno, myspleen, nethd, hdc, hddisk, torrent9, zetorrents, ebooks-shares, kinozal, Channelx, trezzor, frozenlayer, hdturk, dmhy, xxxadulttorrent, hdbits, 1ptbar, r3vwtf, btschool, arabafenice, onejav, magnetdl, Das-Unerwartete, extremebits, newstudio, nntt, filebase, trancetraffic, xwtclassics, finvip, asylumshare, karagarga, nyaa-pantsu, torrentdb, lesaloon, eztv, thevault, zamundanet, yingk, yggcookie, hdbitscom, carpathians, topnow, hqsource, torrentz2, tokyotosho, concertos, bibliotik, yggtorrent, leaguehd, moviesdvdr, film-paleis, nitro, 4thd, twilight, hush, 3changtrai, broadcity, bithorlo, torrentv, linkomanija, seedfile, funkytorrents, totallykids, haidan, underverse, newstudiol, scenerush, hellastz, 3evils, sktorrent, ilcorsaroblu, pornleech, kickasstorrent, bwtorrents, mvgroupforum, elitetorrent-biz, efectodoppler, hachede, vizuk, aniRena, tellytorrent, torrentfactory, ydypt, bit-titan, pctorrent, desireleasers, oshenpt, audionews, bigfangroup, world-of-tomorrow, torrentccf, sdbits, omgwtftrackr, dxdhd, pwtorrents, hd4fans, xiteme, sharewood, fanoin, rus-media, 2fast4you, bluebirdhd, toros, ptsbao, p2pelite, gaytorrentru, desitorrents, korsar, arenabg, tjupt, hdzone, torlock, wihd, freetorrent, pussytorrents, ttsweb, retroflix, hamsterstudio, glodls, estone, extratorrent-cd, unlimitz, wdt, hdsky, cinemageddon, ptfiles, leporno, springsunday, torrenthr, sdkino, sukebeinyaasi, torrentgalaxyorg, dragonworldreloaded, dimeadozen, kickasstorrent-kathow, deildu, xxxtor, jpopsuki, acgrip, ibit, totheglorycookie, tribalmixes, mypornclub, sosulki, insanetracker, soundpark, hdforever, mononokebt, pthome, bigtower, bigtorrent, magico, piratadigital, scenepalace, classix, pirateiro, greekdiamond, torrentseed, divteam, pornforall, torrentoyunindir, theshow, aither, torrentparadise, beitai, limetorrents, blutopia, xfsub, hon3yhd, extremlymtorrents, turkseed, brasiltracker, gktorrent, proaudiotorrents, pornolive, amigosshare, snowpt, mma-torrents, netcosmo, spacetorrent, ethor, rustorka, hdu, torrentbd, beyond-hd-oneurl, ast4u, torrentz2k, mteamtp2fa, 0daykiev, hdstreet, theaudioscene, itorrent, isohunt2, prostylex, boxingtorrents, torrentdownload, spiritofrevolution, horrorsite, ettv, sktorrent-org, ztracker, epizod, torrentslocal, sportscult, torrent-pirat, nyaasi, muziekfabriek, libranet, focusx, newretro, bitru, piratbit, soulvoice, ccfbits, oxtorrent, ourbits, speedmasterhd, selezen, audiobooktorrents, shokweb, tlfbits, torrentleech-pl, cpasbien, romanianmetaltorrents, ilcorsaronero, eniahd, twilightszoom, lastfiles, btdb, uniongang, ebookparadijs, speedtorrentreloaded, cilipro, galeriens, gfxpeers, hdarea, racingforme, puntorrent, rintornet, takeabyte, asiancinema, trupornolabs, hdtime, carphunter, torrentkitty, 1337x, brobits, skytorrentsclone, erzsebetpl, peersfm, firebit, p2pbg, onlyscene, casatorrent, theempire, mnv 
+2020-10-04 23:34:41.0784 Info Adding aggregate indexer 
+2020-10-04 23:34:41.3926 Info Jackett startup finished in 6.740 s 
+2020-10-04 23:36:11.6577 Info Found 20 (1 new) releases from The Pirate Bay 
+2020-10-04 23:39:48.3319 Info Found 5 (1 new) releases from YTS 
+2020-10-04 23:51:42.5762 Info Found 25 (5 new) releases from The Pirate Bay 
+2020-10-05 00:07:12.0145 Info Found 24 (0 new) releases from The Pirate Bay 
+2020-10-05 00:19:41.4737 Info Found 99 (99 new) releases from YTS 
+2020-10-05 00:22:42.3991 Info Found 24 (3 new) releases from The Pirate Bay 
+2020-10-05 00:34:41.2354 Info Checking for updates... Jackett variant: CoreLinuxAmdx64 
+2020-10-05 00:34:41.2354 Info Skipping update check as it is disabled. 
+2020-10-05 00:38:12.8625 Info Found 24 (4 new) releases from The Pirate Bay 
+2020-10-05 00:49:29.5273 Info Starting Jackett v0.16.1559.0 
+2020-10-05 00:49:30.8814 Info Environment version: 3.1.8 (/app/Jackett/) 
+2020-10-05 00:49:30.8814 Info OS version: Unix 4.19.0.11 (64bit OS) (64bit process) 
+2020-10-05 00:49:30.8814 Info Jackett variant: CoreLinuxAmdx64 
+2020-10-05 00:49:30.8814 Info File /etc/issue: Ubuntu 18.04.5 LTS \n \l 
+2020-10-05 00:49:30.8854 Info Running in Docker: Yes (image build: v0.16.1549-ls20) 
+2020-10-05 00:49:30.8854 Info ThreadPool MaxThreads: 32767 workerThreads, 1000 completionPortThreads 
+2020-10-05 00:49:30.8854 Info App config/log directory: /config/Jackett 
+2020-10-05 00:49:30.8854 Info Using proxy: Disabled 
+2020-10-05 00:49:30.8976 Info Using HTTP Client: HttpWebClient2 
+2020-10-05 00:49:31.1868 Info Loading Cardigann definitions from: /config/cardigann/definitions/, /etc/xdg/cardigan/definitions/, /app/Jackett/Definitions 
+2020-10-05 00:49:33.9764 Info Cardigann definitions loaded: abnormal, alpharatio, anidex, anidub, animebytes, animetorrents, anthelion, avistaz, awesomehd, bakabt, bb, bitcityreloaded, bithdtv, bjshare, broadcasthenet, brokenstones, cgpeers, cinecalidad, cinemaz, corsarored, danishbits, dicmusic, digitalcore, digitalhive, divxtotal, elitetracker, epublibre, exoticaz, filelist, funfile, fuzer, gazellegames, gimmepeers, hdbitsapi, hdonly, hdspace, hdtorrents, hebits, icetorrent, immortalseed, internetarchive, iptorrents, libble, lostfilm, mejortorrent, milkie, morethantv, myamity, myanonamouse, ncore, nebulance, newpct, newrealworld, norbits, nordicbits, notwhatcd, orpheus, partis, passthepopcorn, piratethenet, pixelhd, polishtracker, pornolab, pretome, privatehd, psytorrents, rarbg, redacted, revolutiontt, rutracker, scenefz, scenehd, scenetime, secretcinema, shazbat, showrss, solidtorrents, speedcd, superbits, thepiratebay, toloka, torrentbytes, torrentday, torrentech, torrentheaven, torrentleech, torrentnetwork, torrentscsv, torrentseeds, torrentsyndikat, tvstore, tvvault, xspeeds, xthor, xtremezone, yts, animetosho, esharenet, 52pt, hdroute, pornbay, gamestorrents, torrentland, cztorrent, shareuniversity, 7torrents, crazyhd, femdomcult, crnaberza, cinemamovies, polishsource, mactorrents, btetree, learnflakes, theunknown, rapidzona, RockBox, anisource, pier720, finelite, hdme, nbtorrents, torrentproject2, 3dtorrents, unionfansub, legacyhd, torrent9clone, thegeeks, demonoid, torrentdownloads, hdcity, hdchina, fouducinema, girotorrent, hdspain, empornium, generationfree, thefallingangels, Bittorrentfiles, torrentsectorcrew, mteamtp, btsow, fantasticheaven, concen, iv-torrents, chdbits, movcr, tapochek, chilebt, redstartorrent, torrentlt, hdcenter, torrentfunk, gay-torrentsorg, pleasuredome, gigatorrents, empornium2fa, marinetracker, hddolby, rintor, asgaard, onlineselfeducation, cinematik, uhdbits, magnet4you, xwtorrents, dark-shadow, ehentai, witchhunter, theplace, hdreactor, piratbitl, parnuxi, pixelcove, microbit, kinorun, zooqle, yourbittorrent, pornbits, theoccult, xbytesv2, turktorrent, zelkaorg, torrentbomb, btnext, exkinoray, beyond-hd, hdtorrentsit, theshinning, cartoonchaos, majomparade, tvchaosuk, arabp2p, btdigg, pornotor, rutracker-ru, darmowetorenty, rutor, noname-club, torrent-explosiv, idope, teamos, aftershock, bithumen, mvgroupmain, keepfriends, monova, xxxtorrents, shellife, teamhd, immortuos, rainbowtracker, backups, casstudiotv, cpasbienclone, torrentview, riperam, thehorrorcharnel, linuxtracker, ptmsg, uniondht, crazyspirits, erzsebet, pterclub, torrenting, netlab, audiobookbay, lechaudron, siambit, 32pages, underversel, torrent4you, btgigs, documentarytorrents, shareisland, sexypics, hdolimpo, tenyardtracker, u2, gay-torrents, jptv, bitspyder, totheglory, tasmanit, acidlounge, kinonavse100, racing4everyone, tekno3d, exttorrents, darktracker, metaltracker, fullmixmusic, pornorip, purovicio, rptorrents, cooltorrent, greekteam, dxp, bitturk, diablotorrent, extremetorrents, booktracker, baibako, acgsou, torrentquest, losslessclub, aidoruonline, sukebei-pantsu, legittorrents, hdhome, datascene, torrent-turk, proporno, myspleen, nethd, hdc, hddisk, torrent9, zetorrents, ebooks-shares, kinozal, Channelx, trezzor, frozenlayer, hdturk, dmhy, xxxadulttorrent, hdbits, 1ptbar, r3vwtf, btschool, arabafenice, onejav, magnetdl, Das-Unerwartete, extremebits, newstudio, nntt, filebase, trancetraffic, xwtclassics, finvip, asylumshare, karagarga, nyaa-pantsu, torrentdb, lesaloon, eztv, thevault, zamundanet, yingk, yggcookie, hdbitscom, carpathians, topnow, hqsource, torrentz2, tokyotosho, concertos, bibliotik, yggtorrent, leaguehd, moviesdvdr, film-paleis, nitro, 4thd, twilight, hush, 3changtrai, broadcity, bithorlo, torrentv, linkomanija, seedfile, funkytorrents, totallykids, haidan, underverse, newstudiol, scenerush, hellastz, 3evils, sktorrent, ilcorsaroblu, pornleech, kickasstorrent, bwtorrents, mvgroupforum, elitetorrent-biz, efectodoppler, hachede, vizuk, aniRena, tellytorrent, torrentfactory, ydypt, bit-titan, pctorrent, desireleasers, oshenpt, audionews, bigfangroup, world-of-tomorrow, torrentccf, sdbits, omgwtftrackr, dxdhd, pwtorrents, hd4fans, xiteme, sharewood, fanoin, rus-media, 2fast4you, bluebirdhd, toros, ptsbao, p2pelite, gaytorrentru, desitorrents, korsar, arenabg, tjupt, hdzone, torlock, wihd, freetorrent, pussytorrents, ttsweb, retroflix, hamsterstudio, glodls, estone, extratorrent-cd, unlimitz, wdt, hdsky, cinemageddon, ptfiles, leporno, springsunday, torrenthr, sdkino, sukebeinyaasi, torrentgalaxyorg, dragonworldreloaded, dimeadozen, kickasstorrent-kathow, deildu, xxxtor, jpopsuki, acgrip, ibit, totheglorycookie, tribalmixes, mypornclub, sosulki, insanetracker, soundpark, hdforever, mononokebt, pthome, bigtower, bigtorrent, magico, piratadigital, scenepalace, classix, pirateiro, greekdiamond, torrentseed, divteam, pornforall, torrentoyunindir, theshow, aither, torrentparadise, beitai, limetorrents, blutopia, xfsub, hon3yhd, extremlymtorrents, turkseed, brasiltracker, gktorrent, proaudiotorrents, pornolive, amigosshare, snowpt, mma-torrents, netcosmo, spacetorrent, ethor, rustorka, hdu, torrentbd, beyond-hd-oneurl, ast4u, torrentz2k, mteamtp2fa, 0daykiev, hdstreet, theaudioscene, itorrent, isohunt2, prostylex, boxingtorrents, torrentdownload, spiritofrevolution, horrorsite, ettv, sktorrent-org, ztracker, epizod, torrentslocal, sportscult, torrent-pirat, nyaasi, muziekfabriek, libranet, focusx, newretro, bitru, piratbit, soulvoice, ccfbits, oxtorrent, ourbits, speedmasterhd, selezen, audiobooktorrents, shokweb, tlfbits, torrentleech-pl, cpasbien, romanianmetaltorrents, ilcorsaronero, eniahd, twilightszoom, lastfiles, btdb, uniongang, ebookparadijs, speedtorrentreloaded, cilipro, galeriens, gfxpeers, hdarea, racingforme, puntorrent, rintornet, takeabyte, asiancinema, trupornolabs, hdtime, carphunter, torrentkitty, 1337x, brobits, skytorrentsclone, erzsebetpl, peersfm, firebit, p2pbg, onlyscene, casatorrent, theempire, mnv 
+2020-10-05 00:49:33.9777 Info Adding aggregate indexer 
+2020-10-05 00:49:34.2880 Info Jackett startup finished in 6.835 s 
+2020-10-05 00:51:09.6214 Info Starting Jackett v0.16.1559.0 
+2020-10-05 00:51:10.8867 Info Environment version: 3.1.8 (/app/Jackett/) 
+2020-10-05 00:51:10.8867 Info OS version: Unix 4.19.0.11 (64bit OS) (64bit process) 
+2020-10-05 00:51:10.8867 Info Jackett variant: CoreLinuxAmdx64 
+2020-10-05 00:51:10.8867 Info File /etc/issue: Ubuntu 18.04.5 LTS \n \l 
+2020-10-05 00:51:10.8867 Info Running in Docker: Yes (image build: v0.16.1549-ls20) 
+2020-10-05 00:51:10.8867 Info ThreadPool MaxThreads: 32767 workerThreads, 1000 completionPortThreads 
+2020-10-05 00:51:10.8895 Info App config/log directory: /config/Jackett 
+2020-10-05 00:51:10.8895 Info Using proxy: Disabled 
+2020-10-05 00:51:10.8962 Info Using HTTP Client: HttpWebClient2 
+2020-10-05 00:51:11.1553 Info Loading Cardigann definitions from: /config/cardigann/definitions/, /etc/xdg/cardigan/definitions/, /app/Jackett/Definitions 
+2020-10-05 00:51:13.8293 Info Cardigann definitions loaded: abnormal, alpharatio, anidex, anidub, animebytes, animetorrents, anthelion, avistaz, awesomehd, bakabt, bb, bitcityreloaded, bithdtv, bjshare, broadcasthenet, brokenstones, cgpeers, cinecalidad, cinemaz, corsarored, danishbits, dicmusic, digitalcore, digitalhive, divxtotal, elitetracker, epublibre, exoticaz, filelist, funfile, fuzer, gazellegames, gimmepeers, hdbitsapi, hdonly, hdspace, hdtorrents, hebits, icetorrent, immortalseed, internetarchive, iptorrents, libble, lostfilm, mejortorrent, milkie, morethantv, myamity, myanonamouse, ncore, nebulance, newpct, newrealworld, norbits, nordicbits, notwhatcd, orpheus, partis, passthepopcorn, piratethenet, pixelhd, polishtracker, pornolab, pretome, privatehd, psytorrents, rarbg, redacted, revolutiontt, rutracker, scenefz, scenehd, scenetime, secretcinema, shazbat, showrss, solidtorrents, speedcd, superbits, thepiratebay, toloka, torrentbytes, torrentday, torrentech, torrentheaven, torrentleech, torrentnetwork, torrentscsv, torrentseeds, torrentsyndikat, tvstore, tvvault, xspeeds, xthor, xtremezone, yts, animetosho, esharenet, 52pt, hdroute, pornbay, gamestorrents, torrentland, cztorrent, shareuniversity, 7torrents, crazyhd, femdomcult, crnaberza, cinemamovies, polishsource, mactorrents, btetree, learnflakes, theunknown, rapidzona, RockBox, anisource, pier720, finelite, hdme, nbtorrents, torrentproject2, 3dtorrents, unionfansub, legacyhd, torrent9clone, thegeeks, demonoid, torrentdownloads, hdcity, hdchina, fouducinema, girotorrent, hdspain, empornium, generationfree, thefallingangels, Bittorrentfiles, torrentsectorcrew, mteamtp, btsow, fantasticheaven, concen, iv-torrents, chdbits, movcr, tapochek, chilebt, redstartorrent, torrentlt, hdcenter, torrentfunk, gay-torrentsorg, pleasuredome, gigatorrents, empornium2fa, marinetracker, hddolby, rintor, asgaard, onlineselfeducation, cinematik, uhdbits, magnet4you, xwtorrents, dark-shadow, ehentai, witchhunter, theplace, hdreactor, piratbitl, parnuxi, pixelcove, microbit, kinorun, zooqle, yourbittorrent, pornbits, theoccult, xbytesv2, turktorrent, zelkaorg, torrentbomb, btnext, exkinoray, beyond-hd, hdtorrentsit, theshinning, cartoonchaos, majomparade, tvchaosuk, arabp2p, btdigg, pornotor, rutracker-ru, darmowetorenty, rutor, noname-club, torrent-explosiv, idope, teamos, aftershock, bithumen, mvgroupmain, keepfriends, monova, xxxtorrents, shellife, teamhd, immortuos, rainbowtracker, backups, casstudiotv, cpasbienclone, torrentview, riperam, thehorrorcharnel, linuxtracker, ptmsg, uniondht, crazyspirits, erzsebet, pterclub, torrenting, netlab, audiobookbay, lechaudron, siambit, 32pages, underversel, torrent4you, btgigs, documentarytorrents, shareisland, sexypics, hdolimpo, tenyardtracker, u2, gay-torrents, jptv, bitspyder, totheglory, tasmanit, acidlounge, kinonavse100, racing4everyone, tekno3d, exttorrents, darktracker, metaltracker, fullmixmusic, pornorip, purovicio, rptorrents, cooltorrent, greekteam, dxp, bitturk, diablotorrent, extremetorrents, booktracker, baibako, acgsou, torrentquest, losslessclub, aidoruonline, sukebei-pantsu, legittorrents, hdhome, datascene, torrent-turk, proporno, myspleen, nethd, hdc, hddisk, torrent9, zetorrents, ebooks-shares, kinozal, Channelx, trezzor, frozenlayer, hdturk, dmhy, xxxadulttorrent, hdbits, 1ptbar, r3vwtf, btschool, arabafenice, onejav, magnetdl, Das-Unerwartete, extremebits, newstudio, nntt, filebase, trancetraffic, xwtclassics, finvip, asylumshare, karagarga, nyaa-pantsu, torrentdb, lesaloon, eztv, thevault, zamundanet, yingk, yggcookie, hdbitscom, carpathians, topnow, hqsource, torrentz2, tokyotosho, concertos, bibliotik, yggtorrent, leaguehd, moviesdvdr, film-paleis, nitro, 4thd, twilight, hush, 3changtrai, broadcity, bithorlo, torrentv, linkomanija, seedfile, funkytorrents, totallykids, haidan, underverse, newstudiol, scenerush, hellastz, 3evils, sktorrent, ilcorsaroblu, pornleech, kickasstorrent, bwtorrents, mvgroupforum, elitetorrent-biz, efectodoppler, hachede, vizuk, aniRena, tellytorrent, torrentfactory, ydypt, bit-titan, pctorrent, desireleasers, oshenpt, audionews, bigfangroup, world-of-tomorrow, torrentccf, sdbits, omgwtftrackr, dxdhd, pwtorrents, hd4fans, xiteme, sharewood, fanoin, rus-media, 2fast4you, bluebirdhd, toros, ptsbao, p2pelite, gaytorrentru, desitorrents, korsar, arenabg, tjupt, hdzone, torlock, wihd, freetorrent, pussytorrents, ttsweb, retroflix, hamsterstudio, glodls, estone, extratorrent-cd, unlimitz, wdt, hdsky, cinemageddon, ptfiles, leporno, springsunday, torrenthr, sdkino, sukebeinyaasi, torrentgalaxyorg, dragonworldreloaded, dimeadozen, kickasstorrent-kathow, deildu, xxxtor, jpopsuki, acgrip, ibit, totheglorycookie, tribalmixes, mypornclub, sosulki, insanetracker, soundpark, hdforever, mononokebt, pthome, bigtower, bigtorrent, magico, piratadigital, scenepalace, classix, pirateiro, greekdiamond, torrentseed, divteam, pornforall, torrentoyunindir, theshow, aither, torrentparadise, beitai, limetorrents, blutopia, xfsub, hon3yhd, extremlymtorrents, turkseed, brasiltracker, gktorrent, proaudiotorrents, pornolive, amigosshare, snowpt, mma-torrents, netcosmo, spacetorrent, ethor, rustorka, hdu, torrentbd, beyond-hd-oneurl, ast4u, torrentz2k, mteamtp2fa, 0daykiev, hdstreet, theaudioscene, itorrent, isohunt2, prostylex, boxingtorrents, torrentdownload, spiritofrevolution, horrorsite, ettv, sktorrent-org, ztracker, epizod, torrentslocal, sportscult, torrent-pirat, nyaasi, muziekfabriek, libranet, focusx, newretro, bitru, piratbit, soulvoice, ccfbits, oxtorrent, ourbits, speedmasterhd, selezen, audiobooktorrents, shokweb, tlfbits, torrentleech-pl, cpasbien, romanianmetaltorrents, ilcorsaronero, eniahd, twilightszoom, lastfiles, btdb, uniongang, ebookparadijs, speedtorrentreloaded, cilipro, galeriens, gfxpeers, hdarea, racingforme, puntorrent, rintornet, takeabyte, asiancinema, trupornolabs, hdtime, carphunter, torrentkitty, 1337x, brobits, skytorrentsclone, erzsebetpl, peersfm, firebit, p2pbg, onlyscene, casatorrent, theempire, mnv 
+2020-10-05 00:51:13.8305 Info Adding aggregate indexer 
+2020-10-05 00:51:14.1466 Info Jackett startup finished in 6.314 s 
+2020-10-05 00:53:44.4166 Info Found 25 (1 new) releases from The Pirate Bay 
+2020-10-05 01:09:14.0896 Info Found 26 (3 new) releases from The Pirate Bay 
+2020-10-05 01:20:14.0108 Info Found 97 (1 new) releases from YTS 
+2020-10-05 01:24:44.7236 Info Found 30 (6 new) releases from The Pirate Bay 
+2020-10-05 01:40:14.8601 Info Found 28 (2 new) releases from The Pirate Bay 
+2020-10-05 01:51:13.8406 Info Checking for updates... Jackett variant: CoreLinuxAmdx64 
+2020-10-05 01:51:13.8406 Info Skipping update check as it is disabled. 
+2020-10-05 01:55:45.2309 Info Found 29 (2 new) releases from The Pirate Bay 
+2020-10-05 02:11:15.5246 Info Found 29 (16 new) releases from The Pirate Bay 
+2020-10-05 02:20:45.0619 Info Found 99 (2 new) releases from YTS 
+2020-10-05 02:26:45.8909 Info Found 31 (5 new) releases from The Pirate Bay 
+2020-10-05 02:42:25.2009 Error Jackett.Common.IndexerException: Exception (thepiratebay): Resource temporarily unavailable
+ ---> System.Net.Http.HttpRequestException: Resource temporarily unavailable
+ ---> System.Net.Sockets.SocketException (11): Resource temporarily unavailable
+   at System.Net.Http.ConnectHelper.ConnectAsync(String host, Int32 port, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.ConnectHelper.ConnectAsync(String host, Int32 port, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean allowHttp2, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.GetHttpConnectionAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithRetryAsync(HttpRequestMessage request, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.DecompressionHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.DiagnosticsHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at CloudflareSolverRe.ClearanceHandler.SendRequestAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at CloudflareSolverRe.ClearanceHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.FinishSendAsyncBuffered(Task`1 sendTask, HttpRequestMessage request, CancellationTokenSource cts, Boolean disposeCts)
+   at Jackett.Common.Utils.Clients.HttpWebClient2.Run(WebRequest webRequest) in /home/vsts/work/1/s/src/Jackett.Common/Utils/Clients/HttpWebClient2.cs:line 165
+   at Jackett.Common.Utils.Clients.WebClient.GetResultAsync(WebRequest request) in /home/vsts/work/1/s/src/Jackett.Common/Utils/Clients/WebClient.cs:line 174
+   at Jackett.Common.Indexers.BaseWebIndexer.RequestWithCookiesAsync(String url, String cookieOverride, RequestType method, String referer, IEnumerable`1 data, Dictionary`2 headers, String rawbody, Nullable`1 emulateBrowser) in /home/vsts/work/1/s/src/Jackett.Common/Indexers/BaseIndexer.cs:line 457
+   at Jackett.Common.Indexers.ThePirateBay.GetRecentTorrents() in /home/vsts/work/1/s/src/Jackett.Common/Indexers/ThePirateBay.cs:line 203
+   at Jackett.Common.Indexers.ThePirateBay.PerformQuery(TorznabQuery query) in /home/vsts/work/1/s/src/Jackett.Common/Indexers/ThePirateBay.cs:line 171
+   at Jackett.Common.Indexers.BaseIndexer.ResultsForQuery(TorznabQuery query) in /home/vsts/work/1/s/src/Jackett.Common/Indexers/BaseIndexer.cs:line 331
+   --- End of inner exception stack trace ---
+   at Jackett.Common.Indexers.BaseIndexer.ResultsForQuery(TorznabQuery query) in /home/vsts/work/1/s/src/Jackett.Common/Indexers/BaseIndexer.cs:line 351
+   at Jackett.Common.Indexers.BaseWebIndexer.ResultsForQuery(TorznabQuery query) in /home/vsts/work/1/s/src/Jackett.Common/Indexers/BaseIndexer.cs:line 726
+   at Jackett.Server.Controllers.ResultsController.Torznab(TorznabRequest request) in /home/vsts/work/1/s/src/Jackett.Server/Controllers/ResultsController.cs:line 388 Jackett.Common.IndexerException: Exception (thepiratebay): Resource temporarily unavailable
+ ---> System.Net.Http.HttpRequestException: Resource temporarily unavailable
+ ---> System.Net.Sockets.SocketException (11): Resource temporarily unavailable
+   at System.Net.Http.ConnectHelper.ConnectAsync(String host, Int32 port, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.ConnectHelper.ConnectAsync(String host, Int32 port, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean allowHttp2, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.GetHttpConnectionAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithRetryAsync(HttpRequestMessage request, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.DecompressionHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.DiagnosticsHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at CloudflareSolverRe.ClearanceHandler.SendRequestAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at CloudflareSolverRe.ClearanceHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.FinishSendAsyncBuffered(Task`1 sendTask, HttpRequestMessage request, CancellationTokenSource cts, Boolean disposeCts)
+   at Jackett.Common.Utils.Clients.HttpWebClient2.Run(WebRequest webRequest) in /home/vsts/work/1/s/src/Jackett.Common/Utils/Clients/HttpWebClient2.cs:line 165
+   at Jackett.Common.Utils.Clients.WebClient.GetResultAsync(WebRequest request) in /home/vsts/work/1/s/src/Jackett.Common/Utils/Clients/WebClient.cs:line 174
+   at Jackett.Common.Indexers.BaseWebIndexer.RequestWithCookiesAsync(String url, String cookieOverride, RequestType method, String referer, IEnumerable`1 data, Dictionary`2 headers, String rawbody, Nullable`1 emulateBrowser) in /home/vsts/work/1/s/src/Jackett.Common/Indexers/BaseIndexer.cs:line 457
+   at Jackett.Common.Indexers.ThePirateBay.GetRecentTorrents() in /home/vsts/work/1/s/src/Jackett.Common/Indexers/ThePirateBay.cs:line 203
+   at Jackett.Common.Indexers.ThePirateBay.PerformQuery(TorznabQuery query) in /home/vsts/work/1/s/src/Jackett.Common/Indexers/ThePirateBay.cs:line 171
+   at Jackett.Common.Indexers.BaseIndexer.ResultsForQuery(TorznabQuery query) in /home/vsts/work/1/s/src/Jackett.Common/Indexers/BaseIndexer.cs:line 331
+   --- End of inner exception stack trace ---
+   at Jackett.Common.Indexers.BaseIndexer.ResultsForQuery(TorznabQuery query) in /home/vsts/work/1/s/src/Jackett.Common/Indexers/BaseIndexer.cs:line 351
+   at Jackett.Common.Indexers.BaseWebIndexer.ResultsForQuery(TorznabQuery query) in /home/vsts/work/1/s/src/Jackett.Common/Indexers/BaseIndexer.cs:line 726
+   at Jackett.Server.Controllers.ResultsController.Torznab(TorznabRequest request) in /home/vsts/work/1/s/src/Jackett.Server/Controllers/ResultsController.cs:line 388
+2020-10-05 02:57:46.8476 Info Found 34 (21 new) releases from The Pirate Bay 
+2020-10-05 03:13:17.1817 Info Found 37 (20 new) releases from The Pirate Bay 
+2020-10-05 03:21:16.4509 Info Found 100 (98 new) releases from YTS 
+2020-10-05 03:28:47.6950 Info Found 37 (3 new) releases from The Pirate Bay 
+2020-10-05 03:44:18.1853 Info Found 32 (7 new) releases from The Pirate Bay 
+2020-10-05 03:59:48.6219 Info Found 29 (12 new) releases from The Pirate Bay 
+2020-10-05 04:15:19.3726 Info Found 28 (16 new) releases from The Pirate Bay 
+2020-10-05 04:21:47.8354 Info Found 100 (2 new) releases from YTS 
+2020-10-05 04:30:49.4947 Info Found 27 (2 new) releases from The Pirate Bay 
+2020-10-05 04:46:20.0561 Info Found 29 (3 new) releases from The Pirate Bay 
+2020-10-05 05:01:50.1861 Info Found 27 (4 new) releases from The Pirate Bay 
+2020-10-05 05:17:20.7099 Info Found 26 (1 new) releases from The Pirate Bay 
+2020-10-05 05:22:19.0241 Info Found 100 (98 new) releases from YTS 
+2020-10-05 05:32:51.1745 Info Found 25 (15 new) releases from The Pirate Bay 
+2020-10-05 05:48:21.7255 Info Found 23 (6 new) releases from The Pirate Bay 
+2020-10-05 06:03:52.0959 Info Found 19 (3 new) releases from The Pirate Bay 
+2020-10-05 06:19:22.7761 Info Found 16 (5 new) releases from The Pirate Bay 
+2020-10-05 06:22:49.7825 Info Found 100 (2 new) releases from YTS 
+2020-10-05 06:34:53.1518 Info Found 13 (1 new) releases from The Pirate Bay 
+2020-10-05 06:50:23.4217 Info Found 9 (3 new) releases from The Pirate Bay 
+2020-10-05 07:05:53.9904 Info Found 13 (11 new) releases from The Pirate Bay 
+2020-10-05 07:21:24.7067 Info Found 23 (12 new) releases from The Pirate Bay 
+2020-10-05 07:23:21.1912 Info Found 100 (99 new) releases from YTS 
+2020-10-05 07:36:55.5432 Info Found 27 (11 new) releases from The Pirate Bay 
+2020-10-05 07:52:26.1087 Info Found 36 (22 new) releases from The Pirate Bay 
+2020-10-05 08:07:56.5857 Info Found 36 (5 new) releases from The Pirate Bay 
+2020-10-05 08:23:27.1508 Info Found 37 (4 new) releases from The Pirate Bay 
+2020-10-05 08:23:53.0381 Info Found 100 (100 new) releases from YTS 
+2020-10-05 08:38:57.4311 Info Found 34 (2 new) releases from The Pirate Bay 
+2020-10-05 08:54:27.6553 Info Found 33 (0 new) releases from The Pirate Bay 
+2020-10-05 09:09:58.4416 Info Found 30 (19 new) releases from The Pirate Bay 
+2020-10-05 09:24:23.8363 Info Found 100 (0 new) releases from YTS 
+2020-10-05 09:25:28.7887 Info Found 27 (10 new) releases from The Pirate Bay 
+2020-10-05 09:31:28.6774 Info Starting Jackett v0.16.1559.0 
+2020-10-05 09:31:29.9818 Info Environment version: 3.1.8 (/app/Jackett/) 
+2020-10-05 09:31:29.9818 Info OS version: Unix 4.19.0.11 (64bit OS) (64bit process) 
+2020-10-05 09:31:29.9818 Info Jackett variant: CoreLinuxAmdx64 
+2020-10-05 09:31:29.9818 Info File /etc/issue: Ubuntu 18.04.5 LTS \n \l 
+2020-10-05 09:31:29.9818 Info Running in Docker: Yes (image build: v0.16.1549-ls20) 
+2020-10-05 09:31:29.9818 Info ThreadPool MaxThreads: 32767 workerThreads, 1000 completionPortThreads 
+2020-10-05 09:31:29.9818 Info App config/log directory: /config/Jackett 
+2020-10-05 09:31:29.9818 Info Using proxy: Disabled 
+2020-10-05 09:31:29.9935 Info Using HTTP Client: HttpWebClient2 
+2020-10-05 09:31:30.3210 Info Loading Cardigann definitions from: /config/cardigann/definitions/, /etc/xdg/cardigan/definitions/, /app/Jackett/Definitions 
+2020-10-05 09:31:33.1079 Info Cardigann definitions loaded: abnormal, alpharatio, anidex, anidub, animebytes, animetorrents, anthelion, avistaz, awesomehd, bakabt, bb, bitcityreloaded, bithdtv, bjshare, broadcasthenet, brokenstones, cgpeers, cinecalidad, cinemaz, corsarored, danishbits, dicmusic, digitalcore, digitalhive, divxtotal, elitetracker, epublibre, exoticaz, filelist, funfile, fuzer, gazellegames, gimmepeers, hdbitsapi, hdonly, hdspace, hdtorrents, hebits, icetorrent, immortalseed, internetarchive, iptorrents, libble, lostfilm, mejortorrent, milkie, morethantv, myamity, myanonamouse, ncore, nebulance, newpct, newrealworld, norbits, nordicbits, notwhatcd, orpheus, partis, passthepopcorn, piratethenet, pixelhd, polishtracker, pornolab, pretome, privatehd, psytorrents, rarbg, redacted, revolutiontt, rutracker, scenefz, scenehd, scenetime, secretcinema, shazbat, showrss, solidtorrents, speedcd, superbits, thepiratebay, toloka, torrentbytes, torrentday, torrentech, torrentheaven, torrentleech, torrentnetwork, torrentscsv, torrentseeds, torrentsyndikat, tvstore, tvvault, xspeeds, xthor, xtremezone, yts, animetosho, esharenet, 52pt, hdroute, pornbay, gamestorrents, torrentland, cztorrent, shareuniversity, 7torrents, crazyhd, femdomcult, crnaberza, cinemamovies, polishsource, mactorrents, btetree, learnflakes, theunknown, rapidzona, RockBox, anisource, pier720, finelite, hdme, nbtorrents, torrentproject2, 3dtorrents, unionfansub, legacyhd, torrent9clone, thegeeks, demonoid, torrentdownloads, hdcity, hdchina, fouducinema, girotorrent, hdspain, empornium, generationfree, thefallingangels, Bittorrentfiles, torrentsectorcrew, mteamtp, btsow, fantasticheaven, concen, iv-torrents, chdbits, movcr, tapochek, chilebt, redstartorrent, torrentlt, hdcenter, torrentfunk, gay-torrentsorg, pleasuredome, gigatorrents, empornium2fa, marinetracker, hddolby, rintor, asgaard, onlineselfeducation, cinematik, uhdbits, magnet4you, xwtorrents, dark-shadow, ehentai, witchhunter, theplace, hdreactor, piratbitl, parnuxi, pixelcove, microbit, kinorun, zooqle, yourbittorrent, pornbits, theoccult, xbytesv2, turktorrent, zelkaorg, torrentbomb, btnext, exkinoray, beyond-hd, hdtorrentsit, theshinning, cartoonchaos, majomparade, tvchaosuk, arabp2p, btdigg, pornotor, rutracker-ru, darmowetorenty, rutor, noname-club, torrent-explosiv, idope, teamos, aftershock, bithumen, mvgroupmain, keepfriends, monova, xxxtorrents, shellife, teamhd, immortuos, rainbowtracker, backups, casstudiotv, cpasbienclone, torrentview, riperam, thehorrorcharnel, linuxtracker, ptmsg, uniondht, crazyspirits, erzsebet, pterclub, torrenting, netlab, audiobookbay, lechaudron, siambit, 32pages, underversel, torrent4you, btgigs, documentarytorrents, shareisland, sexypics, hdolimpo, tenyardtracker, u2, gay-torrents, jptv, bitspyder, totheglory, tasmanit, acidlounge, kinonavse100, racing4everyone, tekno3d, exttorrents, darktracker, metaltracker, fullmixmusic, pornorip, purovicio, rptorrents, cooltorrent, greekteam, dxp, bitturk, diablotorrent, extremetorrents, booktracker, baibako, acgsou, torrentquest, losslessclub, aidoruonline, sukebei-pantsu, legittorrents, hdhome, datascene, torrent-turk, proporno, myspleen, nethd, hdc, hddisk, torrent9, zetorrents, ebooks-shares, kinozal, Channelx, trezzor, frozenlayer, hdturk, dmhy, xxxadulttorrent, hdbits, 1ptbar, r3vwtf, btschool, arabafenice, onejav, magnetdl, Das-Unerwartete, extremebits, newstudio, nntt, filebase, trancetraffic, xwtclassics, finvip, asylumshare, karagarga, nyaa-pantsu, torrentdb, lesaloon, eztv, thevault, zamundanet, yingk, yggcookie, hdbitscom, carpathians, topnow, hqsource, torrentz2, tokyotosho, concertos, bibliotik, yggtorrent, leaguehd, moviesdvdr, film-paleis, nitro, 4thd, twilight, hush, 3changtrai, broadcity, bithorlo, torrentv, linkomanija, seedfile, funkytorrents, totallykids, haidan, underverse, newstudiol, scenerush, hellastz, 3evils, sktorrent, ilcorsaroblu, pornleech, kickasstorrent, bwtorrents, mvgroupforum, elitetorrent-biz, efectodoppler, hachede, vizuk, aniRena, tellytorrent, torrentfactory, ydypt, bit-titan, pctorrent, desireleasers, oshenpt, audionews, bigfangroup, world-of-tomorrow, torrentccf, sdbits, omgwtftrackr, dxdhd, pwtorrents, hd4fans, xiteme, sharewood, fanoin, rus-media, 2fast4you, bluebirdhd, toros, ptsbao, p2pelite, gaytorrentru, desitorrents, korsar, arenabg, tjupt, hdzone, torlock, wihd, freetorrent, pussytorrents, ttsweb, retroflix, hamsterstudio, glodls, estone, extratorrent-cd, unlimitz, wdt, hdsky, cinemageddon, ptfiles, leporno, springsunday, torrenthr, sdkino, sukebeinyaasi, torrentgalaxyorg, dragonworldreloaded, dimeadozen, kickasstorrent-kathow, deildu, xxxtor, jpopsuki, acgrip, ibit, totheglorycookie, tribalmixes, mypornclub, sosulki, insanetracker, soundpark, hdforever, mononokebt, pthome, bigtower, bigtorrent, magico, piratadigital, scenepalace, classix, pirateiro, greekdiamond, torrentseed, divteam, pornforall, torrentoyunindir, theshow, aither, torrentparadise, beitai, limetorrents, blutopia, xfsub, hon3yhd, extremlymtorrents, turkseed, brasiltracker, gktorrent, proaudiotorrents, pornolive, amigosshare, snowpt, mma-torrents, netcosmo, spacetorrent, ethor, rustorka, hdu, torrentbd, beyond-hd-oneurl, ast4u, torrentz2k, mteamtp2fa, 0daykiev, hdstreet, theaudioscene, itorrent, isohunt2, prostylex, boxingtorrents, torrentdownload, spiritofrevolution, horrorsite, ettv, sktorrent-org, ztracker, epizod, torrentslocal, sportscult, torrent-pirat, nyaasi, muziekfabriek, libranet, focusx, newretro, bitru, piratbit, soulvoice, ccfbits, oxtorrent, ourbits, speedmasterhd, selezen, audiobooktorrents, shokweb, tlfbits, torrentleech-pl, cpasbien, romanianmetaltorrents, ilcorsaronero, eniahd, twilightszoom, lastfiles, btdb, uniongang, ebookparadijs, speedtorrentreloaded, cilipro, galeriens, gfxpeers, hdarea, racingforme, puntorrent, rintornet, takeabyte, asiancinema, trupornolabs, hdtime, carphunter, torrentkitty, 1337x, brobits, skytorrentsclone, erzsebetpl, peersfm, firebit, p2pbg, onlyscene, casatorrent, theempire, mnv 
+2020-10-05 09:31:33.1093 Info Adding aggregate indexer 
+2020-10-05 09:31:33.4632 Info Jackett startup finished in 6.578 s 
+2020-10-05 09:40:33.8211 Info Found 26 (1 new) releases from The Pirate Bay 
+2020-10-05 09:56:03.6123 Info Found 24 (4 new) releases from The Pirate Bay 
+2020-10-05 10:11:34.1508 Info Found 24 (3 new) releases from The Pirate Bay 
+2020-10-05 10:24:33.6848 Info Found 100 (1 new) releases from YTS 
+2020-10-05 10:27:04.5627 Info Found 25 (1 new) releases from The Pirate Bay 
+2020-10-05 10:31:33.1220 Info Checking for updates... Jackett variant: CoreLinuxAmdx64 
+2020-10-05 10:31:33.1220 Info Skipping update check as it is disabled. 
+2020-10-05 10:42:35.1707 Info Found 20 (0 new) releases from The Pirate Bay 
+2020-10-05 10:58:05.4958 Info Found 21 (13 new) releases from The Pirate Bay 
+2020-10-05 11:13:35.9240 Info Found 21 (5 new) releases from The Pirate Bay 
+2020-10-05 11:25:04.8870 Info Found 100 (0 new) releases from YTS 
+2020-10-05 11:29:06.2032 Info Found 21 (6 new) releases from The Pirate Bay 
+2020-10-05 11:44:36.1297 Info Found 19 (3 new) releases from The Pirate Bay 
+2020-10-05 12:00:07.0239 Info Found 19 (2 new) releases from The Pirate Bay 
+2020-10-05 12:15:37.3489 Info Found 19 (3 new) releases from The Pirate Bay 
+2020-10-05 12:25:35.9259 Info Found 100 (100 new) releases from YTS 
+2020-10-05 12:31:07.8201 Info Found 16 (4 new) releases from The Pirate Bay 
+2020-10-05 12:46:38.0837 Info Found 10 (4 new) releases from The Pirate Bay 
+2020-10-05 13:02:08.6113 Info Found 5 (3 new) releases from The Pirate Bay 
+2020-10-05 13:12:03.3623 Info Found 3 (3 new) releases from YTS 
+2020-10-05 13:12:07.3189 Info Found 2 (2 new) releases from YTS 
+2020-10-05 13:12:20.9981 Info Found 3 (3 new) releases from YTS 
+2020-10-05 13:17:39.5154 Info Found 7 (4 new) releases from The Pirate Bay 
+2020-10-05 13:26:07.1484 Info Found 98 (16 new) releases from YTS 
+2020-10-05 13:33:09.9675 Info Found 8 (2 new) releases from The Pirate Bay 
+2020-10-05 13:48:40.1263 Info Found 9 (2 new) releases from The Pirate Bay 
+2020-10-05 14:04:10.6457 Info Found 12 (5 new) releases from The Pirate Bay 
+2020-10-05 14:19:41.0065 Info Found 17 (7 new) releases from The Pirate Bay 
+2020-10-05 14:26:38.4091 Info Found 100 (84 new) releases from YTS 
+2020-10-05 14:35:11.4834 Info Found 15 (2 new) releases from The Pirate Bay 
+2020-10-05 14:50:41.6290 Info Found 14 (0 new) releases from The Pirate Bay 
+2020-10-05 15:06:12.0950 Info Found 10 (5 new) releases from The Pirate Bay 
+2020-10-05 15:21:42.5457 Info Found 10 (3 new) releases from The Pirate Bay 
+2020-10-05 15:27:09.5691 Info Found 100 (16 new) releases from YTS 
+2020-10-05 15:37:12.9852 Info Found 12 (3 new) releases from The Pirate Bay 
+2020-10-05 15:52:43.4403 Info Found 15 (4 new) releases from The Pirate Bay 
+2020-10-05 16:08:13.6432 Info Found 18 (3 new) releases from The Pirate Bay 
+2020-10-05 16:23:44.3902 Info Found 18 (5 new) releases from The Pirate Bay 
+2020-10-05 16:27:40.4561 Info Found 100 (84 new) releases from YTS 
+2020-10-05 16:39:15.0617 Info Found 20 (6 new) releases from The Pirate Bay 
+2020-10-05 16:54:44.8910 Info Found 20 (4 new) releases from The Pirate Bay 
+2020-10-05 17:10:15.4004 Info Found 19 (7 new) releases from The Pirate Bay 
+2020-10-05 17:25:45.5608 Info Found 22 (8 new) releases from The Pirate Bay 
+2020-10-05 17:28:11.7546 Info Found 100 (16 new) releases from YTS 
+2020-10-05 17:41:15.8757 Info Found 22 (2 new) releases from The Pirate Bay 
+2020-10-05 17:56:45.9516 Info Found 23 (5 new) releases from The Pirate Bay 
+2020-10-05 18:12:16.6568 Info Found 21 (1 new) releases from The Pirate Bay 
+2020-10-05 18:27:47.0651 Info Found 4 (4 new) releases from The Pirate Bay 
+2020-10-05 18:28:42.8831 Info Found 97 (87 new) releases from YTS 
+2020-10-05 18:43:17.4656 Info Found 12 (8 new) releases from The Pirate Bay 
+2020-10-05 18:58:48.0759 Info Found 13 (3 new) releases from The Pirate Bay 
+2020-10-05 19:14:18.2084 Info Found 18 (5 new) releases from The Pirate Bay 
+2020-10-05 19:29:14.0802 Info Found 98 (11 new) releases from YTS 
+2020-10-05 19:29:49.0009 Info Found 23 (7 new) releases from The Pirate Bay 
+2020-10-05 19:45:19.3689 Info Found 28 (5 new) releases from The Pirate Bay 
+2020-10-05 20:00:49.6666 Info Found 31 (11 new) releases from The Pirate Bay 
+2020-10-05 20:16:20.2005 Info Found 39 (15 new) releases from The Pirate Bay 
+2020-10-05 20:29:45.2979 Info Found 99 (88 new) releases from YTS 
+2020-10-05 20:31:50.6410 Info Found 41 (14 new) releases from The Pirate Bay 
+2020-10-05 20:47:21.1868 Info Found 42 (9 new) releases from The Pirate Bay 
+2020-10-05 21:02:51.1970 Info Found 45 (13 new) releases from The Pirate Bay 
+2020-10-05 21:18:21.8034 Info Found 44 (5 new) releases from The Pirate Bay 
+2020-10-05 21:30:16.3595 Info Found 100 (12 new) releases from YTS 
+2020-10-05 21:34:01.0329 Error Jackett.Common.IndexerException: Exception (thepiratebay): Resource temporarily unavailable
+ ---> System.Net.Http.HttpRequestException: Resource temporarily unavailable
+ ---> System.Net.Sockets.SocketException (11): Resource temporarily unavailable
+   at System.Net.Http.ConnectHelper.ConnectAsync(String host, Int32 port, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.ConnectHelper.ConnectAsync(String host, Int32 port, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean allowHttp2, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.GetHttpConnectionAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithRetryAsync(HttpRequestMessage request, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.DecompressionHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.DiagnosticsHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at CloudflareSolverRe.ClearanceHandler.SendRequestAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at CloudflareSolverRe.ClearanceHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.FinishSendAsyncBuffered(Task`1 sendTask, HttpRequestMessage request, CancellationTokenSource cts, Boolean disposeCts)
+   at Jackett.Common.Utils.Clients.HttpWebClient2.Run(WebRequest webRequest) in /home/vsts/work/1/s/src/Jackett.Common/Utils/Clients/HttpWebClient2.cs:line 165
+   at Jackett.Common.Utils.Clients.WebClient.GetResultAsync(WebRequest request) in /home/vsts/work/1/s/src/Jackett.Common/Utils/Clients/WebClient.cs:line 199
+   at Jackett.Common.Indexers.BaseWebIndexer.RequestWithCookiesAsync(String url, String cookieOverride, RequestType method, String referer, IEnumerable`1 data, Dictionary`2 headers, String rawbody, Nullable`1 emulateBrowser) in /home/vsts/work/1/s/src/Jackett.Common/Indexers/BaseIndexer.cs:line 461
+   at Jackett.Common.Indexers.ThePirateBay.GetRecentTorrents() in /home/vsts/work/1/s/src/Jackett.Common/Indexers/ThePirateBay.cs:line 208
+   at Jackett.Common.Indexers.ThePirateBay.PerformQuery(TorznabQuery query) in /home/vsts/work/1/s/src/Jackett.Common/Indexers/ThePirateBay.cs:line 199
+   at Jackett.Common.Indexers.BaseIndexer.ResultsForQuery(TorznabQuery query) in /home/vsts/work/1/s/src/Jackett.Common/Indexers/BaseIndexer.cs:line 353
+   --- End of inner exception stack trace ---
+   at Jackett.Common.Indexers.BaseIndexer.ResultsForQuery(TorznabQuery query) in /home/vsts/work/1/s/src/Jackett.Common/Indexers/BaseIndexer.cs:line 353
+   at Jackett.Common.Indexers.BaseWebIndexer.ResultsForQuery(TorznabQuery query) in /home/vsts/work/1/s/src/Jackett.Common/Indexers/BaseIndexer.cs:line 730
+   at Jackett.Server.Controllers.ResultsController.Torznab(TorznabRequest request) in /home/vsts/work/1/s/src/Jackett.Server/Controllers/ResultsController.cs:line 448 Jackett.Common.IndexerException: Exception (thepiratebay): Resource temporarily unavailable
+ ---> System.Net.Http.HttpRequestException: Resource temporarily unavailable
+ ---> System.Net.Sockets.SocketException (11): Resource temporarily unavailable
+   at System.Net.Http.ConnectHelper.ConnectAsync(String host, Int32 port, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.ConnectHelper.ConnectAsync(String host, Int32 port, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean allowHttp2, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.GetHttpConnectionAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithRetryAsync(HttpRequestMessage request, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.DecompressionHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.DiagnosticsHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at CloudflareSolverRe.ClearanceHandler.SendRequestAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at CloudflareSolverRe.ClearanceHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.FinishSendAsyncBuffered(Task`1 sendTask, HttpRequestMessage request, CancellationTokenSource cts, Boolean disposeCts)
+   at Jackett.Common.Utils.Clients.HttpWebClient2.Run(WebRequest webRequest) in /home/vsts/work/1/s/src/Jackett.Common/Utils/Clients/HttpWebClient2.cs:line 165
+   at Jackett.Common.Utils.Clients.WebClient.GetResultAsync(WebRequest request) in /home/vsts/work/1/s/src/Jackett.Common/Utils/Clients/WebClient.cs:line 199
+   at Jackett.Common.Indexers.BaseWebIndexer.RequestWithCookiesAsync(String url, String cookieOverride, RequestType method, String referer, IEnumerable`1 data, Dictionary`2 headers, String rawbody, Nullable`1 emulateBrowser) in /home/vsts/work/1/s/src/Jackett.Common/Indexers/BaseIndexer.cs:line 461
+   at Jackett.Common.Indexers.ThePirateBay.GetRecentTorrents() in /home/vsts/work/1/s/src/Jackett.Common/Indexers/ThePirateBay.cs:line 208
+   at Jackett.Common.Indexers.ThePirateBay.PerformQuery(TorznabQuery query) in /home/vsts/work/1/s/src/Jackett.Common/Indexers/ThePirateBay.cs:line 199
+   at Jackett.Common.Indexers.BaseIndexer.ResultsForQuery(TorznabQuery query) in /home/vsts/work/1/s/src/Jackett.Common/Indexers/BaseIndexer.cs:line 353
+   --- End of inner exception stack trace ---
+   at Jackett.Common.Indexers.BaseIndexer.ResultsForQuery(TorznabQuery query) in /home/vsts/work/1/s/src/Jackett.Common/Indexers/BaseIndexer.cs:line 353
+   at Jackett.Common.Indexers.BaseWebIndexer.ResultsForQuery(TorznabQuery query) in /home/vsts/work/1/s/src/Jackett.Common/Indexers/BaseIndexer.cs:line 730
+   at Jackett.Server.Controllers.ResultsController.Torznab(TorznabRequest request) in /home/vsts/work/1/s/src/Jackett.Server/Controllers/ResultsController.cs:line 448
+2020-10-05 21:49:22.5841 Info Found 36 (7 new) releases from The Pirate Bay 
+2020-10-05 22:04:53.0436 Info Found 27 (11 new) releases from The Pirate Bay 
+2020-10-05 22:20:23.8191 Info Found 17 (10 new) releases from The Pirate Bay 
+2020-10-05 22:30:47.4359 Info Found 100 (88 new) releases from YTS 
+2020-10-05 22:35:53.9370 Info Found 15 (11 new) releases from The Pirate Bay 
+2020-10-05 22:40:39.5567 Info Found 5 (5 new) releases from YTS 
+2020-10-05 22:51:24.2573 Info Found 13 (0 new) releases from The Pirate Bay 
+2020-10-05 23:06:54.9200 Info Found 15 (4 new) releases from The Pirate Bay 
+2020-10-05 23:22:25.2346 Info Found 15 (1 new) releases from The Pirate Bay 
+2020-10-05 23:22:35.5953 Info Found 5 (0 new) releases from YTS 
+2020-10-05 23:24:33.8686 Info Found 5 (0 new) releases from YTS 
+2020-10-05 23:24:49.1286 Info Found 5 (0 new) releases from YTS 
+2020-10-05 23:31:19.2999 Info Found 100 (12 new) releases from YTS 
+2020-10-05 23:37:56.0866 Info Found 18 (4 new) releases from The Pirate Bay 
+2020-10-05 23:53:26.4109 Info Found 18 (11 new) releases from The Pirate Bay 
+2020-10-06 00:08:57.2314 Info Found 19 (1 new) releases from The Pirate Bay 
+2020-10-06 00:24:27.7323 Info Found 21 (4 new) releases from The Pirate Bay 
+2020-10-06 00:31:51.0987 Info Found 97 (85 new) releases from YTS 
+2020-10-06 00:39:58.3290 Info Found 22 (2 new) releases from The Pirate Bay 
+2020-10-06 00:55:28.8995 Info Found 24 (6 new) releases from The Pirate Bay 
+2020-10-06 01:10:59.0500 Info Found 26 (13 new) releases from The Pirate Bay 
+2020-10-06 01:26:29.7066 Info Found 22 (2 new) releases from The Pirate Bay 
+2020-10-06 01:32:22.8317 Info Found 99 (14 new) releases from YTS 
+2020-10-06 01:41:59.9147 Info Found 18 (6 new) releases from The Pirate Bay 
+2020-10-06 01:57:30.8020 Info Found 19 (4 new) releases from The Pirate Bay 
+2020-10-06 02:13:01.4231 Info Found 19 (6 new) releases from The Pirate Bay 
+2020-10-06 02:28:31.8008 Info Found 9 (3 new) releases from The Pirate Bay 
+2020-10-06 02:32:53.7149 Info Found 100 (86 new) releases from YTS 
+2020-10-06 02:44:02.2592 Info Found 8 (1 new) releases from The Pirate Bay 
+2020-10-06 02:59:32.6021 Info Found 9 (4 new) releases from The Pirate Bay 
+2020-10-06 03:15:03.2309 Info Found 10 (4 new) releases from The Pirate Bay 
+2020-10-06 03:30:33.4836 Info Found 8 (3 new) releases from The Pirate Bay 
+2020-10-06 03:33:24.9063 Info Found 100 (14 new) releases from YTS 
+2020-10-06 03:46:04.0838 Info Found 10 (3 new) releases from The Pirate Bay 
+2020-10-06 04:01:34.9472 Info Found 12 (3 new) releases from The Pirate Bay 
+2020-10-06 04:17:05.3634 Info Found 11 (2 new) releases from The Pirate Bay 
+2020-10-06 04:32:35.6230 Info Found 12 (1 new) releases from The Pirate Bay 
+2020-10-06 04:33:56.0247 Info Found 100 (86 new) releases from YTS 
+2020-10-06 04:48:06.2339 Info Found 14 (5 new) releases from The Pirate Bay 
+2020-10-06 05:03:36.3905 Info Found 19 (8 new) releases from The Pirate Bay 
+2020-10-06 05:19:06.8468 Info Found 19 (5 new) releases from The Pirate Bay 
+2020-10-06 05:34:27.3147 Info Found 100 (14 new) releases from YTS 
+2020-10-06 05:34:37.5398 Info Found 21 (7 new) releases from The Pirate Bay 
+2020-10-06 05:50:08.1046 Info Found 22 (2 new) releases from The Pirate Bay 
+2020-10-06 06:05:38.5756 Info Found 22 (4 new) releases from The Pirate Bay 
+2020-10-06 06:21:08.9239 Info Found 21 (9 new) releases from The Pirate Bay 
+2020-10-06 06:34:58.0810 Info Found 97 (85 new) releases from YTS 
+2020-10-06 06:36:39.6139 Info Found 19 (10 new) releases from The Pirate Bay 
+2020-10-06 06:52:10.3690 Info Found 10 (1 new) releases from The Pirate Bay 
+2020-10-06 07:07:41.6497 Info Found 11 (7 new) releases from The Pirate Bay 
+2020-10-06 07:23:11.1694 Info Found 11 (3 new) releases from The Pirate Bay 
+2020-10-06 07:35:29.5063 Info Found 100 (15 new) releases from YTS 
+2020-10-06 07:38:41.6914 Info Found 13 (5 new) releases from The Pirate Bay 
+2020-10-06 07:54:11.7958 Info Found 16 (11 new) releases from The Pirate Bay 
+2020-10-06 08:09:42.3139 Info Found 17 (5 new) releases from The Pirate Bay 
+2020-10-06 08:25:12.7230 Info Found 19 (6 new) releases from The Pirate Bay 
+2020-10-06 08:36:00.5376 Info Found 100 (85 new) releases from YTS 
+2020-10-06 08:40:42.9362 Info Found 20 (4 new) releases from The Pirate Bay 
+2020-10-06 08:56:13.4378 Info Found 19 (9 new) releases from The Pirate Bay 
+2020-10-06 09:11:43.8836 Info Found 24 (11 new) releases from The Pirate Bay 
+2020-10-06 09:27:15.4208 Info Found 22 (2 new) releases from The Pirate Bay 
+2020-10-06 09:36:32.2313 Info Found 100 (15 new) releases from YTS 
+2020-10-06 09:42:44.8805 Info Found 18 (5 new) releases from The Pirate Bay 
+2020-10-06 09:58:15.0285 Info Found 19 (6 new) releases from The Pirate Bay 
+2020-10-06 10:13:45.5874 Info Found 20 (5 new) releases from The Pirate Bay 
+2020-10-06 10:29:16.6049 Info Found 20 (2 new) releases from The Pirate Bay 
+2020-10-06 10:31:33.1267 Info Checking for updates... Jackett variant: CoreLinuxAmdx64 
+2020-10-06 10:31:33.1267 Info Skipping update check as it is disabled. 
