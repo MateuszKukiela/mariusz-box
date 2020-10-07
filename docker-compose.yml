@@ -153,12 +153,33 @@ services:
       - PUID=${PUID}
       - PGID=${PGID}
       - TZ=${TZ}
+      - POSTGRES_HOST=nextcloud_db_1 
+      - POSTGRES_DB=nextcloud_db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=${PASSWORD}
+    depends_on:
+      - postgres
     volumes:
       - ${ROOT_APPDATA}/nextcloud:/config
       - ${ROOT_NEXTCLOUD}:/data
     ports:
       - 443:443
     restart: unless-stopped
+    
+    
+  postgres:
+    image: postgres:10.12-alpine
+    restart: always
+    
+    ports:
+      - 5432:5432
+    volumes:
+      - ${ROOT_APPDATA}/postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=nextcloud_db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=${PASSWORD}
+
 
   heimdall:
     image: linuxserver/heimdall
