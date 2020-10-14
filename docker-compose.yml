@@ -19,7 +19,6 @@ services:
       - PGID=${PGID}
       - VERSION=docker
       - UMASK_SET=022 #optional
-#      - PLEX_CLAIM= #optional
     volumes:
       - ${ROOT_APPDATA}/plex:/config
       - ${ROOT_MEDIA}/tv:/tv
@@ -40,25 +39,6 @@ services:
     ports:
       - 8181:8181
     restart: unless-stopped
-
-#  deluge:
-#    image: linuxserver/deluge
-#    container_name: deluge
-#    network_mode: host
-#    environment:
-#      - PUID=${PUID}
-#      - PGID=${PGID}
-#      - TZ=${TZ}
-#      - UMASK_SET=022 #optional
-#      - DELUGE_LOGLEVEL=error #optional
-#    volumes:
-#      - ${ROOT_APPDATA}/deluge:/config
-#      - ${ROOT_MEDIA}/downloads:/downloads
-#      - ${ROOT_MEDIA}/porn:/porn
-#      - ${ROOT_MEDIA}/movies:/movies
-#      - ${ROOT_MEDIA}/tv:/tv
-#      - ${ROOT_MEDIA}/other:/other
-#    restart: unless-stopped
 
   qbittorrent:
     image: linuxserver/qbittorrent
@@ -89,8 +69,6 @@ services:
       - PUID=${PUID}
       - PGID=${PGID}
       - TZ=${TZ}
-#      - AUTO_UPDATE=true #optional
-#      - RUN_OPTS=run options here #optional
     volumes:
       - ${ROOT_APPDATA}/jackett:/config
       - ${ROOT_APPDATA}/jackett/blackhole:/downloads
@@ -105,7 +83,7 @@ services:
       - PUID=${PUID}
       - PGID=${PGID}
       - TZ=${TZ}
-      - UMASK_SET=022 #optional
+      - UMASK_SET=022
     volumes:
       - ${ROOT_APPDATA}/sonarr:/config
       - ${ROOT_MEDIA}/tv:/tv
@@ -159,16 +137,14 @@ services:
       - ${ROOT_APPDATA}/nextcloud:/config
       - ${ROOT_NEXTCLOUD}:/data
     ports:
-      - 443:443
+      - 444:443
     restart: unless-stopped
-    
-    
+
   mariadb:
     image: mariadb
     container_name: mariadb
     ports:
       - 3306:3306
-
     volumes:
       - ${ROOT_APPDATA}/mariadb:/var/lib/mysql
       - /etc/localtime:/etc/localtime:ro
@@ -178,7 +154,6 @@ services:
       - MYSQL_DATABASE=nextcloud
       - MYSQL_USER=nextcloud
     restart: unless-stopped
-
 
   heimdall:
     image: linuxserver/heimdall
@@ -190,5 +165,17 @@ services:
     volumes:
       - ${ROOT_APPDATA}/heimdall:/config
     ports:
-      - 80:80
+      - 81:80
     restart: unless-stopped
+
+  nginx:
+    image: nginx:latest
+    container_name: production_nginx
+    volumes:
+      - ${ROOT_APPDATA}/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ${ROOT_APPDATA}/nginx/nginx/error.log:/etc/nginx/error_log.log
+      - ${ROOT_APPDATA}/nginx/nginx/cache/:/etc/nginx/cache
+      - ${ROOT_APPDATA}/nginx/cert:/etc/letsencrypt/
+    ports:
+      - 80:80
+      - 443:443
