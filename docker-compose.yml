@@ -153,10 +153,6 @@ services:
       - PUID=${PUID}
       - PGID=${PGID}
       - TZ=${TZ}
-      - POSTGRES_HOST=nextcloud_db_1 
-      - POSTGRES_DB=nextcloud_db
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=${PASSWORD}
     depends_on:
       - postgres
     volumes:
@@ -167,18 +163,21 @@ services:
     restart: unless-stopped
     
     
-  postgres:
-    image: postgres:10.12-alpine
-    restart: always
-    
+  mariadb:
+    image: mariadb
+    container_name: mariadb
     ports:
-      - 5432:5432
+      - 3306:3306
+
     volumes:
-      - ${ROOT_APPDATA}/postgres:/var/lib/postgresql/data
+      - ${ROOT_APPDATA}/mariadb:/var/lib/mysql
+      - /etc/localtime:/etc/localtime:ro
     environment:
-      - POSTGRES_DB=nextcloud_db
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=${PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${PASSWORD}
+      - MYSQL_PASSWORD=${PASSWORD}
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+    restart: unless-stopped
 
 
   heimdall:
@@ -193,13 +192,3 @@ services:
     ports:
       - 80:80
     restart: unless-stopped
-
-  homeassistant:
-    container_name: home-assistant
-    image: homeassistant/home-assistant:stable
-    volumes:
-      - ${ROOT_APPDATA}/homeassistant:/config
-    environment:
-      - TZ=${TZ}
-    restart: unless-stopped
-    network_mode: host
