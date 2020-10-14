@@ -154,7 +154,7 @@ services:
       - PGID=${PGID}
       - TZ=${TZ}
     depends_on:
-      - postgres
+      - mariadb
     volumes:
       - ${ROOT_APPDATA}/nextcloud:/config
       - ${ROOT_NEXTCLOUD}:/data
