@@ -175,7 +175,7 @@ services:
       - ${ROOT_APPDATA}/nginx/nginx.conf:/etc/nginx/nginx.conf
       - ${ROOT_APPDATA}/nginx/nginx/error.log:/etc/nginx/error_log.log
       - ${ROOT_APPDATA}/nginx/nginx/cache/:/etc/nginx/cache
-      - ${ROOT_APPDATA}/nginx/cert:/etc/letsencrypt/
+      - ${ROOT_APPDATA}/nginx/cert:/etc/cert/
     ports:
       - 80:80
       - 443:443
