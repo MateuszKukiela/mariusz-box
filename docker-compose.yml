@@ -165,17 +165,25 @@ services:
     volumes:
       - ${ROOT_APPDATA}/heimdall:/config
     ports:
-      - 81:80
+      - 82:80
     restart: unless-stopped
 
-  nginx:
-    image: nginx:latest
-    container_name: production_nginx
+  swag:
+    image: linuxserver/swag
+    container_name: swag
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - URL=januszex.net
+      - SUBDOMAINS=www
+      - VALIDATION=http
     volumes:
-      - ${ROOT_APPDATA}/nginx/nginx.conf:/etc/nginx/nginx.conf
-      - ${ROOT_APPDATA}/nginx/nginx/error.log:/etc/nginx/error_log.log
-      - ${ROOT_APPDATA}/nginx/nginx/cache/:/etc/nginx/cache
-      - ${ROOT_APPDATA}/nginx/cert:/etc/letsencrypt/
+      - ./swag:/config
     ports:
-      - 80:80
       - 443:443
+      - 80:80
+    restart: unless-stopped
+
