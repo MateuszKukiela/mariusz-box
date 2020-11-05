@@ -178,7 +178,7 @@ services:
       - PGID=${PGID}
       - TZ=${TZ}
       - URL=januszex.net
-      - SUBDOMAINS=www,heimdall
+      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,tautulli,jackett,portainer
       - VALIDATION=http
     volumes:
       - ./swag:/config
