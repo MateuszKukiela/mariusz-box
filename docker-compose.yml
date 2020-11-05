@@ -178,7 +178,7 @@ services:
       - PGID=${PGID}
       - TZ=${TZ}
       - URL=januszex.net
-      - SUBDOMAINS=www
+      - SUBDOMAINS=www,heimdall
       - VALIDATION=http
     volumes:
       - ./swag:/config
