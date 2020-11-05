@@ -48,7 +48,7 @@ services:
       - PGID=${PGID}
       - TZ=${TZ}
       - UMASK_SET=022
-      - WEBUI_PORT=8112
+      - WEBUI_PORT=8080
     volumes:
       - ${ROOT_APPDATA}/qbittorrent:/config
       - ${ROOT_MEDIA}/downloads:/downloads
@@ -59,7 +59,7 @@ services:
     ports:
       - 6881:6881
       - 6881:6881/udp
-      - 8112:8112
+      - 8080:8080
     restart: unless-stopped
 
   jackett:
