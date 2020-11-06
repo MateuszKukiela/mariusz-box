@@ -94,7 +94,7 @@ services:
 
   radarr:
     image: linuxserver/radarr
-    container_name: radarr
+    container_name: radarr:nightly
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
@@ -178,7 +178,7 @@ services:
       - PGID=${PGID}
       - TZ=${TZ}
       - URL=januszex.net
-      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,tautulli,jackett,portainer,nextcloud
+      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,tautulli,jackett,portainer,nextcloud,plex
       - VALIDATION=http
     volumes:
       - ./swag:/config
