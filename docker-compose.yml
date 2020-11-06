@@ -93,8 +93,8 @@ services:
     restart: unless-stopped
 
   radarr:
-    image: linuxserver/radarr
-    container_name: radarr:nightly
+    image: linuxserver/radarr:nightly
+    container_name: radarr
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
