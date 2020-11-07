@@ -178,7 +178,7 @@ services:
       - PGID=${PGID}
       - TZ=${TZ}
       - URL=januszex.net
-      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,tautulli,jackett,portainer,nextcloud,plex
+      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,tautulli,jackett,portainer,nextcloud,plex,truenas
       - VALIDATION=http
     volumes:
       - ./swag:/config
