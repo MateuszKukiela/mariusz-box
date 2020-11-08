@@ -210,6 +210,7 @@ services:
       - ${ROOT_APPDATA}/jellyfin:/config
       - ${ROOT_MEDIA}/tv:/data/tv
       - ${ROOT_MEDIA}/movies:/data/movies
+      - ${ROOT_MEDIA}/downloads:/downloads
       - ${ROOT_MEDIA}/porn:/data/porn
       - ${ROOT_MEDIA}/downloads_tv:/downloads_tv
       - ${ROOT_MEDIA}/downloads_movies:/downloads_movies
