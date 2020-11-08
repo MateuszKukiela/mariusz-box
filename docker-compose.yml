@@ -187,3 +187,8 @@ services:
       - 80:80
     restart: unless-stopped
 
+networks:
+  default:
+    subnet: 192.168.0.0/24
+    gateway: 192.168.0.1
+
