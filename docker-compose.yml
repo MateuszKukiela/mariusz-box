@@ -225,8 +225,8 @@ services:
     volumes:
       - ${ROOT_APPDATA}/transmission:/config
       - ${ROOT_MEDIA}/downloads:/downloads
-      - {ROOT_MEDIA}/downloads_tv:/downloads_tv
-      - {ROOT_MEDIA}/downloads_movies:/downloads_movies
+      - ${ROOT_MEDIA}/downloads_tv:/downloads_tv
+      - ${ROOT_MEDIA}/downloads_movies:/downloads_movies
       - ${ROOT_MEDIA}/porn:/porn
       - ${ROOT_MEDIA}/movies:/movies
       - ${ROOT_MEDIA}/tv:/tv
