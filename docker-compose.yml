@@ -10,36 +10,6 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     restart: always
 
-  plex:
-    image: linuxserver/plex
-    container_name: plex
-    network_mode: host
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - VERSION=docker
-      - UMASK_SET=022 #optional
-    volumes:
-      - ${ROOT_APPDATA}/plex:/config
-      - ${ROOT_MEDIA}/tv:/tv
-      - ${ROOT_MEDIA}/movies:/movies
-      - ${ROOT_MEDIA}/porn:/porn
-    restart: unless-stopped
-
-  tautulli:
-    image: linuxserver/tautulli
-    container_name: tautulli
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - TZ=${TZ}
-    volumes:
-      - ${ROOT_APPDATA}/tautulli:/config
-      - ${ROOT_APPDATA}/plex/logs:/logs
-    ports:
-      - 8181:8181
-    restart: unless-stopped
-
   qbittorrent:
     image: linuxserver/qbittorrent
     container_name: qbittorrent
@@ -88,7 +58,6 @@ services:
       - ${ROOT_APPDATA}/sonarr:/config
       - ${ROOT_MEDIA}/tv:/tv
       - ${ROOT_MEDIA}/downloads:/downloads
-      - ${ROOT_MEDIA}/downloads_tv:/downloads_tv
     ports:
       - 8989:8989
     restart: unless-stopped
@@ -105,8 +74,6 @@ services:
       - ${ROOT_APPDATA}/radarr:/config
       - ${ROOT_MEDIA}/movies:/movies
       - ${ROOT_MEDIA}/downloads:/downloads
-      - ${ROOT_MEDIA}/downloads_movies:/downloads_movies
-
     ports:
       - 7878:7878
     restart: unless-stopped
@@ -181,7 +148,7 @@ services:
       - PGID=${PGID}
       - TZ=${TZ}
       - URL=januszex.net
-      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,tautulli,jackett,portainer,nextcloud,plex,truenas,jellyfin,transmission
+      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,tautulli,jackett,portainer,nextcloud,plex,truenas,jellyfin
       - VALIDATION=http
     volumes:
       - ./swag:/config
@@ -212,36 +179,8 @@ services:
       - ${ROOT_MEDIA}/movies:/data/movies
       - ${ROOT_MEDIA}/downloads:/downloads
       - ${ROOT_MEDIA}/porn:/data/porn
-      - ${ROOT_MEDIA}/downloads_tv:/downloads_tv
-      - ${ROOT_MEDIA}/downloads_movies:/downloads_movies
-
     ports:
       - 8096:8096
-    restart: unless-stopped
-
-  transmission:
-    image: ghcr.io/linuxserver/transmission
-    container_name: transmission
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - TZ=${TZ}
-      - UMASK_SET=022
-      - USER=root
-      - PASS=${PASSWORD}
-    volumes:
-      - ${ROOT_APPDATA}/transmission:/config
-      - ${ROOT_MEDIA}/downloads:/downloads
-      - ${ROOT_MEDIA}/downloads_tv:/downloads_tv
-      - ${ROOT_MEDIA}/downloads_movies:/downloads_movies
-      - ${ROOT_MEDIA}/porn:/porn
-      - ${ROOT_MEDIA}/movies:/movies
-      - ${ROOT_MEDIA}/tv:/tv
-      - ${ROOT_MEDIA}/other:/other
-    ports:
-      - 9091:9091
-      - 51413:51413
-      - 51413:51413/udp
     restart: unless-stopped
 
   ouroboros:
