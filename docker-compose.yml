@@ -194,3 +194,20 @@ services:
       - NET_ADMIN
       - NET_RAW
     restart: unless-stopped
+
+  jellyfin:
+    image: ghcr.io/linuxserver/jellyfin
+    container_name: jellyfin
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - UMASK_SET=<022>
+    volumes:
+      - ${ROOT_APPDATA}/jellyfin:/config
+      - ${ROOT_MEDIA}/tv:/data/tv
+      - ${ROOT_MEDIA}/movies:/data/movies
+      - ${ROOT_MEDIA}/porn:/data/porn
+    ports:
+      - 8096:8096
+    restart: unless-stopped
