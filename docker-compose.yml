@@ -202,7 +202,7 @@ services:
       - PUID=${PUID}
       - PGID=${PGID}
       - TZ=${TZ}
-      - UMASK_SET=<022>
+      - UMASK_SET=022
     volumes:
       - ${ROOT_APPDATA}/jellyfin:/config
       - ${ROOT_MEDIA}/tv:/data/tv
@@ -211,3 +211,45 @@ services:
     ports:
       - 8096:8096
     restart: unless-stopped
+
+  transmission:
+    image: ghcr.io/linuxserver/transmission
+    container_name: transmission
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - UMASK_SET=022
+      - USER=root
+      - PASS=${PASSWORD}
+    volumes:
+      - ${ROOT_APPDATA}/transmission:/config
+      - ${ROOT_MEDIA}/downloads:/downloads
+      - {ROOT_MEDIA}/downloads_tv:/downloads_tv
+      - {ROOT_MEDIA}/downloads_movies:/downloads_movies
+      - ${ROOT_MEDIA}/porn:/porn
+      - ${ROOT_MEDIA}/movies:/movies
+      - ${ROOT_MEDIA}/tv:/tv
+      - ${ROOT_MEDIA}/other:/other
+    ports:
+      - 9091:9091
+      - 51413:51413
+      - 51413:51413/udp
+    restart: unless-stopped
+
+ouroboros:
+    container_name: ouroboros
+    hostname: ouroboros
+    image: pyouroboros/ouroboros
+    environment:
+      - CLEANUP=true
+      - INTERVAL=86400
+      - LOG_LEVEL=info
+      - SELF_UPDATE=true
+      - TZ=${TZ}
+    ports:
+      - 8888:8080
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
