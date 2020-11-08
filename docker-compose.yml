@@ -1,4 +1,4 @@
-version: "2.2"
+version: "3.3"
 services:
   portainer:
     image: portainer/portainer-ce
@@ -186,5 +186,3 @@ services:
       - 443:443
       - 80:80
     restart: unless-stopped
-
-
