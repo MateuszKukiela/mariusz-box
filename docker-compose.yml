@@ -237,7 +237,7 @@ services:
       - 51413:51413/udp
     restart: unless-stopped
 
-ouroboros:
+  ouroboros:
     container_name: ouroboros
     hostname: ouroboros
     image: pyouroboros/ouroboros
