@@ -188,7 +188,7 @@ services:
     restart: unless-stopped
 
 networks:
-  default:
+  mariusz-network:
     subnet: 192.168.0.0/24
     gateway: 192.168.0.1
 
