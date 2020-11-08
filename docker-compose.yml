@@ -208,6 +208,9 @@ services:
       - ${ROOT_MEDIA}/tv:/data/tv
       - ${ROOT_MEDIA}/movies:/data/movies
       - ${ROOT_MEDIA}/porn:/data/porn
+      - ${ROOT_MEDIA}/downloads_tv:/downloads_tv
+      - ${ROOT_MEDIA}/downloads_movies:/downloads_movies
+
     ports:
       - 8096:8096
     restart: unless-stopped
