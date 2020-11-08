@@ -191,5 +191,6 @@ services:
     image: qoomon/docker-host
     container_name: docker-host
     cap_add:
-      - [ 'NET_ADMIN', 'NET_RAW' ]
+      - NET_ADMIN
+      - NET_RAW
     restart: unless-stopped
