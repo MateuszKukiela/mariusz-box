@@ -88,6 +88,7 @@ services:
       - ${ROOT_APPDATA}/sonarr:/config
       - ${ROOT_MEDIA}/tv:/tv
       - ${ROOT_MEDIA}/downloads:/downloads
+      - ${ROOT_MEDIA}/downloads_tv:/downloads_tv
     ports:
       - 8989:8989
     restart: unless-stopped
@@ -104,6 +105,8 @@ services:
       - ${ROOT_APPDATA}/radarr:/config
       - ${ROOT_MEDIA}/movies:/movies
       - ${ROOT_MEDIA}/downloads:/downloads
+      - ${ROOT_MEDIA}/downloads_movies:/downloads_movies
+
     ports:
       - 7878:7878
     restart: unless-stopped
