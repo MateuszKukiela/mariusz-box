@@ -1,0 +1,213 @@
+version: "3.3"
+services:
+  portainer:
+    image: portainer/portainer-ce
+    container_name: portainer
+    ports:
+      - 9000:9000
+    volumes:
+      - ${ROOT_APPDATA}/portainer:/data portainer/portainer-ce
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: always
+
+  qbittorrent:
+    image: linuxserver/qbittorrent
+    container_name: qbittorrent
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - UMASK_SET=022
+      - WEBUI_PORT=8080
+    volumes:
+      - ${ROOT_APPDATA}/qbittorrent:/config
+      - ${ROOT_MEDIA}/downloads:/downloads
+      - ${ROOT_MEDIA}/porn:/porn
+      - ${ROOT_MEDIA}/movies:/movies
+      - ${ROOT_MEDIA}/tv:/tv
+      - ${ROOT_MEDIA}/other:/other
+    ports:
+      - 6881:6881
+      - 6881:6881/udp
+      - 8080:8080
+    restart: unless-stopped
+
+  jackett:
+    image: linuxserver/jackett
+    container_name: jackett
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ${ROOT_APPDATA}/jackett:/config
+      - ${ROOT_APPDATA}/jackett/blackhole:/downloads
+    ports:
+      - 9117:9117
+    restart: unless-stopped
+
+  sonarr:
+    image: linuxserver/sonarr:preview
+    container_name: sonarr
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - UMASK_SET=022
+    volumes:
+      - ${ROOT_APPDATA}/sonarr:/config
+      - ${ROOT_MEDIA}/tv:/tv
+      - ${ROOT_MEDIA}/downloads:/downloads
+    ports:
+      - 8989:8989
+    restart: unless-stopped
+
+  radarr:
+    image: linuxserver/radarr:nightly
+    container_name: radarr
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - UMASK_SET=022 #optional
+    volumes:
+      - ${ROOT_APPDATA}/radarr:/config
+      - ${ROOT_MEDIA}/movies:/movies
+      - ${ROOT_MEDIA}/downloads:/downloads
+    ports:
+      - 7878:7878
+    restart: unless-stopped
+
+  bazarr:
+    image: linuxserver/bazarr
+    container_name: bazarr
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - UMASK_SET=022 #optional
+    volumes:
+      - ${ROOT_APPDATA}/bazarr:/config
+      - ${ROOT_MEDIA}/movies:/movies
+      - ${ROOT_MEDIA}/tv:/tv
+    ports:
+      - 6767:6767
+    restart: unless-stopped
+    
+  ombi:
+    image: ghcr.io/linuxserver/ombi
+    container_name: ombi
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ${ROOT_APPDATA}/ombi:/config
+    ports:
+      - 3579:3579
+    restart: unless-stopped
+  
+  nextcloud:
+    image: linuxserver/nextcloud
+    container_name: nextcloud
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    depends_on:
+      - mariadb
+    volumes:
+      - ${ROOT_APPDATA}/nextcloud:/config
+      - ${ROOT_NEXTCLOUD}:/data
+    ports:
+      - 444:443
+    restart: unless-stopped
+
+  mariadb:
+    image: mariadb
+    container_name: mariadb
+    ports:
+      - 3306:3306
+    volumes:
+      - ${ROOT_APPDATA}/mariadb:/var/lib/mysql
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - MYSQL_ROOT_PASSWORD=${PASSWORD}
+      - MYSQL_PASSWORD=${PASSWORD}
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+    restart: unless-stopped
+
+  heimdall:
+    image: linuxserver/heimdall
+    container_name: heimdall
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ${ROOT_APPDATA}/heimdall:/config
+    ports:
+      - 82:80
+    restart: unless-stopped
+
+  swag:
+    image: linuxserver/swag
+    container_name: swag
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - URL=januszex.net
+      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,tautulli,jackett,portainer,nextcloud,truenas,jellyfin,ombi
+      - VALIDATION=http
+    volumes:
+      - ./swag:/config
+    ports:
+      - 443:443
+      - 80:80
+    restart: unless-stopped
+
+  docker-host:
+    image: qoomon/docker-host
+    container_name: docker-host
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    restart: unless-stopped
+
+  jellyfin:
+    image: ghcr.io/linuxserver/jellyfin
+    container_name: jellyfin
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - UMASK_SET=022
+    volumes:
+      - ${ROOT_APPDATA}/jellyfin:/config
+      - ${ROOT_MEDIA}/tv:/data/tv
+      - ${ROOT_MEDIA}/movies:/data/movies
+      - ${ROOT_MEDIA}/downloads:/downloads
+      - ${ROOT_MEDIA}/porn:/data/porn
+    ports:
+      - 8096:8096
+    restart: unless-stopped
+
+  ouroboros:
+    container_name: ouroboros
+    hostname: ouroboros
+    image: pyouroboros/ouroboros
+    environment:
+      - CLEANUP=true
+      - INTERVAL=86400
+      - LOG_LEVEL=info
+      - SELF_UPDATE=true
+      - TZ=${TZ}
+    ports:
+      - 8888:8080
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock

@@ -1,0 +1,12 @@
+/.idea
+/appdata
+/swag/crontabs 
+/swag/dns-conf  
+/swag/donoteditthisfile.conf  
+/swag/etc  
+/swag/fail2ban  
+/swag/geoip2db  
+/swag/keys  
+/swag/log  
+/swag/php  
+/swag/www
