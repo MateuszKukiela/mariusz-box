@@ -5,6 +5,7 @@ server {
 	listen 80 default_server;
 	listen [::]:80 default_server;
 	server_name _;
+	deny all;
 	return 301 https://$host$request_uri;
 }
 
@@ -17,6 +18,7 @@ server {
 	index index.html index.htm index.php;
 
 	server_name _;
+	deny all;
 
 	# enable subfolder method reverse proxy confs
 	include /config/nginx/proxy-confs/*.subfolder.conf;
