@@ -221,5 +221,5 @@ services:
       - CRON="0 6 * * *"
     restart: unless-stopped
     volumes:
-      - ./credentials=/credentials
+      - ./credentials:/credentials
       - ${ROOT_APPDATA}:/appdata
