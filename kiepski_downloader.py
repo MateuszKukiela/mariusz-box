@@ -1,5 +1,6 @@
 import urllib.request
 import os.path
+import errno
 
 episodes = '''Świat według Kiepskich - Odcinek 1  http://redirector.redefine.pl/movies/df9aa9142ebe0b0fa4553a145e81fd0f.mp4
 Świat według Kiepskich - Odcinek 2  http://redirector.redefine.pl/movies/6232f2d818cb4339596af6f018954668.mp4
@@ -267,213 +268,213 @@ episodes = '''Świat według Kiepskich - Odcinek 1  http://redirector.redefine.p
 Świat według Kiepskich - Odcinek 319  http://redirector.redefine.pl/movies/47b0c468e8899c7bbcba9d486c93df7b.mp4
 Świat według Kiepskich - Odcinek 320  http://redirector.redefine.pl/movies/6caf8b1c9ca2862a2a766fd20678f335.mp4
 Świat według Kiepskich - Odcinek 321  http://redirector.redefine.pl/movies/63cf67d0b795df89eda5662108b25413.mp4
-Świat według Kiepskich - Odcinek 322  http://redirector.redefine.pl/movies/39a04063ba97bf87cd0686c7f883e0e0.mp4
-Świat według Kiepskich - Odcinek 323  http://redirector.redefine.pl/movies/e1bb1f2edc8dc048cfd2b74720cbe3fb.mp4
-Świat według Kiepskich - Odcinek 324  http://redirector.redefine.pl/movies/fee1dcc17959879b1af22c53000ccb7d.mp4
-Świat według Kiepskich - Odcinek 325  http://redirector.redefine.pl/movies/e3a681c40a3f51562dcdfcbbcac3f9be.mp4
-Świat według Kiepskich - Odcinek 326  http://redirector.redefine.pl/movies/0c3340f4b343a3ead7e8f9a8ff965ba0.mp4
-Świat według Kiepskich - Odcinek 327  http://redirector.redefine.pl/movies/ac178990731706ce367b7fc6b6939dfc.mp4
-Świat według Kiepskich - Odcinek 328  http://redirector.redefine.pl/movies/dcbb248fcf5afefcdaac7376ac9debae.mp4
-Świat według Kiepskich - Odcinek 329  http://redirector.redefine.pl/movies/a2e655bfb52d6b807833af1a1c0ba3db.mp4
-Świat według Kiepskich - Odcinek 330  http://redirector.redefine.pl/movies/8ead908189bb9c1047c0d18901c466cf.mp4
-Świat według Kiepskich - Odcinek 331  http://redirector.redefine.pl/movies/ae64a5d7285edafcd9b6c4c3554c8a2b.mp4
-Świat według Kiepskich - Odcinek 332  http://redirector.redefine.pl/movies/ac516ead193db2c83969d5fb6c8ae05c.mp4
-Świat według Kiepskich - Odcinek 333  http://redirector.redefine.pl/movies/eec1da098957102009c38e35c58a1fd8.mp4
-Świat według Kiepskich - Odcinek 334  http://redirector.redefine.pl/movies/4c210b60e044ae817ca773a0c549489c.mp4
-Świat według Kiepskich - Odcinek 335  http://redirector.redefine.pl/movies/f1d05d6ff15d1f1d924388101e7c9207.mp4
-Świat według Kiepskich - Odcinek 336  http://redirector.redefine.pl/movies/8d7370266bba201fdb4afb2a7d3b1377.mp4
-Świat według Kiepskich - Odcinek 337  http://redirector.redefine.pl/movies/6f75c44a1b8b41d37aa65a8536741868.mp4
-Świat według Kiepskich - Odcinek 338  http://redirector.redefine.pl/movies/d8d8f40b7df20cc7cbdfd6ff1feff06b.mp4
-Świat według Kiepskich - Odcinek 339  http://redirector.redefine.pl/movies/073c32a970c9f77d09d98910b505522c.mp4
-Świat według Kiepskich - Odcinek 340  http://redirector.redefine.pl/movies/672442c558858aae3d21a78ec11f9e83.mp4
-Świat według Kiepskich - Odcinek 341  http://redirector.redefine.pl/movies/76ffb988bb99f886ebb1736bfff66d69.mp4
-Świat według Kiepskich - Odcinek 342  http://redirector.redefine.pl/movies/5ed3fd9f98bdf0aa1609299c8b63b869.mp4
-Świat według Kiepskich - Odcinek 343  http://redirector.redefine.pl/movies/a08c169a7323c177d686d4601caf74c7.mp4
-Świat według Kiepskich - Odcinek 344  http://redirector.redefine.pl/movies/ab28b06ebbc8641ff8178bd7de46901a.mp4
-Świat według Kiepskich - Odcinek 345  http://redirector.redefine.pl/movies/5c935bd070d0497f67f18fb1b7c95697.mp4
-Świat według Kiepskich - Odcinek 346  http://redirector.redefine.pl/movies/333b6d73074c8551ce8ac56cb5ad9744.mp4
-Świat według Kiepskich - Odcinek 347  http://redirector.redefine.pl/movies/6f07a7c2c41a5271142f577f4d9f360f.mp4
-Świat według Kiepskich - Odcinek 348  http://redirector.redefine.pl/movies/18b73006603f061838e659e6fa0f4f8f.mp4
-Świat według Kiepskich - Odcinek 349  http://redirector.redefine.pl/movies/873543a1819960694462873cffcd60a4.mp4
-Świat według Kiepskich - Odcinek 350  http://redirector.redefine.pl/movies/79e1ce0339719bd99e9e325a39f7043b.mp4
-Świat według Kiepskich - Odcinek 351  http://redirector.redefine.pl/movies/ec047eab233b953e9931a5ec7877abc5.mp4
-Świat według Kiepskich - Odcinek 352  http://redirector.redefine.pl/movies/b2ab272697cd3d5e1ec479bc33e6e5c0.mp4
-Świat według Kiepskich - Odcinek 353  http://redirector.redefine.pl/movies/92e2334f2e2823ad44055e5c15d00a78.mp4
-Świat według Kiepskich - Odcinek 354  http://redirector.redefine.pl/movies/924fa0a55de728314123e6ce4857dd26.mp4
-Świat według Kiepskich - Odcinek 355  http://redirector.redefine.pl/movies/d300be5d9804a0d7b9cac691522c4353.mp4
-Świat według Kiepskich - Odcinek 356  http://redirector.redefine.pl/movies/024f962fe37f96a1e66f38dbb2a0874e.mp4
-Świat według Kiepskich - Odcinek 357  http://redirector.redefine.pl/movies/eb21e213894c842235963cd7d680aaee.mp4
-Świat według Kiepskich - Odcinek 358  http://redirector.redefine.pl/movies/be57f608115c55aeb6202715df54c22d.mp4
-Świat według Kiepskich - Odcinek 359  http://redirector.redefine.pl/movies/445a4da6d0dbe98601ce974f99a312e0.mp4
-Świat według Kiepskich - Odcinek 360  http://redirector.redefine.pl/movies/358af199c1fff54f8d7058521b159224.mp4
-Świat według Kiepskich - Odcinek 361  http://redirector.redefine.pl/movies/c588ee3e3ae94566a9e582161aa56c41.mp4
-Świat według Kiepskich - Odcinek 362  http://redirector.redefine.pl/movies/960940c4a670ef07e1a14beb8b2d9294.mp4
-Świat według Kiepskich - Odcinek 363  http://redirector.redefine.pl/movies/a2cd983426366ab5741db1f686fc8c47.mp4
-Świat według Kiepskich - Odcinek 364  http://redirector.redefine.pl/movies/450def580b265c58fa0b48efcfebc36b.mp4
-Świat według Kiepskich - Odcinek 365  http://redirector.redefine.pl/movies/aeea0d47ce8a8f56a7a9d3aacb4cd409.mp4
-Świat według Kiepskich - Odcinek 366  http://redirector.redefine.pl/movies/a66d81563eafc599f26e8c3acd2f4ed5.mp4
-Świat według Kiepskich - Odcinek 367  http://redirector.redefine.pl/movies/5cd0eef6894a550cde3c1b71c784c07b.mp4
-Świat według Kiepskich - Odcinek 368  http://redirector.redefine.pl/movies/cb02d7ec510da46dab2145efd2e7705d.mp4
-Świat według Kiepskich - Odcinek 369  http://redirector.redefine.pl/movies/c84ea151e08d022f291ea00535df889f.mp4
-Świat według Kiepskich - Odcinek 370  http://redirector.redefine.pl/movies/0c4118686e75863b17f033f4f6eb70c8.mp4
-Świat według Kiepskich - Odcinek 371  http://redirector.redefine.pl/movies/765913ae25444d687f675cd81200ad2d.mp4
-Świat według Kiepskich - Odcinek 372  http://redirector.redefine.pl/movies/f79d829b8174f1cb01036d8643c0ef52.mp4
-Świat według Kiepskich - Odcinek 373  http://redirector.redefine.pl/movies/a175b802e4dc5febac7a7cd306904948.mp4
-Świat według Kiepskich - Odcinek 374  http://redirector.redefine.pl/movies/f57ef7eed951896cceddba00ac6c9912.mp4
-Świat według Kiepskich - Odcinek 375  http://redirector.redefine.pl/movies/6fd5c1281cca64e5639820f366b2def6.mp4
-Świat według Kiepskich - Odcinek 376  http://redirector.redefine.pl/movies/14b71bcce526b7d3bb82fc2d8b203d9f.mp4
-Świat według Kiepskich - Odcinek 377  http://redirector.redefine.pl/movies/c24b86b05398ddc656fec6f166d27282.mp4
-Świat według Kiepskich - Odcinek 378  http://redirector.redefine.pl/movies/c85462ca3b7ec8644012d7f4b289dbf8.mp4
-Świat według Kiepskich - Odcinek 379  http://redirector.redefine.pl/movies/07abe877ce6f756412227d7422eeb6cf.mp4
-Świat według Kiepskich - Odcinek 380  http://redirector.redefine.pl/movies/0079f966a09f23b317e8e7ee4af90596.mp4
-Świat według Kiepskich - Odcinek 381  http://redirector.redefine.pl/vm2movies/v25vrgsjzqb7km1i8up8kyz53ixogehu.mp4
-Świat według Kiepskich - Odcinek 382  http://redirector.redefine.pl/vm2movies/257i2o2kyn84p7crew74h28krrxof6qt.mp4
-Świat według Kiepskich - Odcinek 383  http://redirector.redefine.pl/movies/fec4f777e6bef213761ec7203871b49a.mp4
-Świat według Kiepskich - Odcinek 384  http://redirector.redefine.pl/movies/ffa3452438c6a10461411c52e89826e0.mp4
-Świat według Kiepskich - Odcinek 385  http://redirector.redefine.pl/movies/553661be12679fc58ec7845d0ca4e542.mp4
-Świat według Kiepskich - Odcinek 386  http://redirector.redefine.pl/movies/aefaa862c783b5cd4231e8c9b19ac1ac.mp4
-Świat według Kiepskich - Odcinek 387  http://redirector.redefine.pl/movies/a552464b2ebdf5af54396b5951c13009.mp4
-Świat według Kiepskich - Odcinek 388  http://redirector.redefine.pl/movies/94f815e01ef30e289916eae0a06e6ad6.mp4
-Świat według Kiepskich - Odcinek 389  http://redirector.redefine.pl/movies/b7348049199537106a531f8ccd956b96.mp4
-Świat według Kiepskich - Odcinek 390  http://redirector.redefine.pl/movies/e0242279b8f4173f1f77971ee96410ca.mp4
-Świat według Kiepskich - Odcinek 391  http://redirector.redefine.pl/movies/944160bc2945a66e0301433dc3e9c42d.mp4
-Świat według Kiepskich - Odcinek 392  http://redirector.redefine.pl/movies/1b2a172b2ad601e1cb58474d7543bf11.mp4
-Świat według Kiepskich - Odcinek 393  http://redirector.redefine.pl/movies/d9340de9f54292e12ab9884a2f589f1c.mp4
-Świat według Kiepskich - Odcinek 394  http://redirector.redefine.pl/movies/077f7a129553050c9d5ff2f00e95c18b.mp4
-Świat według Kiepskich - Odcinek 395  http://redirector.redefine.pl/movies/0bdbae61b7df6a2722a6faccb4678510.mp4
-Świat według Kiepskich - Odcinek 396  http://redirector.redefine.pl/movies/b5c3bb429a387771756b1bc47fa5a78d.mp4
-Świat według Kiepskich - Odcinek 397  http://redirector.redefine.pl/movies/3618240cb270a304108d2d9103682988.mp4
-Świat według Kiepskich - Odcinek 398  http://redirector.redefine.pl/movies/729993b8f3451068c92fc0c6e4dfc0e7.mp4
-Świat według Kiepskich - Odcinek 399  http://redirector.redefine.pl/movies/96558c4c08c55a8d17e1e4cb999138d6.mp4
-Świat według Kiepskich - Odcinek 400  http://redirector.redefine.pl/movies/522475fff809b7479ad8b7801e7e7eab.mp4
-Świat według Kiepskich - Odcinek 401  http://redirector.redefine.pl/movies/077d46e01432d678047d2c84ca4e2922.mp4
-Świat według Kiepskich - Odcinek 402  http://redirector.redefine.pl/movies/1562b57a76c087756ea58819138fa60a.mp4
-Świat według Kiepskich - Odcinek 403  http://redirector.redefine.pl/movies/5eadcea6bb399b7e7b4d3e89d59b5a3a.mp4
-Świat według Kiepskich - Odcinek 404  http://redirector.redefine.pl/movies/203b50e987c0939e0addf45627e773e6.mp4
-Świat według Kiepskich - Odcinek 405  http://redirector.redefine.pl/movies/e74491ee2aa12e80b6b2888e6bb1855e.mp4
-Świat według Kiepskich - Odcinek 406  http://redirector.redefine.pl/movies/a64874db36cfa29593691a3b4d6b61ee.mp4
-Świat według Kiepskich - Odcinek 407  http://redirector.redefine.pl/movies/16e9e6576074bb92e471350ba4c23332.mp4
-Świat według Kiepskich - Odcinek 408  http://redirector.redefine.pl/movies/1d2acf5cb2a454c011a223b82e35463e.mp4
-Świat według Kiepskich - Odcinek 409  http://redirector.redefine.pl/movies/33b76d6b9bca495a7511871ca0db324b.mp4
-Świat według Kiepskich - Odcinek 410  http://redirector.redefine.pl/movies/ea1366336d2cc9691765bb64b3081aa7.mp4
-Świat według Kiepskich - Odcinek 411  http://redirector.redefine.pl/uploader/15d194e721cca25288ccc236e857b752.mp4
-Świat według Kiepskich - Odcinek 412  http://redirector.redefine.pl/uploader/c3e806885c87298dd3a42bf7c93c26c8.mp4
-Świat według Kiepskich - Odcinek 413  http://redirector.redefine.pl/uploader/2f408624965b775a113c22b215e1022b.mp4
-Świat według Kiepskich - Odcinek 414  http://redirector.redefine.pl/uploader/8442e9767a9f9a43e6291cca63664d67.mp4
-Świat według Kiepskich - Odcinek 415  http://redirector.redefine.pl/uploader/256a174426df1eff94b0a55ed75f2f24.mp4
-Świat według Kiepskich - Odcinek 416  http://redirector.redefine.pl/uploader/38d90c35cd59abe7c38423e1aa256d8b.mp4
-Świat według Kiepskich - Odcinek 417  http://redirector.redefine.pl/uploader/c911b9ac60147b6c9fbf988ef877adc4.mp4
-Świat według Kiepskich - Odcinek 418  http://redirector.redefine.pl/uploader/fb0e68cdcae8f35549b8d48b0564f801.mp4
-Świat według Kiepskich - Odcinek 419  http://redirector.redefine.pl/uploader/3c38d12e1bd661ab4be252c953440ef5.mp4
-Świat według Kiepskich - Odcinek 420  http://redirector.redefine.pl/uploader/82727087c2bce0bed706e4989aa5f53e.mp4
-Świat według Kiepskich - Odcinek 421  http://redirector.redefine.pl/uploader/debbb3b7be3454d3eba817e3febf8f4b.mp4
-Świat według Kiepskich - Odcinek 422  http://redirector.redefine.pl/uploader/70f767ae7ad3aba74f1c212b663bce5a.mp4
-Świat według Kiepskich - Odcinek 423  http://redirector.redefine.pl/uploader/2df67e0eea718679a8851e8bfc294b90.mp4
-Świat według Kiepskich - Odcinek 424  http://redirector.redefine.pl/uploader/ff213133a97633b281fccb592e8ad497.mp4
-Świat według Kiepskich - Odcinek 425  http://redirector.redefine.pl/uploader/0fb98bd41f61eb71dca4bca3ef45b5c0.mp4
-Świat według Kiepskich - Odcinek 426  http://redirector.redefine.pl/uploader/08dd1decbd2fe3e4a448823aa7c41cb2.mp4
-Świat według Kiepskich - Odcinek 427  http://redirector.redefine.pl/uploader/dad14eda0a91e36e01e1fa9dc7d88477.mp4
-Świat według Kiepskich - Odcinek 428  http://redirector.redefine.pl/uploader/01690f701d7c8512be6b300a6b044a48.mp4
-Świat według Kiepskich - Odcinek 429  http://redirector.redefine.pl/uploader/5f7c8fd5c22c9ea39c8f802c11bbbda1.mp4
-Świat według Kiepskich - Odcinek 430  http://redirector.redefine.pl/uploader/0a20f3bf34e581c7b16f45e7ce3f6621.mp4
-Świat według Kiepskich - Odcinek 431  http://redirector.redefine.pl/uploader/a7739684343abe963d860ee6f6e2bf7b.mp4
-Świat według Kiepskich - Odcinek 432  http://redirector.redefine.pl/uploader/4cbfd4939c4b4383d14f758f87880091.mp4
-Świat według Kiepskich - Odcinek 433  http://redirector.redefine.pl/uploader/4bd2921a0f4b35bfa173be444531465f.mp4
-Świat według Kiepskich - Odcinek 434  http://redirector.redefine.pl/uploader/94a1076d930bec3e4415e4b384f12525.mp4
-Świat według Kiepskich - Odcinek 435  http://redirector.redefine.pl/uploader/010e0bb8f2535778a33a1cd082518dff.mp4
-Świat według Kiepskich - Odcinek 436  http://redirector.redefine.pl/uploader/15b9dcc371dc30e87202043662309f03.mp4
-Świat według Kiepskich - Odcinek 437  http://redirector.redefine.pl/uploader/eeebe870386983d1c64fe10ab21657e3.mp4
-Świat według Kiepskich - Odcinek 438  http://redirector.redefine.pl/uploader/462e7d72271e8bfe41ea96dc5f99b144.mp4
-Świat według Kiepskich - Odcinek 439  http://redirector.redefine.pl/uploader/bf913b57aa67aabbd64d8487128e1797.mp4
-Świat według Kiepskich - Odcinek 440  http://redirector.redefine.pl/uploader/809a59c8c8f099fb04ea9467f9e0cd89.mp4
-Świat według Kiepskich - Odcinek 441  http://redirector.redefine.pl/uploader/a18bc104761e6083760a91cadb9d205d.mp4
-Świat według Kiepskich - Odcinek 442  http://redirector.redefine.pl/uploader/ff92e276040e364045400bc87f3ba8b6.mp4
-Świat według Kiepskich - Odcinek 443  http://redirector.redefine.pl/uploader/1732e0990e8a769945d406c986f57091.mp4
-Świat według Kiepskich - Odcinek 444  http://redirector.redefine.pl/uploader/2a62443152f53f65563303dc6b1ebdc9.mp4
-Świat według Kiepskich - Odcinek 445  http://redirector.redefine.pl/uploader/8fd52aa80e2978a5db58d2ea4b7b07e2.mp4
-Świat według Kiepskich - Odcinek 446  http://redirector.redefine.pl/uploader/089a2e241cf72fbbd75261093495e06b.mp4
-Świat według Kiepskich - Odcinek 447  http://redirector.redefine.pl/uploader/1d0c487875ac79be5904963a4d2a158b.mp4
-Świat według Kiepskich - Odcinek 448  http://redirector.redefine.pl/uploader/ea340e927b58355cd2cbfb0e09a029c8.mp4
-Świat według Kiepskich - Odcinek 449  http://redirector.redefine.pl/uploader/1545f018e447f4471ccb392fc76c3191.mp4
-Świat według Kiepskich - Odcinek 450  http://redirector.redefine.pl/vm2movies/76f7fae19272c60a6d60d9e3eb72b736.mp4
-Świat według Kiepskich - Odcinek 451  http://redirector.redefine.pl/vm2movies/7d89527816683b96b5e933d995ed0d1f.mp4
-Świat według Kiepskich - Odcinek 452  http://redirector.redefine.pl/vm2movies/855743cfbec36452790a3fe7c48dcccc.mp4
-Świat według Kiepskich - Odcinek 453  http://redirector.redefine.pl/vm2movies/6cad3ea3546ea2e9199a944cf89bc616.mp4
-Świat według Kiepskich - Odcinek 454  http://redirector.redefine.pl/vm2movies/59424c9eefb879985537c73d2ce0b124.mp4
-Świat według Kiepskich - Odcinek 455  http://redirector.redefine.pl/vm2movies/64f4d27141a9881785101b482c497038.mp4
-Świat według Kiepskich - Odcinek 456  http://redirector.redefine.pl/vm2movies/2184b372fa3b78fbb1e8a4a446e971cd.mp4
-Świat według Kiepskich - Odcinek 457  http://redirector.redefine.pl/vm2movies/aac1ca9bc3cdc02644fe62120aa4303d.mp4
-Świat według Kiepskich - Odcinek 458  http://redirector.redefine.pl/vm2movies/fed57243d9cc80e20d8f7d7b9b6f229f.mp4
-Świat według Kiepskich - Odcinek 459  http://redirector.redefine.pl/vm2movies/4bci3ybcxyf52d1ni3rihmtuh91hoja7.mp4
-Świat według Kiepskich - Odcinek 460  http://redirector.redefine.pl/vm2movies/dzqqwzd5m37g3792okj9hv5qyq3zdip6.mp4
-Świat według Kiepskich - Odcinek 461  http://redirector.redefine.pl/vm2movies/rxwjzv1mkc74i3hhf6riu9tufqf8a5ns.mp4
-Świat według Kiepskich - Odcinek 462  http://redirector.redefine.pl/vm2movies/cffpbi747mitm1fa8ouzt7nd6jttzmea.mp4
-Świat według Kiepskich - Odcinek 463  http://redirector.redefine.pl/vm2movies/rfx8v284axwbnz39ybpo725aj4nqyxwv.mp4
-Świat według Kiepskich - Odcinek 464  http://redirector.redefine.pl/vm2movies/41h9upta1z73y13ec895awopkok78asn.mp4
-Świat według Kiepskich - Odcinek 465  http://redirector.redefine.pl/vm2movies/6kniorb2cushqf41mr57jafudoueugr4.mp4
-Świat według Kiepskich - Odcinek 466  http://redirector.redefine.pl/vm2movies/n9y9pfo67q4kbgq52szhzpijijh2ypta.mp4
-Świat według Kiepskich - Odcinek 467  http://redirector.redefine.pl/vm2movies/cyb75psgifrnb2mz16fqbzqpnpm3i5ga.mp4
-Świat według Kiepskich - Odcinek 468  http://redirector.redefine.pl/vm2movies/9xgh5g5tbt1wty9oje52xzcspxu1oih2.mp4
-Świat według Kiepskich - Odcinek 469  http://redirector.redefine.pl/vm2movies/7uwyxr2smppbz212d6t919vffuofhhcw.mp4
-Świat według Kiepskich - Odcinek 470  http://redirector.redefine.pl/vm2movies/g2h5s33hyj1jxw45annhas2hw6damart.mp4
-Świat według Kiepskich - Odcinek 471  http://redirector.redefine.pl/vm2movies/6p3tco782ukjz4ri6ubr7db5ng72zwyq.mp4
-Świat według Kiepskich - Odcinek 472  http://redirector.redefine.pl/vm2movies/r1235m8j2sadc4dvzyzwi12ji1as46cm.mp4
-Świat według Kiepskich - Odcinek 473  http://redirector.redefine.pl/vm2movies/3bngpfvu1xhthd3c1zsze92soiqbp1hw.mp4
-Świat według Kiepskich - Odcinek 474  http://redirector.redefine.pl/vm2movies/4mrzjy5oig9bakw4p1h6ymmr61dxzsjo.mp4
-Świat według Kiepskich - Odcinek 475  http://redirector.redefine.pl/vm2movies/gyrhbs75x3xd5xfkd9pc4cf4842iqwf6.mp4
-Świat według Kiepskich - Odcinek 476  http://redirector.redefine.pl/vm2movies/q399u61syq8hxye87ajnakqp7qw75mzo.mp4
-Świat według Kiepskich - Odcinek 477  http://redirector.redefine.pl/vm2movies/rxbdpisrsvqsnmsfdxnu4rhjb14xzi2u.mp4
-Świat według Kiepskich - Odcinek 478  http://redirector.redefine.pl/vm2movies/cnefpqsjy1riox9xkegz293jy2hp5bbc.mp4
-Świat według Kiepskich - Odcinek 479  http://redirector.redefine.pl/vm2movies/kdhw6w66e6io8yy5mmzm8jo8rxkc4tyo.mp4
-Świat według Kiepskich - Odcinek 480  http://redirector.redefine.pl/vm2movies/yrj361xthnk3i5d6bbv6m1j34bhef1f5.mp4
-Świat według Kiepskich - Odcinek 481  http://redirector.redefine.pl/vm2movies/yd7b9aor4qx3gzmi4xthc55hqboq9dv7.mp4
-Świat według Kiepskich - Odcinek 482  http://redirector.redefine.pl/vm2movies/jtm4jfrar2sq7weyjru8h1p4222jgeqz.mp4
-Świat według Kiepskich - Odcinek 483  http://redirector.redefine.pl/vm2movies/z1j5aoxd43vr5uwnjty3a3u1czee6xvk.mp4
-Świat według Kiepskich - Odcinek 484  http://redirector.redefine.pl/vm2movies/663w687iwuw65n76mj3xrvd92rdubkeq.mp4
-Świat według Kiepskich - Odcinek 485  http://redirector.redefine.pl/vm2movies/mgcn9r4fxkfynddtug3ghn7xtbn45jco.mp4
-Świat według Kiepskich - Odcinek 486  http://redirector.redefine.pl/vm2movies/gue8nz2d4h1neh28rndomowew5gsd39s.mp4
-Świat według Kiepskich - Odcinek 487  http://redirector.redefine.pl/vm2movies/yackcsz488ox9ga6nb52x77orkadnnwa.mp4
-Świat według Kiepskich - Odcinek 488  http://redirector.redefine.pl/vm2movies/oko8rf1gnbji1pvcr8mxyrx3kmxthvor.mp4
-Świat według Kiepskich - Odcinek 489  http://redirector.redefine.pl/vm2movies/dagvc281a35dp93dbrfgzeyo2oj2n4v8.mp4
-Świat według Kiepskich - Odcinek 490  http://redirector.redefine.pl/vm2movies/kvcr63j8ip5b4u35ck92k13vqwzofmnn.mp4
-Świat według Kiepskich - Odcinek 491  http://redirector.redefine.pl/vm2movies/yuvm1gdy4mbo264whjhbt514mj3nb7fr.mp4
-Świat według Kiepskich - Odcinek 492  http://redirector.redefine.pl/vm2movies/aiw1sghmgg3dfr12nhmrxi4ad9432ub8.mp4
-Świat według Kiepskich - Odcinek 493  http://redirector.redefine.pl/vm2movies/cz8s5ybu58myrzc93xq2547zf5yghjgr.mp4
-Świat według Kiepskich - Odcinek 494  http://redirector.redefine.pl/vm2movies/py5hqkgy4tcf84pax16aq7ai4qjt7prb.mp4
-Świat według Kiepskich - Odcinek 495  http://redirector.redefine.pl/vm2movies/g5zomyffhxg5ywm1yi5hntuifcno68uq.mp4
-Świat według Kiepskich - Odcinek 496  http://redirector.redefine.pl/vm2movies/t5fn7t79m5ykeajks7wthwok75sppyct.mp4
-Świat według Kiepskich - Odcinek 497  http://redirector.redefine.pl/vm2movies/34bktek1nvgwbhmyefcddvgi4zsq4qf2.mp4
-Świat według Kiepskich - Odcinek 498  http://redirector.redefine.pl/vm2movies/d9m22cj3361trxrw7ks7kd822yidcmdi.mp4
-Świat według Kiepskich - Odcinek 499  http://redirector.redefine.pl/vm2movies/pb6cgx9h7e2sr4phoxiz8pm5dpw5ks8q.mp4
-Świat według Kiepskich - Odcinek 500  http://redirector.redefine.pl/vm2movies/aeiumtgcbd4cegkosf3kyjogz1xam729.mp4
-Świat według Kiepskich - Odcinek 501  http://redirector.redefine.pl/vm2movies/wm34585ebyph24jbgv1h1p4sv97i8sqq.mp4
-Świat według Kiepskich - Odcinek 502  http://redirector.redefine.pl/vm2movies/ugt9fy67cxwxv4h4t1anq8xymic215eh.mp4
-Świat według Kiepskich - Odcinek 503  http://redirector.redefine.pl/vm2movies/1x34a248a2sn4odjd32d78xadgtstegj.mp4
-Świat według Kiepskich - Odcinek 504  http://redirector.redefine.pl/vm2movies/kvuu2b3sgnn59kznqp2otqa3qv5az4eq.mp4
-Świat według Kiepskich - Odcinek 505  http://redirector.redefine.pl/vm2movies/xbkoyh86uhwbbdmzqdyr23unr9n1tbei.mp4
-Świat według Kiepskich - Odcinek 506  http://redirector.redefine.pl/vm2movies/i2s7knokkqop2vjd2ppxd2adt1rw2z6g.mp4
-Świat według Kiepskich - Odcinek 507  http://redirector.redefine.pl/vm2movies/h3cm9zc76wpm2yaaazhsjvh7oactng4p.mp4
-Świat według Kiepskich - Odcinek 508  http://redirector.redefine.pl/vm2movies/dd18h81infvg9r2njrrwnt6jbmdg5xni.mp4
-Świat według Kiepskich - Odcinek 509  http://redirector.redefine.pl/vm2movies/mtwio71o7yb91ot239h1t2gucossdea1.mp4
-Świat według Kiepskich - Odcinek 510  http://redirector.redefine.pl/vm2movies/i9c2pfjzjohbqm5g8heuyvacchrx18xr.mp4
-Świat według Kiepskich - Odcinek 511  http://redirector.redefine.pl/vm2movies/q52yaem7bhkq62tyrr6h1tnwd4qkkmp7.mp4
-Świat według Kiepskich - Odcinek 512  http://redirector.redefine.pl/vm2movies/fo1i4ci34q1ne173zkdiyxkxzbhjbyd9.mp4
-Świat według Kiepskich - Odcinek 513  http://redirector.redefine.pl/vm2movies/32p1g536hovn15ojfqy65s948mcohmo5.mp4
-Świat według Kiepskich - Odcinek 514  http://redirector.redefine.pl/vm2movies/d136mh2mbeqen8i2zp4ej5rfupiu4fzv.mp4
-Świat według Kiepskich - Odcinek 515  http://redirector.redefine.pl/vm2movies/6saf5486yinmje1owahuqfxyd5f2azhk.mp4
-Świat według Kiepskich - Odcinek 516  http://redirector.redefine.pl/vm2movies/9ufpdbsjcr6py7445dzv7tzx8mmyt7fh.mp4
-Świat według Kiepskich - Odcinek 517  http://redirector.redefine.pl/vm2movies/gdygn2kicwyj2zvtro81k995nukzgnzv.mp4
-Świat według Kiepskich - Odcinek 518  http://redirector.redefine.pl/vm2movies/yygzqekpq2bzoeftg43pxsf66qdy1oe5.mp4
-Świat według Kiepskich - Odcinek 519  http://redirector.redefine.pl/vm2movies/12psrcvcdfm5hm58bkaddq1uy5e1tf4g.mp4
-Świat według Kiepskich - Odcinek 520  http://redirector.redefine.pl/vm2movies/ioosc8zu62kfrd57s4249e11kw1o3dph.mp4
-Świat według Kiepskich - Odcinek 521  http://redirector.redefine.pl/vm2movies/w963h1hcp6rwz9vp4n88tgtrpm87y8rh.mp4
-Świat według Kiepskich - Odcinek 522  http://redirector.redefine.pl/vm2movies/mqrnk48wndqa5enkzh3yw916tjvpprte.mp4
-Świat według Kiepskich - Odcinek 523  http://redirector.redefine.pl/vm2movies/6v3e9wz3pqp5d7eofev47mesps48ygdo.mp4
-Świat według Kiepskich - Odcinek 524  http://redirector.redefine.pl/vm2movies/b1j1bmwamuq89mbstumb6dre322yyyf7.mp4
-Świat według Kiepskich - Odcinek 525  http://redirector.redefine.pl/vm2movies/cmmyc5ihwf84wz5z47xjgwff17ve92yn.mp4
-Świat według Kiepskich - Odcinek 526  http://redirector.redefine.pl/vm2movies/72bkhuqmkzc7dxduy934efy1bxc4h1r3.mp4
-Świat według Kiepskich - Odcinek 527  http://redirector.redefine.pl/vm2movies/frtsvyh6dr1v59fd24w3iezyiinnuvth.mp4
-Świat według Kiepskich - Odcinek 528  http://redirector.redefine.pl/vm2movies/s3wc83eurz4f9rafxzp5ynfs2245guep.mp4'''
+Świat według Kiepskich - Odcinek 322  http://redirector.redefine.pl/movies/39a04063ba97bf87cd0686c7f883e0e0.mp4'''
+# Świat według Kiepskich - Odcinek 323  http://redirector.redefine.pl/movies/e1bb1f2edc8dc048cfd2b74720cbe3fb.mp4
+# Świat według Kiepskich - Odcinek 324  http://redirector.redefine.pl/movies/fee1dcc17959879b1af22c53000ccb7d.mp4
+# Świat według Kiepskich - Odcinek 325  http://redirector.redefine.pl/movies/e3a681c40a3f51562dcdfcbbcac3f9be.mp4
+# Świat według Kiepskich - Odcinek 326  http://redirector.redefine.pl/movies/0c3340f4b343a3ead7e8f9a8ff965ba0.mp4
+# Świat według Kiepskich - Odcinek 327  http://redirector.redefine.pl/movies/ac178990731706ce367b7fc6b6939dfc.mp4
+# Świat według Kiepskich - Odcinek 328  http://redirector.redefine.pl/movies/dcbb248fcf5afefcdaac7376ac9debae.mp4
+# Świat według Kiepskich - Odcinek 329  http://redirector.redefine.pl/movies/a2e655bfb52d6b807833af1a1c0ba3db.mp4
+# Świat według Kiepskich - Odcinek 330  http://redirector.redefine.pl/movies/8ead908189bb9c1047c0d18901c466cf.mp4
+# Świat według Kiepskich - Odcinek 331  http://redirector.redefine.pl/movies/ae64a5d7285edafcd9b6c4c3554c8a2b.mp4
+# Świat według Kiepskich - Odcinek 332  http://redirector.redefine.pl/movies/ac516ead193db2c83969d5fb6c8ae05c.mp4
+# Świat według Kiepskich - Odcinek 333  http://redirector.redefine.pl/movies/eec1da098957102009c38e35c58a1fd8.mp4
+# Świat według Kiepskich - Odcinek 334  http://redirector.redefine.pl/movies/4c210b60e044ae817ca773a0c549489c.mp4
+# Świat według Kiepskich - Odcinek 335  http://redirector.redefine.pl/movies/f1d05d6ff15d1f1d924388101e7c9207.mp4
+# Świat według Kiepskich - Odcinek 336  http://redirector.redefine.pl/movies/8d7370266bba201fdb4afb2a7d3b1377.mp4
+# Świat według Kiepskich - Odcinek 337  http://redirector.redefine.pl/movies/6f75c44a1b8b41d37aa65a8536741868.mp4
+# Świat według Kiepskich - Odcinek 338  http://redirector.redefine.pl/movies/d8d8f40b7df20cc7cbdfd6ff1feff06b.mp4
+# Świat według Kiepskich - Odcinek 339  http://redirector.redefine.pl/movies/073c32a970c9f77d09d98910b505522c.mp4
+# Świat według Kiepskich - Odcinek 340  http://redirector.redefine.pl/movies/672442c558858aae3d21a78ec11f9e83.mp4
+# Świat według Kiepskich - Odcinek 341  http://redirector.redefine.pl/movies/76ffb988bb99f886ebb1736bfff66d69.mp4
+# Świat według Kiepskich - Odcinek 342  http://redirector.redefine.pl/movies/5ed3fd9f98bdf0aa1609299c8b63b869.mp4
+# Świat według Kiepskich - Odcinek 343  http://redirector.redefine.pl/movies/a08c169a7323c177d686d4601caf74c7.mp4
+# Świat według Kiepskich - Odcinek 344  http://redirector.redefine.pl/movies/ab28b06ebbc8641ff8178bd7de46901a.mp4
+# Świat według Kiepskich - Odcinek 345  http://redirector.redefine.pl/movies/5c935bd070d0497f67f18fb1b7c95697.mp4
+# Świat według Kiepskich - Odcinek 346  http://redirector.redefine.pl/movies/333b6d73074c8551ce8ac56cb5ad9744.mp4
+# Świat według Kiepskich - Odcinek 347  http://redirector.redefine.pl/movies/6f07a7c2c41a5271142f577f4d9f360f.mp4
+# Świat według Kiepskich - Odcinek 348  http://redirector.redefine.pl/movies/18b73006603f061838e659e6fa0f4f8f.mp4
+# Świat według Kiepskich - Odcinek 349  http://redirector.redefine.pl/movies/873543a1819960694462873cffcd60a4.mp4
+# Świat według Kiepskich - Odcinek 350  http://redirector.redefine.pl/movies/79e1ce0339719bd99e9e325a39f7043b.mp4
+# Świat według Kiepskich - Odcinek 351  http://redirector.redefine.pl/movies/ec047eab233b953e9931a5ec7877abc5.mp4
+# Świat według Kiepskich - Odcinek 352  http://redirector.redefine.pl/movies/b2ab272697cd3d5e1ec479bc33e6e5c0.mp4
+# Świat według Kiepskich - Odcinek 353  http://redirector.redefine.pl/movies/92e2334f2e2823ad44055e5c15d00a78.mp4
+# Świat według Kiepskich - Odcinek 354  http://redirector.redefine.pl/movies/924fa0a55de728314123e6ce4857dd26.mp4
+# Świat według Kiepskich - Odcinek 355  http://redirector.redefine.pl/movies/d300be5d9804a0d7b9cac691522c4353.mp4
+# Świat według Kiepskich - Odcinek 356  http://redirector.redefine.pl/movies/024f962fe37f96a1e66f38dbb2a0874e.mp4
+# Świat według Kiepskich - Odcinek 357  http://redirector.redefine.pl/movies/eb21e213894c842235963cd7d680aaee.mp4
+# Świat według Kiepskich - Odcinek 358  http://redirector.redefine.pl/movies/be57f608115c55aeb6202715df54c22d.mp4
+# Świat według Kiepskich - Odcinek 359  http://redirector.redefine.pl/movies/445a4da6d0dbe98601ce974f99a312e0.mp4
+# Świat według Kiepskich - Odcinek 360  http://redirector.redefine.pl/movies/358af199c1fff54f8d7058521b159224.mp4
+# Świat według Kiepskich - Odcinek 361  http://redirector.redefine.pl/movies/c588ee3e3ae94566a9e582161aa56c41.mp4
+# Świat według Kiepskich - Odcinek 362  http://redirector.redefine.pl/movies/960940c4a670ef07e1a14beb8b2d9294.mp4
+# Świat według Kiepskich - Odcinek 363  http://redirector.redefine.pl/movies/a2cd983426366ab5741db1f686fc8c47.mp4
+# Świat według Kiepskich - Odcinek 364  http://redirector.redefine.pl/movies/450def580b265c58fa0b48efcfebc36b.mp4
+# Świat według Kiepskich - Odcinek 365  http://redirector.redefine.pl/movies/aeea0d47ce8a8f56a7a9d3aacb4cd409.mp4
+# Świat według Kiepskich - Odcinek 366  http://redirector.redefine.pl/movies/a66d81563eafc599f26e8c3acd2f4ed5.mp4
+# Świat według Kiepskich - Odcinek 367  http://redirector.redefine.pl/movies/5cd0eef6894a550cde3c1b71c784c07b.mp4
+# Świat według Kiepskich - Odcinek 368  http://redirector.redefine.pl/movies/cb02d7ec510da46dab2145efd2e7705d.mp4
+# Świat według Kiepskich - Odcinek 369  http://redirector.redefine.pl/movies/c84ea151e08d022f291ea00535df889f.mp4
+# Świat według Kiepskich - Odcinek 370  http://redirector.redefine.pl/movies/0c4118686e75863b17f033f4f6eb70c8.mp4
+# Świat według Kiepskich - Odcinek 371  http://redirector.redefine.pl/movies/765913ae25444d687f675cd81200ad2d.mp4
+# Świat według Kiepskich - Odcinek 372  http://redirector.redefine.pl/movies/f79d829b8174f1cb01036d8643c0ef52.mp4
+# Świat według Kiepskich - Odcinek 373  http://redirector.redefine.pl/movies/a175b802e4dc5febac7a7cd306904948.mp4
+# Świat według Kiepskich - Odcinek 374  http://redirector.redefine.pl/movies/f57ef7eed951896cceddba00ac6c9912.mp4
+# Świat według Kiepskich - Odcinek 375  http://redirector.redefine.pl/movies/6fd5c1281cca64e5639820f366b2def6.mp4
+# Świat według Kiepskich - Odcinek 376  http://redirector.redefine.pl/movies/14b71bcce526b7d3bb82fc2d8b203d9f.mp4
+# Świat według Kiepskich - Odcinek 377  http://redirector.redefine.pl/movies/c24b86b05398ddc656fec6f166d27282.mp4
+# Świat według Kiepskich - Odcinek 378  http://redirector.redefine.pl/movies/c85462ca3b7ec8644012d7f4b289dbf8.mp4
+# Świat według Kiepskich - Odcinek 379  http://redirector.redefine.pl/movies/07abe877ce6f756412227d7422eeb6cf.mp4
+# Świat według Kiepskich - Odcinek 380  http://redirector.redefine.pl/movies/0079f966a09f23b317e8e7ee4af90596.mp4
+# Świat według Kiepskich - Odcinek 381  http://redirector.redefine.pl/vm2movies/v25vrgsjzqb7km1i8up8kyz53ixogehu.mp4
+# Świat według Kiepskich - Odcinek 382  http://redirector.redefine.pl/vm2movies/257i2o2kyn84p7crew74h28krrxof6qt.mp4
+# Świat według Kiepskich - Odcinek 383  http://redirector.redefine.pl/movies/fec4f777e6bef213761ec7203871b49a.mp4
+# Świat według Kiepskich - Odcinek 384  http://redirector.redefine.pl/movies/ffa3452438c6a10461411c52e89826e0.mp4
+# Świat według Kiepskich - Odcinek 385  http://redirector.redefine.pl/movies/553661be12679fc58ec7845d0ca4e542.mp4
+# Świat według Kiepskich - Odcinek 386  http://redirector.redefine.pl/movies/aefaa862c783b5cd4231e8c9b19ac1ac.mp4
+# Świat według Kiepskich - Odcinek 387  http://redirector.redefine.pl/movies/a552464b2ebdf5af54396b5951c13009.mp4
+# Świat według Kiepskich - Odcinek 388  http://redirector.redefine.pl/movies/94f815e01ef30e289916eae0a06e6ad6.mp4
+# Świat według Kiepskich - Odcinek 389  http://redirector.redefine.pl/movies/b7348049199537106a531f8ccd956b96.mp4
+# Świat według Kiepskich - Odcinek 390  http://redirector.redefine.pl/movies/e0242279b8f4173f1f77971ee96410ca.mp4
+# Świat według Kiepskich - Odcinek 391  http://redirector.redefine.pl/movies/944160bc2945a66e0301433dc3e9c42d.mp4
+# Świat według Kiepskich - Odcinek 392  http://redirector.redefine.pl/movies/1b2a172b2ad601e1cb58474d7543bf11.mp4
+# Świat według Kiepskich - Odcinek 393  http://redirector.redefine.pl/movies/d9340de9f54292e12ab9884a2f589f1c.mp4
+# Świat według Kiepskich - Odcinek 394  http://redirector.redefine.pl/movies/077f7a129553050c9d5ff2f00e95c18b.mp4
+# Świat według Kiepskich - Odcinek 395  http://redirector.redefine.pl/movies/0bdbae61b7df6a2722a6faccb4678510.mp4
+# Świat według Kiepskich - Odcinek 396  http://redirector.redefine.pl/movies/b5c3bb429a387771756b1bc47fa5a78d.mp4
+# Świat według Kiepskich - Odcinek 397  http://redirector.redefine.pl/movies/3618240cb270a304108d2d9103682988.mp4
+# Świat według Kiepskich - Odcinek 398  http://redirector.redefine.pl/movies/729993b8f3451068c92fc0c6e4dfc0e7.mp4
+# Świat według Kiepskich - Odcinek 399  http://redirector.redefine.pl/movies/96558c4c08c55a8d17e1e4cb999138d6.mp4
+# Świat według Kiepskich - Odcinek 400  http://redirector.redefine.pl/movies/522475fff809b7479ad8b7801e7e7eab.mp4
+# Świat według Kiepskich - Odcinek 401  http://redirector.redefine.pl/movies/077d46e01432d678047d2c84ca4e2922.mp4
+# Świat według Kiepskich - Odcinek 402  http://redirector.redefine.pl/movies/1562b57a76c087756ea58819138fa60a.mp4
+# Świat według Kiepskich - Odcinek 403  http://redirector.redefine.pl/movies/5eadcea6bb399b7e7b4d3e89d59b5a3a.mp4
+# Świat według Kiepskich - Odcinek 404  http://redirector.redefine.pl/movies/203b50e987c0939e0addf45627e773e6.mp4
+# Świat według Kiepskich - Odcinek 405  http://redirector.redefine.pl/movies/e74491ee2aa12e80b6b2888e6bb1855e.mp4
+# Świat według Kiepskich - Odcinek 406  http://redirector.redefine.pl/movies/a64874db36cfa29593691a3b4d6b61ee.mp4
+# Świat według Kiepskich - Odcinek 407  http://redirector.redefine.pl/movies/16e9e6576074bb92e471350ba4c23332.mp4
+# Świat według Kiepskich - Odcinek 408  http://redirector.redefine.pl/movies/1d2acf5cb2a454c011a223b82e35463e.mp4
+# Świat według Kiepskich - Odcinek 409  http://redirector.redefine.pl/movies/33b76d6b9bca495a7511871ca0db324b.mp4
+# Świat według Kiepskich - Odcinek 410  http://redirector.redefine.pl/movies/ea1366336d2cc9691765bb64b3081aa7.mp4
+# Świat według Kiepskich - Odcinek 411  http://redirector.redefine.pl/uploader/15d194e721cca25288ccc236e857b752.mp4
+# Świat według Kiepskich - Odcinek 412  http://redirector.redefine.pl/uploader/c3e806885c87298dd3a42bf7c93c26c8.mp4
+# Świat według Kiepskich - Odcinek 413  http://redirector.redefine.pl/uploader/2f408624965b775a113c22b215e1022b.mp4
+# Świat według Kiepskich - Odcinek 414  http://redirector.redefine.pl/uploader/8442e9767a9f9a43e6291cca63664d67.mp4
+# Świat według Kiepskich - Odcinek 415  http://redirector.redefine.pl/uploader/256a174426df1eff94b0a55ed75f2f24.mp4
+# Świat według Kiepskich - Odcinek 416  http://redirector.redefine.pl/uploader/38d90c35cd59abe7c38423e1aa256d8b.mp4
+# Świat według Kiepskich - Odcinek 417  http://redirector.redefine.pl/uploader/c911b9ac60147b6c9fbf988ef877adc4.mp4
+# Świat według Kiepskich - Odcinek 418  http://redirector.redefine.pl/uploader/fb0e68cdcae8f35549b8d48b0564f801.mp4
+# Świat według Kiepskich - Odcinek 419  http://redirector.redefine.pl/uploader/3c38d12e1bd661ab4be252c953440ef5.mp4
+# Świat według Kiepskich - Odcinek 420  http://redirector.redefine.pl/uploader/82727087c2bce0bed706e4989aa5f53e.mp4
+# Świat według Kiepskich - Odcinek 421  http://redirector.redefine.pl/uploader/debbb3b7be3454d3eba817e3febf8f4b.mp4
+# Świat według Kiepskich - Odcinek 422  http://redirector.redefine.pl/uploader/70f767ae7ad3aba74f1c212b663bce5a.mp4
+# Świat według Kiepskich - Odcinek 423  http://redirector.redefine.pl/uploader/2df67e0eea718679a8851e8bfc294b90.mp4
+# Świat według Kiepskich - Odcinek 424  http://redirector.redefine.pl/uploader/ff213133a97633b281fccb592e8ad497.mp4
+# Świat według Kiepskich - Odcinek 425  http://redirector.redefine.pl/uploader/0fb98bd41f61eb71dca4bca3ef45b5c0.mp4
+# Świat według Kiepskich - Odcinek 426  http://redirector.redefine.pl/uploader/08dd1decbd2fe3e4a448823aa7c41cb2.mp4
+# Świat według Kiepskich - Odcinek 427  http://redirector.redefine.pl/uploader/dad14eda0a91e36e01e1fa9dc7d88477.mp4
+# Świat według Kiepskich - Odcinek 428  http://redirector.redefine.pl/uploader/01690f701d7c8512be6b300a6b044a48.mp4
+# Świat według Kiepskich - Odcinek 429  http://redirector.redefine.pl/uploader/5f7c8fd5c22c9ea39c8f802c11bbbda1.mp4
+# Świat według Kiepskich - Odcinek 430  http://redirector.redefine.pl/uploader/0a20f3bf34e581c7b16f45e7ce3f6621.mp4
+# Świat według Kiepskich - Odcinek 431  http://redirector.redefine.pl/uploader/a7739684343abe963d860ee6f6e2bf7b.mp4
+# Świat według Kiepskich - Odcinek 432  http://redirector.redefine.pl/uploader/4cbfd4939c4b4383d14f758f87880091.mp4
+# Świat według Kiepskich - Odcinek 433  http://redirector.redefine.pl/uploader/4bd2921a0f4b35bfa173be444531465f.mp4
+# Świat według Kiepskich - Odcinek 434  http://redirector.redefine.pl/uploader/94a1076d930bec3e4415e4b384f12525.mp4
+# Świat według Kiepskich - Odcinek 435  http://redirector.redefine.pl/uploader/010e0bb8f2535778a33a1cd082518dff.mp4
+# Świat według Kiepskich - Odcinek 436  http://redirector.redefine.pl/uploader/15b9dcc371dc30e87202043662309f03.mp4
+# Świat według Kiepskich - Odcinek 437  http://redirector.redefine.pl/uploader/eeebe870386983d1c64fe10ab21657e3.mp4
+# Świat według Kiepskich - Odcinek 438  http://redirector.redefine.pl/uploader/462e7d72271e8bfe41ea96dc5f99b144.mp4
+# Świat według Kiepskich - Odcinek 439  http://redirector.redefine.pl/uploader/bf913b57aa67aabbd64d8487128e1797.mp4
+# Świat według Kiepskich - Odcinek 440  http://redirector.redefine.pl/uploader/809a59c8c8f099fb04ea9467f9e0cd89.mp4
+# Świat według Kiepskich - Odcinek 441  http://redirector.redefine.pl/uploader/a18bc104761e6083760a91cadb9d205d.mp4
+# Świat według Kiepskich - Odcinek 442  http://redirector.redefine.pl/uploader/ff92e276040e364045400bc87f3ba8b6.mp4
+# Świat według Kiepskich - Odcinek 443  http://redirector.redefine.pl/uploader/1732e0990e8a769945d406c986f57091.mp4
+# Świat według Kiepskich - Odcinek 444  http://redirector.redefine.pl/uploader/2a62443152f53f65563303dc6b1ebdc9.mp4
+# Świat według Kiepskich - Odcinek 445  http://redirector.redefine.pl/uploader/8fd52aa80e2978a5db58d2ea4b7b07e2.mp4
+# Świat według Kiepskich - Odcinek 446  http://redirector.redefine.pl/uploader/089a2e241cf72fbbd75261093495e06b.mp4
+# Świat według Kiepskich - Odcinek 447  http://redirector.redefine.pl/uploader/1d0c487875ac79be5904963a4d2a158b.mp4
+# Świat według Kiepskich - Odcinek 448  http://redirector.redefine.pl/uploader/ea340e927b58355cd2cbfb0e09a029c8.mp4
+# Świat według Kiepskich - Odcinek 449  http://redirector.redefine.pl/uploader/1545f018e447f4471ccb392fc76c3191.mp4
+# Świat według Kiepskich - Odcinek 450  http://redirector.redefine.pl/vm2movies/76f7fae19272c60a6d60d9e3eb72b736.mp4
+# Świat według Kiepskich - Odcinek 451  http://redirector.redefine.pl/vm2movies/7d89527816683b96b5e933d995ed0d1f.mp4
+# Świat według Kiepskich - Odcinek 452  http://redirector.redefine.pl/vm2movies/855743cfbec36452790a3fe7c48dcccc.mp4
+# Świat według Kiepskich - Odcinek 453  http://redirector.redefine.pl/vm2movies/6cad3ea3546ea2e9199a944cf89bc616.mp4
+# Świat według Kiepskich - Odcinek 454  http://redirector.redefine.pl/vm2movies/59424c9eefb879985537c73d2ce0b124.mp4
+# Świat według Kiepskich - Odcinek 455  http://redirector.redefine.pl/vm2movies/64f4d27141a9881785101b482c497038.mp4
+# Świat według Kiepskich - Odcinek 456  http://redirector.redefine.pl/vm2movies/2184b372fa3b78fbb1e8a4a446e971cd.mp4
+# Świat według Kiepskich - Odcinek 457  http://redirector.redefine.pl/vm2movies/aac1ca9bc3cdc02644fe62120aa4303d.mp4
+# Świat według Kiepskich - Odcinek 458  http://redirector.redefine.pl/vm2movies/fed57243d9cc80e20d8f7d7b9b6f229f.mp4
+# Świat według Kiepskich - Odcinek 459  http://redirector.redefine.pl/vm2movies/4bci3ybcxyf52d1ni3rihmtuh91hoja7.mp4
+# Świat według Kiepskich - Odcinek 460  http://redirector.redefine.pl/vm2movies/dzqqwzd5m37g3792okj9hv5qyq3zdip6.mp4
+# Świat według Kiepskich - Odcinek 461  http://redirector.redefine.pl/vm2movies/rxwjzv1mkc74i3hhf6riu9tufqf8a5ns.mp4
+# Świat według Kiepskich - Odcinek 462  http://redirector.redefine.pl/vm2movies/cffpbi747mitm1fa8ouzt7nd6jttzmea.mp4
+# Świat według Kiepskich - Odcinek 463  http://redirector.redefine.pl/vm2movies/rfx8v284axwbnz39ybpo725aj4nqyxwv.mp4
+# Świat według Kiepskich - Odcinek 464  http://redirector.redefine.pl/vm2movies/41h9upta1z73y13ec895awopkok78asn.mp4
+# Świat według Kiepskich - Odcinek 465  http://redirector.redefine.pl/vm2movies/6kniorb2cushqf41mr57jafudoueugr4.mp4
+# Świat według Kiepskich - Odcinek 466  http://redirector.redefine.pl/vm2movies/n9y9pfo67q4kbgq52szhzpijijh2ypta.mp4
+# Świat według Kiepskich - Odcinek 467  http://redirector.redefine.pl/vm2movies/cyb75psgifrnb2mz16fqbzqpnpm3i5ga.mp4
+# Świat według Kiepskich - Odcinek 468  http://redirector.redefine.pl/vm2movies/9xgh5g5tbt1wty9oje52xzcspxu1oih2.mp4
+# Świat według Kiepskich - Odcinek 469  http://redirector.redefine.pl/vm2movies/7uwyxr2smppbz212d6t919vffuofhhcw.mp4
+# Świat według Kiepskich - Odcinek 470  http://redirector.redefine.pl/vm2movies/g2h5s33hyj1jxw45annhas2hw6damart.mp4
+# Świat według Kiepskich - Odcinek 471  http://redirector.redefine.pl/vm2movies/6p3tco782ukjz4ri6ubr7db5ng72zwyq.mp4
+# Świat według Kiepskich - Odcinek 472  http://redirector.redefine.pl/vm2movies/r1235m8j2sadc4dvzyzwi12ji1as46cm.mp4
+# Świat według Kiepskich - Odcinek 473  http://redirector.redefine.pl/vm2movies/3bngpfvu1xhthd3c1zsze92soiqbp1hw.mp4
+# Świat według Kiepskich - Odcinek 474  http://redirector.redefine.pl/vm2movies/4mrzjy5oig9bakw4p1h6ymmr61dxzsjo.mp4
+# Świat według Kiepskich - Odcinek 475  http://redirector.redefine.pl/vm2movies/gyrhbs75x3xd5xfkd9pc4cf4842iqwf6.mp4
+# Świat według Kiepskich - Odcinek 476  http://redirector.redefine.pl/vm2movies/q399u61syq8hxye87ajnakqp7qw75mzo.mp4
+# Świat według Kiepskich - Odcinek 477  http://redirector.redefine.pl/vm2movies/rxbdpisrsvqsnmsfdxnu4rhjb14xzi2u.mp4
+# Świat według Kiepskich - Odcinek 478  http://redirector.redefine.pl/vm2movies/cnefpqsjy1riox9xkegz293jy2hp5bbc.mp4
+# Świat według Kiepskich - Odcinek 479  http://redirector.redefine.pl/vm2movies/kdhw6w66e6io8yy5mmzm8jo8rxkc4tyo.mp4
+# Świat według Kiepskich - Odcinek 480  http://redirector.redefine.pl/vm2movies/yrj361xthnk3i5d6bbv6m1j34bhef1f5.mp4
+# Świat według Kiepskich - Odcinek 481  http://redirector.redefine.pl/vm2movies/yd7b9aor4qx3gzmi4xthc55hqboq9dv7.mp4
+# Świat według Kiepskich - Odcinek 482  http://redirector.redefine.pl/vm2movies/jtm4jfrar2sq7weyjru8h1p4222jgeqz.mp4
+# Świat według Kiepskich - Odcinek 483  http://redirector.redefine.pl/vm2movies/z1j5aoxd43vr5uwnjty3a3u1czee6xvk.mp4
+# Świat według Kiepskich - Odcinek 484  http://redirector.redefine.pl/vm2movies/663w687iwuw65n76mj3xrvd92rdubkeq.mp4
+# Świat według Kiepskich - Odcinek 485  http://redirector.redefine.pl/vm2movies/mgcn9r4fxkfynddtug3ghn7xtbn45jco.mp4
+# Świat według Kiepskich - Odcinek 486  http://redirector.redefine.pl/vm2movies/gue8nz2d4h1neh28rndomowew5gsd39s.mp4
+# Świat według Kiepskich - Odcinek 487  http://redirector.redefine.pl/vm2movies/yackcsz488ox9ga6nb52x77orkadnnwa.mp4
+# Świat według Kiepskich - Odcinek 488  http://redirector.redefine.pl/vm2movies/oko8rf1gnbji1pvcr8mxyrx3kmxthvor.mp4
+# Świat według Kiepskich - Odcinek 489  http://redirector.redefine.pl/vm2movies/dagvc281a35dp93dbrfgzeyo2oj2n4v8.mp4
+# Świat według Kiepskich - Odcinek 490  http://redirector.redefine.pl/vm2movies/kvcr63j8ip5b4u35ck92k13vqwzofmnn.mp4
+# Świat według Kiepskich - Odcinek 491  http://redirector.redefine.pl/vm2movies/yuvm1gdy4mbo264whjhbt514mj3nb7fr.mp4
+# Świat według Kiepskich - Odcinek 492  http://redirector.redefine.pl/vm2movies/aiw1sghmgg3dfr12nhmrxi4ad9432ub8.mp4
+# Świat według Kiepskich - Odcinek 493  http://redirector.redefine.pl/vm2movies/cz8s5ybu58myrzc93xq2547zf5yghjgr.mp4
+# Świat według Kiepskich - Odcinek 494  http://redirector.redefine.pl/vm2movies/py5hqkgy4tcf84pax16aq7ai4qjt7prb.mp4
+# Świat według Kiepskich - Odcinek 495  http://redirector.redefine.pl/vm2movies/g5zomyffhxg5ywm1yi5hntuifcno68uq.mp4
+# Świat według Kiepskich - Odcinek 496  http://redirector.redefine.pl/vm2movies/t5fn7t79m5ykeajks7wthwok75sppyct.mp4
+# Świat według Kiepskich - Odcinek 497  http://redirector.redefine.pl/vm2movies/34bktek1nvgwbhmyefcddvgi4zsq4qf2.mp4
+# Świat według Kiepskich - Odcinek 498  http://redirector.redefine.pl/vm2movies/d9m22cj3361trxrw7ks7kd822yidcmdi.mp4
+# Świat według Kiepskich - Odcinek 499  http://redirector.redefine.pl/vm2movies/pb6cgx9h7e2sr4phoxiz8pm5dpw5ks8q.mp4
+# Świat według Kiepskich - Odcinek 500  http://redirector.redefine.pl/vm2movies/aeiumtgcbd4cegkosf3kyjogz1xam729.mp4
+# Świat według Kiepskich - Odcinek 501  http://redirector.redefine.pl/vm2movies/wm34585ebyph24jbgv1h1p4sv97i8sqq.mp4
+# Świat według Kiepskich - Odcinek 502  http://redirector.redefine.pl/vm2movies/ugt9fy67cxwxv4h4t1anq8xymic215eh.mp4
+# Świat według Kiepskich - Odcinek 503  http://redirector.redefine.pl/vm2movies/1x34a248a2sn4odjd32d78xadgtstegj.mp4
+# Świat według Kiepskich - Odcinek 504  http://redirector.redefine.pl/vm2movies/kvuu2b3sgnn59kznqp2otqa3qv5az4eq.mp4
+# Świat według Kiepskich - Odcinek 505  http://redirector.redefine.pl/vm2movies/xbkoyh86uhwbbdmzqdyr23unr9n1tbei.mp4
+# Świat według Kiepskich - Odcinek 506  http://redirector.redefine.pl/vm2movies/i2s7knokkqop2vjd2ppxd2adt1rw2z6g.mp4
+# Świat według Kiepskich - Odcinek 507  http://redirector.redefine.pl/vm2movies/h3cm9zc76wpm2yaaazhsjvh7oactng4p.mp4
+# Świat według Kiepskich - Odcinek 508  http://redirector.redefine.pl/vm2movies/dd18h81infvg9r2njrrwnt6jbmdg5xni.mp4
+# Świat według Kiepskich - Odcinek 509  http://redirector.redefine.pl/vm2movies/mtwio71o7yb91ot239h1t2gucossdea1.mp4
+# Świat według Kiepskich - Odcinek 510  http://redirector.redefine.pl/vm2movies/i9c2pfjzjohbqm5g8heuyvacchrx18xr.mp4
+# Świat według Kiepskich - Odcinek 511  http://redirector.redefine.pl/vm2movies/q52yaem7bhkq62tyrr6h1tnwd4qkkmp7.mp4
+# Świat według Kiepskich - Odcinek 512  http://redirector.redefine.pl/vm2movies/fo1i4ci34q1ne173zkdiyxkxzbhjbyd9.mp4
+# Świat według Kiepskich - Odcinek 513  http://redirector.redefine.pl/vm2movies/32p1g536hovn15ojfqy65s948mcohmo5.mp4
+# Świat według Kiepskich - Odcinek 514  http://redirector.redefine.pl/vm2movies/d136mh2mbeqen8i2zp4ej5rfupiu4fzv.mp4
+# Świat według Kiepskich - Odcinek 515  http://redirector.redefine.pl/vm2movies/6saf5486yinmje1owahuqfxyd5f2azhk.mp4
+# Świat według Kiepskich - Odcinek 516  http://redirector.redefine.pl/vm2movies/9ufpdbsjcr6py7445dzv7tzx8mmyt7fh.mp4
+# Świat według Kiepskich - Odcinek 517  http://redirector.redefine.pl/vm2movies/gdygn2kicwyj2zvtro81k995nukzgnzv.mp4
+# Świat według Kiepskich - Odcinek 518  http://redirector.redefine.pl/vm2movies/yygzqekpq2bzoeftg43pxsf66qdy1oe5.mp4
+# Świat według Kiepskich - Odcinek 519  http://redirector.redefine.pl/vm2movies/12psrcvcdfm5hm58bkaddq1uy5e1tf4g.mp4
+# Świat według Kiepskich - Odcinek 520  http://redirector.redefine.pl/vm2movies/ioosc8zu62kfrd57s4249e11kw1o3dph.mp4
+# Świat według Kiepskich - Odcinek 521  http://redirector.redefine.pl/vm2movies/w963h1hcp6rwz9vp4n88tgtrpm87y8rh.mp4
+# Świat według Kiepskich - Odcinek 522  http://redirector.redefine.pl/vm2movies/mqrnk48wndqa5enkzh3yw916tjvpprte.mp4
+# Świat według Kiepskich - Odcinek 523  http://redirector.redefine.pl/vm2movies/6v3e9wz3pqp5d7eofev47mesps48ygdo.mp4
+# Świat według Kiepskich - Odcinek 524  http://redirector.redefine.pl/vm2movies/b1j1bmwamuq89mbstumb6dre322yyyf7.mp4
+# Świat według Kiepskich - Odcinek 525  http://redirector.redefine.pl/vm2movies/cmmyc5ihwf84wz5z47xjgwff17ve92yn.mp4
+# Świat według Kiepskich - Odcinek 526  http://redirector.redefine.pl/vm2movies/72bkhuqmkzc7dxduy934efy1bxc4h1r3.mp4
+# Świat według Kiepskich - Odcinek 527  http://redirector.redefine.pl/vm2movies/frtsvyh6dr1v59fd24w3iezyiinnuvth.mp4
+# Świat według Kiepskich - Odcinek 528  http://redirector.redefine.pl/vm2movies/s3wc83eurz4f9rafxzp5ynfs2245guep.mp4
 
 env = open(".env", "r")
 episodes = episodes.split('\n')
@@ -484,9 +485,49 @@ for line in env:
     if len(line) == 2:
         ENV[line[0]] = line[1]
 path = ENV['ROOT_MEDIA']
+
 for episode in episodes:
     download = episode.split('  ')
-    file_path = f"{os.path.join(path, 'tv/Swiat wedlug Kiepskich', download[0])}.mp4"
+    episode_number = int(download[0].split(' ')[-1])
+    if episode_number <= 145:
+        season = 1
+    elif 145 < episode_number <= 154:
+        season = 2
+        episode_number -= 145
+    elif 154 < episode_number <= 171:
+        season = 3
+        episode_number -= 154
+    elif 171 < episode_number <= 202:
+        season = 4
+        episode_number -= 171
+    elif 202 < episode_number <= 244:
+        season = 5
+        episode_number -= 202
+    elif 244 < episode_number <= 265:
+        season = 6
+        episode_number -= 244
+    elif 265 < episode_number <= 282:
+        season = 7
+        episode_number -= 265
+    elif 282 < episode_number <= 297:
+        season = 8
+        episode_number -= 282
+    elif 297 < episode_number <= 307:
+        season = 9
+        episode_number -= 297
+    elif 307 < episode_number <= 322:
+        season = 9
+        episode_number -= 307
+
+    file_path = f"{os.path.join(path, f'tv/Swiat wedlug Kiepskich/Season {season:02}',f'S{season:02}E{episode_number:03}')}.mp4"
+
+    if not os.path.exists(os.path.dirname(file_path)):
+        try:
+            os.makedirs(os.path.dirname(file_path))
+        except OSError as exc:
+            if exc.errno != errno.EEXIST:
+                raise
+
     if not os.path.isfile(file_path):
         print(f'Downloading {download[0]}')
         urllib.request.urlretrieve(download[1], file_path)
