@@ -211,3 +211,15 @@ services:
     restart: unless-stopped
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+
+  gdrive-backup:
+    container_name: gdrive-backup
+    image: mateuszkukiela/gdrive-backup:latest
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - CRON="0 6 * * *"
+    restart: unless-stopped
+    volumes:
+      - ./credentials=/credentials
+      - ${ROOT_APPDATA}:/appdata
