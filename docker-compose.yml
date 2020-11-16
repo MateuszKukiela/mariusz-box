@@ -153,10 +153,6 @@ services:
   swag:
     image: linuxserver/swag
     container_name: swag
-    links:
-      - vpn:qbittorrent
-    depends_on:
-      - qbittorrent
     cap_add:
       - NET_ADMIN
     environment:
@@ -230,7 +226,8 @@ services:
       - ${ROOT_APPDATA}:/appdata
 
   vpn:
-    image: bubuntux/nordvpn
+    image: bubuntux/nordvpn:3.7.4
+    network_mode: bridge
     cap_add:
       - NET_ADMIN
       - SYS_MODULE
@@ -243,3 +240,6 @@ services:
       - PASS=${NORD_PASSWORD}
       - CONNECT=${NORD_SEVER}
       - TECHNOLOGY=NordLynx
+      - NETWORK=192.168.8.0/24
+    ports:
+      - 8080:8080
