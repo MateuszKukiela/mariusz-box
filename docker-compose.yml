@@ -13,6 +13,9 @@ services:
   qbittorrent:
     image: linuxserver/qbittorrent
     container_name: qbittorrent
+    network_mode: service:vpn
+    depends_on:
+      - vpn
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
@@ -26,12 +29,6 @@ services:
       - ${ROOT_MEDIA}/movies:/movies
       - ${ROOT_MEDIA}/tv:/tv
       - ${ROOT_MEDIA}/other:/other
-    ports:
-      - 6881:6881
-      - 6881:6881/udp
-      - 8080:8080
-      - 1080:1080
-      - 1080:1080/udp
     restart: unless-stopped
 
   jackett:
@@ -156,6 +153,10 @@ services:
   swag:
     image: linuxserver/swag
     container_name: swag
+    links:
+      - vpn:qbittorrent
+    depends_on:
+      - torrent
     cap_add:
       - NET_ADMIN
     environment:
@@ -170,6 +171,7 @@ services:
     ports:
       - 443:443
       - 80:80
+    command: -w "http://torrent:8080/;/"
     restart: unless-stopped
 
   docker-host:
@@ -227,3 +229,18 @@ services:
     volumes:
       - ./credentials:/credentials
       - ${ROOT_APPDATA}:/appdata
+
+  vpn:
+    image: bubuntux/nordvpn
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    sysctls:
+      - net.ipv4.conf.all.rp_filter=2
+    devices:
+      - /dev/net/tun
+    environment:
+      - USER=${NORD_USER}
+      - PASS=${NORD_PASSWORD}
+      - CONNECT=${NORD_SEVER}
+      - TECHNOLOGY=NordLynx
