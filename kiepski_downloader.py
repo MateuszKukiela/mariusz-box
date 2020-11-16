@@ -516,7 +516,7 @@ for episode in episodes:
         season = 9
         episode_number -= 297
     elif 307 < episode_number <= 322:
-        season = 9
+        season = 10
         episode_number -= 307
 
     file_path = f"{os.path.join(path, f'tv/Swiat wedlug Kiepskich/Season {season:02}',f'S{season:02}E{episode_number:03}')}.mp4"
