@@ -171,7 +171,6 @@ services:
     ports:
       - 443:443
       - 80:80
-    command: -w "http://qbittorrent:8080/;/"
     restart: unless-stopped
 
   docker-host:
