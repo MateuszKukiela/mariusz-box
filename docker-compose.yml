@@ -218,6 +218,7 @@ services:
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
+      - TZ=${TZ}
       - CRON="0 6 * * *"
     restart: unless-stopped
     volumes:
