@@ -156,7 +156,7 @@ services:
     links:
       - vpn:qbittorrent
     depends_on:
-      - torrent
+      - qbittorrent
     cap_add:
       - NET_ADMIN
     environment:
@@ -171,7 +171,7 @@ services:
     ports:
       - 443:443
       - 80:80
-    command: -w "http://torrent:8080/;/"
+    command: -w "http://qbittorrent:8080/;/"
     restart: unless-stopped
 
   docker-host:
