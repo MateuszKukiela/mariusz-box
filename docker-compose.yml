@@ -30,6 +30,7 @@ services:
       - 6881:6881
       - 6881:6881/udp
       - 8080:8080
+      - 1080:1080
     restart: unless-stopped
 
   jackett:
