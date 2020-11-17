@@ -227,7 +227,6 @@ services:
 
   vpn:
     image: bubuntux/nordvpn:3.7.4
-    network_mode: bridge
     cap_add:
       - NET_ADMIN
       - SYS_MODULE
