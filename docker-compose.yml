@@ -222,6 +222,7 @@ services:
       - PGID=${PGID}
       - TZ=${TZ}
       - CRON=0 6 * * *
+      - REMAIN=4
     restart: unless-stopped
     volumes:
       - ./credentials:/credentials
