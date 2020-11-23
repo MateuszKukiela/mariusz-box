@@ -242,4 +242,8 @@ services:
       - NETWORK=192.168.8.0/24
     ports:
       - 8080:8080
+      - 6881:6881
+      - 6881:6881/udp
+      - 1080:1080
+      - 1080:1080/udp
     restart: unless-stopped
