@@ -23,6 +23,8 @@ services:
       - VPN_ENABLED=yes
       - LAN_NETWORK=192.168.8.0/24
       - 'NAME_SERVERS=8.8.8.8,8.8.4.4'
+      - VPN_USERNAME=${NORD_USER}
+      - VPN_PASSWORD=${NORD_PASSWORD}
     volumes:
       - ${ROOT_APPDATA}/qbittorrentvpn:/config
       - ${ROOT_MEDIA}/downloads:/downloads
