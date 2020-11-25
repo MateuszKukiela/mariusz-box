@@ -31,6 +31,26 @@ services:
       - ${ROOT_MEDIA}/other:/other
     restart: unless-stopped
 
+  deluge:
+    image: ghcr.io/linuxserver/deluge
+    container_name: deluge
+    network_mode: service:vpn
+    depends_on:
+      - vpn
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - UMASK_SET=022
+    volumes:
+      - ${ROOT_APPDATA}/deluge:/config
+      - ${ROOT_MEDIA}/downloads:/downloads
+      - ${ROOT_MEDIA}/porn:/porn
+      - ${ROOT_MEDIA}/movies:/movies
+      - ${ROOT_MEDIA}/tv:/tv
+      - ${ROOT_MEDIA}/other:/other
+    restart: unless-stopped
+
   jackett:
     image: linuxserver/jackett
     container_name: jackett
@@ -246,4 +266,5 @@ services:
       - 6881:6881/udp
       - 1080:1080
       - 1080:1080/udp
+      - 8112:8112
     restart: unless-stopped
