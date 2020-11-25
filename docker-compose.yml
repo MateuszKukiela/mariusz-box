@@ -51,6 +51,26 @@ services:
       - ${ROOT_MEDIA}/other:/other
     restart: unless-stopped
 
+  rutorrent:
+    image: ghcr.io/linuxserver/rutorrent
+    container_name: rutorrent
+    network_mode: service:vpn
+    depends_on:
+      - vpn
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - UMASK_SET=022
+    volumes:
+      - ${ROOT_APPDATA}/deluge:/config
+      - ${ROOT_MEDIA}/downloads:/downloads
+      - ${ROOT_MEDIA}/porn:/porn
+      - ${ROOT_MEDIA}/movies:/movies
+      - ${ROOT_MEDIA}/tv:/tv
+      - ${ROOT_MEDIA}/other:/other
+    restart: unless-stopped
+
   jackett:
     image: linuxserver/jackett
     container_name: jackett
@@ -267,4 +287,7 @@ services:
       - 1080:1080
       - 1080:1080/udp
       - 8112:8112
+      - 8069:80
+      - 5000:5000
+      - 51413:51413
     restart: unless-stopped
