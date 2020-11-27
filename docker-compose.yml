@@ -226,7 +226,7 @@ services:
       - PGID=${PGID}
       - TZ=${TZ}
       - CRON=0 6 * * *
-      - REMAIN=4
+      - REMAIN=3
       - TEAM_ID=0AEiQ1YhMGjRfUk9PVA
     restart: unless-stopped
     volumes:
