@@ -227,6 +227,7 @@ services:
       - TZ=${TZ}
       - CRON=0 6 * * *
       - REMAIN=4
+      - TEAM_ID = 0AEiQ1YhMGjRfUk9PVA
     restart: unless-stopped
     volumes:
       - ./credentials:/credentials
