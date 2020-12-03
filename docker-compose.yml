@@ -11,7 +11,8 @@ services:
     restart: always
 
   qbittorrent:
-    image: linuxserver/qbittorrent
+    privileged: true
+    image: markusmcnugen/qbittorrentvpn
     container_name: qbittorrent
     environment:
       - PUID=${PUID}
@@ -19,19 +20,22 @@ services:
       - TZ=${TZ}
       - UMASK_SET=022
       - WEBUI_PORT=8080
+      - VPN_ENABLED=yes
+      - LAN_NETWORK=192.168.8.0/24
+      - 'NAME_SERVERS=8.8.8.8,8.8.4.4'
+      - VPN_USERNAME=${NORD_USER}
+      - VPN_PASSWORD=${NORD_PASSWORD}
     volumes:
-      - ${ROOT_APPDATA}/qbittorrent:/config
+      - ${ROOT_APPDATA}/qbittorrentvpn:/config
       - ${ROOT_MEDIA}/downloads:/downloads
       - ${ROOT_MEDIA}/porn:/porn
       - ${ROOT_MEDIA}/movies:/movies
       - ${ROOT_MEDIA}/tv:/tv
       - ${ROOT_MEDIA}/other:/other
     ports:
-      - 6881:6881
-      - 6881:6881/udp
-      - 8080:8080
-      - 1080:1080
-      - 1080:1080/udp
+      - '8080:8080'
+      - '8999:8999'
+      - '8999:8999/udp'
     restart: unless-stopped
 
   jackett:
@@ -163,7 +167,7 @@ services:
       - PGID=${PGID}
       - TZ=${TZ}
       - URL=januszex.net
-      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,tautulli,jackett,portainer,nextcloud,truenas,jellyfin,ombi
+      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,tautulli,jackett,portainer,nextcloud,proxmox,jellyfin,ombi
       - VALIDATION=http
     volumes:
       - ./swag:/config
@@ -222,7 +226,8 @@ services:
       - PGID=${PGID}
       - TZ=${TZ}
       - CRON=0 6 * * *
-      - REMAIN=4
+      - REMAIN=3
+      - TEAM_ID=0AEiQ1YhMGjRfUk9PVA
     restart: unless-stopped
     volumes:
       - ./credentials:/credentials
