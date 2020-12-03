@@ -32,6 +32,7 @@ services:
       - ${ROOT_MEDIA}/movies:/movies
       - ${ROOT_MEDIA}/tv:/tv
       - ${ROOT_MEDIA}/other:/other
+      - ${ROOT_MEDIA}/other:/hentai
     ports:
       - '8080:8080'
       - '8999:8999'
@@ -167,7 +168,7 @@ services:
       - PGID=${PGID}
       - TZ=${TZ}
       - URL=januszex.net
-      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,tautulli,jackett,portainer,nextcloud,proxmox,jellyfin,ombi
+      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,tautulli,jackett,portainer,nextcloud,proxmox,jellyfin,ombi,comicstreamer
       - VALIDATION=http
     volumes:
       - ./swag:/config
@@ -232,3 +233,13 @@ services:
     volumes:
       - ./credentials:/credentials
       - ${ROOT_APPDATA}:/appdata
+
+  comicstreamer:
+    container_name: comicstreamer
+    image: mateuszkukiela/comicstreamer:latest
+    volumes:
+      - ${ROOT_APPDATA}/comicstreamer:/config
+      - ${ROOT_MEDIA}/hentai:/hentai
+    ports:
+      - 32500:32500
+    restart: unless-stopped
