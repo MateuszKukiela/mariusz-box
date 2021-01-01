@@ -32,7 +32,7 @@ services:
       - ${ROOT_MEDIA}/movies:/movies
       - ${ROOT_MEDIA}/tv:/tv
       - ${ROOT_MEDIA}/other:/other
-      - ${ROOT_MEDIA}/other:/hentai
+      - ${ROOT_MEDIA}/hentai:/hentai
     ports:
       - '8080:8080'
       - '8999:8999'
