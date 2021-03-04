@@ -159,7 +159,7 @@ services:
     restart: unless-stopped
 
   swag:
-    image: linuxserver/swag:1.9.0-ls22
+    image: linuxserver/swag:1.9.0-ls25
     container_name: swag
     cap_add:
       - NET_ADMIN
