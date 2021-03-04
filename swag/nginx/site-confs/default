@@ -2,10 +2,10 @@
 
 # redirect all traffic to https
 server {
-    listen 80;
-    server_name *.${URL};
-    #Rewrite all nonssl requests to ssl.
-    return 301 https://$host$request_uri;
+	listen 80 default_server;
+	listen [::]:80 default_server;
+	server_name _;
+	return 301 https://$host$request_uri;
 }
 
 # main server block
