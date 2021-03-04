@@ -1,4 +1,6 @@
-## Version 2020/05/23 - Changelog: https://github.com/linuxserver/docker-swag/commits/master/root/defaults/default
+## Version 2021/01/03 - Changelog: https://github.com/linuxserver/docker-swag/commits/master/root/defaults/default
+
+error_page 502 /502.html;
 
 # redirect all traffic to https
 server {
@@ -17,6 +19,7 @@ server {
 	index index.html index.htm index.php;
 
 	server_name _;
+
 	# enable subfolder method reverse proxy confs
 	include /config/nginx/proxy-confs/*.subfolder.conf;
 
@@ -37,9 +40,9 @@ server {
 
 	client_max_body_size 0;
 
-	#location / {
-	#	try_files $uri $uri/ /index.html /index.php?$args =404;
-	#}
+	location / {
+		try_files $uri $uri/ /index.html /index.php?$args =404;
+	}
 
 	location ~ \.php$ {
 		fastcgi_split_path_info ^(.+\.php)(/.+)$;
