@@ -100,7 +100,7 @@ services:
     ports:
       - 6767:6767
     restart: unless-stopped
-    
+
   ombi:
     image: ghcr.io/linuxserver/ombi
     container_name: ombi
@@ -113,7 +113,7 @@ services:
     ports:
       - 3579:3579
     restart: unless-stopped
-  
+
   nextcloud:
     image: linuxserver/nextcloud
     container_name: nextcloud
@@ -159,7 +159,7 @@ services:
     restart: unless-stopped
 
   swag:
-    image: linuxserver/swag
+    image: linuxserver/swag:1.9.0-ls22
     container_name: swag
     cap_add:
       - NET_ADMIN
