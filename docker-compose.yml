@@ -239,7 +239,7 @@ services:
     image: mateuszkukiela/comicstreamer:latest
     volumes:
       - ${ROOT_APPDATA}/comicstreamer:/config
-      - ${ROOT_NEXTCLOUD}/robo/hentai:/hentai
+      - ${ROOT_NEXTCLOUD}/robo/files/hentai:/hentai
     ports:
       - 32500:32500
     restart: unless-stopped
