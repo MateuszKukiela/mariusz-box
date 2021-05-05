@@ -258,5 +258,4 @@ services:
         - USE_HTTPS=false
         - SERVER_POR=8443
         - USER_NAME=mc
-        -
     image: hexparrot/mineos
