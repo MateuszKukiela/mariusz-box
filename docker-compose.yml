@@ -257,4 +257,4 @@ services:
         - UMASK=000
         - PUID=${ROOT_PUID}
         - PGID=${ROOT_PGID}
-    image: binhex/arch-mineos-node
+    image: hexparrot/mineos
