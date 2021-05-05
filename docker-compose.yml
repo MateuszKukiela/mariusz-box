@@ -254,7 +254,7 @@ services:
         - ${ROOT_APPDATA}/mineos:/var/games/minecraft
     environment:
         - USER_PASSWORD=${PASSWORD}
-        - USER_UID=${PUID}
+        - USER_UID=${ROOT_PUID}
         - USE_HTTPS=false
         - SERVER_POR=8443
         - USER_NAME=mc
