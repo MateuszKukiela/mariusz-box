@@ -255,6 +255,7 @@ services:
     environment:
         - USER_PASSWORD=${PASSWORD}
         - USER_UID=${ROOT_PUID}
+        - GROUP_NAME=${ROOT_PGID}
         - USE_HTTPS=false
         - SERVER_POR=8443
         - USER_NAME=mc
