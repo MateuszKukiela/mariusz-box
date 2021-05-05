@@ -54,7 +54,7 @@ services:
     restart: unless-stopped
 
   sonarr:
-    image: linuxserver/sonarr:preview
+    image: linuxserver/sonarr
     container_name: sonarr
     environment:
       - PUID=${PUID}
