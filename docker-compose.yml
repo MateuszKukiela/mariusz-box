@@ -247,14 +247,16 @@ services:
   mineos-node:
     container_name: mineos-node
     ports:
-        - 8443:8443/tcp
-        - 25565-25570:25565-25570
+        - "8443:8443/tcp"
+        - "25565-25570:25565-25570/tcp"
+        - "25565-25570:25565-25570/udp"
     volumes:
-        - ${ROOT_APPDATA}/mineos-node:/config
-        - /etc/localtime:/etc/localtime:ro
+        - ${ROOT_APPDATA}/mineos:/var/games/minecraft
     environment:
-        - WEBUI_PASSWORD=${PASSWORD}
-        - UMASK=000
-        - PUID=${ROOT_PUID}
-        - PGID=${ROOT_PGID}
+        - USER_PASSWORD=${PASSWORD}
+        - USER_UID=${PUID}
+        - USE_HTTPS=false
+        - SERVER_POR=8443
+        - USER_NAME=mc
+        -
     image: hexparrot/mineos
