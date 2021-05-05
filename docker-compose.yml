@@ -245,10 +245,9 @@ services:
     restart: unless-stopped
 
   mineos-node:
-    network_mode: bridge
     container_name: mineos-node
     ports:
-        - 6969:8443
+        - 8443:8443/tcp
         - 25565-25570:25565-25570
     volumes:
         - ${ROOT_APPDATA}/mineos-node:/config
