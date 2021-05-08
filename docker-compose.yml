@@ -244,20 +244,20 @@ services:
       - 32500:32500
     restart: unless-stopped
 
-  mineos-node:
-    container_name: mineos-node
-    image: tekgator/docker-mcmyadmin:latest
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - EULA=1
-    volumes:
-      - /${ROOT_APPDATA}/mcmyadmin:/data
-    ports:
-      - 8443:8080
-      - 25565:25565
-    stop_grace_period: 30s
-    restart: unless-stopped
+#  mineos-node:
+#    container_name: mineos-node
+#    image: tekgator/docker-mcmyadmin:latest
+#    environment:
+#      - PUID=${PUID}
+#      - PGID=${PGID}
+#      - EULA=1
+#    volumes:
+#      - /${ROOT_APPDATA}/mcmyadmin:/data
+#    ports:
+#      - 8443:8080
+#      - 25565:25565
+#    stop_grace_period: 30s
+#    restart: unless-stopped
 
   amp:
     container_name: amp
