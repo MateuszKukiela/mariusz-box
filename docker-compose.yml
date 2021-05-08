@@ -258,3 +258,19 @@ services:
       - 25565:25565
     stop_grace_period: 30s
     restart: unless-stopped
+
+  amp:
+    container_name: amp
+    image: mitchtalmadge/amp-dockerized:latest
+    mac_address: 02:42:AC:3E:0B:16
+    ports:
+      - 25565:25565
+      - 25570:8080
+    volumes:
+      - /${ROOT_APPDATA}/:/home/amp/.ampdata
+    environment:
+      - UID=${PUID}
+      - GID=${PGID}
+      - TZ=${TZ}
+      - MODULE=McMyAdmin
+    restart: unless-stopped
