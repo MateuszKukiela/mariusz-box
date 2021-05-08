@@ -254,7 +254,7 @@ services:
     volumes:
       - /${ROOT_APPDATA}/mcmyadmin:/data
     ports:
-      - 8443:8080
+      - 6969:8080
       - 25565:25565
     stop_grace_period: 30s
     restart: unless-stopped
