@@ -246,17 +246,16 @@ services:
 
   mineos-node:
     container_name: mineos-node
-    ports:
-        - "8443:8443/tcp"
-        - "25565-25570:25565-25570/tcp"
-        - "25565-25570:25565-25570/udp"
-    volumes:
-        - ${ROOT_APPDATA}/mineos:/var/games/minecraft
-    environment:
-        - USER_PASSWORD=${PASSWORD}
-        - USER_UID=${ROOT_PUID}
-        - GROUP_GID=${ROOT_PGID}
-        - USE_HTTPS=false
-        - SERVER_POR=8443
-        - USER_NAME=mc
-    image: hexparrot/mineos
+    image: tekgator/docker-mcmyadmin:latest
+      container_name: mcmyadmin
+      environment:
+        - PUID=${PUID}
+        - PGID=${PGID}
+        - EULA=1
+      volumes:
+        - /${ROOT_APPDATA}/mcmyadmin:/data
+      ports:
+        - 8443:8080
+        - 25565:25565
+      stop_grace_period: 30s
+      restart: unless-stopped
