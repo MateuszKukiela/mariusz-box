@@ -274,4 +274,6 @@ services:
       - TZ=${TZ}
       - MODULE=McMyAdmin
       - LICENCE=9a3c7ca8-9409-49e7-9ba7-0983b21c697f
+      - USERNAME=root
+      - PASSWORD=${PASSWORD}
     restart: unless-stopped
