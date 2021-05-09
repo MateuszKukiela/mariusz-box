@@ -1,0 +1,4 @@
+{
+  "domainName": "test.januszex.net",
+  "proxyTo": "192.168.8.10:25567"
+}
