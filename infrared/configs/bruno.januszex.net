@@ -4,6 +4,6 @@
   "docker": {
     "dnsServer": "127.0.0.11",
     "containerName": "amp",
-    "timeout": 30000,
+    "timeout": 30000
     }
 }
