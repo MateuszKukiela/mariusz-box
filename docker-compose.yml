@@ -293,8 +293,20 @@ services:
     ports:
       - 25569:25565
     volumes:
-      - /${ROOT_APPDATA}/minecraft/minecraft-ftb:/data
+      - ${ROOT_APPDATA}/minecraft/minecraft-ftb:/data
     image: itzg/minecraft-server:multiarch
+
+  minecraft-ftb-backup:
+    restart: unless-stopped
+    container_name: minecraft-ftb-backup
+    image: itzg/mc-backup
+    environment:
+      - BACKUP_INTERVAL=24h
+      - PRUNE_BACKUPS_DAYS=7
+      - PRUNE_RESTIC_RETENTION=--keep-daily 7 --keep-weekly 5 --keep-monthly 12 --keep-yearly 75
+    volumes:
+      - ${ROOT_APPDATA}/minecraft/minecraft-ftb:ro
+      - ${ROOT_MEDIA}/minecraft/minecraft-ftb-backups:/backups
 
   minecraft-bruno:
     restart: unless-stopped
@@ -311,9 +323,21 @@ services:
       - MOTD=Super Serwer Bruna
       - FORCE_REDOWNLOAD=true
       - MAX_TICK_TIME=-1
+      - SPIGET_RESOURCES=9089,57272,2124
     ports:
       - 25566:25565
     volumes:
-      - /${ROOT_APPDATA}/minecraft/minecraft-bruno:/data
+      - ${ROOT_APPDATA}/minecraft/minecraft-bruno:/data
     image: itzg/minecraft-server
 
+  minecraft-bruno-backup:
+    restart: unless-stopped
+    container_name: minecraft-bruno-backup
+    image: itzg/mc-backup
+    environment:
+      - BACKUP_INTERVAL=24h
+      - PRUNE_BACKUPS_DAYS=7
+      - PRUNE_RESTIC_RETENTION=--keep-daily 7 --keep-weekly 5 --keep-monthly 12 --keep-yearly 75
+    volumes:
+      - ${ROOT_APPDATA}/minecraft/minecraft-bruno:ro
+      - ${ROOT_MEDIA}/minecraft/minecraft-bruno-backups:/backups
