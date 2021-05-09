@@ -289,6 +289,7 @@ services:
       - OPS=robo,ukasz1337
       - SERVER_NAME="Feed The Ukasz"
       - MOTD="Feed The Ukasz"
+      - MAX_TICK_TIME=-1
     ports:
       - 25569:25565
     volumes:
@@ -309,6 +310,7 @@ services:
       - SERVER_NAME="Super Serwer Bruna"
       - MOTD="Super Serwer Bruna"
       - FORCE_REDOWNLOAD=true
+      - MAX_TICK_TIME=-1
     ports:
       - 25566:25565
     volumes:
