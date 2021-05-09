@@ -244,26 +244,26 @@ services:
       - 32500:32500
     restart: unless-stopped
 
-  amp:
-    container_name: amp
-    image: mitchtalmadge/amp-dockerized:latest
-    mac_address: 02:42:AC:3E:0B:16
-    ports:
-      - 25566:25566
-      - 25567:25567
-      - 25568:25568
-      - 6969:8080
-    volumes:
-      - /${ROOT_APPDATA}/amp:/home/amp/.ampdata
-    environment:
-      - UID=${PUID}
-      - GID=${PGID}
-      - TZ=${TZ}
-      - MODULE=ADS
-      - LICENCE=9a3c7ca8-9409-49e7-9ba7-0983b21c697f
-      - USERNAME=root
-      - PASSWORD=${PASSWORD}
-    restart: unless-stopped
+#  amp:
+#    container_name: amp
+#    image: mitchtalmadge/amp-dockerized:latest
+#    mac_address: 02:42:AC:3E:0B:16
+#    ports:
+#      - 25566:25566
+#      - 25567:25567
+#      - 25568:25568
+#      - 6969:8080
+#    volumes:
+#      - /${ROOT_APPDATA}/amp:/home/amp/.ampdata
+#    environment:
+#      - UID=${PUID}
+#      - GID=${PGID}
+#      - TZ=${TZ}
+#      - MODULE=ADS
+#      - LICENCE=9a3c7ca8-9409-49e7-9ba7-0983b21c697f
+#      - USERNAME=root
+#      - PASSWORD=${PASSWORD}
+#    restart: unless-stopped
 
   infrared:
     container_name: infrared
@@ -277,6 +277,7 @@ services:
     image: haveachin/infrared:latest
 
   minecraft-ftb:
+    restart: unless-stopped
     container_name: minecraft-ftb
     environment:
       - EULA=TRUE
@@ -286,9 +287,31 @@ services:
       - ENABLE_AUTOPAUSE=TRUE
       - ONLINE_MODE=FALSE
       - OPS=robo,ukasz1337
+      - SERVER_NAME="Feed The Ukasz"
+      - MOTD="Feed The Ukasz"
     ports:
       - 25569:25565
     volumes:
       - /${ROOT_APPDATA}/minecraft/minecraft-ftb:/data
     image: itzg/minecraft-server:multiarch
+
+  minecraft-bruno:
+    restart: unless-stopped
+    container_name: minecraft-bruno
+    environment:
+      - EULA=TRUE
+      - TYPE=PAPER
+      - FTB_MODPACK_ID=80
+      - MEMORY=2G
+      - ENABLE_AUTOPAUSE=TRUE
+      - ONLINE_MODE=FALSE
+      - OPS=robo,ukasz1337
+      - SERVER_NAME="Super Serwer Bruna"
+      - MOTD="Super Serwer Bruna"
+      - FORCE_REDOWNLOAD=true
+    ports:
+      - 25566:25565
+    volumes:
+      - /${ROOT_APPDATA}/minecraft/minecraft-bruno:/data
+    image: itzg/minecraft-server
 
