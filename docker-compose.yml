@@ -276,3 +276,19 @@ services:
       - 25565
     image: haveachin/infrared:latest
 
+  minecraft-ftb:
+    container_name: minecraft-ftb
+    environment:
+      - EULA=TRUE
+      - TYPE=FTBA
+      - FTB_MODPACK_ID=80
+      - MEMORY=6G
+      - ENABLE_AUTOPAUSE=TRUE
+      - ONLINE_MODE=FALSE
+      - OPS=robo,ukasz1337
+    ports:
+      - 25569:25565
+    volumes:
+      - /${ROOT_APPDATA}/minecraft/minecraft-ftb:/data
+    image: itzg/minecraft-server:multiarch
+
