@@ -302,7 +302,7 @@ services:
       - MOTD=Super Serwer Bruna
       - FORCE_REDOWNLOAD=true
       - MAX_TICK_TIME=-1
-      - SPIGET_RESOURCES=9089,57272,2124
+      - SPIGET_RESOURCES=57272,2124
     ports:
       - 25566:25565
     volumes:
