@@ -249,7 +249,7 @@ services:
     image: mitchtalmadge/amp-dockerized:latest
     mac_address: 02:42:AC:3E:0B:16
     ports:
-      - 25566:25565
+      - 25566:25566
       - 25570:8080
     volumes:
       - /${ROOT_APPDATA}/amp:/home/amp/.ampdata
