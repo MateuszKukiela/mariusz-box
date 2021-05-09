@@ -250,6 +250,8 @@ services:
     mac_address: 02:42:AC:3E:0B:16
     ports:
       - 25566:25566
+      - 25567:25567
+      - 25568:25568
       - 25570:8080
     volumes:
       - /${ROOT_APPDATA}/amp:/home/amp/.ampdata
