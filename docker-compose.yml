@@ -244,27 +244,6 @@ services:
       - 32500:32500
     restart: unless-stopped
 
-#  amp:
-#    container_name: amp
-#    image: mitchtalmadge/amp-dockerized:latest
-#    mac_address: 02:42:AC:3E:0B:16
-#    ports:
-#      - 25566:25566
-#      - 25567:25567
-#      - 25568:25568
-#      - 6969:8080
-#    volumes:
-#      - /${ROOT_APPDATA}/amp:/home/amp/.ampdata
-#    environment:
-#      - UID=${PUID}
-#      - GID=${PGID}
-#      - TZ=${TZ}
-#      - MODULE=ADS
-#      - LICENCE=9a3c7ca8-9409-49e7-9ba7-0983b21c697f
-#      - USERNAME=root
-#      - PASSWORD=${PASSWORD}
-#    restart: unless-stopped
-
   infrared:
     container_name: infrared
     restart: unless-stopped
