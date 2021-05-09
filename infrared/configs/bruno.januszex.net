@@ -1,4 +1,9 @@
 {
   "domainName": "bruno.januszex.net",
-  "proxyTo": ":25566"
+  "proxyTo": ":25566",
+  "docker": {
+    "dnsServer": "127.0.0.11",
+    "containerName": "amp",
+    "timeout": 30000,
+    }
 }
