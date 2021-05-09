@@ -244,27 +244,12 @@ services:
       - 32500:32500
     restart: unless-stopped
 
-#  mineos-node:
-#    container_name: mineos-node
-#    image: tekgator/docker-mcmyadmin:latest
-#    environment:
-#      - PUID=${PUID}
-#      - PGID=${PGID}
-#      - EULA=1
-#    volumes:
-#      - /${ROOT_APPDATA}/mcmyadmin:/data
-#    ports:
-#      - 8443:8080
-#      - 25565:25565
-#    stop_grace_period: 30s
-#    restart: unless-stopped
-
   amp:
     container_name: amp
     image: mitchtalmadge/amp-dockerized:latest
     mac_address: 02:42:AC:3E:0B:16
     ports:
-      - 25565:25565
+      - 25566:25565
       - 25570:8080
     volumes:
       - /${ROOT_APPDATA}/amp:/home/amp/.ampdata
@@ -277,3 +262,15 @@ services:
       - USERNAME=root
       - PASSWORD=${PASSWORD}
     restart: unless-stopped
+
+  infrared:
+    container_name: infrared
+    restart: unless-stopped
+    volumes:
+      - ./infrared/configs/:/configs
+    ports:
+      - 25565:25565/tcp
+    expose:
+      - 25565
+    image: haveachin/infrared:latest
+
