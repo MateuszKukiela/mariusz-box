@@ -286,6 +286,7 @@ services:
     volumes:
       - ${ROOT_APPDATA}/minecraft/minecraft-ftb:/data:ro
       - ${ROOT_MEDIA}/minecraft/minecraft-ftb-backups:/backups
+    network_mode: "service:minecraft-bruno"
 
   minecraft-bruno:
     restart: unless-stopped
@@ -320,3 +321,4 @@ services:
     volumes:
       - ${ROOT_APPDATA}/minecraft/minecraft-bruno:/data:ro
       - ${ROOT_MEDIA}/minecraft/minecraft-bruno-backups:/backups
+    network_mode: "service:minecraft-bruno"
