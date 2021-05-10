@@ -1,4 +1,4 @@
-version: "3.3"
+version: 3.3
 services:
   portainer:
     image: portainer/portainer-ce
@@ -22,7 +22,7 @@ services:
       - WEBUI_PORT=8080
       - VPN_ENABLED=yes
       - LAN_NETWORK=192.168.8.0/24
-      - 'NAME_SERVERS=8.8.8.8,8.8.4.4'
+      - NAME_SERVERS=8.8.8.8,8.8.4.4
       - VPN_USERNAME=${NORD_USER}
       - VPN_PASSWORD=${NORD_PASSWORD}
     volumes:
@@ -34,9 +34,9 @@ services:
       - ${ROOT_MEDIA}/other:/other
       - ${ROOT_MEDIA}/hentai:/hentai
     ports:
-      - '8080:8080'
-      - '8999:8999'
-      - '8999:8999/udp'
+      - 8080:8080
+      - 8999:8999
+      - 8999:8999/udp
     restart: unless-stopped
 
   jackett:
@@ -76,7 +76,7 @@ services:
       - PUID=${PUID}
       - PGID=${PGID}
       - TZ=${TZ}
-      - UMASK_SET=022 #optional
+      - UMASK_SET=022
     volumes:
       - ${ROOT_APPDATA}/radarr:/config
       - ${ROOT_MEDIA}/movies:/movies
@@ -92,7 +92,7 @@ services:
       - PUID=${PUID}
       - PGID=${PGID}
       - TZ=${TZ}
-      - UMASK_SET=022 #optional
+      - UMASK_SET=022
     volumes:
       - ${ROOT_APPDATA}/bazarr:/config
       - ${ROOT_MEDIA}/movies:/movies
@@ -168,7 +168,7 @@ services:
       - PGID=${PGID}
       - TZ=${TZ}
       - URL=januszex.net
-      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,jackett,portainer,nextcloud,jellyfin,ombi,comicstreamer,truenas,amp,
+      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,jackett,portainer,nextcloud,jellyfin,ombi,comicstreamer,truenas,bruno
       - VALIDATION=http
     volumes:
       - ./swag:/config
@@ -243,82 +243,3 @@ services:
     ports:
       - 32500:32500
     restart: unless-stopped
-
-  infrared:
-    container_name: infrared
-    restart: unless-stopped
-    volumes:
-      - ./infrared/configs/:/configs
-    ports:
-      - 25565:25565
-    expose:
-      - 25565
-    image: haveachin/infrared:latest
-
-  minecraft-ftb:
-    restart: unless-stopped
-    container_name: minecraft-ftb
-    environment:
-      - EULA=TRUE
-      - TYPE=FTBA
-      - FTB_MODPACK_ID=80
-      - MEMORY=6G
-      - ENABLE_AUTOPAUSE=TRUE
-      - ONLINE_MODE=FALSE
-      - OPS=robo,ukasz1337
-      - SERVER_NAME=Feed The Ukasz
-      - MOTD=Feed The Ukasz
-      - MAX_TICK_TIME=-1
-    ports:
-      - 25569:25565
-    volumes:
-      - ${ROOT_APPDATA}/minecraft/minecraft-ftb:/data
-    image: itzg/minecraft-server:multiarch
-
-  minecraft-ftb-backup:
-    restart: unless-stopped
-    container_name: minecraft-ftb-backup
-    image: itzg/mc-backup
-    environment:
-      - BACKUP_INTERVAL=24h
-      - PRUNE_BACKUPS_DAYS=7
-      - PRUNE_RESTIC_RETENTION=--keep-daily 7 --keep-weekly 5 --keep-monthly 12 --keep-yearly 75
-    volumes:
-      - ${ROOT_APPDATA}/minecraft/minecraft-ftb:/data:ro
-      - ${ROOT_MEDIA}/minecraft/minecraft-ftb-backups:/backups
-    network_mode: "service:minecraft-bruno"
-
-  minecraft-bruno:
-    restart: unless-stopped
-    container_name: minecraft-bruno
-    environment:
-      - EULA=TRUE
-      - TYPE=PAPER
-      - FTB_MODPACK_ID=80
-      - MEMORY=2G
-      - ENABLE_AUTOPAUSE=TRUE
-      - ONLINE_MODE=FALSE
-      - OPS=robo,ukasz1337
-      - SERVER_NAME=Super Serwer Bruna
-      - MOTD=Super Serwer Bruna
-      - FORCE_REDOWNLOAD=true
-      - MAX_TICK_TIME=-1
-      - SPIGET_RESOURCES=57272,2124
-    ports:
-      - 25566:25565
-    volumes:
-      - ${ROOT_APPDATA}/minecraft/minecraft-bruno:/data
-    image: itzg/minecraft-server
-
-  minecraft-bruno-backup:
-    restart: unless-stopped
-    container_name: minecraft-bruno-backup
-    image: itzg/mc-backup
-    environment:
-      - BACKUP_INTERVAL=24h
-      - PRUNE_BACKUPS_DAYS=7
-      - PRUNE_RESTIC_RETENTION=--keep-daily 7 --keep-weekly 5 --keep-monthly 12 --keep-yearly 75
-    volumes:
-      - ${ROOT_APPDATA}/minecraft/minecraft-bruno:/data:ro
-      - ${ROOT_MEDIA}/minecraft/minecraft-bruno-backups:/backups
-    network_mode: "service:minecraft-bruno"
