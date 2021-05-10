@@ -17,7 +17,7 @@ services:
     environment:
       - EULA=TRUE
       - TYPE=FTBA
-      - FTB_MODPACK_ID=80
+      - FTB_MODPACK_ID=4
       - MEMORY=6G
       - ENABLE_AUTOPAUSE=TRUE
       - ONLINE_MODE=FALSE
@@ -50,7 +50,6 @@ services:
     environment:
       - EULA=TRUE
       - TYPE=PAPER
-      - FTB_MODPACK_ID=4
       - MEMORY=2G
       - ENABLE_AUTOPAUSE=TRUE
       - ONLINE_MODE=FALSE
