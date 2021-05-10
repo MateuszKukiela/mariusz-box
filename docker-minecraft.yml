@@ -29,7 +29,7 @@ services:
       - 25569:25565
     volumes:
       - ${ROOT_APPDATA}/minecraft/minecraft-ftb:/data
-    image: itzg/minecraft-server:multiarch
+    image: itzg/minecraft-server:java8
 
   minecraft-ftb-backup:
     restart: unless-stopped
