@@ -54,11 +54,11 @@ services:
       - ENABLE_AUTOPAUSE=TRUE
       - ONLINE_MODE=FALSE
       - OPS=robo,ukasz1337
-      - SERVER_NAME=Super Serwer Bruna
+      - SERVER_NAME=\u00A7c\u00A7lS\u00A76\u00A7lu\u00A7e\u00A7lp\u00A7a\u00A73\u00A72\u00A7a\u00A7le\u00A79\u00A7lr \u00A71\u00A7lS\u00A7c\u00A7le\u00A76\u00A7lr\u00A7e\u00A7lw\u00A7a\u00A7le\u00A79\u00A7lr \u00A71\u00A7lB\u00A7c\u00A7lr\u00A76\u00A7lu\u00A7e\u00A7ln\u00A7a\u00A7la\u00A7r\n\u00A7kUmrzeć potrafi każdy
       - MOTD=Super Serwer Bruna
       - FORCE_REDOWNLOAD=true
       - MAX_TICK_TIME=-1
-      - SPIGET_RESOURCES=57272,2124,274,241
+      - SPIGET_RESOURCES=57272,2124,274
     ports:
       - 25566:25565
       - 6969:8123
