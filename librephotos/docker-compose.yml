@@ -13,9 +13,8 @@ services:
     image: reallibrephotos/librephotos-proxy:${tag}
     restart: always
     volumes:
-      - ${myPhotos}:/data
+      - ${nextcloud}:/data
       - ${proMedia}:/protected_media
-      - ${nextcloud}:/data/nextcloud
     ports:
       - ${httpPort}:80
     depends_on:
