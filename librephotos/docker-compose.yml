@@ -15,7 +15,7 @@ services:
     volumes:
       - ${myPhotos}:/data
       - ${proMedia}:/protected_media
-      - ${nextcloud}:/nextcloud
+      - ${nextcloud}:/data/nextcloud
     ports:
       - ${httpPort}:80
     depends_on:
