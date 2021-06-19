@@ -15,6 +15,8 @@ services:
     volumes:
       - ${myPhotos}:/data
       - ${proMedia}:/protected_media
+      - ${robo}:/robo
+      - ${ukasz}:/ukasz
     ports:
       - ${httpPort}:80
     depends_on:
@@ -46,6 +48,8 @@ services:
       - ${proMedia}:/protected_media
       - ${logLocation}:/logs
       - ${cachedir}:/root/.cache
+      - ${robo}:/robo
+      - ${ukasz}:/ukasz
 
     environment:
       - SECRET_KEY=${shhhhKey}
