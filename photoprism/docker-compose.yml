@@ -58,7 +58,7 @@ services:
       PHOTOPRISM_UPLOAD_NSFW: "true"                 # Allow uploads that MAY be offensive
       # PHOTOPRISM_DATABASE_DRIVER: "sqlite"         # SQLite is an embedded database that doesn't require a server
       PHOTOPRISM_DATABASE_DRIVER: "mysql"            # Use MariaDB (or MySQL) instead of SQLite for improved performance
-      PHOTOPRISM_DATABASE_SERVER: "mariadb_photoprism:3307"     # MariaDB database server (hostname:port)
+      PHOTOPRISM_DATABASE_SERVER: "mariadb_photoprism:3306"     # MariaDB database server (hostname:port)
       PHOTOPRISM_DATABASE_NAME: "photoprism"         # MariaDB database schema name
       PHOTOPRISM_DATABASE_USER: "photoprism"         # MariaDB database user name
       PHOTOPRISM_DATABASE_PASSWORD: "insecure"       # MariaDB database user password
@@ -101,7 +101,7 @@ services:
       MYSQL_USER: photoprism
       MYSQL_PASSWORD: ${password}
     ports:
-      - 3307:3306 # [local port]:[container port]
+      - 3306:3306 # [local port]:[container port]
 
 # Uncomment the following lines to upgrade automatically, whenever there is a new Docker image available:
 #
