@@ -61,7 +61,7 @@ services:
       PHOTOPRISM_DATABASE_SERVER: "mariadb_photoprism:3306"     # MariaDB database server (hostname:port)
       PHOTOPRISM_DATABASE_NAME: "photoprism"         # MariaDB database schema name
       PHOTOPRISM_DATABASE_USER: "photoprism"         # MariaDB database user name
-      PHOTOPRISM_DATABASE_PASSWORD: "insecure"       # MariaDB database user password
+      PHOTOPRISM_DATABASE_PASSWORD: ${password}       # MariaDB database user password
       PHOTOPRISM_SITE_URL: "http://localhost:2342/"  # Public PhotoPrism URL
       PHOTOPRISM_SITE_TITLE: "PhotoPrism"
       PHOTOPRISM_SITE_CAPTION: "Browse Your Life"
