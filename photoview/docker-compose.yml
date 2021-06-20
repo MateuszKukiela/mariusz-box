@@ -18,7 +18,7 @@ services:
     ports:
       - "8881:80"
     depends_on:
-      - db
+      - photoview_db
 
     environment:
       - PHOTOVIEW_DATABASE_DRIVER=mysql
