@@ -56,7 +56,7 @@ services:
       MYSQL_PASSWORD: ${password}
 
   photoprism_ukasz:
-    image: photoprism/photoprism:latest
+    image: thielepaul/photoprism:db-api
     container_name: photoprism_ukasz
     restart: unless-stopped
     security_opt:
