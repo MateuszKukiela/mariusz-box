@@ -189,6 +189,7 @@ services:
     image: ghcr.io/linuxserver/jellyfin
     container_name: jellyfin
     environment:
+      - NVIDIA_VISIBLE_DEVICES=all
       - PUID=${PUID}
       - PGID=${PGID}
       - TZ=${TZ}
