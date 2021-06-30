@@ -1,9 +1,9 @@
 version: '3.5'
 
 services:
-  photoprism:
+  photoprism_robo:
     image: photoprism/photoprism:latest
-    container_name: photoprism
+    container_name: photoprism_robo
     restart: unless-stopped
     security_opt:
       - seccomp:unconfined
@@ -37,7 +37,7 @@ services:
       PHOTOPRISM_WORKERS: 9
     volumes:
       - /mnt/HDD/nextcloud/robo/files/Photos:/photoprism/originals
-      - /mnt/SSD/appdata/photoprism:/photoprism/storage
+      - /mnt/SSD/appdata/photoprism_robo:/photoprism/storage
 
   mariadb_photoprism_robo:
     image: mariadb:10.5
@@ -48,7 +48,7 @@ services:
       - apparmor:unconfined
     command: mysqld --transaction-isolation=READ-COMMITTED --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --max-connections=512 --innodb-rollback-on-timeout=OFF --innodb-lock-wait-timeout=50
     volumes:
-      - /mnt/SSD/appdata/photoprism/database:/var/lib/mysql
+      - /mnt/SSD/appdata/photoprism_robo/database:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: ${password}
       MYSQL_DATABASE: photoprism
