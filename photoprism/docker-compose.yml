@@ -34,7 +34,7 @@ services:
       PHOTOPRISM_SITE_CAPTION: "Browse Your Life"
       PHOTOPRISM_SITE_DESCRIPTION: ""
       PHOTOPRISM_SITE_AUTHOR: ""
-      PHOTOPRISM_WORKERS: 9
+      PHOTOPRISM_WORKERS: 3
     volumes:
       - /mnt/HDD/nextcloud/robo/files/Photos:/photoprism/originals
       - /mnt/SSD/appdata/photoprism_robo:/photoprism/storage
@@ -88,7 +88,7 @@ services:
       PHOTOPRISM_SITE_CAPTION: "Browse Your Life"
       PHOTOPRISM_SITE_DESCRIPTION: ""
       PHOTOPRISM_SITE_AUTHOR: ""
-      PHOTOPRISM_WORKERS: 9
+      PHOTOPRISM_WORKERS: 6
     volumes:
       - /mnt/HDD/media/photos/photos_ukasz:/photoprism/originals
       - /mnt/SSD/appdata/photoprism_ukasz:/photoprism/storage
