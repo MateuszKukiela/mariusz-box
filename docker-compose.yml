@@ -9,6 +9,20 @@ services:
       - ${ROOT_APPDATA}/portainer:/data portainer/portainer-ce
       - /var/run/docker.sock:/var/run/docker.sock
     restart: always
+    
+  homebridge:
+    image: oznu/homebridge:latest
+    container_name: homebridge
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      - TZ=${TZ}
+      - PGID=${PUID}
+      - PUID=${PGID}
+      - HOMEBRIDGE_CONFIG_UI=1
+      - HOMEBRIDGE_CONFIG_UI_PORT=8581
+    volumes:
+      - ${ROOT_APPDATA}/homebridge:/homebridge
 
   qbittorrent:
     privileged: true
