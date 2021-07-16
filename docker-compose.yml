@@ -54,7 +54,7 @@ services:
     restart: unless-stopped
 
   jackett:
-    image: linuxserver/jackett
+    image: ghcr.io/linuxserver/jackett
     container_name: jackett
     environment:
       - PUID=${PUID}
@@ -68,7 +68,7 @@ services:
     restart: unless-stopped
 
   sonarr:
-    image: linuxserver/sonarr
+    image: ghcr.io/linuxserver/sonarr
     container_name: sonarr
     environment:
       - PUID=${PUID}
@@ -84,7 +84,7 @@ services:
     restart: unless-stopped
 
   radarr:
-    image: linuxserver/radarr:nightly
+    image: ghcr.io/linuxserver/radarr:nightly
     container_name: radarr
     environment:
       - PUID=${PUID}
@@ -100,7 +100,7 @@ services:
     restart: unless-stopped
 
   bazarr:
-    image: linuxserver/bazarr:development
+    image: ghcr.io/linuxserver/bazarr:development
     container_name: bazarr
     environment:
       - PUID=${PUID}
@@ -129,7 +129,7 @@ services:
     restart: unless-stopped
 
   nextcloud:
-    image: linuxserver/nextcloud
+    image: ghcr.io/linuxserver/nextcloud
     container_name: nextcloud
     environment:
       - PUID=${PUID}
@@ -160,7 +160,7 @@ services:
     restart: unless-stopped
 
   heimdall:
-    image: linuxserver/heimdall
+    image: ghcr.io/linuxserver/heimdall
     container_name: heimdall
     environment:
       - PUID=${PUID}
