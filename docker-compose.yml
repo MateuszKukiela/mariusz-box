@@ -145,7 +145,7 @@ services:
     restart: unless-stopped
 
   mariadb:
-    image: mariadb
+    image: mariadb:10.5 
     container_name: mariadb
     ports:
       - 3306:3306
