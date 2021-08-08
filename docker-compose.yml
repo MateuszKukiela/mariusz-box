@@ -330,7 +330,6 @@ services:
     volumes:
       - ${ROOT_APPDATA}/calibre:/config
     ports:
-      - 8080:8080
       - 8081:8081
     restart: unless-stopped
 
