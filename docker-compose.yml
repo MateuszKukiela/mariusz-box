@@ -53,20 +53,6 @@ services:
       - 8999:8999/udp
     restart: unless-stopped
 
-  jackett:
-    image: ghcr.io/linuxserver/jackett
-    container_name: jackett
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - TZ=${TZ}
-    volumes:
-      - ${ROOT_APPDATA}/jackett:/config
-      - ${ROOT_APPDATA}/jackett/blackhole:/downloads
-    ports:
-      - 9117:9117
-    restart: unless-stopped
-
   sonarr:
     image: ghcr.io/linuxserver/sonarr
     container_name: sonarr
@@ -182,7 +168,7 @@ services:
       - PGID=${PGID}
       - TZ=${TZ}
       - URL=januszex.net
-      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,jackett,portainer,nextcloud,jellyfin,ombi,comicstreamer,truenas,bruno,photos,photoprism,prowlarr,lidarr,airsonic,readarr,calibre-web
+      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,portainer,nextcloud,jellyfin,ombi,comicstreamer,truenas,bruno,photos,photoprism,prowlarr,lidarr,airsonic,readarr,calibre-web
       - VALIDATION=http
     volumes:
       - ./swag:/config
