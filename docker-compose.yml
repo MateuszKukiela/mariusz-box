@@ -9,7 +9,7 @@ services:
       - ${ROOT_APPDATA}/portainer:/data portainer/portainer-ce
       - /var/run/docker.sock:/var/run/docker.sock
     restart: always
-    
+
   homebridge:
     image: oznu/homebridge:latest
     container_name: homebridge
@@ -145,7 +145,7 @@ services:
     restart: unless-stopped
 
   mariadb:
-    image: mariadb:10.5 
+    image: mariadb:10.5
     container_name: mariadb
     ports:
       - 3306:3306
@@ -182,7 +182,7 @@ services:
       - PGID=${PGID}
       - TZ=${TZ}
       - URL=januszex.net
-      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,jackett,portainer,nextcloud,jellyfin,ombi,comicstreamer,truenas,bruno,photos,photoprism
+      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,jackett,portainer,nextcloud,jellyfin,ombi,comicstreamer,truenas,bruno,photos,photoprism,prowlarr,lidarr,airsonic,readarr,calibre-web
       - VALIDATION=http
     volumes:
       - ./swag:/config
@@ -256,4 +256,79 @@ services:
       - ${ROOT_NEXTCLOUD}/robo/files/hentai:/hentai
     ports:
       - 32500:32500
+    restart: unless-stopped
+
+  prowlarr:
+      image: ghcr.io/linuxserver/prowlarr:develop
+      container_name: prowlarr
+      environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      volumes:
+        - ${ROOT_APPDATA}/prowlarr:/config
+      ports:
+        - 9696:9696
+      restart: unless-stopped
+
+  lidarr:
+    image: ghcr.io/linuxserver/lidarr
+    container_name: lidarr
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ${ROOT_APPDATA}/lidarr:/config
+      - ${ROOT_MEDIA}/music:/music
+      - ${ROOT_MEDIA}/downloads:/downloads
+    ports:
+      - 8686:8686
+    restart: unless-stopped
+
+  airsonic:
+    image: ghcr.io/linuxserver/airsonic
+    container_name: airsonic
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ${ROOT_APPDATA}/airsonic:/config
+      - ${ROOT_MEDIA}/music:/music
+      - ${ROOT_MEDIA}/music/playlists:/playlists
+      - ${ROOT_MEDIA}/music/podcasts:/podcasts
+    ports:
+      - 4040:4040
+    restart: unless-stopped
+
+  readarr:
+    image: ghcr.io/linuxserver/readarr
+    container_name: readarr
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ${ROOT_APPDATA}/readarr:/config
+      - ${ROOT_MEDIA}/books:/books
+      - ${ROOT_MEDIA}/downloads:/downloads
+    ports:
+      - 8787:8787
+    restart: unless-stopped
+
+  calibre-web:
+    image: ghcr.io/linuxserver/calibre-web
+    container_name: calibre-web
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - DOCKER_MODS=linuxserver/calibre-web:calibre #optional
+      - OAUTHLIB_RELAX_TOKEN_SCOPE=1 #optional
+    volumes:
+      - ${ROOT_APPDATA}/calibre:/config
+      - ${ROOT_MEDIA}/books:/books
+    ports:
+      - 8083:8083
     restart: unless-stopped
