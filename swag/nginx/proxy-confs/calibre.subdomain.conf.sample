@@ -1,11 +1,10 @@
-## Version 2021/05/18
-# make sure that your dns has a cname set for calibre-web
+# make sure that your dns has a cname set for calibre
 
 server {
     listen 443 ssl;
     listen [::]:443 ssl;
 
-    server_name calibre-web.*;
+    server_name calibre.*;
 
     include /config/nginx/ssl.conf;
 
@@ -22,7 +21,7 @@ server {
         #auth_basic "Restricted";
         #auth_basic_user_file /config/nginx/.htpasswd;
 
-        # enable the next two lines for ldap auth, also customize and enable ldap.conf in the default conf
+        # enable the next two lines for ldap auth
         #auth_request /auth;
         #error_page 401 =200 /ldaplogin;
 
@@ -30,12 +29,12 @@ server {
         #include /config/nginx/authelia-location.conf;
 
         include /config/nginx/proxy.conf;
-        include /config/nginx/resolver.conf;
-        set $upstream_app calibre-web;
-        set $upstream_port 8083;
+        resolver 127.0.0.11 valid=30s;
+        set $upstream_app calibre;
+        set $upstream_port 8080;
         set $upstream_proto http;
         proxy_pass $upstream_proto://$upstream_app:$upstream_port;
 
-        proxy_set_header X-Scheme $scheme;
+        proxy_buffering off;
     }
 }
