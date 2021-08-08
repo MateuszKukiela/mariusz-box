@@ -213,6 +213,7 @@ services:
       - ${ROOT_MEDIA}/movies:/data/movies
       - ${ROOT_MEDIA}/downloads:/downloads
       - ${ROOT_MEDIA}/porn:/data/porn
+      - ${ROOT_MEDIA}/music:/music
     ports:
       - 8096:8096
     restart: unless-stopped
