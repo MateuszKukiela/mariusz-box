@@ -182,7 +182,7 @@ services:
       - PGID=${PGID}
       - TZ=${TZ}
       - URL=januszex.net
-      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,jackett,portainer,nextcloud,jellyfin,ombi,comicstreamer,truenas,bruno,photos,photoprism,prowlarr,lidarr,airsonic,readarr,calibre-web
+      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,jackett,portainer,nextcloud,jellyfin,ombi,comicstreamer,truenas,bruno,photos,photoprism,prowlarr,lidarr,airsonic,readarr,calibre
       - VALIDATION=http
     volumes:
       - ./swag:/config
