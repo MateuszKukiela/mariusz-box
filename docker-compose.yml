@@ -303,7 +303,7 @@ services:
     restart: unless-stopped
 
   readarr:
-    image: ghcr.io/linuxserver/readarr
+    image: ghcr.io/linuxserver/readarr:nightly
     container_name: readarr
     environment:
       - PUID=${PUID}
