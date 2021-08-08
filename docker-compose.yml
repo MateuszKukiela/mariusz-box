@@ -305,17 +305,17 @@ services:
     restart: unless-stopped
 
   calibre-web:
- container_name: calibre-web
-        restart: always
-        volumes:
-            - ${ROOT_MEDIA}/books:/books
-            - ${ROOT_APPDATA}/calibre:/calibre-web/config
-        environment:
-            - USE_CONFIG_DIR=true
-            - SET_CONTAINER_TIMEZONE=true
-            - CONTAINER_TIMEZONE=${TZ}
-            - PUID=${PUID}
-            - PGID=${PGID}
-        ports:
-            - 8083:8083
-        image: technosoft2000/calibre-web
+     container_name: calibre-web
+            restart: always
+            volumes:
+                - ${ROOT_MEDIA}/books:/books
+                - ${ROOT_APPDATA}/calibre:/calibre-web/config
+            environment:
+                - USE_CONFIG_DIR=true
+                - SET_CONTAINER_TIMEZONE=true
+                - CONTAINER_TIMEZONE=${TZ}
+                - PUID=${PUID}
+                - PGID=${PGID}
+            ports:
+                - 8083:8083
+            image: technosoft2000/calibre-web
