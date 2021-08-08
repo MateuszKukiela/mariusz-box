@@ -168,7 +168,7 @@ services:
       - PGID=${PGID}
       - TZ=${TZ}
       - URL=januszex.net
-      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,portainer,nextcloud,jellyfin,ombi,comicstreamer,truenas,bruno,photos,photoprism,prowlarr,lidarr,airsonic,readarr,calibre-web
+      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,portainer,nextcloud,jellyfin,ombi,comicstreamer,truenas,bruno,photos,photoprism,prowlarr,lidarr,airsonic,readarr,calibre-web,calibre
       - VALIDATION=http
     volumes:
       - ./swag:/config
@@ -330,6 +330,7 @@ services:
     volumes:
       - ${ROOT_APPDATA}/calibre:/config
     ports:
+      - 8082:8080
       - 8081:8081
     restart: unless-stopped
 
