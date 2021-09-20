@@ -70,7 +70,7 @@ services:
     restart: unless-stopped
 
   radarr:
-    image: ghcr.io/linuxserver/radarr:nightly
+    image: ghcr.io/linuxserver/radarr
     container_name: radarr
     environment:
       - PUID=${PUID}
@@ -86,7 +86,7 @@ services:
     restart: unless-stopped
 
   bazarr:
-    image: ghcr.io/linuxserver/bazarr:development
+    image: ghcr.io/linuxserver/bazarr
     container_name: bazarr
     environment:
       - PUID=${PUID}
