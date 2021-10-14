@@ -337,6 +337,6 @@ services:
   go-socks5-proxy:
     container_name: socks5
     ports:
-      - 1080:1080
+      - 6000:1080
     image: serjs/go-socks5-proxy
 
