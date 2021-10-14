@@ -334,9 +334,10 @@ services:
       - 8081:8081
     restart: unless-stopped
 
-  go-socks5-proxy:
-    container_name: socks5
+  php-proxy:
+    image: dwaaan/php-proxy:latest
+    restart: always
     ports:
-      - 85:1080
-    image: serjs/go-socks5-proxy
+      - 8084:80
+      - 8443:443
 
