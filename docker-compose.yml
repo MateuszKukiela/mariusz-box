@@ -168,7 +168,7 @@ services:
       - PGID=${PGID}
       - TZ=${TZ}
       - URL=januszex.net
-      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,portainer,nextcloud,jellyfin,ombi,comicstreamer,truenas,bruno,photos,photoprism,prowlarr,lidarr,airsonic,readarr,calibre-web,calibre
+      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,portainer,nextcloud,jellyfin,ombi,comicstreamer,truenas,bruno,photos,photoprism,prowlarr,lidarr,airsonic,readarr,calibre-web,calibre,proxy
       - VALIDATION=http
     volumes:
       - ./swag:/config
@@ -333,4 +333,10 @@ services:
       - 8082:8080
       - 8081:8081
     restart: unless-stopped
+
+  go-socks5-proxy:
+    container_name: socks5
+    ports:
+      - 1080:1080
+    image: serjs/go-socks5-proxy
 
