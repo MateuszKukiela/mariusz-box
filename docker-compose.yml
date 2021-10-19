@@ -336,8 +336,36 @@ services:
 
   php-proxy:
     image: dwaaan/php-proxy:latest
-    restart: always
+    restart: unless-stopped
     ports:
       - 8084:80
       - 8443:443
 
+# TODO: Un-hardcode LAN address
+  nzbgetvpn:
+    privileged: true
+    volumes:
+        - ${ROOT_APPDATA}/nzbgetvpn:/config
+        - ${ROOT_MEDIA}/downloads:/downloads
+        - ${ROOT_MEDIA}/porn:/porn
+        - ${ROOT_MEDIA}/movies:/movies
+        - ${ROOT_MEDIA}/tv:/tv
+        - ${ROOT_MEDIA}/other:/other
+        - ${ROOT_MEDIA}/hentai:/hentai
+    environment:
+        - VPN_ENABLED=yes
+        - VPN_TYPE=openvpn
+        - ENABLE_SSL=yes
+        - VPN_USERNAME=${NORD_USER}
+        - VPN_PASSWORD=${NORD_PASSWORD}
+        - WEBUI_USERNAME=root
+        - WEBUI_PASSWORD=${PASSWORD}
+        - PUID=${PUID}
+        - PGID=${PGID}
+        - LAN_NETWORK=192.168.8.10/24
+        - 'NAME_SERVERS=1.1.1.1,1.0.0.1'
+    ports:
+        - '6789:6789'
+        - '6791:6791'
+    restart: unless-stopped
+    image: dyonr/nzbgetvpn
