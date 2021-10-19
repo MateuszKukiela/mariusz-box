@@ -343,6 +343,7 @@ services:
 
 # TODO: Un-hardcode LAN address
   nzbgetvpn:
+    container_name: nzbgetvpn
     privileged: true
     volumes:
         - ${ROOT_APPDATA}/nzbgetvpn:/config
