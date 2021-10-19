@@ -356,7 +356,7 @@ services:
     environment:
         - VPN_ENABLED=yes
         - VPN_TYPE=openvpn
-        - ENABLE_SSL=yes
+        - ENABLE_SSL=no
         - VPN_USERNAME=${NORD_USER}
         - VPN_PASSWORD=${NORD_PASSWORD}
         - WEBUI_USERNAME=root
