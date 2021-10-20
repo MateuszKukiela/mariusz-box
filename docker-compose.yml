@@ -354,7 +354,7 @@ services:
         - ${ROOT_MEDIA}/other:/other
         - ${ROOT_MEDIA}/hentai:/hentai
     environment:
-        - VPN_ENABLED=yes
+        - VPN_ENABLED=wireguard
         - VPN_TYPE=openvpn
         - ENABLE_SSL=no
         - VPN_USERNAME=${NORD_USER}
