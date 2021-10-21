@@ -370,3 +370,12 @@ services:
         - '6791:6791'
     restart: unless-stopped
     image: dyonr/nzbgetvpn
+
+ authelia:
+    image: authelia/authelia:4.21.0
+    container_name: authelia
+    environment:
+      - TZ=${TZ}
+    volumes:
+      - ${ROOT_APPDATA}/authelia:/config
+    restart: unless-stopped
