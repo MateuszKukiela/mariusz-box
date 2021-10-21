@@ -371,7 +371,7 @@ services:
     restart: unless-stopped
     image: dyonr/nzbgetvpn
 
- authelia:
+  authelia:
     image: authelia/authelia:4.21.0
     container_name: authelia
     environment:
