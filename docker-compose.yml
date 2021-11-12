@@ -47,7 +47,7 @@ services:
       - ${ROOT_MEDIA}/tv:/tv
       - ${ROOT_MEDIA}/other:/other
       - ${ROOT_MEDIA}/hentai:/hentai
-      - ${ROOT_MEDIA}/porn_vr:/videos
+      - ${ROOT_MEDIA}/porn_vr:/porn_vr
     ports:
       - 8080:8080
       - 8999:8999
@@ -354,7 +354,7 @@ services:
         - ${ROOT_MEDIA}/tv:/tv
         - ${ROOT_MEDIA}/other:/other
         - ${ROOT_MEDIA}/hentai:/hentai
-        - ${ROOT_MEDIA}/porn_vr:/videos
+        - ${ROOT_MEDIA}/porn_vr:/porn_vr
     environment:
         - VPN_ENABLED=wireguard
         - VPN_TYPE=openvpn
