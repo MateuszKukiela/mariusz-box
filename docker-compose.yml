@@ -168,7 +168,7 @@ services:
       - PGID=${PGID}
       - TZ=${TZ}
       - URL=januszex.net
-      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,portainer,nextcloud,jellyfin,ombi,comicstreamer,truenas,bruno,photos,photoprism,prowlarr,lidarr,airsonic,readarr,calibre-web,calibre,proxy, nzbget
+      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,portainer,nextcloud,jellyfin,ombi,comicstreamer,truenas,bruno,photos,photoprism,prowlarr,lidarr,airsonic,readarr,calibre-web,calibre,proxy,nzbget,xbvr
       - VALIDATION=http
     volumes:
       - ./swag:/config
@@ -379,3 +379,13 @@ services:
     volumes:
       - ${ROOT_APPDATA}/authelia:/config
     restart: unless-stopped
+
+  xbvr:
+    image: 'xbapps/xbvr:latest'
+    container_name: xbvr
+    volumes:
+      - ${ROOT_MEDIA}/porn_vr:/videos
+      - ${ROOT_APPDATA}/xbvr:/root/.config/
+    ports:
+      - "9999:9999"
+    restart: always
