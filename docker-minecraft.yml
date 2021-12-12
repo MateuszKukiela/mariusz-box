@@ -50,6 +50,7 @@ services:
     environment:
       - EULA=TRUE
       - TYPE=PAPER
+      - PAPERBUILD=71
       - MEMORY=2G
       - ENABLE_AUTOPAUSE=TRUE
       - ONLINE_MODE=FALSE
