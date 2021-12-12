@@ -11,56 +11,57 @@ services:
       - 25565
     image: haveachin/infrared:latest
 
-  minecraft-ftb:
-    restart: unless-stopped
-    container_name: minecraft-ftb
-    environment:
-      - EULA=TRUE
-      - TYPE=FTBA
-      - FTB_MODPACK_ID=4
-      - MEMORY=6G
-      - ENABLE_AUTOPAUSE=TRUE
-      - ONLINE_MODE=FALSE
-      - OPS=robo,ukasz1337
-      - SERVER_NAME=Feed The Ukasz
-      - MOTD=Feed The Ukasz
-      - MAX_TICK_TIME=-1
-    ports:
-      - 25569:25565
-    volumes:
-      - ${ROOT_APPDATA}/minecraft/minecraft-ftb:/data
-    image: itzg/minecraft-server:java8-multiarch
+#  minecraft-ftb:
+#    restart: unless-stopped
+#    container_name: minecraft-ftb
+#    environment:
+#      - EULA=TRUE
+#      - TYPE=FTBA
+#      - FTB_MODPACK_ID=4
+#      - MEMORY=6G
+#      - ENABLE_AUTOPAUSE=TRUE
+#      - ONLINE_MODE=FALSE
+#      - OPS=robo,ukasz1337
+#      - SERVER_NAME=Feed The Ukasz
+#      - MOTD=Feed The Ukasz
+#      - MAX_TICK_TIME=-1
+#    ports:
+#      - 25569:25565
+#    volumes:
+#      - ${ROOT_APPDATA}/minecraft/minecraft-ftb:/data
+#    image: itzg/minecraft-server:java8-multiarch
 
-  minecraft-ftb-backup:
-    restart: unless-stopped
-    container_name: minecraft-ftb-backup
-    image: itzg/mc-backup
-    environment:
-      - BACKUP_INTERVAL=24h
-      - PRUNE_BACKUPS_DAYS=7
-      - PRUNE_RESTIC_RETENTION=--keep-daily 7 --keep-weekly 5 --keep-monthly 12 --keep-yearly 75
-    volumes:
-      - ${ROOT_APPDATA}/minecraft/minecraft-ftb:/data:ro
-      - ${ROOT_MEDIA}/minecraft/minecraft-ftb-backups:/backups
-    network_mode: service:minecraft-ftb
+#  minecraft-ftb-backup:
+#    restart: unless-stopped
+#    container_name: minecraft-ftb-backup
+#    image: itzg/mc-backup
+#    environment:
+#      - BACKUP_INTERVAL=24h
+#      - PRUNE_BACKUPS_DAYS=7
+#      - PRUNE_RESTIC_RETENTION=--keep-daily 7 --keep-weekly 5 --keep-monthly 12 --keep-yearly 75
+#    volumes:
+#      - ${ROOT_APPDATA}/minecraft/minecraft-ftb:/data:ro
+#      - ${ROOT_MEDIA}/minecraft/minecraft-ftb-backups:/backups
+#    network_mode: service:minecraft-ftb
 
-  minecraft-bruno:
+  minecraft:
     restart: unless-stopped
-    container_name: minecraft-bruno
+    container_name: minecraft
     environment:
       - EULA=TRUE
       - TYPE=PAPER
       - PAPERBUILD=71
-      - MEMORY=2G
+      - MEMORY=4G
       - ENABLE_AUTOPAUSE=TRUE
       - ONLINE_MODE=FALSE
       - OPS=robo,ukasz1337
       - OVERRIDE_OPS=TRUE
       - SERVER_NAME=\u00A7c\u00A7lS\u00A76\u00A7lu\u00A7e\u00A7lp\u00A7a\u00A73\u00A72\u00A7a\u00A7le\u00A79\u00A7lr \u00A71\u00A7lS\u00A7c\u00A7le\u00A76\u00A7lr\u00A7e\u00A7lw\u00A7a\u00A7le\u00A79\u00A7lr \u00A71\u00A7lB\u00A7c\u00A7lr\u00A76\u00A7lu\u00A7e\u00A7ln\u00A7a\u00A7la\u00A7r\n\u00A7kUmrzeć potrafi każdy
-      - MOTD=Super Serwer Bruna
+      - MOTD=Super Serwer Robo & Ukasz
       - FORCE_REDOWNLOAD=true
       - MAX_TICK_TIME=-1
       - SPIGET_RESOURCES=57272,2124,274
+      - VIEW_DISTANCE=16
     ports:
       - 25566:25565
       - 6969:8123
@@ -68,9 +69,9 @@ services:
       - ${ROOT_APPDATA}/minecraft/minecraft-bruno:/data
     image: itzg/minecraft-server
 
-  minecraft-bruno-backup:
+  minecraft-backup:
     restart: unless-stopped
-    container_name: minecraft-bruno-backup
+    container_name: minecraft-backup
     image: itzg/mc-backup
     environment:
       - BACKUP_INTERVAL=24h
