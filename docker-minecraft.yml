@@ -80,4 +80,4 @@ services:
     volumes:
       - ${ROOT_APPDATA}/minecraft/minecraft-bruno:/data:ro
       - ${ROOT_MEDIA}/minecraft/minecraft-bruno-backups:/backups
-    network_mode: service:minecraft-bruno
+    network_mode: service:minecraft
