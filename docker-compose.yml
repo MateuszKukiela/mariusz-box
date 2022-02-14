@@ -80,7 +80,7 @@ services:
       - "8080:8080"
     cap_add:
       - NET_ADMIN
-    image: guillaumedsde/alpine-qbittorrent-openvpn
+    image: guillaumedsde/alpine-qbittorrent-openvpn:development
 
   sonarr:
     image: ghcr.io/linuxserver/sonarr
