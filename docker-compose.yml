@@ -75,7 +75,7 @@ services:
       - PUID=${PUID}
       - PGID=${PGID}
       - TZ=${TZ}
-      - LAN=192.168.8.0/16
+      - LAN=192.168.8.0/24
     ports:
       - "8080:8080"
     cap_add:
