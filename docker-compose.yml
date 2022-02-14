@@ -24,21 +24,39 @@ services:
     volumes:
       - ${ROOT_APPDATA}/homebridge:/homebridge
 
-  qbittorrent:
-    privileged: true
-    image: markusmcnugen/qbittorrentvpn
-    container_name: qbittorrent
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - TZ=${TZ}
-      - UMASK_SET=022
-      - WEBUI_PORT=8080
-      - VPN_ENABLED=yes
-      - LAN_NETWORK=192.168.8.0/24
-      - NAME_SERVERS=8.8.8.8,8.8.4.4
-      - VPN_USERNAME=${NORD_USER}
-      - VPN_PASSWORD=${NORD_PASSWORD}
+#  qbittorrent:
+#    privileged: true
+#    image: markusmcnugen/qbittorrentvpn
+#    container_name: qbittorrent
+#    environment:
+#      - PUID=${PUID}
+#      - PGID=${PGID}
+#      - TZ=${TZ}
+#      - UMASK_SET=022
+#      - WEBUI_PORT=8080
+#      - VPN_ENABLED=yes
+#      - LAN_NETWORK=192.168.8.0/24
+#      - NAME_SERVERS=8.8.8.8,8.8.4.4
+#      - VPN_USERNAME=${NORD_USER}
+#      - VPN_PASSWORD=${NORD_PASSWORD}
+#    volumes:
+#      - ${ROOT_APPDATA}/qbittorrentvpn:/config
+#      - ${ROOT_MEDIA}/downloads:/downloads
+#      - ${ROOT_MEDIA}/porn:/porn
+#      - ${ROOT_MEDIA}/movies:/movies
+#      - ${ROOT_MEDIA}/tv:/tv
+#      - ${ROOT_MEDIA}/other:/other
+#      - ${ROOT_MEDIA}/hentai:/hentai
+#      - ${ROOT_MEDIA}/porn_vr:/porn_vr
+#    ports:
+#      - 8080:8080
+#      - 8999:8999
+#      - 8999:8999/udp
+#      - 35412:35412
+#    restart: unless-stopped
+
+
+  alpine-qbittorrent-openvpn:
     volumes:
       - ${ROOT_APPDATA}/qbittorrentvpn:/config
       - ${ROOT_MEDIA}/downloads:/downloads
@@ -48,12 +66,21 @@ services:
       - ${ROOT_MEDIA}/other:/other
       - ${ROOT_MEDIA}/hentai:/hentai
       - ${ROOT_MEDIA}/porn_vr:/porn_vr
+      - "/etc/localtime:/etc/localtime:ro"
+    environment:
+      - OPENVPN_PROVIDER=NORDVPN
+      - NORDVPN_COUNTRY=PL
+      - OPENVPN_USERNAME=${NORD_USER}
+      - OPENVPN_PASSWORD=${NORD_PASSWORD}
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - LAN=192.168.8.0/16
     ports:
-      - 8080:8080
-      - 8999:8999
-      - 8999:8999/udp
-      - 35412:35412
-    restart: unless-stopped
+      - "8080:8080"
+    cap_add:
+      - NET_ADMIN
+    image: guillaumedsde/alpine-qbittorrent-openvpn:development
 
   sonarr:
     image: ghcr.io/linuxserver/sonarr
