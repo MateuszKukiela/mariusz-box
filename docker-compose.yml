@@ -52,6 +52,7 @@ services:
       - 8080:8080
       - 8999:8999
       - 8999:8999/udp
+      - 1080:1080
     restart: unless-stopped
 
   sonarr:
