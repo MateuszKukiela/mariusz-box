@@ -72,7 +72,7 @@ services:
     restart: unless-stopped
 
   radarr:
-    image: ghcr.io/linuxserver/radarr
+    image: ghcr.io/linuxserver/radarr:latest
     container_name: radarr
     environment:
       - PUID=${PUID}
@@ -161,7 +161,7 @@ services:
     restart: unless-stopped
 
   swag:
-    image: linuxserver/swag
+    image: lscr.io/linuxserver/swag
     container_name: swag
     cap_add:
       - NET_ADMIN
