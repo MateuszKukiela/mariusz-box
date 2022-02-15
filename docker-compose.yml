@@ -76,6 +76,7 @@ services:
       - PGID=${PGID}
       - TZ=${TZ}
       - LAN=192.168.8.0/24
+      - QBT_WEBUI_PORT=8080
     ports:
       - "8080:8080"
     cap_add:
