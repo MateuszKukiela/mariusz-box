@@ -1,15 +1,5 @@
 version: '3.3'
 services:
-  portainer:
-    image: portainer/portainer-ce
-    container_name: portainer
-    ports:
-      - 9000:9000
-    volumes:
-      - ${ROOT_APPDATA}/portainer:/data portainer/portainer-ce
-      - /var/run/docker.sock:/var/run/docker.sock
-    restart: always
-
   homebridge:
     image: oznu/homebridge:latest
     container_name: homebridge
@@ -167,7 +157,7 @@ services:
       - PGID=${PGID}
       - TZ=${TZ}
       - URL=januszex.net
-      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,portainer,nextcloud,jellyfin,ombi,comicstreamer,truenas,bruno,photos,photoprism,prowlarr,lidarr,airsonic,readarr,calibre-web,calibre,proxy,nzbget,xbvr
+      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,nextcloud,jellyfin,ombi,comicstreamer,truenas,bruno,photos,photoprism,prowlarr,lidarr,airsonic,readarr,calibre-web,calibre,proxy,nzbget,xbvr
       - VALIDATION=http
     volumes:
       - ./swag:/config
