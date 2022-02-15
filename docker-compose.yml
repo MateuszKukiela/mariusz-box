@@ -57,6 +57,7 @@ services:
 
 
   alpine-qbittorrent-openvpn:
+    container_name: qbittorrent
     volumes:
       - ${ROOT_APPDATA}/newqbittorrentvpn:/config
       - ${ROOT_MEDIA}/downloads:/downloads
