@@ -379,3 +379,14 @@ services:
     ports:
       - "9999:9999"
     restart: always
+    
+    ebusd:
+    image: 'john30/ebusd:latest'
+    container_name: ebusd
+    enviroments:
+      - EBUSD_SCANCONFIG=192.168.8.243
+      - EBUSD_MQTTPORT=1883
+      - EBUSD_MQTTHOST=core-mosquitto
+    ports:
+      - "8888:8869"
+    restart: always
