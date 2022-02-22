@@ -388,5 +388,5 @@ services:
       - EBUSD_MQTTPORT=1883
       - EBUSD_MQTTHOST=core-mosquitto
     ports:
-      - "8888:8869"
+      - "8869:8888"
     restart: always
