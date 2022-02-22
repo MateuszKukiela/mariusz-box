@@ -383,7 +383,7 @@ services:
     ebusd:
     image: 'john30/ebusd:latest'
     container_name: ebusd
-    enviroment:
+    environment:
       - EBUSD_SCANCONFIG=192.168.8.243
       - EBUSD_MQTTPORT=1883
       - EBUSD_MQTTHOST=core-mosquitto
