@@ -370,7 +370,7 @@ services:
       - ${ROOT_APPDATA}/authelia:/config
     restart: unless-stopped
 
-   xbvr:
+  xbvr:
     image: 'xbapps/xbvr:latest'
     container_name: xbvr
     volumes:
@@ -380,7 +380,7 @@ services:
       - "9999:9999"
     restart: always
 
-   ebusd:
+  ebusd:
     image: 'john30/ebusd:latest'
     container_name: ebusd
     environment:
