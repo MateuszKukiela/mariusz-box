@@ -377,16 +377,6 @@ services:
       - ${ROOT_MEDIA}/porn_vr:/videos
       - ${ROOT_APPDATA}/xbvr:/root/.config/
     ports:
-      - "9997:9999"
-    restart: always
-
-  ebusd:
-    image: 'john30/ebusd:latest'
-    container_name: ebusd
-    environment:
-      - EBUSD_SCANCONFIG=192.168.8.243
-      - EBUSD_MQTTPORT=1883
-      - EBUSD_MQTTHOST=core-mosquitto
-    ports:
       - "9999:9999"
     restart: always
+
