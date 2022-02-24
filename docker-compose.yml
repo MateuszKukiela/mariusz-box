@@ -377,7 +377,7 @@ services:
       - ${ROOT_MEDIA}/porn_vr:/videos
       - ${ROOT_APPDATA}/xbvr:/root/.config/
     ports:
-      - "9999:9999"
+      - "9997:9999"
     restart: always
 
   ebusd:
@@ -388,5 +388,5 @@ services:
       - EBUSD_MQTTPORT=1883
       - EBUSD_MQTTHOST=core-mosquitto
     ports:
-      - "8869:8888"
+      - "9999:9999"
     restart: always
