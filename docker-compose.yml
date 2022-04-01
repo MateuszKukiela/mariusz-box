@@ -415,4 +415,3 @@ services:
 
 networks:
   mariusz-network:
-    driver: mariusz-driver
