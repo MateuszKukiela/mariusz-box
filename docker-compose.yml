@@ -174,7 +174,7 @@ services:
       - PGID=${PGID}
       - TZ=${TZ}
       - URL=januszex.net
-      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,nextcloud,jellyfin,ombi,comicstreamer,unraid,bruno,photos,photoprism,prowlarr,lidarr,airsonic,readarr,calibre-web,calibre,proxy,nzbget,xbvr
+      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,nextcloud,jellyfin,ombi,comicstreamer,unraid,bruno,photos,photoprism,prowlarr,lidarr,airsonic,readarr,calibre-web,calibre,proxy,nzbget,xbvr,overseerr
       - VALIDATION=http
     volumes:
       - ./swag:/config
@@ -393,7 +393,21 @@ services:
       - "9999:9999"
     networks:
       - mariusz-network
-    restart: always
+    restart: unless-stopped
+
+  overseerr:
+    image: lscr.io/linuxserver/overseerr
+    container_name: overseerr
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ${ROOT_APPDATA}/overseerr:/config
+    ports:
+      - 5055:5055
+    restart: unless-stopped
+
 
 networks:
   mariusz-network:
