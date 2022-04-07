@@ -92,7 +92,7 @@ services:
       - UMASK_SET=022
     volumes:
       - ${ROOT_APPDATA}/radarr4k:/config
-      - ${ROOT_MEDIA}/movies4k:/movies
+      - ${ROOT_MEDIA}/movies4k:/movies4k
       - ${ROOT_MEDIA}/downloads:/downloads
     ports:
       - 7879:7878
