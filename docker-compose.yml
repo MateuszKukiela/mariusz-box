@@ -21,6 +21,7 @@ services:
       - ${ROOT_MEDIA}/downloads:/downloads
       - ${ROOT_MEDIA}/porn:/porn
       - ${ROOT_MEDIA}/movies:/movies
+      - ${ROOT_MEDIA}/movies4k:/data/movies4k
       - ${ROOT_MEDIA}/tv:/tv
       - ${ROOT_MEDIA}/other:/other
       - ${ROOT_MEDIA}/hentai:/hentai
@@ -225,6 +226,7 @@ services:
       - ${ROOT_APPDATA}/jellyfin:/config
       - ${ROOT_MEDIA}/tv:/data/tv
       - ${ROOT_MEDIA}/movies:/data/movies
+      - ${ROOT_MEDIA}/movies4k:/data/movies4k
       - ${ROOT_MEDIA}/downloads:/downloads
       - ${ROOT_MEDIA}/porn:/data/porn
       - ${ROOT_MEDIA}/music:/music
@@ -365,6 +367,7 @@ services:
         - ${ROOT_MEDIA}/downloads:/downloads
         - ${ROOT_MEDIA}/porn:/porn
         - ${ROOT_MEDIA}/movies:/movies
+        - ${ROOT_MEDIA}/movies4k:/data/movies4k
         - ${ROOT_MEDIA}/tv:/tv
         - ${ROOT_MEDIA}/other:/other
         - ${ROOT_MEDIA}/hentai:/hentai
