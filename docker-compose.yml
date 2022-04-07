@@ -405,7 +405,7 @@ services:
     restart: unless-stopped
 
   xbvr:
-    image: 'xbapps/xbvr:latest'
+    image: 'ghcr.io/xbapps/xbvr:latest'
     container_name: xbvr
     volumes:
       - ${ROOT_MEDIA}/porn_vr:/videos
