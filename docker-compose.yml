@@ -21,7 +21,7 @@ services:
       - ${ROOT_MEDIA}/downloads:/downloads
       - ${ROOT_MEDIA}/porn:/porn
       - ${ROOT_MEDIA}/movies:/movies
-      - ${ROOT_MEDIA}/movies4k:/data/movies4k
+      - ${ROOT_MEDIA}/movies4k:/movies4k
       - ${ROOT_MEDIA}/tv:/tv
       - ${ROOT_MEDIA}/other:/other
       - ${ROOT_MEDIA}/hentai:/hentai
@@ -367,7 +367,7 @@ services:
         - ${ROOT_MEDIA}/downloads:/downloads
         - ${ROOT_MEDIA}/porn:/porn
         - ${ROOT_MEDIA}/movies:/movies
-        - ${ROOT_MEDIA}/movies4k:/data/movies4k
+        - ${ROOT_MEDIA}/movies4k:/movies4k
         - ${ROOT_MEDIA}/tv:/tv
         - ${ROOT_MEDIA}/other:/other
         - ${ROOT_MEDIA}/hentai:/hentai
