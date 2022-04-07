@@ -407,6 +407,11 @@ services:
   xbvr:
     image: 'ghcr.io/xbapps/xbvr:latest'
     container_name: xbvr
+    environment:
+      - UI_USERNAME=root
+      - UI_PASSWORD=${PASSWORD}
+      - DEO_USERNAME=root
+      - DEO_PASSWORD=${PASSWORD}
     volumes:
       - ${ROOT_MEDIA}/porn_vr:/videos
       - ${ROOT_APPDATA}/xbvr:/root/.config/
