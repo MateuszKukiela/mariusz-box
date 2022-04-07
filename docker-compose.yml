@@ -81,6 +81,24 @@ services:
       - mariusz-network
     restart: unless-stopped
 
+  radarr4k:
+    image: ghcr.io/linuxserver/radarr:latest
+    container_name: radarr4k
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - UMASK_SET=022
+    volumes:
+      - ${ROOT_APPDATA}/radarr4k:/config
+      - ${ROOT_MEDIA}/movies4k:/movies
+      - ${ROOT_MEDIA}/downloads:/downloads
+    ports:
+      - 7879:7878
+    networks:
+      - mariusz-network
+    restart: unless-stopped
+
   bazarr:
     image: ghcr.io/linuxserver/bazarr
     container_name: bazarr
@@ -174,7 +192,7 @@ services:
       - PGID=${PGID}
       - TZ=${TZ}
       - URL=januszex.net
-      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,nextcloud,jellyfin,ombi,comicstreamer,unraid,bruno,photos,photoprism,prowlarr,lidarr,airsonic,readarr,calibre-web,calibre,proxy,nzbget,xbvr
+      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,nextcloud,jellyfin,ombi,comicstreamer,unraid,bruno,photos,photoprism,prowlarr,lidarr,airsonic,readarr,calibre-web,calibre,proxy,nzbget,xbvr,radarr4k
       - VALIDATION=http
     volumes:
       - ./swag:/config
