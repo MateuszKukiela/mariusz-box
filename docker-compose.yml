@@ -215,7 +215,7 @@ services:
     restart: unless-stopped
 
   jellyfin:
-    image: ghcr.io/linuxserver/jellyfin
+    image: ghcr.io/confusedpolarbear/jellyfin-intro-skipper
     container_name: jellyfin
     environment:
       - PUID=${PUID}
