@@ -71,7 +71,6 @@ services:
       - PUID=${PUID}
       - PGID=${PGID}
       - TZ=${TZ}
-      - UMASK_SET=022
     volumes:
       - ${ROOT_APPDATA}/radarr:/config
       - ${ROOT_MEDIA}/movies:/movies
@@ -89,7 +88,6 @@ services:
       - PUID=${PUID}
       - PGID=${PGID}
       - TZ=${TZ}
-      - UMASK_SET=022
     volumes:
       - ${ROOT_APPDATA}/radarr4k:/config
       - ${ROOT_MEDIA}/movies4k:/movies4k
