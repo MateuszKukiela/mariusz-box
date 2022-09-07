@@ -421,5 +421,23 @@ services:
       - mariusz-network
     restart: unless-stopped
 
+  plex:
+    image: lscr.io/linuxserver/plex:latest
+    container_name: plex
+    network_mode: host
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - VERSION=docker
+    volumes:
+      - ${ROOT_APPDATA}/plex:/config
+      - ${ROOT_MEDIA}/tv:/data/tv
+      - ${ROOT_MEDIA}/movies:/data/movies
+      - ${ROOT_MEDIA}/movies4k:/data/movies4k
+      - ${ROOT_MEDIA}/downloads:/downloads
+      - ${ROOT_MEDIA}/porn:/data/porn
+      - ${ROOT_MEDIA}/music:/music
+    restart: unless-stopped
+
 networks:
   mariusz-network:
