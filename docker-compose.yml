@@ -166,20 +166,20 @@ services:
       - mariusz-network
     restart: unless-stopped
 
-  heimdall:
-    image: ghcr.io/linuxserver/heimdall
-    container_name: heimdall
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - TZ=${TZ}
-    volumes:
-      - ${ROOT_APPDATA}/heimdall:/config
-    ports:
-      - 82:80
-    networks:
-      - mariusz-network
-    restart: unless-stopped
+#  heimdall:
+#    image: ghcr.io/linuxserver/heimdall
+#    container_name: heimdall
+#    environment:
+#      - PUID=${PUID}
+#      - PGID=${PGID}
+#      - TZ=${TZ}
+#    volumes:
+#      - ${ROOT_APPDATA}/heimdall:/config
+#    ports:
+#      - 82:80
+#    networks:
+#      - mariusz-network
+#    restart: unless-stopped
 
   swag:
     image: lscr.io/linuxserver/swag
