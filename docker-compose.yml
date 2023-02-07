@@ -228,6 +228,7 @@ services:
       - ${ROOT_MEDIA}/downloads:/downloads
       - ${ROOT_MEDIA}/porn:/data/porn
       - ${ROOT_MEDIA}/music:/music
+      - ${ROOT_APPDATA}/jellyfin/config.json:/jellyfin/jellyfin-web/config.json
     ports:
       - 8096:8096
     networks:
