@@ -438,7 +438,7 @@ services:
     restart: unless-stopped
 
   organizr:
-    image: linuxserver/organizr
+    image: organizr/organizr
     container_name: organizr
     environment:
       - PUID=${PUID}
