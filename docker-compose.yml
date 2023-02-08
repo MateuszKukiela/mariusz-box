@@ -191,7 +191,7 @@ services:
       - PGID=${PGID}
       - TZ=${TZ}
       - URL=januszex.net
-      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,nextcloud,jellyfin,ombi,comicstreamer,unraid,bruno,photos,photoprism,prowlarr,lidarr,airsonic,readarr,calibre-web,calibre,proxy,nzbget,xbvr,radarr4k,plex,konto
+      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,nextcloud,jellyfin,ombi,comicstreamer,unraid,bruno,photos,photoprism,prowlarr,lidarr,airsonic,readarr,calibre-web,calibre,proxy,nzbget,xbvr,radarr4k,plex,konto,whisparr
       - VALIDATION=http
     volumes:
       - ./swag:/config
@@ -451,7 +451,6 @@ services:
 #      - 9983:80
 #    restart: unless-stopped
 
-
   jfa:
       container_name: jfa
       ports:
@@ -462,6 +461,20 @@ services:
           - '/etc/localtime:/etc/localtime:ro'
       image: hrfee/jfa-go
       restart: unless-stopped
+
+  whisparr:
+    container_name: whisparr
+    image: cr.hotio.dev/hotio/whisparr
+    ports:
+      - "6969:6969"
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - UMASK=002
+      - TZ=${TZ}
+    volumes:
+      - ${ROOT_APPDATA}/whisparr:/config
+      - ${ROOT_MEDIA}/porn:/porn
 
 networks:
   mariusz-network:
