@@ -14,8 +14,31 @@ services:
     volumes:
       - ${ROOT_APPDATA}/homebridge:/homebridge
 
-  alpine-qbittorrent-openvpn:
-    container_name: qbittorrent
+  nordlynx:
+    image: ghcr.io/bubuntux/nordlynx
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - PRIVATE_KEY=${NORD_KEY}
+      - DNS=9.9.9.9,1.1.1.2
+      - QUERY=filters\[country_id\]=209
+      - NET_LOCAL=192.168.1.0/24
+      - ALLOWED_IPS=0.0.0.0/0
+      - TZ=${TZ}
+    ports:
+      - 8080:8080
+    sysctls:
+      - net.ipv6.conf.all.disable_ipv6=1
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+
+  qbit:
+    image: lscr.io/linuxserver/qbittorrent
+    restart: unless-stopped
+    network_mode: service:nordlynx
+    environment:
+      - TZ=${TZ}
     volumes:
       - ${ROOT_APPDATA}/newqbittorrentvpn:/config
       - ${ROOT_MEDIA}/downloads:/downloads
@@ -28,23 +51,10 @@ services:
       - ${ROOT_MEDIA}/porn_vr:/porn_vr
       - ${ROOT_NEXTCLOUD}/robo/files/hentai:/hentai_comics
       - "/etc/localtime:/etc/localtime:ro"
-    environment:
-      - OPENVPN_PROVIDER=NORDVPN
-      - NORDVPN_COUNTRY=PL
-      - OPENVPN_USERNAME=${NORD_USER}
-      - OPENVPN_PASSWORD=${NORD_PASSWORD}
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - TZ=${TZ}
-      - LAN=192.168.8.0/24
-      - QBT_WEBUI_PORT=8080
-    ports:
-      - "8080:8080"
-    cap_add:
-      - NET_ADMIN
-    networks:
-      - mariusz-network
-    image: guillaumedsde/alpine-qbittorrent-openvpn:development
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+    depends_on:
+      - nordlynx
 
   sonarr:
     image: ghcr.io/linuxserver/sonarr
