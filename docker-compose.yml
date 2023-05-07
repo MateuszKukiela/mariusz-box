@@ -33,7 +33,7 @@ services:
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
 
-  qbit:
+  qbittorrent:
     image: lscr.io/linuxserver/qbittorrent
     restart: unless-stopped
     network_mode: service:nordlynx
