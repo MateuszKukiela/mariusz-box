@@ -34,6 +34,7 @@ services:
       - "com.centurylinklabs.watchtower.enable=true"
 
   qbittorrent:
+    container_name: qbittorrent
     image: lscr.io/linuxserver/qbittorrent
     restart: unless-stopped
     network_mode: service:nordlynx
