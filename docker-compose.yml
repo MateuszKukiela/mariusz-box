@@ -41,7 +41,7 @@ services:
     environment:
       - TZ=${TZ}
     volumes:
-      - ${ROOT_APPDATA}/newqbittorrentvpn:/config
+      - ${ROOT_APPDATA}/qbittorrent:/config
       - ${ROOT_MEDIA}/downloads:/downloads
       - ${ROOT_MEDIA}/porn:/porn
       - ${ROOT_MEDIA}/movies:/movies
