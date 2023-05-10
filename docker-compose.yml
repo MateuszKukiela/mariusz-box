@@ -188,7 +188,7 @@ services:
       - PGID=${PGID}
       - TZ=${TZ}
       - URL=januszex.net
-      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,nextcloud,jellyfin,ombi,comicstreamer,truenas,bruno,photos,photoprism,prowlarr,lidarr,airsonic,readarr,calibre-web,calibre,proxy,nzbget,xbvr,radarr4k,plex,konto,whisparr
+      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,nextcloud,jellyfin,ombi,comicstreamer,truenas,bruno,photos,photoprism,prowlarr,lidarr,airsonic,readarr,calibre-web,calibre,proxy,nzbget,xbvr,radarr4k,konto,whisparr
       - VALIDATION=http
     volumes:
       - ./swag:/config
@@ -416,37 +416,6 @@ services:
     networks:
       - mariusz-network
     restart: unless-stopped
-
-  plex:
-    image: lscr.io/linuxserver/plex:latest
-    container_name: plex
-    network_mode: host
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - VERSION=docker
-    volumes:
-      - ${ROOT_APPDATA}/plex:/config
-      - ${ROOT_MEDIA}/tv:/data/tv
-      - ${ROOT_MEDIA}/movies:/data/movies
-      - ${ROOT_MEDIA}/movies4k:/data/movies4k
-      - ${ROOT_MEDIA}/downloads:/downloads
-      - ${ROOT_MEDIA}/porn:/data/porn
-      - ${ROOT_MEDIA}/music:/music
-    restart: unless-stopped
-
-#  organizr:
-#    image: organizr/organizr
-#    container_name: organizr
-#    environment:
-#      - PUID=${PUID}
-#      - PGID=${PGID}
-#      - TZ=${TZ}
-#    volumes:
-#      - ${ROOT_APPDATA}/organizr:/config
-#    ports:
-#      - 9983:80
-#    restart: unless-stopped
 
   jfa:
       container_name: jfa
