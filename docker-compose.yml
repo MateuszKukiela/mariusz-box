@@ -14,8 +14,7 @@ services:
       - TZ=${TZ}
     ports:
       - 8080:8080 #qbit
-      - 8000:8000 #pyload
-      - 9666:9666 #pyload
+      - "8082:8081" #metube
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=1
     labels:
@@ -46,15 +45,16 @@ services:
       - nordlynx
       - swag
 
-  pyload-ng:
-    image: lscr.io/linuxserver/pyload-ng:latest
-    container_name: pyload-ng
+  metube:
+    image: ghcr.io/alexta69/metube
+    container_name: metube
+    restart: unless-stopped
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
       - TZ=${TZ}
     volumes:
-      - ${ROOT_APPDATA}/pyload:/config
+      - ${ROOT_APPDATA}/metube:/config
       - ${ROOT_MEDIA}/downloads:/downloads
       - ${ROOT_MEDIA}/porn:/porn
       - ${ROOT_MEDIA}/movies:/movies
@@ -65,7 +65,6 @@ services:
       - ${ROOT_MEDIA}/porn_vr:/porn_vr
       - ${ROOT_NEXTCLOUD}/robo/files/hentai:/hentai_comics
       - "/etc/localtime:/etc/localtime:ro"
-    restart: unless-stopped
     network_mode: service:nordlynx
     depends_on:
       - nordlynx
@@ -216,7 +215,7 @@ services:
       - PGID=${PGID}
       - TZ=${TZ}
       - URL=januszex.net
-      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,nextcloud,jellyfin,ombi,comicstreamer,truenas,bruno,photos,photoprism,prowlarr,lidarr,airsonic,readarr,calibre-web,calibre,proxy,nzbget,xbvr,radarr4k,konto,whisparr,pyload
+      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,nextcloud,jellyfin,ombi,comicstreamer,truenas,bruno,photos,photoprism,prowlarr,lidarr,airsonic,readarr,calibre-web,calibre,proxy,nzbget,xbvr,radarr4k,konto,whisparr,metube
       - VALIDATION=http
     volumes:
       - ./swag:/config
