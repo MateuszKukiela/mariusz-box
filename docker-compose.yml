@@ -14,7 +14,8 @@ services:
       - TZ=${TZ}
     ports:
       - 8080:8080 #qbit
-      - '5800:5800' #j-downloader
+      - 8000:8000 #pyload
+      - 9666:9666 #pyload
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=1
     labels:
@@ -45,22 +46,27 @@ services:
       - nordlynx
       - swag
 
-  jdownloader-2:
-    container_name: jdownloader-2
+  pyload-ng:
+    image: lscr.io/linuxserver/pyload-ng:latest
+    container_name: pyload-ng
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ${ROOT_APPDATA}/pyload:/config
+      - ${ROOT_MEDIA}/downloads:/downloads
+      - ${ROOT_MEDIA}/porn:/porn
+      - ${ROOT_MEDIA}/movies:/movies
+      - ${ROOT_MEDIA}/movies4k:/movies4k
+      - ${ROOT_MEDIA}/tv:/tv
+      - ${ROOT_MEDIA}/other:/other
+      - ${ROOT_MEDIA}/hentai:/hentai
+      - ${ROOT_MEDIA}/porn_vr:/porn_vr
+      - ${ROOT_NEXTCLOUD}/robo/files/hentai:/hentai_comics
+      - "/etc/localtime:/etc/localtime:ro"
     restart: unless-stopped
     network_mode: service:nordlynx
-    volumes:
-        - ${ROOT_APPDATA}/jdownloader-2:/config
-        - ${ROOT_MEDIA}/downloads:/downloads
-        - ${ROOT_MEDIA}/porn:/porn
-        - ${ROOT_MEDIA}/movies:/movies
-        - ${ROOT_MEDIA}/movies4k:/movies4k
-        - ${ROOT_MEDIA}/tv:/tv
-        - ${ROOT_MEDIA}/other:/other
-        - ${ROOT_MEDIA}/hentai:/hentai
-        - ${ROOT_MEDIA}/porn_vr:/porn_vr
-        - ${ROOT_NEXTCLOUD}/robo/files/hentai:/hentai_comics
-    image: jlesage/jdownloader-2
     depends_on:
       - nordlynx
       - swag
@@ -210,7 +216,7 @@ services:
       - PGID=${PGID}
       - TZ=${TZ}
       - URL=januszex.net
-      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,nextcloud,jellyfin,ombi,comicstreamer,truenas,bruno,photos,photoprism,prowlarr,lidarr,airsonic,readarr,calibre-web,calibre,proxy,nzbget,xbvr,radarr4k,konto,whisparr,jdownloader
+      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,nextcloud,jellyfin,ombi,comicstreamer,truenas,bruno,photos,photoprism,prowlarr,lidarr,airsonic,readarr,calibre-web,calibre,proxy,nzbget,xbvr,radarr4k,konto,whisparr,pyload
       - VALIDATION=http
     volumes:
       - ./swag:/config
