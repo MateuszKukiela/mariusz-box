@@ -42,6 +42,7 @@ services:
       - "com.centurylinklabs.watchtower.enable=true"
     depends_on:
       - nordlynx
+      - swag
 
   sonarr:
     image: ghcr.io/linuxserver/sonarr
