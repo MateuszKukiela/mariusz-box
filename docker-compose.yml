@@ -426,39 +426,39 @@ services:
       - mariusz-network
 
 # TODO: Un-hardcode LAN address
-#  nzbgetvpn:
-#    container_name: nzbgetvpn
-#    privileged: true
-#    volumes:
-#        - ${ROOT_APPDATA}/nzbgetvpn:/config
-#        - ${ROOT_MEDIA}/downloads:/downloads
-#        - ${ROOT_MEDIA}/porn:/porn
-#        - ${ROOT_MEDIA}/movies:/movies
-#        - ${ROOT_MEDIA}/movies4k:/movies4k
-#        - ${ROOT_MEDIA}/tv:/tv
-#        - ${ROOT_MEDIA}/other:/other
-#        - ${ROOT_MEDIA}/hentai:/hentai
-#        - ${ROOT_MEDIA}/porn_vr:/porn_vr
-#        - ${ROOT_NEXTCLOUD}/robo/files/hentai:/hentai_comics
-#    environment:
-#        - VPN_ENABLED=wireguard
-#        - VPN_TYPE=openvpn
-#        - ENABLE_SSL=no
-#        - VPN_USERNAME=${NORD_USER}
-#        - VPN_PASSWORD=${NORD_PASSWORD}
-#        - WEBUI_USERNAME=root
-#        - WEBUI_PASSWORD=${PASSWORD}
-#        - PUID=${PUID}
-#        - PGID=${PGID}
-#        - LAN_NETWORK=192.168.8.10/24
-#        - 'NAME_SERVERS=1.1.1.1,1.0.0.1'
-#    ports:
-#        - '6789:6789'
-#        - '6791:6791'
-#    networks:
-#      - mariusz-network
-#    restart: unless-stopped
-#    image: dyonr/nzbgetvpn
+  nzbgetvpn:
+    container_name: nzbgetvpn
+    privileged: true
+    volumes:
+        - ${ROOT_APPDATA}/nzbgetvpn:/config
+        - ${ROOT_MEDIA}/downloads:/downloads
+        - ${ROOT_MEDIA}/porn:/porn
+        - ${ROOT_MEDIA}/movies:/movies
+        - ${ROOT_MEDIA}/movies4k:/movies4k
+        - ${ROOT_MEDIA}/tv:/tv
+        - ${ROOT_MEDIA}/other:/other
+        - ${ROOT_MEDIA}/hentai:/hentai
+        - ${ROOT_MEDIA}/porn_vr:/porn_vr
+        - ${ROOT_NEXTCLOUD}/robo/files/hentai:/hentai_comics
+    environment:
+        - VPN_ENABLED=wireguard
+        - VPN_TYPE=openvpn
+        - ENABLE_SSL=no
+        - VPN_USERNAME=${NORD_USER}
+        - VPN_PASSWORD=${NORD_PASSWORD}
+        - WEBUI_USERNAME=root
+        - WEBUI_PASSWORD=${PASSWORD}
+        - PUID=${PUID}
+        - PGID=${PGID}
+        - LAN_NETWORK=192.168.8.10/24
+        - 'NAME_SERVERS=1.1.1.1,1.0.0.1'
+    ports:
+        - '6789:6789'
+        - '6791:6791'
+    networks:
+      - mariusz-network
+    restart: unless-stopped
+    image: dyonr/nzbgetvpn
 
   authelia:
     image: authelia/authelia:4.21.0
