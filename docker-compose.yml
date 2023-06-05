@@ -21,9 +21,9 @@ services:
       - "51420:51420" # QbitTorrent
       - "51420:51420/udp" # QbitTorrent
       - "8085:8081" #metube
-      - "9091:9091" #transmission
-      - "51413:51413" #transmission
-      - "51413:51413/udp" #transmission
+#      - "9091:9091" #transmission
+#      - "51413:51413" #transmission
+#      - "51413:51413/udp" #transmission
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=0
 
@@ -52,17 +52,11 @@ services:
       - nord
       - swag
 
-  transmission:
-    image: lscr.io/linuxserver/transmission:latest
-    container_name: transmission
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - TZ=${TZ}
-      - USER=root
-      - PASS=${PASSWORD}
+  transmission-openvpn:
+    cap_add:
+      - NET_ADMIN
     volumes:
-      - ${ROOT_APPDATA}/transmission:/config
+      - ${ROOT_APPDATA}/transmissionvpn:/config
       - ${ROOT_MEDIA}/downloads:/downloads
       - ${ROOT_MEDIA}/porn:/porn
       - ${ROOT_MEDIA}/movies:/movies
@@ -73,11 +67,22 @@ services:
       - ${ROOT_MEDIA}/porn_vr:/porn_vr
       - ${ROOT_NEXTCLOUD}/robo/files/hentai:/hentai_comics
       - "/etc/localtime:/etc/localtime:ro"
-    depends_on:
-      - nord
-      - swag
-    restart: unless-stopped
-    network_mode: "service:nord"
+    environment:
+      - OPENVPN_PROVIDER=NORDVPN
+      - OPENVPN_CONFIG=poland
+      - OPENVPN_USERNAME={NORD_USER}
+      - OPENVPN_PASSWORD={NORD_PASSWORD}
+      - LOCAL_NETWORK=192.168.8.0/24
+      - NORDVPN_COUNTRY=PL
+      - NORDVPN_CATEGORY=legacy_p2p
+    logging:
+      driver: json-file
+      options:
+          max-size: 10m
+    ports:
+      - '9091:9091'
+    image: haugene/transmission-openvpn
+
 
   metube:
     image: ghcr.io/alexta69/metube
