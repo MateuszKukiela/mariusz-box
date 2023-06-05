@@ -1,6 +1,6 @@
 version: '3.3'
 services:
-  nordlynx:
+  norddupa:
     image: ghcr.io/bubuntux/nordlynx
     restart: unless-stopped
     security_opt:
@@ -20,9 +20,9 @@ services:
       - "51420:51420" # QbitTorrent
       - "51420:51420/udp" # QbitTorrent
       - "8085:8081" #metube
-#      - "9091:9091" #transmission
-#      - "51413:51413" #transmission
-#      - "51413:51413/udp" #transmission
+      - "9091:9091" #transmission
+      - "51413:51413" #transmission
+      - "51413:51413/udp" #transmission
 
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=1
@@ -33,7 +33,7 @@ services:
     container_name: qbittorrent
     image: lscr.io/linuxserver/qbittorrent
     restart: unless-stopped
-    network_mode: service:nordlynx
+    network_mode: "service:norddupa"
     environment:
       - TZ=${TZ}
     volumes:
@@ -51,7 +51,7 @@ services:
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
     depends_on:
-      - nordlynx
+      - norddupa
       - swag
 
   transmission:
@@ -79,11 +79,7 @@ services:
       - nordlynx
       - swag
     restart: unless-stopped
-#    network_mode: service:nordlynx
-    ports:
-      - "9091:9091" #transmission
-      - "51413:51413" #transmission
-      - "51413:51413/udp" #transmission
+    network_mode: "service:norddupa"
 
   metube:
     image: ghcr.io/alexta69/metube
