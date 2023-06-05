@@ -68,6 +68,8 @@ services:
       - ${ROOT_NEXTCLOUD}/robo/files/hentai:/hentai_comics
       - "/etc/localtime:/etc/localtime:ro"
     environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
       - CREATE_TUN_DEVICE=true
       - OPENVPN_PROVIDER=NORDVPN
       - OPENVPN_USERNAME={NORD_U}
