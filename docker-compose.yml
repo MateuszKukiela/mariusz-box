@@ -74,6 +74,7 @@ services:
       - LOCAL_NETWORK=192.168.8.0/24
       - NORDVPN_COUNTRY=PL
       - NORDVPN_CATEGORY=legacy_p2p
+      - TZ=${TZ}
     logging:
       driver: json-file
       options:
