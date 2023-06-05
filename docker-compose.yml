@@ -15,6 +15,9 @@ services:
     ports:
       - 8080:8080 #qbit
       - "8085:8081" #metube
+      - 9091:9091 #transmission
+      - 51413:51413 #transmission
+      - 51413:51413/udp #transmission
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=1
     labels:
@@ -44,6 +47,31 @@ services:
     depends_on:
       - nordlynx
       - swag
+
+  transmission:
+    image: lscr.io/linuxserver/transmission:latest
+    container_name: transmission
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ${ROOT_APPDATA}/transmission:/config
+      - ${ROOT_MEDIA}/downloads:/downloads
+      - ${ROOT_MEDIA}/porn:/porn
+      - ${ROOT_MEDIA}/movies:/movies
+      - ${ROOT_MEDIA}/movies4k:/movies4k
+      - ${ROOT_MEDIA}/tv:/tv
+      - ${ROOT_MEDIA}/other:/other
+      - ${ROOT_MEDIA}/hentai:/hentai
+      - ${ROOT_MEDIA}/porn_vr:/porn_vr
+      - ${ROOT_NEXTCLOUD}/robo/files/hentai:/hentai_comics
+      - "/etc/localtime:/etc/localtime:ro"
+    depends_on:
+      - nordlynx
+      - swag
+    restart: unless-stopped
+    network_mode: service:nordlynx
 
   metube:
     image: ghcr.io/alexta69/metube
@@ -215,7 +243,7 @@ services:
       - PGID=${PGID}
       - TZ=${TZ}
       - URL=januszex.net
-      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,nextcloud,jellyfin,ombi,comicstreamer,truenas,bruno,photos,photoprism,prowlarr,lidarr,airsonic,readarr,calibre-web,calibre,proxy,nzbget,xbvr,radarr4k,konto,whisparr,metube
+      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,nextcloud,jellyfin,ombi,comicstreamer,truenas,bruno,photos,photoprism,prowlarr,lidarr,airsonic,readarr,calibre-web,calibre,proxy,nzbget,xbvr,radarr4k,konto,whisparr,metube,transmission
       - VALIDATION=http
     volumes:
       - ./swag:/config
