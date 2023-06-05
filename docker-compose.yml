@@ -1,6 +1,6 @@
 version: '3.3'
 services:
-  norddupa:
+  nord:
     image: ghcr.io/bubuntux/nordlynx
     restart: unless-stopped
     security_opt:
@@ -33,7 +33,7 @@ services:
     container_name: qbittorrent
     image: lscr.io/linuxserver/qbittorrent
     restart: unless-stopped
-    network_mode: "service:norddupa"
+    network_mode: "service:nord"
     environment:
       - TZ=${TZ}
     volumes:
@@ -51,7 +51,7 @@ services:
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
     depends_on:
-      - norddupa
+      - nord
       - swag
 
   transmission:
@@ -76,10 +76,10 @@ services:
       - ${ROOT_NEXTCLOUD}/robo/files/hentai:/hentai_comics
       - "/etc/localtime:/etc/localtime:ro"
     depends_on:
-      - norddupa
+      - nord
       - swag
     restart: unless-stopped
-    network_mode: "service:norddupa"
+    network_mode: "service:nord"
 
   metube:
     image: ghcr.io/alexta69/metube
@@ -101,9 +101,9 @@ services:
       - ${ROOT_MEDIA}/porn_vr:/downloads/porn_vr
       - ${ROOT_NEXTCLOUD}/robo/files/hentai:/downloads/hentai_comics
       - "/etc/localtime:/etc/localtime:ro"
-    network_mode: service:norddupa
+    network_mode: service:nord
     depends_on:
-      - norddupa
+      - nord
       - swag
 
   sonarr:
