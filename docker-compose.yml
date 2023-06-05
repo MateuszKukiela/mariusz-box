@@ -84,30 +84,30 @@ services:
     image: haugene/transmission-openvpn
 
 
-  metube:
-    image: ghcr.io/alexta69/metube
-    container_name: metube
-    restart: unless-stopped
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - TZ=${TZ}
-    volumes:
-      - ${ROOT_APPDATA}/metube:/config
-      - ${ROOT_MEDIA}/downloads:/downloads/downloads
-      - ${ROOT_MEDIA}/porn:/downloads/porn
-      - ${ROOT_MEDIA}/movies:/downloads/movies
-      - ${ROOT_MEDIA}/movies4k:/downloads/movies4k
-      - ${ROOT_MEDIA}/tv:/downloads/tv
-      - ${ROOT_MEDIA}/other:/downloads/other
-      - ${ROOT_MEDIA}/hentai:/downloads/hentai
-      - ${ROOT_MEDIA}/porn_vr:/downloads/porn_vr
-      - ${ROOT_NEXTCLOUD}/robo/files/hentai:/downloads/hentai_comics
-      - "/etc/localtime:/etc/localtime:ro"
-    network_mode: service:nord
-    depends_on:
-      - nord
-      - swag
+#  metube:
+#    image: ghcr.io/alexta69/metube
+#    container_name: metube
+#    restart: unless-stopped
+#    environment:
+#      - PUID=${PUID}
+#      - PGID=${PGID}
+#      - TZ=${TZ}
+#    volumes:
+#      - ${ROOT_APPDATA}/metube:/config
+#      - ${ROOT_MEDIA}/downloads:/downloads/downloads
+#      - ${ROOT_MEDIA}/porn:/downloads/porn
+#      - ${ROOT_MEDIA}/movies:/downloads/movies
+#      - ${ROOT_MEDIA}/movies4k:/downloads/movies4k
+#      - ${ROOT_MEDIA}/tv:/downloads/tv
+#      - ${ROOT_MEDIA}/other:/downloads/other
+#      - ${ROOT_MEDIA}/hentai:/downloads/hentai
+#      - ${ROOT_MEDIA}/porn_vr:/downloads/porn_vr
+#      - ${ROOT_NEXTCLOUD}/robo/files/hentai:/downloads/hentai_comics
+#      - "/etc/localtime:/etc/localtime:ro"
+#    network_mode: service:nord
+#    depends_on:
+#      - nord
+#      - swag
 
   sonarr:
     image: ghcr.io/linuxserver/sonarr
