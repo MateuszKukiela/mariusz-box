@@ -1,6 +1,7 @@
 version: '3.3'
 services:
   nord:
+    container_name: nord
     image: ghcr.io/bubuntux/nordlynx
     restart: unless-stopped
     security_opt:
@@ -23,11 +24,8 @@ services:
       - "9091:9091" #transmission
       - "51413:51413" #transmission
       - "51413:51413/udp" #transmission
-
     sysctls:
-      - net.ipv6.conf.all.disable_ipv6=1
-    labels:
-      - "com.centurylinklabs.watchtower.enable=true"
+      - net.ipv6.conf.all.disable_ipv6=0
 
   qbittorrent:
     container_name: qbittorrent
