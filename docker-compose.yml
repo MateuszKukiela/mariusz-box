@@ -78,6 +78,9 @@ services:
       - NORDVPN_COUNTRY=PL
       - NORDVPN_CATEGORY=legacy_p2p
       - TZ=${TZ}
+      - NORDVPN_PROTOCOL=tcp
+      - TRANSMISSION_RPC_PASSWORD=${PASSWORD}
+      - TRANSMISSION_RPC_USERNAME=root
     logging:
       driver: json-file
       options:
