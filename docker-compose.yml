@@ -70,7 +70,6 @@ services:
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
-      - CREATE_TUN_DEVICE=true
       - OPENVPN_PROVIDER=NORDVPN
       - OPENVPN_USERNAME=${NORD_U}
       - OPENVPN_PASSWORD=${NORD_P}
@@ -78,7 +77,7 @@ services:
       - NORDVPN_COUNTRY=PL
       - NORDVPN_CATEGORY=legacy_p2p
       - TZ=${TZ}
-      - NORDVPN_PROTOCOL=tcp
+      - NORDVPN_PROTOCOL=udp
       - TRANSMISSION_RPC_PASSWORD=${PASSWORD}
       - TRANSMISSION_RPC_USERNAME=root
     logging:
@@ -87,8 +86,6 @@ services:
           max-size: 10m
     ports:
       - '9091:9091'
-      - "51413:51413" #transmission
-      - "51413:51413/udp" #transmission
     image: haugene/transmission-openvpn
 
 
