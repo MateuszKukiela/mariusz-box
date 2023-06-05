@@ -101,7 +101,7 @@ services:
       - ${ROOT_MEDIA}/porn_vr:/downloads/porn_vr
       - ${ROOT_NEXTCLOUD}/robo/files/hentai:/downloads/hentai_comics
       - "/etc/localtime:/etc/localtime:ro"
-    network_mode: service:nordlynx
+    network_mode: service:norddupa
     depends_on:
       - nordlynx
       - swag
