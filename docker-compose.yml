@@ -77,7 +77,6 @@ services:
       - NORDVPN_COUNTRY=NL
       - NORDVPN_CATEGORY=legacy_p2p
       - TZ=${TZ}
-      - NORDVPN_PROTOCOL=udp
       - TRANSMISSION_RPC_PASSWORD=${PASSWORD}
       - TRANSMISSION_RPC_USERNAME=root
     logging:
