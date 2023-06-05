@@ -103,7 +103,7 @@ services:
       - "/etc/localtime:/etc/localtime:ro"
     network_mode: service:norddupa
     depends_on:
-      - nordlynx
+      - norddupa
       - swag
 
   sonarr:
