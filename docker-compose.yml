@@ -76,7 +76,7 @@ services:
       - ${ROOT_NEXTCLOUD}/robo/files/hentai:/hentai_comics
       - "/etc/localtime:/etc/localtime:ro"
     depends_on:
-      - nordlynx
+      - norddupa
       - swag
     restart: unless-stopped
     network_mode: "service:norddupa"
