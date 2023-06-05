@@ -33,7 +33,7 @@ services:
     container_name: qbittorrent
     image: lscr.io/linuxserver/qbittorrent
     restart: unless-stopped
-#    network_mode: service:nordlynx
+    network_mode: service:nordlynx
     environment:
       - TZ=${TZ}
     volumes:
@@ -53,10 +53,6 @@ services:
     depends_on:
       - nordlynx
       - swag
-    ports:
-      - "9091:9091" #transmission
-      - "51413:51413" #transmission
-      - "51413:51413/udp" #transmission
 
   transmission:
     image: lscr.io/linuxserver/transmission:latest
@@ -83,7 +79,11 @@ services:
       - nordlynx
       - swag
     restart: unless-stopped
-    network_mode: service:nordlynx
+#    network_mode: service:nordlynx
+    ports:
+      - "9091:9091" #transmission
+      - "51413:51413" #transmission
+      - "51413:51413/udp" #transmission
 
   metube:
     image: ghcr.io/alexta69/metube
