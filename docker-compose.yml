@@ -327,24 +327,6 @@ services:
       - mariusz-network
     restart: unless-stopped
 
-  ouroboros:
-    container_name: ouroboros
-    hostname: ouroboros
-    image: pyouroboros/ouroboros
-    environment:
-      - CLEANUP=true
-      - INTERVAL=86400
-      - LOG_LEVEL=info
-      - SELF_UPDATE=true
-      - TZ=${TZ}
-    ports:
-      - 8888:8080
-    networks:
-      - mariusz-network
-    restart: unless-stopped
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-
   comicstreamer:
     container_name: comicstreamer
     image: mateuszkukiela/comicstreamer:latest
@@ -536,6 +518,7 @@ services:
     volumes:
       - ${ROOT_APPDATA}/whisparr:/config
       - ${ROOT_MEDIA}/porn:/porn
+
   watchtower:
     image: containrrr/watchtower
     volumes:
