@@ -536,6 +536,10 @@ services:
     volumes:
       - ${ROOT_APPDATA}/whisparr:/config
       - ${ROOT_MEDIA}/porn:/porn
+  watchtower:
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
 
 networks:
   mariusz-network:
