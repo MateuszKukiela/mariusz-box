@@ -52,11 +52,51 @@ services:
 #      - nord
 #      - swag
 
-  transmission-openvpn:
-    cap_add:
-      - NET_ADMIN
+#  transmission-openvpn:
+#    cap_add:
+#      - NET_ADMIN
+#    volumes:
+#      - ${ROOT_APPDATA}/transmissionvpn:/config
+#      - ${ROOT_MEDIA}/downloads:/downloads
+#      - ${ROOT_MEDIA}/porn:/porn
+#      - ${ROOT_MEDIA}/movies:/movies
+#      - ${ROOT_MEDIA}/movies4k:/movies4k
+#      - ${ROOT_MEDIA}/tv:/tv
+#      - ${ROOT_MEDIA}/other:/other
+#      - ${ROOT_MEDIA}/hentai:/hentai
+#      - ${ROOT_MEDIA}/porn_vr:/porn_vr
+#      - ${ROOT_NEXTCLOUD}/robo/files/hentai:/hentai_comics
+#      - "/etc/localtime:/etc/localtime:ro"
+#    environment:
+#      - PUID=${PUID}
+#      - PGID=${PGID}
+#      - OPENVPN_PROVIDER=NORDVPN
+#      - OPENVPN_USERNAME=${NORD_U}
+#      - OPENVPN_PASSWORD=${NORD_P}
+#      - LOCAL_NETWORK=192.168.8.0/24
+#      - NORDVPN_COUNTRY=US
+#      - NORDVPN_CATEGORY=legacy_p2p
+#      - TZ=${TZ}
+#      - TRANSMISSION_RPC_PASSWORD=${PASSWORD}
+#      - TRANSMISSION_RPC_USERNAME=root
+#    logging:
+#      driver: json-file
+#      options:
+#          max-size: 10m
+#    ports:
+#      - '9091:9091'
+#    image: haugene/transmission-openvpn
+
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - WEBUI_PORT=8080
     volumes:
-      - ${ROOT_APPDATA}/transmissionvpn:/config
+      - ${ROOT_APPDATA}/qbittorrentnovpn:/config
       - ${ROOT_MEDIA}/downloads:/downloads
       - ${ROOT_MEDIA}/porn:/porn
       - ${ROOT_MEDIA}/movies:/movies
@@ -67,26 +107,11 @@ services:
       - ${ROOT_MEDIA}/porn_vr:/porn_vr
       - ${ROOT_NEXTCLOUD}/robo/files/hentai:/hentai_comics
       - "/etc/localtime:/etc/localtime:ro"
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - OPENVPN_PROVIDER=NORDVPN
-      - OPENVPN_USERNAME=${NORD_U}
-      - OPENVPN_PASSWORD=${NORD_P}
-      - LOCAL_NETWORK=192.168.8.0/24
-      - NORDVPN_COUNTRY=US
-      - NORDVPN_CATEGORY=legacy_p2p
-      - TZ=${TZ}
-      - TRANSMISSION_RPC_PASSWORD=${PASSWORD}
-      - TRANSMISSION_RPC_USERNAME=root
-    logging:
-      driver: json-file
-      options:
-          max-size: 10m
     ports:
-      - '9091:9091'
-    image: haugene/transmission-openvpn
-
+      - 8080:8080
+      - 6881:6881
+      - 6881:6881/udp
+    restart: unless-stopped
 
 #  metube:
 #    image: ghcr.io/alexta69/metube
