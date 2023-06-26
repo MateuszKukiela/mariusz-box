@@ -157,7 +157,7 @@ services:
       - serverIP=0.0.0.0
       - serverPort=8266
       - webUIPort=8265
-      - internalNode=true
+      - internalNode=false
       - inContainer=true
       - nodeName=MyInternalNode
     volumes:
