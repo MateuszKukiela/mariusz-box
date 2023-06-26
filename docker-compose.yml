@@ -142,7 +142,8 @@ services:
     container_name: tdarr
     image: ghcr.io/haveagitgat/tdarr:latest
     restart: unless-stopped
-    network_mode: bridge
+    networks:
+      - mariusz-network
     ports:
       - 8265:8265 # webUI port
       - 8266:8266 # server port
