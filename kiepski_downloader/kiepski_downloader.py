@@ -58,7 +58,7 @@ def download_episode(season: int, episode_number: int, episode_info: Tuple[str, 
     episode_title, episode_url = episode_info
 
     try:
-        file_path = f"{os.path.join(path, f'tv/Swiat wedlug Kiepskich/Season {season:02}', f'S{season:02}E{episode_number:03} - {episode_title}')}.mp4"
+        file_path = f"{os.path.join(path, f'tv/Swiat wedlug Kiepskich/Season {season:02}', f'S{season:02}E{episode_number:03}')}.mp4"
 
         if not os.path.exists(os.path.dirname(file_path)):
             try:
