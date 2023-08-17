@@ -59,7 +59,8 @@ def download_episode(
     Download the episode if it doesn't exist in the path.
     """
     try:
-        episode_number = int(download_info[0].split(" ")[0])
+        # Remove the period character from the episode number string before converting to int
+        episode_number = int(download_info[0].split(" ")[0].replace('.', ''))
         season, episode_number_adjusted = get_season_and_episode(episode_number, seasons)
 
         file_path = f"{os.path.join(path, f'tv/Swiat wedlug Kiepskich/Season {season:02}', f'S{season:02}E{episode_number_adjusted:03}')}.mp4"
