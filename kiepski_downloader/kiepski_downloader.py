@@ -31,15 +31,22 @@ def read_episodes(filename: str) -> Dict[int, List[Tuple[str, str]]]:
 
     episodes = {}
     season = None
+    episode_title = None
+
     for line in lines:
+        line = line.strip()
         if "SEZON" in line.upper():
             season = int(line.split()[-1])
             episodes[season] = []
-        elif line.strip():
-            episode_info = line.strip().split("\n")
-            episode_title = episode_info[0].split(". ", 1)[-1].strip()
-            episode_url = episode_info[1].strip()
-            episodes[season].append((episode_title, episode_url))
+        elif line:
+            if episode_title is None:
+                # This line is expected to be the episode title
+                episode_title = line.split(". ", 1)[-1].strip()
+            else:
+                # This line is expected to be the episode URL
+                episode_url = line
+                episodes[season].append((episode_title, episode_url))
+                episode_title = None  # Reset for next episode
 
     return episodes
 
