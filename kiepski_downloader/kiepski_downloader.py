@@ -59,8 +59,13 @@ def download_episode(
     Download the episode if it doesn't exist in the path.
     """
     try:
-        # Remove the period character from the episode number string before converting to int
-        episode_number = int(download_info[0].split(" ")[0].replace('.', ''))
+        # Extract the episode number part from the episode name
+        episode_number_str = download_info[0].split(" ")[0]
+        # Remove any trailing periods from the episode number string
+        episode_number_str = episode_number_str.rstrip('.')
+        # Convert the cleaned episode number string to an integer
+        episode_number = int(episode_number_str)
+
         season, episode_number_adjusted = get_season_and_episode(episode_number, seasons)
 
         file_path = f"{os.path.join(path, f'tv/Swiat wedlug Kiepskich/Season {season:02}', f'S{season:02}E{episode_number_adjusted:03}')}.mp4"
@@ -74,6 +79,8 @@ def download_episode(
 
         if not os.path.isfile(file_path):
             print(f"Downloading {download_info[0]}")
+            print(f"URL: {download_info[1]}")
+            print(f"Path: {file_path}")
             urllib.request.urlretrieve(download_info[1], file_path)
 
     except urllib.error.HTTPError as e:
