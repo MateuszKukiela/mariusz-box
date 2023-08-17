@@ -1,4 +1,5 @@
 import urllib.request
+import urllib.error
 import os
 import errno
 from typing import Dict, Tuple, List, Optional
@@ -42,26 +43,43 @@ def get_season_and_episode(
 
 
 def download_episode(
-    download_info: List[str], path: str, seasons: Dict[int, Tuple[int, int]]
+        download_info: List[str], path: str, seasons: Dict[int, Tuple[int, int]]
 ) -> None:
     """
     Download the episode if it doesn't exist in the path.
     """
-    episode_number = int(download_info[0].split(" ")[-1])
-    season, episode_number_adjusted = get_season_and_episode(episode_number, seasons)
+    try:
+        episode_number = int(download_info[0].split(" ")[-1])
+        season, episode_number_adjusted = get_season_and_episode(episode_number, seasons)
 
-    file_path = f"{os.path.join(path, f'tv/Swiat wedlug Kiepskich/Season {season:02}', f'S{season:02}E{episode_number_adjusted:03}')}.mp4"
+        file_path = f"{os.path.join(path, f'tv/Swiat wedlug Kiepskich/Season {season:02}', f'S{season:02}E{episode_number_adjusted:03}')}.mp4"
 
-    if not os.path.exists(os.path.dirname(file_path)):
-        try:
-            os.makedirs(os.path.dirname(file_path))
-        except OSError as exc:
-            if exc.errno != errno.EEXIST:
-                raise
+        if not os.path.exists(os.path.dirname(file_path)):
+            try:
+                os.makedirs(os.path.dirname(file_path))
+            except OSError as exc:
+                if exc.errno != errno.EEXIST:
+                    raise
 
-    if not os.path.isfile(file_path):
-        print(f"Downloading {download_info[0]}")
-        urllib.request.urlretrieve(download_info[1], file_path)
+        if not os.path.isfile(file_path):
+            print(f"Downloading {download_info[0]}")
+            urllib.request.urlretrieve(download_info[1], file_path)
+
+    except urllib.error.HTTPError as e:
+        # HTTP errors like 404, 500, etc.
+        print(f"HTTP Error for {download_info[0]}: {e.code} - {e.reason}")
+
+    except urllib.error.URLError as e:
+        # URL errors like no network connection, or domain name can't be resolved
+        print(f"URL Error for {download_info[0]}: {e.reason}")
+
+    except ValueError as e:
+        # Handling invalid integer conversion (when episode_number can't be converted to int)
+        print(f"Value Error for {download_info[0]}: {e}")
+
+    except Exception as e:
+        # General Exception to catch other exceptions that are not specifically handled
+        print(f"Failed to download {download_info[0]}: {e}")
 
 
 def main() -> None:
