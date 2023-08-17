@@ -69,6 +69,8 @@ def download_episode(season: int, episode_number: int, episode_info: Tuple[str, 
 
         if not os.path.isfile(file_path):
             print(f"Downloading {episode_title}")
+            print(f"URL: {episode_url}")
+            print(f"Path: {file_path}")
             urllib.request.urlretrieve(episode_url, file_path)
 
     except urllib.error.HTTPError as e:
