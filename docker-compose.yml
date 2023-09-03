@@ -1,4 +1,4 @@
-version: '3.3'
+version: '3.8'
 services:
   nord:
     container_name: nord
@@ -440,6 +440,23 @@ services:
     volumes:
       - ${ROOT_APPDATA}/whisparr:/config
       - ${ROOT_MEDIA}/porn:/porn
+
+
+  homebridge:
+    container_name: homebridge
+    image: homebridge/homebridge:latest
+    restart: always
+    network_mode: host
+    environment:
+      - TZ=${TZ}
+    volumes:
+      - ${ROOT_APPDATA}/homebridge:/homebridge
+    logging:
+      driver: json-file
+      options:
+        max-size: "10mb"
+        max-file: "1"
+
 
   watchtower:
     image: containrrr/watchtower
