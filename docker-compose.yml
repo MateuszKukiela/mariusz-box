@@ -205,7 +205,7 @@ services:
       - PGID=${PGID}
       - TZ=${TZ}
       - URL=januszex.net
-      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,nextcloud,jellyfin,ombi,comicstreamer,truenas,bruno,photos,photoprism,prowlarr,lidarr,airsonic,readarr,calibre-web,calibre,proxy,nzbget,xbvr,radarr4k,konto,whisparr,metube,transmission,tdarr
+      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,nextcloud,jellyfin,ombi,comicstreamer,truenas,bruno,photos,photoprism,prowlarr,lidarr,airsonic,readarr,calibre-web,calibre,proxy,nzbget,xbvr,radarr4k,accounts,whisparr,metube,transmission,tdarr,threadfin
       - VALIDATION=http
     volumes:
       - ./swag:/config
@@ -440,6 +440,20 @@ services:
     volumes:
       - ${ROOT_APPDATA}/whisparr:/config
       - ${ROOT_MEDIA}/porn:/porn
+
+  threadfin:
+    container_name: threadfin
+    image: fyb3roptik/threadfin
+    ports:
+      - "34400:34400"
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - UMASK=002
+      - TZ=${TZ}
+      - THREADFIN_PORT=34400
+    volumes:
+      - ${ROOT_APPDATA}/threadfin:/home/threadfin
 
 
   homebridge:
