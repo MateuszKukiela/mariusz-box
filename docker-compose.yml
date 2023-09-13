@@ -452,6 +452,8 @@ services:
       - UMASK=002
       - TZ=${TZ}
       - THREADFIN_PORT=34400
+      - THREADFIN_HOME=${ROOT_APPDATA}/threadfin
+
 
   homebridge:
     container_name: homebridge
