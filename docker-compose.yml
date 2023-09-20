@@ -33,7 +33,7 @@ services:
       - TZ=${TZ}
     volumes:
       - ${ROOT_APPDATA}/qbittorrent:/config
-      - ${ROOT_MEDIA}:/data
+      - ${ROOT_MEDIA}:/media_data
       - ${ROOT_NEXTCLOUD}/robo/files/hentai:/hentai_comics
       - "/etc/localtime:/etc/localtime:ro"
     labels:
@@ -53,7 +53,7 @@ services:
       - TZ=${TZ}
     volumes:
       - ${ROOT_APPDATA}/metube:/config
-      - ${ROOT_MEDIA}/:data
+      - ${ROOT_MEDIA}/:media_data
       - "/etc/localtime:/etc/localtime:ro"
     network_mode: service:nord
     depends_on:
@@ -70,7 +70,7 @@ services:
       - UMASK_SET=022
     volumes:
       - ${ROOT_APPDATA}/sonarr:/config
-      - ${ROOT_MEDIA}:/data
+      - ${ROOT_MEDIA}:/media_data
     ports:
       - 8989:8989
     networks:
@@ -86,7 +86,7 @@ services:
       - TZ=${TZ}
     volumes:
       - ${ROOT_APPDATA}/radarr:/config
-      - ${ROOT_MEDIA}:/data
+      - ${ROOT_MEDIA}:/media_data
     ports:
       - 7878:7878
     networks:
@@ -342,7 +342,7 @@ services:
     privileged: true
     volumes:
         - ${ROOT_APPDATA}/nzbgetvpn:/config
-        - ${ROOT_MEDIA}:/data
+        - ${ROOT_MEDIA}:/media_data
         - ${ROOT_NEXTCLOUD}/robo/files/hentai:/hentai_comics
     environment:
         - VPN_ENABLED=wireguard
