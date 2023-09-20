@@ -217,6 +217,8 @@ services:
       - PGID=${PGID}
       - TZ=${TZ}
       - UMASK_SET=022
+      - NVIDIA_DRIVER_CAPABILITIES=compute,video,utility
+      - NVIDIA_VISIBLE_DEVICES=all
     volumes:
       - ${ROOT_APPDATA}/jellyfin:/config
       - ${ROOT_MEDIA}/tv:/data/tv
@@ -230,13 +232,15 @@ services:
       - 8096:8096
     networks:
       - mariusz-network
-    runtime: nvidia
+    devices:
+      - "/dev/dri:/dev/dri"
     deploy:
       resources:
         reservations:
           devices:
-            - capabilities: [ gpu ]
-
+            - driver: nvidia
+              count: 1
+              capabilities: [video]
     restart: unless-stopped
 
   comicstreamer:
