@@ -373,10 +373,6 @@ services:
     networks:
       - mariusz-network
     restart: unless-stopped
-    deploy:
-      resources:
-        limits:
-          cpus: '0.01'
     image: dyonr/nzbgetvpn
 
   authelia:
