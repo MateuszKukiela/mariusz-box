@@ -230,6 +230,13 @@ services:
       - 8096:8096
     networks:
       - mariusz-network
+    runtime: nvidia
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [ gpu ]
+
     restart: unless-stopped
 
   comicstreamer:
