@@ -53,7 +53,7 @@ services:
       - TZ=${TZ}
     volumes:
       - ${ROOT_APPDATA}/metube:/config
-      - ${ROOT_MEDIA}/:media_data
+      - ${ROOT_MEDIA}:/media_data
       - "/etc/localtime:/etc/localtime:ro"
     network_mode: service:nord
     depends_on:
