@@ -355,6 +355,7 @@ services:
         - ${ROOT_APPDATA}/nzbgetvpn:/config
         - ${ROOT_MEDIA}:/media_data
         - ${ROOT_NEXTCLOUD}/robo/files/hentai:/hentai_comics
+        - ${ROOT_SSD}:/ssd
     environment:
         - VPN_ENABLED=wireguard
         - VPN_TYPE=openvpn
@@ -376,7 +377,7 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '0.10'
+          cpus: '0.50'
     image: dyonr/nzbgetvpn
 
   authelia:
