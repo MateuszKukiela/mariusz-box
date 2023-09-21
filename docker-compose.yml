@@ -377,7 +377,7 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '0.50'
+          cpus: '0.20'
     image: dyonr/nzbgetvpn
 
   authelia:
