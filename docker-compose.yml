@@ -234,7 +234,13 @@ services:
       - mariusz-network
     devices:
       - "/dev/dri:/dev/dri"
-    cpus: 0.3
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [video]
     restart: unless-stopped
 
   comicstreamer:
@@ -368,10 +374,7 @@ services:
     networks:
       - mariusz-network
     restart: unless-stopped
-    deploy:
-      resources:
-        limits:
-          cpus: '0.20'
+    cpus: 0.3
     image: dyonr/nzbgetvpn
 
   authelia:
