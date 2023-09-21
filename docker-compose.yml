@@ -347,35 +347,57 @@ services:
     networks:
       - mariusz-network
 
-# TODO: Un-hardcode LAN address
-  nzbgetvpn:
-    container_name: nzbgetvpn
-    privileged: true
-    volumes:
-        - ${ROOT_APPDATA}/nzbgetvpn:/config
-        - ${ROOT_MEDIA}:/media_data
-        - ${ROOT_NEXTCLOUD}/robo/files/hentai:/hentai_comics
-        - ${ROOT_SSD}:/ssd
+## TODO: Un-hardcode LAN address
+#  nzbgetvpn:
+#    container_name: nzbgetvpn
+#    privileged: true
+#    volumes:
+#        - ${ROOT_APPDATA}/nzbgetvpn:/config
+#        - ${ROOT_MEDIA}:/media_data
+#        - ${ROOT_NEXTCLOUD}/robo/files/hentai:/hentai_comics
+#        - ${ROOT_SSD}:/ssd
+#    environment:
+#        - VPN_ENABLED=wireguard
+#        - VPN_TYPE=openvpn
+#        - ENABLE_SSL=no
+#        - VPN_USERNAME=${NORD_USER}
+#        - VPN_PASSWORD=${NORD_PASSWORD}
+#        - WEBUI_USERNAME=root
+#        - WEBUI_PASSWORD=${PASSWORD}
+#        - PUID=${PUID}
+#        - PGID=${PGID}
+#        - LAN_NETWORK=192.168.8.10/24
+#        - 'NAME_SERVERS=1.1.1.1,1.0.0.1'
+#    ports:
+#        - '6789:6789'
+#        - '6791:6791'
+#    networks:
+#      - mariusz-network
+#    restart: unless-stopped
+#    cpus: 0.5
+#    image: dyonr/nzbgetvpn
+
+
+  nzbget:
+    image: lscr.io/linuxserver/nzbget:latest
+    container_name: nzbget
     environment:
-        - VPN_ENABLED=wireguard
-        - VPN_TYPE=openvpn
-        - ENABLE_SSL=no
-        - VPN_USERNAME=${NORD_USER}
-        - VPN_PASSWORD=${NORD_PASSWORD}
-        - WEBUI_USERNAME=root
-        - WEBUI_PASSWORD=${PASSWORD}
-        - PUID=${PUID}
-        - PGID=${PGID}
-        - LAN_NETWORK=192.168.8.10/24
-        - 'NAME_SERVERS=1.1.1.1,1.0.0.1'
+      - WEBUI_USERNAME=root
+      - WEBUI_PASSWORD=${PASSWORD}
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ${ROOT_APPDATA}/nzbgetvpn:/config
+      - ${ROOT_MEDIA}:/media_data
+      - ${ROOT_NEXTCLOUD}/robo/files/hentai:/hentai_comics
+      - ${ROOT_SSD}:/ssd
     ports:
         - '6789:6789'
         - '6791:6791'
     networks:
       - mariusz-network
     restart: unless-stopped
-    cpus: 0.5
-    image: dyonr/nzbgetvpn
 
   authelia:
     image: authelia/authelia:4.21.0
