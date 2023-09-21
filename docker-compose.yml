@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.9'
 services:
   nord:
     container_name: nord
@@ -234,13 +234,7 @@ services:
       - mariusz-network
     devices:
       - "/dev/dri:/dev/dri"
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: 1
-              capabilities: [video]
+    cpus: 0.3
     restart: unless-stopped
 
   comicstreamer:
