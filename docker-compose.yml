@@ -374,7 +374,7 @@ services:
     networks:
       - mariusz-network
     restart: unless-stopped
-    cpus: 0.1
+    cpus: 0.3
     image: dyonr/nzbgetvpn
 
   authelia:
