@@ -188,7 +188,7 @@ services:
       - PGID=${PGID}
       - TZ=${TZ}
       - URL=januszex.net
-      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,nextcloud,jellyfin,ombi,comicstreamer,truenas,bruno,photos,photoprism,prowlarr,lidarr,airsonic,readarr,calibre-web,calibre,proxy,nzbget,xbvr,radarr4k,accounts,whisparr,metube,transmission,tdarr,threadfin
+      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,nextcloud,jellyfin,ombi,comicstreamer,truenas,bruno,photos,photoprism,prowlarr,lidarr,airsonic,readarr,calibre-web,calibre,proxy,nzbget,xbvr,radarr4k,accounts,whisparr,metube,transmission,tdarr,threadfin,sabnzbd
       - VALIDATION=http
     volumes:
       - ./swag:/config
@@ -347,36 +347,51 @@ services:
     networks:
       - mariusz-network
 
-# TODO: Un-hardcode LAN address
-  nzbgetvpn:
-    container_name: nzbgetvpn
-    privileged: true
-    volumes:
-        - ${ROOT_APPDATA}/nzbgetvpn:/config
-        - ${ROOT_MEDIA}:/media_data
-        - ${ROOT_NEXTCLOUD}/robo/files/hentai:/hentai_comics
-        - ${ROOT_SSD}:/ssd
-    environment:
-        - VPN_ENABLED=wireguard
-        - VPN_TYPE=openvpn
-        - ENABLE_SSL=no
-        - VPN_USERNAME=${NORD_USER}
-        - VPN_PASSWORD=${NORD_PASSWORD}
-        - WEBUI_USERNAME=root
-        - WEBUI_PASSWORD=${PASSWORD}
-        - PUID=${PUID}
-        - PGID=${PGID}
-        - LAN_NETWORK=192.168.8.10/24
-        - 'NAME_SERVERS=1.1.1.1,1.0.0.1'
-    ports:
-        - '6789:6789'
-        - '6791:6791'
-    networks:
-      - mariusz-network
-    restart: unless-stopped
-    cpus: 0.5
-    image: dyonr/nzbgetvpn
+## TODO: Un-hardcode LAN address
+#  nzbgetvpn:
+#    container_name: nzbgetvpn
+#    privileged: true
+#    volumes:
+#        - ${ROOT_APPDATA}/nzbgetvpn:/config
+#        - ${ROOT_MEDIA}:/media_data
+#        - ${ROOT_NEXTCLOUD}/robo/files/hentai:/hentai_comics
+#        - ${ROOT_SSD}:/ssd
+#    environment:
+#        - VPN_ENABLED=wireguard
+#        - VPN_TYPE=openvpn
+#        - ENABLE_SSL=no
+#        - VPN_USERNAME=${NORD_USER}
+#        - VPN_PASSWORD=${NORD_PASSWORD}
+#        - WEBUI_USERNAME=root
+#        - WEBUI_PASSWORD=${PASSWORD}
+#        - PUID=${PUID}
+#        - PGID=${PGID}
+#        - LAN_NETWORK=192.168.8.10/24
+#        - 'NAME_SERVERS=1.1.1.1,1.0.0.1'
+#    ports:
+#        - '6789:6789'
+#        - '6791:6791'
+#    networks:
+#      - mariusz-network
+#    restart: unless-stopped
+#    cpus: 0.5
+#    image: dyonr/nzbgetvpn
 
+  sabnzbd:
+    image: lscr.io/linuxserver/sabnzbd:latest
+    container_name: sabnzbd
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ${ROOT_APPDATA}/sabnzbd:/config
+      - ${ROOT_MEDIA}:/media_data
+      - ${ROOT_NEXTCLOUD}/robo/files/hentai:/hentai_comics
+      - ${ROOT_SSD}:/ssd
+    ports:
+      - 8089:8080
+    restart: unless-stopped
 
   authelia:
     image: authelia/authelia:4.21.0
