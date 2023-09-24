@@ -35,6 +35,7 @@ services:
       - ${ROOT_APPDATA}/qbittorrent:/config
       - ${ROOT_MEDIA}:/media_data
       - ${ROOT_NEXTCLOUD}/robo/files/hentai:/hentai_comics
+      - ${ROOT_SSD}:/ssd
       - "/etc/localtime:/etc/localtime:ro"
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
