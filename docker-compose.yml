@@ -217,8 +217,8 @@ services:
       - PGID=${PGID}
       - TZ=${TZ}
       - UMASK_SET=022
-      - NVIDIA_DRIVER_CAPABILITIES=compute,video,utility
-      - NVIDIA_VISIBLE_DEVICES=all
+#      - NVIDIA_DRIVER_CAPABILITIES=compute,video,utility
+#      - NVIDIA_VISIBLE_DEVICES=all
     volumes:
       - ${ROOT_APPDATA}/jellyfin:/config
       - ${ROOT_MEDIA}/tv:/data/tv
@@ -232,15 +232,15 @@ services:
       - 8096:8096
     networks:
       - mariusz-network
-    devices:
-      - "/dev/dri:/dev/dri"
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: 1
-              capabilities: [video]
+#    devices:
+#      - "/dev/dri:/dev/dri"
+#    deploy:
+#      resources:
+#        reservations:
+#          devices:
+#            - driver: nvidia
+#              count: 1
+#              capabilities: [video]
     restart: unless-stopped
 
   comicstreamer:
@@ -346,36 +346,6 @@ services:
       - 8443:443
     networks:
       - mariusz-network
-
-## TODO: Un-hardcode LAN address
-#  nzbgetvpn:
-#    container_name: nzbgetvpn
-#    privileged: true
-#    volumes:
-#        - ${ROOT_APPDATA}/nzbgetvpn:/config
-#        - ${ROOT_MEDIA}:/media_data
-#        - ${ROOT_NEXTCLOUD}/robo/files/hentai:/hentai_comics
-#        - ${ROOT_SSD}:/ssd
-#    environment:
-#        - VPN_ENABLED=wireguard
-#        - VPN_TYPE=openvpn
-#        - ENABLE_SSL=no
-#        - VPN_USERNAME=${NORD_USER}
-#        - VPN_PASSWORD=${NORD_PASSWORD}
-#        - WEBUI_USERNAME=root
-#        - WEBUI_PASSWORD=${PASSWORD}
-#        - PUID=${PUID}
-#        - PGID=${PGID}
-#        - LAN_NETWORK=192.168.8.10/24
-#        - 'NAME_SERVERS=1.1.1.1,1.0.0.1'
-#    ports:
-#        - '6789:6789'
-#        - '6791:6791'
-#    networks:
-#      - mariusz-network
-#    restart: unless-stopped
-#    cpus: 0.5
-#    image: dyonr/nzbgetvpn
 
   sabnzbd:
     image: lscr.io/linuxserver/sabnzbd:latest
