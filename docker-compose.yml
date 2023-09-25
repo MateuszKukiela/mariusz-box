@@ -121,8 +121,7 @@ services:
       - UMASK_SET=022
     volumes:
       - ${ROOT_APPDATA}/bazarr:/config
-      - ${ROOT_MEDIA}/movies:/movies
-      - ${ROOT_MEDIA}/tv:/tv
+      - ${ROOT_MEDIA}:/media_data
     ports:
       - 6767:6767
     networks:
