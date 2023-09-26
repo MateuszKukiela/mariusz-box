@@ -51,6 +51,9 @@ services:
       - NET_ADMIN
     ports:
       - "8080:8080" # QbitTorrent UI
+      - "9092:9091" # Transmission
+      - "51413:51413" # Transmision
+      - "51413:51413/udp" # Transmision
       - "51420:51420" # QbitTorrent
       - "51420:51420/udp" # QbitTorrent
     environment:
@@ -75,6 +78,23 @@ services:
       - TZ=${TZ}
     volumes:
       - ${ROOT_APPDATA}/qbittorrent:/config
+      - ${ROOT_MEDIA}:/media_data
+      - ${ROOT_NEXTCLOUD}/robo/files/hentai:/hentai_comics
+      - ${ROOT_SSD}:/ssd
+    restart: always
+
+  transmission:
+    image: ghcr.io/linuxserver/transmission:4.0.2
+    network_mode: "service:nordvpn"
+    container_name: Transmission-Nord
+    depends_on:
+      - nordvpn
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ${ROOT_APPDATA}/transmission:/config
       - ${ROOT_MEDIA}:/media_data
       - ${ROOT_NEXTCLOUD}/robo/files/hentai:/hentai_comics
       - ${ROOT_SSD}:/ssd
