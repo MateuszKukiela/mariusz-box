@@ -93,6 +93,8 @@ services:
       - PUID=${PUID}
       - PGID=${PGID}
       - TZ=${TZ}
+      - USER=root
+      - PASS=${PASSWORD}
     volumes:
       - ${ROOT_APPDATA}/transmission:/config
       - ${ROOT_MEDIA}:/media_data
