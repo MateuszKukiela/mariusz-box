@@ -1,65 +1,101 @@
 version: '3.9'
 services:
-  nord:
-    container_name: nord
-    image: ghcr.io/bubuntux/nordlynx
-    restart: unless-stopped
-    security_opt:
-      - no-new-privileges:true
+#  nord:
+#    container_name: nord
+#    image: ghcr.io/bubuntux/nordlynx
+#    restart: unless-stopped
+#    security_opt:
+#      - no-new-privileges:true
+#    cap_add:
+#      - NET_ADMIN
+#    environment:
+#      - PRIVATE_KEY=${NORD_KEY}
+#      - ALLOWED_IPS=0.0.0.0/1,128.0.0.0/1
+#      - NET_LOCAL=10.0.0.0/8,172.16.0.0/12,192.168.2.0/24
+#      - QUERY=filters\[country_id\]=174&filters\[servers_groups\]\[identifier\]=legacy_p2p
+#      - "POST_UP=ip -4 route add $$(wg | awk -F'[: ]' '/endpoint/ {print $$5}') via $$(ip route | awk '/default/ {print $$3}')"
+#      - "PRE_DOWN=ip -4 route del $$(route -n | awk '/255.255.255.255/ {print $$1}') via $$(ip route | awk '/default/ {print $$3}')"
+#      - TZ=${TZ}
+#    ports:
+#      - 8080:8080 #qbit
+#      - "51420:51420" # QbitTorrent
+#      - "51420:51420/udp" # QbitTorrent
+#      - "8085:8081" #metube
+#    sysctls:
+#      - net.ipv6.conf.all.disable_ipv6=0
+#
+#  qbittorrent:
+#    container_name: qbittorrent
+#    image: lscr.io/linuxserver/qbittorrent
+#    restart: unless-stopped
+#    network_mode: "service:nord"
+#    environment:
+#      - TZ=${TZ}
+#    volumes:
+#      - ${ROOT_APPDATA}/qbittorrent:/config
+#      - ${ROOT_MEDIA}:/media_data
+#      - ${ROOT_NEXTCLOUD}/robo/files/hentai:/hentai_comics
+#      - ${ROOT_SSD}:/ssd
+#      - "/etc/localtime:/etc/localtime:ro"
+#    labels:
+#      - "com.centurylinklabs.watchtower.enable=true"
+#    depends_on:
+#      - nord
+#      - swag
+
+
+  nordvpn:
+    container_name: GlueTun-Nord
+    image: qmcgaw/gluetun
     cap_add:
       - NET_ADMIN
-    environment:
-      - PRIVATE_KEY=${NORD_KEY}
-      - ALLOWED_IPS=0.0.0.0/1,128.0.0.0/1
-      - NET_LOCAL=10.0.0.0/8,172.16.0.0/12,192.168.2.0/24
-      - QUERY=filters\[country_id\]=174&filters\[servers_groups\]\[identifier\]=legacy_p2p
-      - "POST_UP=ip -4 route add $$(wg | awk -F'[: ]' '/endpoint/ {print $$5}') via $$(ip route | awk '/default/ {print $$3}')"
-      - "PRE_DOWN=ip -4 route del $$(route -n | awk '/255.255.255.255/ {print $$1}') via $$(ip route | awk '/default/ {print $$3}')"
-      - TZ=${TZ}
     ports:
-      - 8080:8080 #qbit
+      - "8080:8080" # QbitTorrent UI
       - "51420:51420" # QbitTorrent
       - "51420:51420/udp" # QbitTorrent
-      - "8085:8081" #metube
-    sysctls:
-      - net.ipv6.conf.all.disable_ipv6=0
+    environment:
+      - VPN_SERVICE_PROVIDER=nordvpn
+      - OPENVPN_USER=${NORD_U}
+      - OPENVPN_PASSWORD=${NORD_P}
+      - SERVER_REGIONS=Poland
+      - VPN_TYPE=openvpn
+    restart: always
 
   qbittorrent:
-    container_name: qbittorrent
-    image: lscr.io/linuxserver/qbittorrent
-    restart: unless-stopped
-    network_mode: "service:nord"
+    image: linuxserver/qbittorrent:4.5.2
+    network_mode: "service:nordvpn"
+    container_name: QbitTorrent-Nord
+    depends_on:
+      - nordvpn
+      - swag
     environment:
+      - WEBUI_PORT=8080
+      - PUID=${PUID}
+      - PGID=${PGID}
       - TZ=${TZ}
     volumes:
       - ${ROOT_APPDATA}/qbittorrent:/config
       - ${ROOT_MEDIA}:/media_data
       - ${ROOT_NEXTCLOUD}/robo/files/hentai:/hentai_comics
       - ${ROOT_SSD}:/ssd
-      - "/etc/localtime:/etc/localtime:ro"
-    labels:
-      - "com.centurylinklabs.watchtower.enable=true"
-    depends_on:
-      - nord
-      - swag
+    restart: always
 
-
-  metube:
-    image: ghcr.io/alexta69/metube
-    container_name: metube
-    restart: unless-stopped
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - TZ=${TZ}
-    volumes:
-      - ${ROOT_APPDATA}/metube:/config
-      - ${ROOT_MEDIA}:/media_data
-      - "/etc/localtime:/etc/localtime:ro"
-    network_mode: service:nord
-    depends_on:
-      - nord
-      - swag
+#  metube:
+#    image: ghcr.io/alexta69/metube
+#    container_name: metube
+#    restart: unless-stopped
+#    environment:
+#      - PUID=${PUID}
+#      - PGID=${PGID}
+#      - TZ=${TZ}
+#    volumes:
+#      - ${ROOT_APPDATA}/metube:/config
+#      - ${ROOT_MEDIA}:/media_data
+#      - "/etc/localtime:/etc/localtime:ro"
+#    network_mode: service:nord
+#    depends_on:
+#      - nord
+#      - swag
 
   sonarr:
     image: ghcr.io/linuxserver/sonarr
