@@ -51,7 +51,7 @@ services:
       - NET_ADMIN
     ports:
       - "8080:8080" # QbitTorrent UI
-      - "9092:9091" # Transmission
+      - "9091:9091" # Transmission
       - "51413:51413" # Transmision
       - "51413:51413/udp" # Transmision
       - "51420:51420" # QbitTorrent
@@ -86,7 +86,7 @@ services:
   transmission:
     image: ghcr.io/linuxserver/transmission:4.0.2
     network_mode: "service:nordvpn"
-    container_name: Transmission-Nord
+    container_name: transmission
     depends_on:
       - nordvpn
     environment:
