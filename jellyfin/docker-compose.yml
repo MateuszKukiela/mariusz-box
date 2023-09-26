@@ -11,7 +11,7 @@ services:
       - NVIDIA_DRIVER_CAPABILITIES=compute,video,utility
       - NVIDIA_VISIBLE_DEVICES=all
     volumes:
-      - //home/mariusz/jellyfin:/config
+      - /home/mariusz/jellyfin:/config
       - /mnt/media/tv:/data/tv
       - /mnt/media/movies:/data/movies
       - /mnt/media/movies4k:/data/movies4k
