@@ -11,14 +11,14 @@ services:
       - NVIDIA_DRIVER_CAPABILITIES=compute,video,utility
       - NVIDIA_VISIBLE_DEVICES=all
     volumes:
-      - ${ROOT_APPDATA}/jellyfin:/config
-      - ${ROOT_MEDIA}/tv:/data/tv
-      - ${ROOT_MEDIA}/movies:/data/movies
-      - ${ROOT_MEDIA}/movies4k:/data/movies4k
-      - ${ROOT_MEDIA}/downloads:/downloads
-      - ${ROOT_MEDIA}/porn:/data/porn
-      - ${ROOT_MEDIA}/music:/music
-      - ${ROOT_APPDATA}/jellyfin/config.json:/usr/share/jellyfin/web/config.json
+      - //home/mariusz/jellyfin:/config
+      - /mnt/media/tv:/data/tv
+      - /mnt/media/movies:/data/movies
+      - /mnt/media/movies4k:/data/movies4k
+      - /mnt/media/downloads:/downloads
+      - /mnt/media/porn:/data/porn
+      - /mnt/media/music:/music
+      - /home/mariusz/jellyfin/config.json:/usr/share/jellyfin/web/config.json
     ports:
       - 8096:8096
     devices:
