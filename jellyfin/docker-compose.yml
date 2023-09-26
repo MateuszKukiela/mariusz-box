@@ -29,5 +29,5 @@ services:
           devices:
             - driver: nvidia
               count: 1
-              capabilities: [gpu]
+              capabilities: [video]
     restart: unless-stopped
