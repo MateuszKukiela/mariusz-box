@@ -487,23 +487,6 @@ services:
       - THREADFIN_PORT=34400
       - THREADFIN_HOME=${ROOT_APPDATA}/threadfin
 
-
-  homebridge:
-    container_name: homebridge
-    image: homebridge/homebridge:latest
-    restart: always
-    network_mode: host
-    environment:
-      - TZ=${TZ}
-    volumes:
-      - ${ROOT_APPDATA}/homebridge:/homebridge
-    logging:
-      driver: json-file
-      options:
-        max-size: "10mb"
-        max-file: "1"
-
-
   watchtower:
     image: containrrr/watchtower
     volumes:
