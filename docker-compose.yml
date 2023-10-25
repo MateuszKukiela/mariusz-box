@@ -121,7 +121,7 @@ services:
       - swag
 
   sonarr:
-    image: ghcr.io/linuxserver/sonarr:develop
+    image: ghcr.io/linuxserver/sonarr
     container_name: sonarr
     environment:
       - PUID=${PUID}
