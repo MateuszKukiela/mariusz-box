@@ -56,6 +56,7 @@ services:
       - "51413:51413/udp" # Transmision
       - "51420:51420" # QbitTorrent
       - "51420:51420/udp" # QbitTorrent
+      - "8085:8081" #metube
     environment:
       - VPN_SERVICE_PROVIDER=nordvpn
       - OPENVPN_USER=${NORD_U}
