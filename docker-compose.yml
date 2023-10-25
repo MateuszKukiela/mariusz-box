@@ -102,22 +102,22 @@ services:
       - ${ROOT_SSD}:/ssd
     restart: always
 
-#  metube:
-#    image: ghcr.io/alexta69/metube
-#    container_name: metube
-#    restart: unless-stopped
-#    environment:
-#      - PUID=${PUID}
-#      - PGID=${PGID}
-#      - TZ=${TZ}
-#    volumes:
-#      - ${ROOT_APPDATA}/metube:/config
-#      - ${ROOT_MEDIA}:/media_data
-#      - "/etc/localtime:/etc/localtime:ro"
-#    network_mode: service:nord
-#    depends_on:
-#      - nord
-#      - swag
+  metube:
+    image: ghcr.io/alexta69/metube
+    container_name: metube
+    restart: unless-stopped
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ${ROOT_APPDATA}/metube:/config
+      - ${ROOT_MEDIA}:/media_data
+      - "/etc/localtime:/etc/localtime:ro"
+    network_mode: "service:nordvpn"
+    depends_on:
+      - nordvpn
+      - swag
 
   sonarr:
     image: ghcr.io/linuxserver/sonarr
