@@ -84,24 +84,24 @@ services:
       - ${ROOT_SSD}:/ssd
     restart: always
 
-  transmission:
-    image: ghcr.io/linuxserver/transmission:4.0.2
-    network_mode: "service:nordvpn"
-    container_name: transmission
-    depends_on:
-      - nordvpn
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - TZ=${TZ}
-      - USER=root
-      - PASS=${PASSWORD}
-    volumes:
-      - ${ROOT_APPDATA}/transmission:/config
-      - ${ROOT_MEDIA}:/media_data
-      - ${ROOT_NEXTCLOUD}/robo/files/hentai:/hentai_comics
-      - ${ROOT_SSD}:/ssd
-    restart: always
+#  transmission:
+#    image: ghcr.io/linuxserver/transmission:4.0.2
+#    network_mode: "service:nordvpn"
+#    container_name: transmission
+#    depends_on:
+#      - nordvpn
+#    environment:
+#      - PUID=${PUID}
+#      - PGID=${PGID}
+#      - TZ=${TZ}
+#      - USER=root
+#      - PASS=${PASSWORD}
+#    volumes:
+#      - ${ROOT_APPDATA}/transmission:/config
+#      - ${ROOT_MEDIA}:/media_data
+#      - ${ROOT_NEXTCLOUD}/robo/files/hentai:/hentai_comics
+#      - ${ROOT_SSD}:/ssd
+#    restart: always
 
   metube:
     image: ghcr.io/alexta69/metube
