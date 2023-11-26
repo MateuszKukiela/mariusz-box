@@ -271,39 +271,39 @@ services:
       - mariusz-network
     restart: unless-stopped
 
-  jellyfin:
-    image: ghcr.io/linuxserver/jellyfin
-    container_name: jellyfin
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - TZ=${TZ}
-      - UMASK_SET=022
-#      - NVIDIA_DRIVER_CAPABILITIES=compute,video,utility
-#      - NVIDIA_VISIBLE_DEVICES=all
-    volumes:
-      - ${ROOT_APPDATA}/jellyfin:/config
-      - ${ROOT_MEDIA}/tv:/data/tv
-      - ${ROOT_MEDIA}/movies:/data/movies
-      - ${ROOT_MEDIA}/movies4k:/data/movies4k
-      - ${ROOT_MEDIA}/downloads:/downloads
-      - ${ROOT_MEDIA}/porn:/data/porn
-      - ${ROOT_MEDIA}/music:/music
-      - ${ROOT_APPDATA}/jellyfin/config.json:/usr/share/jellyfin/web/config.json
-    ports:
-      - 8096:8096
-    networks:
-      - mariusz-network
-#    devices:
-#      - "/dev/dri:/dev/dri"
-#    deploy:
-#      resources:
-#        reservations:
-#          devices:
-#            - driver: nvidia
-#              count: 1
-#              capabilities: [video]
-    restart: unless-stopped
+#  jellyfin:
+#    image: ghcr.io/linuxserver/jellyfin
+#    container_name: jellyfin
+#    environment:
+#      - PUID=${PUID}
+#      - PGID=${PGID}
+#      - TZ=${TZ}
+#      - UMASK_SET=022
+##      - NVIDIA_DRIVER_CAPABILITIES=compute,video,utility
+##      - NVIDIA_VISIBLE_DEVICES=all
+#    volumes:
+#      - ${ROOT_APPDATA}/jellyfin:/config
+#      - ${ROOT_MEDIA}/tv:/data/tv
+#      - ${ROOT_MEDIA}/movies:/data/movies
+#      - ${ROOT_MEDIA}/movies4k:/data/movies4k
+#      - ${ROOT_MEDIA}/downloads:/downloads
+#      - ${ROOT_MEDIA}/porn:/data/porn
+#      - ${ROOT_MEDIA}/music:/music
+#      - ${ROOT_APPDATA}/jellyfin/config.json:/usr/share/jellyfin/web/config.json
+#    ports:
+#      - 8096:8096
+#    networks:
+#      - mariusz-network
+##    devices:
+##      - "/dev/dri:/dev/dri"
+##    deploy:
+##      resources:
+##        reservations:
+##          devices:
+##            - driver: nvidia
+##              count: 1
+##              capabilities: [video]
+#    restart: unless-stopped
 
   comicstreamer:
     container_name: comicstreamer
