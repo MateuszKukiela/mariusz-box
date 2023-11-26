@@ -113,7 +113,10 @@ services:
       - TZ=${TZ}
     volumes:
       - ${ROOT_APPDATA}/metube:/config
-      - ${ROOT_MEDIA}:/downloads
+      - ${ROOT_MEDIA}/downloads:/downloads
+      - ${ROOT_MEDIA}/movies:/downloads/movies
+      - ${ROOT_MEDIA}/tv:/downloads/tv
+      - ${ROOT_MEDIA}/porn:/downloads/porn
       - "/etc/localtime:/etc/localtime:ro"
     network_mode: "service:nordvpn"
     depends_on:
