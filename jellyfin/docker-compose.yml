@@ -12,12 +12,12 @@ services:
       - NVIDIA_VISIBLE_DEVICES=all
     volumes:
       - /home/mariusz/jellyfin:/config
-      - /mnt/media/tv:/data/tv
-      - /mnt/media/movies:/data/movies
-      - /mnt/media/movies4k:/data/movies4k
-      - /mnt/media/downloads:/downloads
-      - /mnt/media/porn:/data/porn
-      - /mnt/media/music:/music
+      - /mnt/z/tv:/data/tv
+      - /mnt/z/movies:/data/movies
+      - /mnt/z/movies4k:/data/movies4k
+      - /mnt/z/downloads:/downloads
+      - /mnt/z/porn:/data/porn
+      - /mnt/z/music:/music
       - /home/mariusz/jellyfin/config.json:/usr/share/jellyfin/web/config.json
     ports:
       - 8096:8096
