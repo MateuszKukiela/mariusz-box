@@ -400,7 +400,8 @@ services:
       - mariusz-network
     restart: unless-stopped
 
-  php-proxy:
+  php-proxy: 
+    container_name: php-proxy
     image: dwaaan/php-proxy:latest
     restart: unless-stopped
     ports:
@@ -492,6 +493,7 @@ services:
       - THREADFIN_HOME=${ROOT_APPDATA}/threadfin
 
   watchtower:
+    container_name: watchtower
     image: containrrr/watchtower
     environment:
         - WATCHTOWER_CLEANUP=true
@@ -500,6 +502,7 @@ services:
     restart: unless-stopped
 
   homebridge:
+    container_name: homebridge_ukasz
     image: homebridge/homebridge:latest
     restart: unless-stopped
     network_mode: host
@@ -512,7 +515,7 @@ services:
         max-file: "1"
 
   pihole:
-    container_name: pihole
+    container_name: pihole_ukasz
     image: pihole/pihole:latest
     # For DHCP it is recommended to remove these ports and instead add: network_mode: "host"
     ports:
