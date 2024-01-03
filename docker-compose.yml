@@ -534,5 +534,15 @@ services:
     #  - NET_ADMIN # Required if you are using Pi-hole as your DHCP server, else not needed
     restart: unless-stopped
 
+  portainer:
+    container_name: portainer
+    image: portainer/portainer-ce:latest
+    ports:
+      - 9443:9443
+      volumes:
+        - ${ROOT_APPDATA}/portainer:/data
+        - /var/run/docker.sock:/var/run/docker.sock
+    restart: unless-stopped
+
 networks:
   mariusz-network:
