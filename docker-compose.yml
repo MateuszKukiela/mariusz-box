@@ -67,10 +67,9 @@ services:
 
   qbittorrent:
     image: lscr.io/linuxserver/qbittorrent:latest
-    network_mode: "service:nordvpn"
+    network_mode: host
     container_name: QbitTorrent-Nord
     depends_on:
-      - nordvpn
       - swag
     environment:
       - WEBUI_PORT=8080
@@ -84,7 +83,15 @@ services:
       - ${ROOT_SSD}:/ssd
     restart: always
 
-#  transmission:
+  i2p:
+    image: geti2p/i2p
+    network_mode: host
+    volumes:
+      - ./i2pconfig:/i2p/.i2p
+      - ./i2ptorrents:/i2psnark
+
+
+    #  transmission:
 #    image: ghcr.io/linuxserver/transmission:4.0.2
 #    network_mode: "service:nordvpn"
 #    container_name: transmission
