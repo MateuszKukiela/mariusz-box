@@ -50,7 +50,7 @@ services:
     cap_add:
       - NET_ADMIN
     ports:
-#      - "8080:8080" # QbitTorrent UI
+      - "8080:8080" # QbitTorrent UI
       - "9091:9091" # Transmission
       - "51413:51413" # Transmision
       - "51413:51413/udp" # Transmision
@@ -67,12 +67,7 @@ services:
 
   qbittorrent:
     image: lscr.io/linuxserver/qbittorrent:latest
-    networks:
-      - mariusz-network
-    ports:
-      - 8080:8080
-      - 6881:6881
-      - 6881:6881/udp
+    network_mode: "service:nordvpn"
     container_name: QbitTorrent-Nord
     depends_on:
       - nordvpn
@@ -89,23 +84,9 @@ services:
       - ${ROOT_SSD}:/ssd
     restart: always
 
-  i2p:
-    image: geti2p/i2p
-    networks:
-      - mariusz-network
-    ports:
-      - 127.0.0.1:4444:4444
-      - 127.0.0.1:6668:6668
-      - 127.0.0.1:7656:7656
-      - 127.0.0.1:7657:7657
-      - 54321:12345
-      - 54321:12345/udp
-    volumes:
-      - ${ROOT_APPDATA}/i2p/i2pconfig:/i2p/.i2p
-      - ${ROOT_APPDATA}/i2p/i2ptorrents:/i2psnark
 
 
-    #  transmission:
+#  transmission:
 #    image: ghcr.io/linuxserver/transmission:4.0.2
 #    network_mode: "service:nordvpn"
 #    container_name: transmission
