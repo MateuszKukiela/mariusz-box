@@ -20,7 +20,7 @@ services:
       - /mnt/z/music:/music
       - /home/mariusz/jellyfin/config.json:/usr/share/jellyfin/web/config.json
     ports:
-      - 8096:8096
+      - 8097:8096
     devices:
       - "/dev/dri:/dev/dri"
     deploy:
