@@ -252,7 +252,7 @@ services:
       - PGID=${PGID}
       - TZ=${TZ}
       - URL=januszex.net
-      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,nextcloud,jellyfin,ombi,comicstreamer,truenas,bruno,photos,photoprism,prowlarr,lidarr,airsonic,readarr,calibre-web,calibre,proxy,nzbget,xbvr,radarr4k,accounts,whisparr,metube,transmission,tdarr,threadfin,sabnzbd
+      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,nextcloud,jellyfin,ombi,comicstreamer,truenas,bruno,photos,photoprism,prowlarr,lidarr,airsonic,readarr,calibre-web,calibre,proxy,nzbget,xbvr,radarr4k,accounts,whisparr,metube,transmission,tdarr,threadfin,sabnzbd,duplicati
       - VALIDATION=http
     volumes:
       - ./swag:/config
@@ -547,6 +547,21 @@ services:
     volumes:
       - ${ROOT_APPDATA}/portainer:/data
       - /var/run/docker.sock:/var/run/docker.sock
+    restart: unless-stopped
+
+  duplicati:
+    image: lscr.io/linuxserver/duplicati:latest
+    container_name: duplicati
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ${ROOT_APPDATA}/duplicati/config:/config
+      - ${ROOT_BACKUPS}:/backups
+      - ${ROOT_SSD}:/source
+    ports:
+      - 8200:8200
     restart: unless-stopped
 
 networks:
