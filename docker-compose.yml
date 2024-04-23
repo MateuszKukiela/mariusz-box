@@ -559,7 +559,7 @@ services:
     volumes:
       - ${ROOT_APPDATA}/duplicati/config:/config
       - ${ROOT_BACKUPS}:/backups
-      - ${ROOT_SSD}:/source
+      - ${ROOT_MARIUSZ}:/source
     ports:
       - 8200:8200
     restart: unless-stopped
