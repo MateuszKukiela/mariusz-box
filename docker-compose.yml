@@ -328,6 +328,8 @@ services:
 #      - ${ROOT_APPDATA}/jellyfin/config.json:/usr/share/jellyfin/web/config.json
     ports:
       - 8097:8096
+    networks:
+      - mariusz-network
     devices:
       - "/dev/dri:/dev/dri"
     deploy:
