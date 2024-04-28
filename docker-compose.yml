@@ -460,6 +460,8 @@ services:
       - ${ROOT_SSD}:/ssd
     ports:
       - 8089:8080
+    networks:
+      - mariusz-network
     restart: unless-stopped
 
   authelia:
