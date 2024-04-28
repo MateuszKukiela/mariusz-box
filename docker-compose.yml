@@ -266,6 +266,8 @@ services:
   docker-host:
     image: qoomon/docker-host
     container_name: docker-host
+    environment:
+      - DOCKER_HOST=${DOCKER_HOST}
     cap_add:
       - NET_ADMIN
       - NET_RAW
