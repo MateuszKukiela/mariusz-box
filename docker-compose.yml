@@ -552,28 +552,28 @@ services:
         max-size: "10mb"
         max-file: "1"
 
-  pihole:
-    container_name: pihole_ukasz
-    image: pihole/pihole:latest
-    # For DHCP it is recommended to remove these ports and instead add: network_mode: "host"
-    ports:
-      - "53:53/tcp"
-      - "53:53/udp"
-      - "67:67/udp" # Only required if you are using Pi-hole as your DHCP server
-      - "8088:80/tcp"
-    environment:
-       - TZ=${TZ}
-       - WEBPASSWORD=${PASSWORD} #'set a secure password here or it will be random'
-       - FTLCONF_LOCAL_IPV4=192.168.8.10
-       - PIHOLE_DNS_=1.1.1.2;1.0.0.2
-    # Volumes store your data between container upgrades
-    volumes:
-      - ${ROOT_APPDATA}/pihole_ukasz/pihole_app:/etc/pihole
-      - ${ROOT_APPDATA}/pihole_ukasz/pihole_dns:/etc/dnsmasq.d
-    #   https://github.com/pi-hole/docker-pi-hole#note-on-capabilities
-    #cap_add:
-    #  - NET_ADMIN # Required if you are using Pi-hole as your DHCP server, else not needed
-    restart: unless-stopped
+#  pihole:
+#    container_name: pihole_ukasz
+#    image: pihole/pihole:latest
+#    # For DHCP it is recommended to remove these ports and instead add: network_mode: "host"
+#    ports:
+#      - "53:53/tcp"
+#      - "53:53/udp"
+#      - "67:67/udp" # Only required if you are using Pi-hole as your DHCP server
+#      - "8088:80/tcp"
+#    environment:
+#       - TZ=${TZ}
+#       - WEBPASSWORD=${PASSWORD} #'set a secure password here or it will be random'
+#       - FTLCONF_LOCAL_IPV4=192.168.8.10
+#       - PIHOLE_DNS_=1.1.1.2;1.0.0.2
+#    # Volumes store your data between container upgrades
+#    volumes:
+#      - ${ROOT_APPDATA}/pihole_ukasz/pihole_app:/etc/pihole
+#      - ${ROOT_APPDATA}/pihole_ukasz/pihole_dns:/etc/dnsmasq.d
+#    #   https://github.com/pi-hole/docker-pi-hole#note-on-capabilities
+#    #cap_add:
+#    #  - NET_ADMIN # Required if you are using Pi-hole as your DHCP server, else not needed
+#    restart: unless-stopped
 
   portainer:
     container_name: portainer
