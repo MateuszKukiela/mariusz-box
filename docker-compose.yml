@@ -252,7 +252,7 @@ services:
       - PGID=${PGID}
       - TZ=${TZ}
       - URL=januszex.net
-      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,nextcloud,jellyfin,ombi,comicstreamer,truenas,bruno,photos,photoprism,prowlarr,lidarr,airsonic,readarr,calibre-web,calibre,proxy,nzbget,xbvr,radarr4k,accounts,whisparr,metube,transmission,tdarr,threadfin,sabnzbd,duplicati
+      - SUBDOMAINS=www,aa,bazarr,radarr,sonarr,qbittorrent,nextcloud,jellyfin,ombi,comicstreamer,truenas,bruno,photos,photoprism,prowlarr,lidarr,airsonic,readarr,calibre-web,calibre,proxy,nzbget,xbvr,radarr4k,accounts,whisparr,metube,transmission,tdarr,threadfin,sabnzbd,duplicati
       - VALIDATION=http
     volumes:
       - ./swag:/config
@@ -325,7 +325,7 @@ services:
       - ${ROOT_MEDIA}/downloads:/downloads
       - ${ROOT_MEDIA}/porn:/data/porn
       - ${ROOT_MEDIA}/music:/music
-      - ${ROOT_APPDATA}/jellyfin/config.json:/usr/share/jellyfin/web/config.json
+#      - ${ROOT_APPDATA}/jellyfin/config.json:/usr/share/jellyfin/web/config.json
     ports:
       - 8097:8096
     devices:
