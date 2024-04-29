@@ -190,6 +190,8 @@ services:
       - 6767:6767
     networks:
       - mariusz-network
+    depends_on:
+      - swag
     restart: unless-stopped
 
   ombi:
