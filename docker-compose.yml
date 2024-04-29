@@ -507,19 +507,19 @@ services:
       networks:
           - mariusz-network
 
-  # whisparr:
-  #   container_name: whisparr
-  #   image: cr.hotio.dev/hotio/whisparr
-  #   ports:
-  #     - "6969:6969"
-  #   environment:
-  #     - PUID=${PUID}
-  #     - PGID=${PGID}
-  #     - UMASK=002
-  #     - TZ=${TZ}
-  #   volumes:
-  #     - ${ROOT_APPDATA}/whisparr:/config
-  #     - ${ROOT_MEDIA}/porn:/porn
+   whisparr:
+     container_name: whisparr
+     image: cr.hotio.dev/hotio/whisparr
+     ports:
+       - "6969:6969"
+     environment:
+       - PUID=${PUID}
+       - PGID=${PGID}
+       - UMASK=002
+       - TZ=${TZ}
+     volumes:
+       - ${ROOT_APPDATA}/whisparr:/config
+       - ${ROOT_MEDIA}/porn:/porn
 
   # threadfin:
   #   container_name: threadfin
