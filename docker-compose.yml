@@ -504,6 +504,8 @@ services:
           - '/etc/localtime:/etc/localtime:ro'
       image: hrfee/jfa-go
       restart: unless-stopped
+      networks:
+          - mariusz-network
 
   # whisparr:
   #   container_name: whisparr
