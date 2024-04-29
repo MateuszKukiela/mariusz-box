@@ -509,7 +509,7 @@ services:
 
   whisparr:
       container_name: whisparr
-      image: ghcr.io/hotio/whisparr
+      image: ghcr.io/hotio/whisparr:v3-5d4c05e
       ports:
        - "6969:6969"
       environment:
