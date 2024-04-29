@@ -605,6 +605,8 @@ services:
       - ${ROOT_MARIUSZ}:/source
     ports:
       - 8200:8200
+    networks:
+      - mariusz-network
     restart: unless-stopped
 
 networks:
