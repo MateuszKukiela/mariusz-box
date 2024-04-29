@@ -520,6 +520,9 @@ services:
       volumes:
        - ${ROOT_APPDATA}/whisparr:/config
        - ${ROOT_MEDIA}/porn:/porn
+      networks:
+        - mariusz-network
+      restart: unless-stopped
 
   # threadfin:
   #   container_name: threadfin
