@@ -459,7 +459,7 @@ services:
       - ${ROOT_APPDATA}/sabnzbd:/config
       - ${ROOT_MEDIA}:/media_data
       - ${ROOT_NEXTCLOUD}/robo/files/hentai:/hentai_comics
-      - ${ROOT_SSD}:/ssd
+      - ${EXTERNAL_SSD}:/ssd
     ports:
       - 8089:8080
     networks:
