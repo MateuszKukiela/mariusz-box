@@ -309,7 +309,8 @@ services:
 #    restart: unless-stopped
 
   jellyfin:
-    image: lscr.io/linuxserver/jellyfin:latest
+#    image: lscr.io/linuxserver/jellyfin:latest
+    image: jellyfin/jellyfin:latest
     container_name: jellyfin
     environment:
       - PUID=${PUID}
