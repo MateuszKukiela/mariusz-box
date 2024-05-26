@@ -616,7 +616,7 @@ services:
     stdin_open: true
     tty: true
     ports:
-      - 3831:69/tcp
+      - 3831:80/tcp
     restart: unless-stopped
     environment:
       - DEFAULT_SERVERS=https://jellyfin.januszex.net
