@@ -608,5 +608,18 @@ services:
       - mariusz-network
     restart: unless-stopped
 
+  jf-vue:
+    image: jellyfin/jellyfin-vue:unstable
+    container_name: "jellyfin-vue-client"
+    stdin_open: true
+    tty: true
+    ports:
+      - 3831:69/tcp
+    restart: unless-stopped
+    environment:
+      - DEFAULT_SERVERS=https://jellyfin.januszex.net
+    networks:
+      - mariusz-network
+
 networks:
   mariusz-network:
