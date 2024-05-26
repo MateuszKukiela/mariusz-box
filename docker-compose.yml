@@ -55,7 +55,7 @@ services:
       - "51413:51413/udp" # Transmision
       - "51420:51420" # QbitTorrent
       - "51420:51420/udp" # QbitTorrent
-      - "8085:8081" #metube
+#      - "8085:8081" #metube
     environment:
       - VPN_SERVICE_PROVIDER=nordvpn
       - OPENVPN_USER=${NORD_U}
@@ -119,6 +119,8 @@ services:
       - ${ROOT_MEDIA}/tv:/downloads/tv
       - ${ROOT_MEDIA}/porn:/downloads/porn
       - "/etc/localtime:/etc/localtime:ro"
+    ports:
+        - 8085:8081
     networks:
       - mariusz-network
     depends_on:
