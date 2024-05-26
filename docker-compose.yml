@@ -119,9 +119,9 @@ services:
       - ${ROOT_MEDIA}/tv:/downloads/tv
       - ${ROOT_MEDIA}/porn:/downloads/porn
       - "/etc/localtime:/etc/localtime:ro"
-    network_mode: "service:nordvpn"
+    networks:
+      - mariusz-network
     depends_on:
-      - nordvpn
       - swag
 
   sonarr:
@@ -157,22 +157,22 @@ services:
       - mariusz-network
     restart: unless-stopped
 
-  radarr4k:
-    image: ghcr.io/linuxserver/radarr:latest
-    container_name: radarr4k
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - TZ=${TZ}
-    volumes:
-      - ${ROOT_APPDATA}/radarr4k:/config
-      - ${ROOT_MEDIA}/movies4k:/movies4k
-      - ${ROOT_MEDIA}/downloads:/downloads
-    ports:
-      - 7879:7878
-    networks:
-      - mariusz-network
-    restart: unless-stopped
+#  radarr4k:
+#    image: ghcr.io/linuxserver/radarr:latest
+#    container_name: radarr4k
+#    environment:
+#      - PUID=${PUID}
+#      - PGID=${PGID}
+#      - TZ=${TZ}
+#    volumes:
+#      - ${ROOT_APPDATA}/radarr4k:/config
+#      - ${ROOT_MEDIA}/movies4k:/movies4k
+#      - ${ROOT_MEDIA}/downloads:/downloads
+#    ports:
+#      - 7879:7878
+#    networks:
+#      - mariusz-network
+#    restart: unless-stopped
 
   bazarr:
     image: ghcr.io/linuxserver/bazarr
@@ -206,40 +206,40 @@ services:
       - mariusz-network
     restart: unless-stopped
 
-  nextcloud:
-    image: ghcr.io/linuxserver/nextcloud
-    container_name: nextcloud
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - TZ=${TZ}
-    depends_on:
-      - mariadb
-    volumes:
-      - ${ROOT_APPDATA}/nextcloud:/config
-      - ${ROOT_NEXTCLOUD}:/data
-    ports:
-      - 444:443
-    networks:
-      - mariusz-network
-    restart: unless-stopped
+#  nextcloud:
+#    image: ghcr.io/linuxserver/nextcloud
+#    container_name: nextcloud
+#    environment:
+#      - PUID=${PUID}
+#      - PGID=${PGID}
+#      - TZ=${TZ}
+#    depends_on:
+#      - mariadb
+#    volumes:
+#      - ${ROOT_APPDATA}/nextcloud:/config
+#      - ${ROOT_NEXTCLOUD}:/data
+#    ports:
+#      - 444:443
+#    networks:
+#      - mariusz-network
+#    restart: unless-stopped
 
-  mariadb:
-    image: mariadb:10.5
-    container_name: mariadb
-    ports:
-      - 3306:3306
-    volumes:
-      - ${ROOT_APPDATA}/mariadb:/var/lib/mysql
-      - /etc/localtime:/etc/localtime:ro
-    environment:
-      - MYSQL_ROOT_PASSWORD=${PASSWORD}
-      - MYSQL_PASSWORD=${PASSWORD}
-      - MYSQL_DATABASE=nextcloud
-      - MYSQL_USER=nextcloud
-    networks:
-      - mariusz-network
-    restart: unless-stopped
+#  mariadb:
+#    image: mariadb:10.5
+#    container_name: mariadb
+#    ports:
+#      - 3306:3306
+#    volumes:
+#      - ${ROOT_APPDATA}/mariadb:/var/lib/mysql
+#      - /etc/localtime:/etc/localtime:ro
+#    environment:
+#      - MYSQL_ROOT_PASSWORD=${PASSWORD}
+#      - MYSQL_PASSWORD=${PASSWORD}
+#      - MYSQL_DATABASE=nextcloud
+#      - MYSQL_USER=nextcloud
+#    networks:
+#      - mariusz-network
+#    restart: unless-stopped
 
   swag:
     image: lscr.io/linuxserver/swag
