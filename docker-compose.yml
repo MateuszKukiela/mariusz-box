@@ -83,8 +83,6 @@ services:
       - ${ROOT_MEDIA}:/media_data
       - ${ROOT_NEXTCLOUD}/robo/files/hentai:/hentai_comics
       - ${ROOT_SSD}:/ssd
-    networks:
-      - mariusz-network
     restart: unless-stopped
 
 
