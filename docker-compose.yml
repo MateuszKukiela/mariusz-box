@@ -62,7 +62,9 @@ services:
       - OPENVPN_PASSWORD=${NORD_P}
       - SERVER_REGIONS=Poland
       - VPN_TYPE=openvpn
-    restart: always
+    networks:
+      - mariusz-network
+    restart: unless-stopped
 
   qbittorrent:
     image: lscr.io/linuxserver/qbittorrent:latest
@@ -81,7 +83,9 @@ services:
       - ${ROOT_MEDIA}:/media_data
       - ${ROOT_NEXTCLOUD}/robo/files/hentai:/hentai_comics
       - ${ROOT_SSD}:/ssd
-    restart: always
+    networks:
+      - mariusz-network
+    restart: unless-stopped
 
 
 
