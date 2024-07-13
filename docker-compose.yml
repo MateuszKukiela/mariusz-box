@@ -1,48 +1,4 @@
 services:
-#  nord:
-#    container_name: nord
-#    image: ghcr.io/bubuntux/nordlynx
-#    restart: unless-stopped
-#    security_opt:
-#      - no-new-privileges:true
-#    cap_add:
-#      - NET_ADMIN
-#    environment:
-#      - PRIVATE_KEY=${NORD_KEY}
-#      - ALLOWED_IPS=0.0.0.0/1,128.0.0.0/1
-#      - NET_LOCAL=10.0.0.0/8,172.16.0.0/12,192.168.2.0/24
-#      - QUERY=filters\[country_id\]=174&filters\[servers_groups\]\[identifier\]=legacy_p2p
-#      - "POST_UP=ip -4 route add $$(wg | awk -F'[: ]' '/endpoint/ {print $$5}') via $$(ip route | awk '/default/ {print $$3}')"
-#      - "PRE_DOWN=ip -4 route del $$(route -n | awk '/255.255.255.255/ {print $$1}') via $$(ip route | awk '/default/ {print $$3}')"
-#      - TZ=${TZ}
-#    ports:
-#      - 8080:8080 #qbit
-#      - "51420:51420" # QbitTorrent
-#      - "51420:51420/udp" # QbitTorrent
-#      - "8085:8081" #metube
-#    sysctls:
-#      - net.ipv6.conf.all.disable_ipv6=0
-#
-#  qbittorrent:
-#    container_name: qbittorrent
-#    image: lscr.io/linuxserver/qbittorrent
-#    restart: unless-stopped
-#    network_mode: "service:nord"
-#    environment:
-#      - TZ=${TZ}
-#    volumes:
-#      - ${ROOT_APPDATA}/qbittorrent:/config
-#      - ${ROOT_MEDIA}:/media_data
-#      - ${ROOT_NEXTCLOUD}/robo/files/hentai:/hentai_comics
-#      - ${ROOT_SSD}:/ssd
-#      - "/etc/localtime:/etc/localtime:ro"
-#    labels:
-#      - "com.centurylinklabs.watchtower.enable=true"
-#    depends_on:
-#      - nord
-#      - swag
-
-
   nordvpn:
     container_name: GlueTun-Nord
     image: qmcgaw/gluetun
@@ -84,27 +40,6 @@ services:
       - ${ROOT_NEXTCLOUD}/robo/files/hentai:/hentai_comics
       - ${ROOT_SSD}:/ssd
     restart: unless-stopped
-
-
-
-#  transmission:
-#    image: ghcr.io/linuxserver/transmission:4.0.2
-#    network_mode: "service:nordvpn"
-#    container_name: transmission
-#    depends_on:
-#      - nordvpn
-#    environment:
-#      - PUID=${PUID}
-#      - PGID=${PGID}
-#      - TZ=${TZ}
-#      - USER=root
-#      - PASS=${PASSWORD}
-#    volumes:
-#      - ${ROOT_APPDATA}/transmission:/config
-#      - ${ROOT_MEDIA}:/media_data
-#      - ${ROOT_NEXTCLOUD}/robo/files/hentai:/hentai_comics
-#      - ${ROOT_SSD}:/ssd
-#    restart: always
 
   metube:
     image: ghcr.io/alexta69/metube
@@ -160,23 +95,6 @@ services:
     networks:
       - mariusz-network
     restart: unless-stopped
-
-#  radarr4k:
-#    image: ghcr.io/linuxserver/radarr:latest
-#    container_name: radarr4k
-#    environment:
-#      - PUID=${PUID}
-#      - PGID=${PGID}
-#      - TZ=${TZ}
-#    volumes:
-#      - ${ROOT_APPDATA}/radarr4k:/config
-#      - ${ROOT_MEDIA}/movies4k:/movies4k
-#      - ${ROOT_MEDIA}/downloads:/downloads
-#    ports:
-#      - 7879:7878
-#    networks:
-#      - mariusz-network
-#    restart: unless-stopped
 
   bazarr:
     image: ghcr.io/linuxserver/bazarr
@@ -255,7 +173,7 @@ services:
       - PGID=${PGID}
       - TZ=${TZ}
       - URL=januszex.net
-      - SUBDOMAINS=www,aa,bazarr,radarr,sonarr,qbittorrent,nextcloud,jellyfin,ombi,comicstreamer,truenas,bruno,photos,photoprism,prowlarr,lidarr,airsonic,readarr,calibre-web,calibre,proxy,nzbget,xbvr,radarr4k,accounts,whisparr,metube,transmission,tdarr,threadfin,sabnzbd,duplicati
+      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,nextcloud,jellyfin,ombi,comicstreamer,prowlarr,xbvr,accounts,whisparr,metube,transmission,sabnzbd,duplicati
       - VALIDATION=http
     volumes:
       - ./swag:/config
@@ -277,40 +195,6 @@ services:
     networks:
       - mariusz-network
     restart: unless-stopped
-
-#  jellyfin:
-#    image: ghcr.io/linuxserver/jellyfin
-#    container_name: jellyfin
-#    environment:
-#      - PUID=${PUID}
-#      - PGID=${PGID}
-#      - TZ=${TZ}
-#      - UMASK_SET=022
-##      - NVIDIA_DRIVER_CAPABILITIES=compute,video,utility
-##      - NVIDIA_VISIBLE_DEVICES=all
-#    volumes:
-#      - ${ROOT_APPDATA}/jellyfin:/config
-#      - ${ROOT_MEDIA}/tv:/data/tv
-#      - ${ROOT_MEDIA}/movies:/data/movies
-#      - ${ROOT_MEDIA}/movies4k:/data/movies4k
-#      - ${ROOT_MEDIA}/downloads:/downloads
-#      - ${ROOT_MEDIA}/porn:/data/porn
-#      - ${ROOT_MEDIA}/music:/music
-#      - ${ROOT_APPDATA}/jellyfin/config.json:/usr/share/jellyfin/web/config.json
-#    ports:
-#      - 8096:8096
-#    networks:
-#      - mariusz-network
-##    devices:
-##      - "/dev/dri:/dev/dri"
-##    deploy:
-##      resources:
-##        reservations:
-##          devices:
-##            - driver: nvidia
-##              count: 1
-##              capabilities: [video]
-#    restart: unless-stopped
 
   jellyfin:
     image: lscr.io/linuxserver/jellyfin:latest
@@ -373,84 +257,6 @@ services:
         - mariusz-network
       restart: unless-stopped
 
-  lidarr:
-    image: ghcr.io/linuxserver/lidarr
-    container_name: lidarr
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - TZ=${TZ}
-    volumes:
-      - ${ROOT_APPDATA}/lidarr:/config
-      - ${ROOT_MEDIA}/music:/music
-      - ${ROOT_MEDIA}/downloads:/downloads
-    ports:
-      - 8686:8686
-    networks:
-      - mariusz-network
-    restart: unless-stopped
-
-  readarr:
-    image: ghcr.io/linuxserver/readarr:nightly
-    container_name: readarr
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - TZ=${TZ}
-    volumes:
-      - ${ROOT_APPDATA}/readarr:/config
-      - ${ROOT_MEDIA}/books:/books
-      - ${ROOT_MEDIA}/downloads:/downloads
-    ports:
-      - 8787:8787
-    networks:
-      - mariusz-network
-    restart: unless-stopped
-
-  calibre-web:
-    image: ghcr.io/linuxserver/calibre-web
-    container_name: calibre-web
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - TZ=${TZ}
-      - DOCKER_MODS=linuxserver/calibre-web:calibre #optional
-      - OAUTHLIB_RELAX_TOKEN_SCOPE=1 #optional
-    volumes:
-      - ${ROOT_APPDATA}/calibre-web:/config
-      - ${ROOT_MEDIA}/books:/books
-    ports:
-      - 8083:8083
-    networks:
-      - mariusz-network
-    restart: unless-stopped
-
-  calibre:
-    image: ghcr.io/linuxserver/calibre
-    container_name: calibre
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - TZ=${TZ}
-    volumes:
-      - ${ROOT_APPDATA}/calibre:/config
-    ports:
-      - 8082:8080
-      - 8081:8081
-    networks:
-      - mariusz-network
-    restart: unless-stopped
-
-  php-proxy: 
-    container_name: php-proxy
-    image: dwaaan/php-proxy:latest
-    restart: unless-stopped
-    ports:
-      - 8084:80
-      - 8443:443
-    networks:
-      - mariusz-network
-
   sabnzbd:
     image: lscr.io/linuxserver/sabnzbd:latest
     container_name: sabnzbd
@@ -480,22 +286,22 @@ services:
       - mariusz-network
     restart: unless-stopped
 
-  xbvr:
-    image: 'ghcr.io/xbapps/xbvr:latest'
-    container_name: xbvr
-    environment:
-      - UI_USERNAME=root
-      - UI_PASSWORD=${PASSWORD}
-      - DEO_USERNAME=root
-      - DEO_PASSWORD=${PASSWORD}
-    volumes:
-      - ${ROOT_MEDIA}/porn_vr:/videos
-      - ${ROOT_APPDATA}/xbvr:/root/.config/
-    ports:
-      - "9999:9999"
-    networks:
-      - mariusz-network
-    restart: unless-stopped
+  # xbvr:
+  #   image: 'ghcr.io/xbapps/xbvr:latest'
+  #   container_name: xbvr
+  #   environment:
+  #     - UI_USERNAME=root
+  #     - UI_PASSWORD=${PASSWORD}
+  #     - DEO_USERNAME=root
+  #     - DEO_PASSWORD=${PASSWORD}
+  #   volumes:
+  #     - ${ROOT_MEDIA}/porn_vr:/videos
+  #     - ${ROOT_APPDATA}/xbvr:/root/.config/
+  #   ports:
+  #     - "9999:9999"
+  #   networks:
+  #     - mariusz-network
+  #   restart: unless-stopped
 
   jfa:
       container_name: jfa
@@ -510,35 +316,22 @@ services:
       networks:
           - mariusz-network
 
-  whisparr:
-      container_name: whisparr
-      image: ghcr.io/hotio/whisparr:v3-5d4c05e
-      ports:
-       - "6969:6969"
-      environment:
-       - PUID=${PUID}
-       - PGID=${PGID}
-       - UMASK=002
-       - TZ=${TZ}
-      volumes:
-       - ${ROOT_APPDATA}/whisparr:/config
-       - ${ROOT_MEDIA}/porn:/porn
-      networks:
-        - mariusz-network
-      restart: unless-stopped
-
-  # threadfin:
-  #   container_name: threadfin
-  #   image: fyb3roptik/threadfin
-  #   ports:
-  #     - "34400:34400"
-  #   environment:
-  #     - PUID=${PUID}
-  #     - PGID=${PGID}
-  #     - UMASK=002
-  #     - TZ=${TZ}
-  #     - THREADFIN_PORT=34400
-  #     - THREADFIN_HOME=${ROOT_APPDATA}/threadfin
+  # whisparr:
+  #     container_name: whisparr
+  #     image: ghcr.io/hotio/whisparr:v3-5d4c05e
+  #     ports:
+  #      - "6969:6969"
+  #     environment:
+  #      - PUID=${PUID}
+  #      - PGID=${PGID}
+  #      - UMASK=002
+  #      - TZ=${TZ}
+  #     volumes:
+  #      - ${ROOT_APPDATA}/whisparr:/config
+  #      - ${ROOT_MEDIA}/porn:/porn
+  #     networks:
+  #       - mariusz-network
+  #     restart: unless-stopped
 
   watchtower:
     container_name: watchtower
