@@ -418,25 +418,5 @@ services:
     networks:
       - mariusz-network
 
-  proxylive:
-    container_name: proxylive
-    restart: always
-    volumes:
-        - ./proxylife/application.yml:/app/application.yml:ro
-    ports:
-      - 8250:8080
-    networks:
-      - mariusz-network
-    image: segator/proxylive:sha-650c4fe
-    devices:
-      - "/dev/dri:/dev/dri"
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: 1
-              capabilities: [video]
-
 networks:
   mariusz-network:
