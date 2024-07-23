@@ -427,7 +427,7 @@ services:
       - 8250:8080
     networks:
       - mariusz-network
-    image: segator/proxylive
+    image: segator/proxylive:master
     devices:
       - "/dev/dri:/dev/dri"
     deploy:
