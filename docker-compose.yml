@@ -173,7 +173,7 @@ services:
       - PGID=${PGID}
       - TZ=${TZ}
       - URL=januszex.net
-      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,nextcloud,jellyfin,ombi,comicstreamer,prowlarr,xbvr,accounts,whisparr,metube,transmission,sabnzbd,duplicati,vue,filebrowser
+      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,nextcloud,jellyfin,ombi,comicstreamer,prowlarr,xbvr,accounts,whisparr,metube,transmission,sabnzbd,duplicati,vue,files
       - VALIDATION=http
     volumes:
       - ./swag:/config
