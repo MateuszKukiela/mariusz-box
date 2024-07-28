@@ -173,7 +173,7 @@ services:
       - PGID=${PGID}
       - TZ=${TZ}
       - URL=januszex.net
-      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,nextcloud,jellyfin,ombi,comicstreamer,prowlarr,xbvr,accounts,whisparr,metube,transmission,sabnzbd,duplicati
+      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,nextcloud,jellyfin,ombi,comicstreamer,prowlarr,xbvr,accounts,whisparr,metube,transmission,sabnzbd,duplicati,vue,filebrowser
       - VALIDATION=http
     volumes:
       - ./swag:/config
@@ -214,6 +214,7 @@ services:
       - ${ROOT_MEDIA}/downloads:/downloads
       - ${ROOT_MEDIA}/porn:/data/porn
       - ${ROOT_MEDIA}/music:/music
+      - ${ROOT_MEDIA}/random:/random
       - ${ROOT_APPDATA}/jellyfin/config.json:/usr/share/jellyfin/web/config.json
     ports:
       - 8097:8096
@@ -417,6 +418,21 @@ services:
       - DEFAULT_SERVERS=https://jellyfin.januszex.net
     networks:
       - mariusz-network
+
+  filebrowser:
+      volumes:
+          - ${ROOT_APPDATA}:/srv/appdata
+          - ${ROOT_MEDIA}:/srv/media
+          - ${ROOT_MARIUSZ}:/srv/mariusz
+          - ${ROOT_APPDATA}/filebrowser/filebrowser.db:/database/filebrowser.db
+          - ${ROOT_APPDATA}/filebrowser/settings.json:/config/settings.json
+      environment:
+          - PUID=${PUID}
+          - PGID=${PGID}
+          - TZ=${TZ}
+      ports:
+          - 8250:80
+      image: filebrowser/filebrowser:s6
 
 networks:
   mariusz-network:
