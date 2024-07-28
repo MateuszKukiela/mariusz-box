@@ -420,19 +420,20 @@ services:
       - mariusz-network
 
   filebrowser:
-      volumes:
-          - ${ROOT_APPDATA}:/srv/appdata
-          - ${ROOT_MEDIA}:/srv/media
-          - ${ROOT_MARIUSZ}:/srv/mariusz
-          - ${ROOT_APPDATA}/filebrowser/filebrowser.db:/database/filebrowser.db
-          - ${ROOT_APPDATA}/filebrowser/settings.json:/config/settings.json
-      environment:
-          - PUID=${PUID}
-          - PGID=${PGID}
-          - TZ=${TZ}
-      ports:
-          - 8250:80
-      image: filebrowser/filebrowser:s6
+    container_name: filebrowser
+    volumes:
+        - ${ROOT_APPDATA}:/srv/appdata
+        - ${ROOT_MEDIA}:/srv/media
+        - ${ROOT_MARIUSZ}:/srv/mariusz
+        - ${ROOT_APPDATA}/filebrowser/filebrowser.db:/database/filebrowser.db
+        - ${ROOT_APPDATA}/filebrowser/settings.json:/config/settings.json
+    environment:
+        - PUID=${PUID}
+        - PGID=${PGID}
+        - TZ=${TZ}
+    ports:
+        - 8250:80
+    image: filebrowser/filebrowser:s6
 
 networks:
   mariusz-network:
