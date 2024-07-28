@@ -434,6 +434,9 @@ services:
     ports:
         - 8250:80
     image: filebrowser/filebrowser:s6
+    networks:
+      - mariusz-network
+    restart: unless-stopped
 
 networks:
   mariusz-network:
