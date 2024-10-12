@@ -206,6 +206,8 @@ services:
       - UMASK_SET=022
       - NVIDIA_DRIVER_CAPABILITIES=compute,video,utility
       - NVIDIA_VISIBLE_DEVICES=all
+      - FFMPEG_ANALYZEDURATION=400M
+      - FFMPEG_PROBESIZE=2G
     volumes:
       - ${ROOT_APPDATA}/jellyfin:/config
       - ${ROOT_MEDIA}/tv:/data/tv
