@@ -173,7 +173,7 @@ services:
       - PGID=${PGID}
       - TZ=${TZ}
       - URL=januszex.net
-      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,nextcloud,jellyfin,ombi,comicstreamer,prowlarr,xbvr,accounts,whisparr,metube,transmission,sabnzbd,duplicati,vue,files
+      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,nextcloud,jellyfin,ombi,comicstreamer,prowlarr,xbvr,accounts,whisparr,metube,transmission,sabnzbd,duplicati,vue,files,openwebui
       - VALIDATION=http
     volumes:
       - ./swag:/config
@@ -439,6 +439,27 @@ services:
     networks:
       - mariusz-network
     restart: unless-stopped
+
+  openwebui:
+    ports:
+        - 3000:8080
+    devices:
+      - "/dev/dri:/dev/dri"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    volumes:
+        - ${ROOT_MEDIA}/AI/ollama:/root/.ollama
+        - ${ROOT_APPDATA}/openwebui:/app/backend/data
+    container_name: openwebui
+    restart: always
+    image: ghcr.io/open-webui/open-webui:ollama
+    networks:
+      - mariusz-network
 
 networks:
   mariusz-network:
