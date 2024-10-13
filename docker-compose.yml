@@ -453,6 +453,7 @@ services:
               count: 1
               capabilities: [gpu]
     volumes:
+        - ${ROOT_MEDIA}/AI/ollama:/root/.ollama
         - ${ROOT_APPDATA}/openwebui:/app/backend/data
     container_name: openwebui
     restart: always
