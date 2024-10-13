@@ -173,7 +173,7 @@ services:
       - PGID=${PGID}
       - TZ=${TZ}
       - URL=januszex.net
-      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,nextcloud,jellyfin,ombi,comicstreamer,prowlarr,xbvr,accounts,whisparr,metube,transmission,sabnzbd,duplicati,vue,files
+      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,nextcloud,jellyfin,ombi,comicstreamer,prowlarr,xbvr,accounts,whisparr,metube,transmission,sabnzbd,duplicati,openwebui
       - VALIDATION=http
     volumes:
       - ./swag:/config
@@ -206,8 +206,6 @@ services:
       - UMASK_SET=022
       - NVIDIA_DRIVER_CAPABILITIES=compute,video,utility
       - NVIDIA_VISIBLE_DEVICES=all
-      - FFMPEG_ANALYZEDURATION=400M
-      - FFMPEG_PROBESIZE=2G
     volumes:
       - ${ROOT_APPDATA}/jellyfin:/config
       - ${ROOT_MEDIA}/tv:/data/tv
@@ -216,7 +214,6 @@ services:
       - ${ROOT_MEDIA}/downloads:/downloads
       - ${ROOT_MEDIA}/porn:/data/porn
       - ${ROOT_MEDIA}/music:/music
-      - ${ROOT_MEDIA}/random:/random
       - ${ROOT_APPDATA}/jellyfin/config.json:/usr/share/jellyfin/web/config.json
     ports:
       - 8097:8096
@@ -358,28 +355,28 @@ services:
         max-size: "10mb"
         max-file: "1"
 
-  # pihole:
-  #   container_name: pihole_ukasz
-  #   image: pihole/pihole:latest
-  #   # For DHCP it is recommended to remove these ports and instead add: network_mode: "host"
-  #   ports:
-  #     - "53:53/tcp"
-  #     - "53:53/udp"
-  #     - "67:67/udp" # Only required if you are using Pi-hole as your DHCP server
-  #     - "8088:80/tcp"
-  #  environment:
-  #     - TZ=${TZ}
-  #    - WEBPASSWORD=${PASSWORD} #'set a secure password here or it will be random'
-  #    - FTLCONF_LOCAL_IPV4=192.168.8.10
-  #    - PIHOLE_DNS_=1.1.1.2;1.0.0.2
-  #  # Volumes store your data between container upgrades
-  #  volumes:
-  #    - ${ROOT_APPDATA}/pihole_ukasz/pihole_app:/etc/pihole
-  #    - ${ROOT_APPDATA}/pihole_ukasz/pihole_dns:/etc/dnsmasq.d
-  #  #   https://github.com/pi-hole/docker-pi-hole#note-on-capabilities
-  #  cap_add:
-  #    - NET_ADMIN # Required if you are using Pi-hole as your DHCP server, else not needed
-  #  restart: unless-stopped
+#  pihole:
+#    container_name: pihole_ukasz
+#    image: pihole/pihole:latest
+#    # For DHCP it is recommended to remove these ports and instead add: network_mode: "host"
+#    ports:
+#      - "53:53/tcp"
+#      - "53:53/udp"
+#      - "67:67/udp" # Only required if you are using Pi-hole as your DHCP server
+#      - "8088:80/tcp"
+#    environment:
+#       - TZ=${TZ}
+#       - WEBPASSWORD=${PASSWORD} #'set a secure password here or it will be random'
+#       - FTLCONF_LOCAL_IPV4=192.168.8.10
+#       - PIHOLE_DNS_=1.1.1.2;1.0.0.2
+#    # Volumes store your data between container upgrades
+#    volumes:
+#      - ${ROOT_APPDATA}/pihole_ukasz/pihole_app:/etc/pihole
+#      - ${ROOT_APPDATA}/pihole_ukasz/pihole_dns:/etc/dnsmasq.d
+#    #   https://github.com/pi-hole/docker-pi-hole#note-on-capabilities
+#    #cap_add:
+#    #  - NET_ADMIN # Required if you are using Pi-hole as your DHCP server, else not needed
+#    restart: unless-stopped
 
   portainer:
     container_name: portainer
@@ -421,24 +418,26 @@ services:
     networks:
       - mariusz-network
 
-  filebrowser:
-    container_name: filebrowser
-    volumes:
-        - ${ROOT_APPDATA}:/srv/appdata
-        - ${ROOT_MEDIA}:/srv/media
-        - ${ROOT_MARIUSZ}:/srv/mariusz
-        - ${ROOT_APPDATA}/filebrowser/filebrowser.db:/database/filebrowser.db
-        - ${ROOT_APPDATA}/filebrowser/settings.json:/config/settings.json
-    environment:
-        - PUID=${PUID}
-        - PGID=${PGID}
-        - TZ=${TZ}
+  openwebui:
     ports:
-        - 8250:80
-    image: filebrowser/filebrowser:s6
+        - 3000:8080
+    devices:
+      - "/dev/dri:/dev/dri"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    volumes:
+        - ${ROOT_MEDIA}/AI/ollama:/root/.ollama
+        - ${ROOT_APPDATA}/openwebui:/app/backend/data
+    container_name: openwebui
+    restart: always
+    image: ghcr.io/open-webui/open-webui:ollama
     networks:
       - mariusz-network
-    restart: unless-stopped
 
 networks:
   mariusz-network:
