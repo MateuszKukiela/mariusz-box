@@ -13,6 +13,7 @@ services:
       - "51420:51420/udp" # QbitTorrent
 #      - "8085:8081" #metube
       - "8080:8080" # OpenWebUI
+      - "11434:11434" # Ollama
     environment:
       - VPN_SERVICE_PROVIDER=nordvpn
       - OPENVPN_USER=${NORD_U}
