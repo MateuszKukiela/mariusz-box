@@ -12,7 +12,7 @@ services:
       - "51420:51420" # QbitTorrent
       - "51420:51420/udp" # QbitTorrent
 #      - "8085:8081" #metube
-      - "3000:3000" # OpenWebUI
+      - "3000:8080" # OpenWebUI
     environment:
       - VPN_SERVICE_PROVIDER=nordvpn
       - OPENVPN_USER=${NORD_U}
@@ -442,8 +442,6 @@ services:
     restart: unless-stopped
 
   openwebui:
-    ports:
-        - 3000:8080
     devices:
       - "/dev/dri:/dev/dri"
     environment:
