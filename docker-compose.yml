@@ -20,7 +20,7 @@ services:
       - OPENVPN_PASSWORD=${NORD_P}
       - SERVER_REGIONS=Poland
       - VPN_TYPE=openvpn
-      - FIREWALL_OUTBOUND_SUBNETS=192.168.8.10/24
+      - FIREWALL_OUTBOUND_SUBNETS=192.168.8.0/24
     networks:
       - mariusz-network
     restart: unless-stopped
