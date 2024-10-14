@@ -375,7 +375,7 @@ services:
     devices:
       - "/dev/dri:/dev/dri"
     environment:
-      - OLLAMA_BASE_URL=localhost:11434
+      - OLLAMA_BASE_URL=http://192.168.8.10:11434
     deploy:
       resources:
         reservations:
