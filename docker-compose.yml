@@ -164,26 +164,47 @@ services:
 #      - mariusz-network
 #    restart: unless-stopped
 
-  swag:
-    image: lscr.io/linuxserver/swag
-    container_name: swag
-    cap_add:
-      - NET_ADMIN
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - TZ=${TZ}
-      - URL=januszex.net
-      - SUBDOMAINS=www,bazarr,radarr,sonarr,qbittorrent,nextcloud,jellyfin,ombi,comicstreamer,prowlarr,xbvr,accounts,whisparr,metube,transmission,sabnzbd,duplicati,vue,files,openwebui
-      - VALIDATION=http
-    volumes:
-      - ./swag:/config
-    ports:
-      - 443:443
-      - 80:80
-    networks:
-      - mariusz-network
-    restart: unless-stopped
+swag:
+  image: lscr.io/linuxserver/swag
+  container_name: swag
+  cap_add:
+    - NET_ADMIN
+  environment:
+    PUID: ${PUID}
+    PGID: ${PGID}
+    TZ: ${TZ}
+    URL: januszex.net
+    SUBDOMAINS: >
+      www,
+      bazarr,
+      radarr,
+      sonarr,
+      qbittorrent,
+      nextcloud,
+      jellyfin,
+      ombi,
+      comicstreamer,
+      prowlarr,
+      xbvr,
+      accounts,
+      whisparr,
+      metube,
+      transmission,
+      sabnzbd,
+      duplicati,
+      vue,
+      files,
+      openwebui,
+      chat
+    VALIDATION: http
+  volumes:
+    - ./swag:/config
+  ports:
+    - 443:443
+    - 80:80
+  networks:
+    - mariusz-network
+  restart: unless-stopped
 
   docker-host:
     image: qoomon/docker-host
