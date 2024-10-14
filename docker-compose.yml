@@ -12,6 +12,7 @@ services:
       - "51420:51420" # QbitTorrent
       - "51420:51420/udp" # QbitTorrent
 #      - "8085:8081" #metube
+      - "3000:3000" # OpenWebUI
     environment:
       - VPN_SERVICE_PROVIDER=nordvpn
       - OPENVPN_USER=${NORD_U}
@@ -445,6 +446,8 @@ services:
         - 3000:8080
     devices:
       - "/dev/dri:/dev/dri"
+    environment:
+      - OLLAMA_BASE_URL=http://192.168.8.10:11434
     deploy:
       resources:
         reservations:
@@ -453,13 +456,11 @@ services:
               count: 1
               capabilities: [gpu]
     volumes:
-        - ${ROOT_MEDIA}/AI/ollama:/root/.ollama
         - ${ROOT_APPDATA}/openwebui:/app/backend/data
     container_name: openwebui
     restart: always
-    image: ghcr.io/open-webui/open-webui:ollama
-    networks:
-      - mariusz-network
+    image: ghcr.io/open-webui/open-webui:latest
+    network_mode: "service:nordvpn"
 
 networks:
   mariusz-network:
