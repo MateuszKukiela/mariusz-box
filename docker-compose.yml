@@ -407,6 +407,7 @@ services:
     restart: unless-stopped
 
   whisperasr:
+    container_name: whisperasr
     image: onerahmet/openai-whisper-asr-webservice:latest-gpu
     environment:
       - ASR_MODEL=small
