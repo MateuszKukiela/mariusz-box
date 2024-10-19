@@ -162,7 +162,8 @@ services:
         vue,
         files,
         openwebui,
-        chat
+        chat,
+        czat
       VALIDATION: http
     volumes:
       - ./swag:/config
