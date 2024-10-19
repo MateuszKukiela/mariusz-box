@@ -406,14 +406,20 @@ services:
     network_mode: "service:nordvpn"
     restart: unless-stopped
 
-  whisperasr:
-    container_name: whisperasr
-    image: onerahmet/openai-whisper-asr-webservice:latest-gpu
+  faster-whisper:
+    image: lscr.io/linuxserver/faster-whisper:latest
+    container_name: faster-whisper
     environment:
-      - ASR_MODEL=small
-      - ASR_ENGINE=faster_whisper
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - WHISPER_MODEL=base-int8
+      - WHISPER_BEAM=1
+      - WHISPER_LANG=en
+    volumes:
+      - ${ROOT_SSD}/faster-whisper:/config
     ports:
-      - 9000:9000
+      - 10300:10300
     deploy:
       resources:
         reservations:
@@ -421,10 +427,9 @@ services:
             - driver: nvidia
               count: 1
               capabilities: [ gpu ]
-    restart: unless-stopped
     networks:
-      - mariusz-network
-
+        - mariusz-network
+    restart: unless-stopped
 
 networks:
   mariusz-network:
