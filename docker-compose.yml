@@ -415,7 +415,7 @@ services:
       - TZ=${TZ}
       - WHISPER_MODEL=base-int8
       - WHISPER_BEAM=1
-      - WHISPER_LANG=en
+      - WHISPER_LANG=en,pl
     volumes:
       - ${ROOT_SSD}/faster-whisper:/config
     ports:
