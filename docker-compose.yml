@@ -131,6 +131,18 @@ services:
       - mariusz-network
     restart: unless-stopped
 
+  jellyseerr:
+    image: fallenbagel/jellyseerr:latest
+    container_name: jellyseerr
+    environment:
+      - LOG_LEVEL=debug
+      - TZ=${TZ}
+    ports:
+      - 5055:5055
+    volumes:
+      - ${ROOT_APPDATA}/jellyseerr:/app/config
+    restart: unless-stopped
+
   swag:
     image: lscr.io/linuxserver/swag
     container_name: swag
@@ -163,7 +175,8 @@ services:
         files,
         openwebui,
         chat,
-        czat
+        czat,
+        jellyseerr
       VALIDATION: http
     volumes:
       - ./swag:/config
