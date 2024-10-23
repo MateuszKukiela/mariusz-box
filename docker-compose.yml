@@ -141,6 +141,8 @@ services:
       - 5055:5055
     volumes:
       - ${ROOT_APPDATA}/jellyseerr:/app/config
+    networks:
+      - mariusz-network
     restart: unless-stopped
 
   swag:
