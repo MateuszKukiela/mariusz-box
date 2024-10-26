@@ -116,21 +116,6 @@ services:
       - mariusz-network
     restart: unless-stopped
 
-  ombi:
-    image: ghcr.io/linuxserver/ombi:development
-    container_name: ombi
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - TZ=${TZ}
-    volumes:
-      - ${ROOT_APPDATA}/ombi:/config
-    ports:
-      - 3579:3579
-    networks:
-      - mariusz-network
-    restart: unless-stopped
-
   jellyseerr:
     image: fallenbagel/jellyseerr:latest
     container_name: jellyseerr
@@ -178,7 +163,8 @@ services:
         openwebui,
         chat,
         czat,
-        jellyseerr
+        jellyseerr,
+        requests
       VALIDATION: http
     volumes:
       - ./swag:/config
