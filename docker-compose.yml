@@ -303,19 +303,6 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     restart: unless-stopped
 
-  homebridge:
-    container_name: homebridge_ukasz
-    image: homebridge/homebridge:latest
-    restart: unless-stopped
-    network_mode: host
-    volumes:
-      - ${ROOT_APPDATA}/homebridge_ukasz:/homebridge
-    logging:
-      driver: json-file
-      options:
-        max-size: "10mb"
-        max-file: "1"
-
   portainer:
     container_name: portainer
     image: portainer/portainer-ce:latest
