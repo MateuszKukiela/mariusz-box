@@ -426,7 +426,7 @@ services:
             - driver: nvidia
               count: 1
               capabilities: [ gpu ]
-    restart: unless-stopped
+    restart: no
     networks:
       - mariusz-network
 
