@@ -165,7 +165,8 @@ services:
         czat,
         jellyseerr,
         requests,
-        portainer
+        portainer,
+        reiverr
       VALIDATION: http
     volumes:
       - ./swag:/config
@@ -416,6 +417,21 @@ services:
     restart: no
     networks:
       - mariusz-network
+
+  reiverr:
+    image: ghcr.io/aleksilassila/reiverr:latest
+    container_name: reiverr
+    ports:
+      - 9494:9494
+    environment:
+      - SECRET=${REIVERR_SECRET}
+      - ADMIN_USERNAME=root
+      - ADMIN_PASSWORD=${PASSWORD}
+    volumes:
+      - ${ROOT_APPDATA}/reiverr:/config
+    restart: unless-stopped
+    networks:
+        - mariusz-network
 
 networks:
   mariusz-network:
