@@ -476,7 +476,7 @@ services:
               capabilities: [ gpu ]
     command: >
       /bin/bash -c "pip install --user --break-system-packages emojis requests lxml stashapp-tools &&
-                    stash"
+                    exec stash"
     networks:
         - mariusz-network
 
