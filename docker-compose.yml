@@ -477,7 +477,8 @@ services:
         - mariusz-network
 
   coomarr:
-    container_name: mateuszkukiela/coomarr
+    image: mateuszkukiela/coomarr
+    container_name: coomarr
     ports:
       - 42069:42069
     environment:
