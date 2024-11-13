@@ -484,7 +484,6 @@ services:
     environment:
       - DJANGO_PORT=42069
     volumes:
-      - ${ROOT_APPDATA}/coomarr:/app
       - ${ROOT_MEDIA}/porn/coomarr:/gallery-dl
     restart: unless-stopped
     networks:
