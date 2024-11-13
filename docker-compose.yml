@@ -483,6 +483,7 @@ services:
       - 42069:42069
     environment:
       - DJANGO_PORT=42069
+      - CSRF_TRUSTED_ORIGINS=https://coomarr.januszex.net
     volumes:
       - ${ROOT_MEDIA}/porn/coomarr:/gallery-dl
     restart: unless-stopped
