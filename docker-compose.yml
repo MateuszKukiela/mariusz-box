@@ -167,7 +167,8 @@ services:
         requests,
         portainer,
         reiverr,
-        stash
+        stash,
+        coomarr
       VALIDATION: http
     volumes:
       - ./swag:/config
@@ -474,6 +475,20 @@ services:
       - ${ROOT_APPDATA}/stash/generated:/generated
     networks:
         - mariusz-network
+
+  coomarr:
+    container_name: mateuszkukiela/coomarr
+    ports:
+      - 42069:42069
+    environment:
+      - DJANGO_PORT=42069
+    volumes:
+      - ${ROOT_APPDATA}/coomarr:/app
+      - ${ROOT_MEDIA}/porn/coomarr:/gallery-dl
+    restart: unless-stopped
+    networks:
+      - mariusz-network
+
 
 networks:
   mariusz-network:
