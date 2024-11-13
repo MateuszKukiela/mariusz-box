@@ -436,14 +436,11 @@ services:
         - mariusz-network
 
   stash:
-    image: stashapp/stash:latest
+    image: ghcr.io/feederbox826/stash-s6:hwaccel
     container_name: stash
     restart: unless-stopped
-    ## the container's port must be the same with the STASH_PORT in the environment section
     ports:
       - "9999:9999"
-    ## If you intend to use stash's DLNA functionality uncomment the below network mode and comment out the above ports section
-    # network_mode: host
     logging:
       driver: "json-file"
       options:
@@ -454,25 +451,29 @@ services:
       - STASH_GENERATED=/generated/
       - STASH_METADATA=/metadata/
       - STASH_CACHE=/cache/
-      ## Adjust below to change default port (9999)
       - STASH_PORT=9999
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - SKIP_NVIDIA_PATCH=true
+      - MIGRATE=true
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      ## Adjust below paths (the left part) to your liking.
-      ## E.g. you can change ./config:/root/.stash to ./stash:/root/.stash
-      
-      ## Keep configs, scrapers, and plugins here.
       - ${ROOT_APPDATA}/stash/config:/root/.stash
-      ## Point this at your collection.
       - ${ROOT_MEDIA}/porn:/data
-      ## This is where your stash's metadata lives
       - ${ROOT_APPDATA}/stash/metadata:/metadata
-      ## Any other cache content.
       - ${ROOT_APPDATA}/stash/cache:/cache
-      ## Where to store binary blob data (scene covers, images)
       - ${ROOT_APPDATA}/stash/blobs:/blobs
-      ## Where to store generated content (screenshots,previews,transcodes,sprites)
       - ${ROOT_APPDATA}/stash/generated:/generated
+      - ${ROOT_APPDATA}/stash-s6/old-stash/config:/root/.stash
+      - ${ROOT_APPDATA}/stash-s6/new-stash/config:/config
+      - ${ROOT_APPDATA}/stash-s6/new-stash/pip-install:/pip-install
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [ gpu ]
     networks:
         - mariusz-network
 
