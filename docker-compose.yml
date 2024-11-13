@@ -461,9 +461,9 @@ services:
       - ${ROOT_APPDATA}/stash/config:/root/.stash
       - ${ROOT_MEDIA}/porn:/data
       - ${ROOT_APPDATA}/stash/metadata:/metadata
-      - ${ROOT_APPDATA}/stash/cache:/cache
-      - ${ROOT_APPDATA}/stash/blobs:/blobs
-      - ${ROOT_APPDATA}/stash/generated:/generated
+      - ${ROOT_SSD}/stash/cache:/cache
+      - ${ROOT_SSD}/stash/blobs:/blobs
+      - ${ROOT_SSD}/stash/generated:/generated
       - ${ROOT_APPDATA}/stash/config:/root/.stash
       - ${ROOT_APPDATA}/stash-s6/config:/config
       - ${ROOT_APPDATA}/stash-s6/new-stash/pip-install:/pip-install
@@ -474,6 +474,8 @@ services:
             - driver: nvidia
               count: 1
               capabilities: [ gpu ]
+    command: >
+      /bin/bash -c "pip install --user --break-system-packages emojis requests lxml stashapp-tools"
     networks:
         - mariusz-network
 
