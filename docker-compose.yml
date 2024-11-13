@@ -474,9 +474,9 @@ services:
             - driver: nvidia
               count: 1
               capabilities: [ gpu ]
-    command: >
-      /bin/sh -c "pip install --user --break-system-packages emojis requests lxml stashapp-tools &&
-                  /usr/bin/stash"
+#    command: >
+#      /bin/sh -c "pip install --user --break-system-packages emojis requests lxml stashapp-tools &&
+#                  /usr/bin/stash"
     networks:
         - mariusz-network
 
