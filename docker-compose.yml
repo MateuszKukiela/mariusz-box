@@ -464,8 +464,8 @@ services:
       - ${ROOT_APPDATA}/stash/cache:/cache
       - ${ROOT_APPDATA}/stash/blobs:/blobs
       - ${ROOT_APPDATA}/stash/generated:/generated
-      - ${ROOT_APPDATA}/stash-s6/old-stash/config:/root/.stash
-      - ${ROOT_APPDATA}/stash-s6/new-stash/config:/config
+      - ${ROOT_APPDATA}/stash/config:/root/.stash
+      - ${ROOT_APPDATA}/stash-s6/config:/config
       - ${ROOT_APPDATA}/stash-s6/new-stash/pip-install:/pip-install
     deploy:
       resources:
