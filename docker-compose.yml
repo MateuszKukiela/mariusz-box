@@ -485,7 +485,7 @@ services:
       - DJANGO_PORT=42069
       - CSRF_TRUSTED_ORIGINS=https://coomarr.januszex.net
     volumes:
-      - ${ROOT_MEDIA}/porn/coomarr:/gallery-dl
+      - ${ROOT_MEDIA}/porn/coomarr:/app/gallery-dl
     restart: unless-stopped
     networks:
       - mariusz-network
