@@ -455,7 +455,6 @@ services:
       - PUID=${PUID}
       - PGID=${PGID}
       - SKIP_NVIDIA_PATCH=true
-      - MIGRATE=true
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ${ROOT_APPDATA}/stash/config:/root/.stash
