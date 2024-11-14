@@ -461,8 +461,8 @@ services:
       - ${ROOT_SSD}/stash/cache:/cache
       - ${ROOT_SSD}/stash/blobs:/blobs
       - ${ROOT_SSD}/stash/generated:/generated
-      - ${ROOT_APPDATA}/stash-s6/config:/root/.stash
-      - ${ROOT_APPDATA}/stash-s6/new-stash/pip-install:/pip-install
+      - ${ROOT_APPDATA}/stash/config:/root/.stash
+      - ${ROOT_APPDATA}/stash//pip-install:/pip-install
     runtime: nvidia
     deploy:
       resources:
