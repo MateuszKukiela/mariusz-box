@@ -454,7 +454,6 @@ services:
       - STASH_PORT=9999
       - PUID=${PUID}
       - PGID=${PGID}
-      - SKIP_NVIDIA_PATCH=false
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ${ROOT_MEDIA}/porn:/data
