@@ -483,10 +483,13 @@ services:
     ports:
       - 42069:42069
     environment:
-      - DJANGO_PORT=42069
-      - CSRF_TRUSTED_ORIGINS=https://coomarr.januszex.net
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
     volumes:
-      - ${ROOT_MEDIA}/porn/coomarr:/app/gallery-dl
+      - ${ROOT_APPDATA}/coomarr:/config
+      - ${ROOT_MEDIA}/porn/coomarr:/downloads
+      - "/etc/localtime:/etc/localtime:ro"
     restart: unless-stopped
     networks:
       - mariusz-network
