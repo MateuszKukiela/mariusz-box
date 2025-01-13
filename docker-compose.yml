@@ -169,7 +169,7 @@ services:
         reiverr,
         stash,
         coomarr,
-        vw
+        vaultwarden
       VALIDATION: http
     volumes:
       - ./swag:/config
@@ -502,7 +502,7 @@ services:
     image: vaultwarden/server:latest
     container_name: vaultwarden
     environment:
-      DOMAIN: "https://vw.januszex.net"
+      DOMAIN: "https://vaultwarden.januszex.net"
     volumes:
       - ${ROOT_APPDATA}/vaultwarden:/data/
     ports:
