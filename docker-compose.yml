@@ -507,7 +507,7 @@ services:
     volumes:
       - ${ROOT_APPDATA}/vaultwarden:/data/
     ports:
-      - 80:80
+      - 8260:80
     restart: unless-stopped
     networks:
       - mariusz-network
