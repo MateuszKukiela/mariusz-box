@@ -168,7 +168,8 @@ services:
         portainer,
         reiverr,
         stash,
-        coomarr
+        coomarr,
+        vw
       VALIDATION: http
     volumes:
       - ./swag:/config
@@ -493,6 +494,25 @@ services:
     restart: unless-stopped
     networks:
       - mariusz-network
+
+
+
+
+  vaultwarden:
+    image: vaultwarden/server:latest
+    container_name: vaultwarden
+    restart: unless-stopped
+    environment:
+      DOMAIN: "https://vw.januszex.net"
+    volumes:
+      - ${ROOT_APPDATA}/vaultwarden:/data/
+    ports:
+      - 80:80
+    restart: unless-stopped
+    networks:
+      - mariusz-network
+
+      
   decluttarr:
     image: ghcr.io/manimatter/decluttarr:latest
     container_name: decluttarr
