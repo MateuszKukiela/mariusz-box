@@ -502,6 +502,7 @@ services:
     environment:
       DOMAIN: "https://vaultwarden.januszex.net"
       SIGNUPS_ALLOWED: false
+      ADMIN_TOKEN: ${VAULTWARDEN_ADMIN_TOKEN}
     volumes:
       - ${ROOT_APPDATA}/vaultwarden:/data/
     ports:
