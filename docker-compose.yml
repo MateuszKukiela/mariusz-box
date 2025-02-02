@@ -496,13 +496,12 @@ services:
       - mariusz-network
 
 
-
-
   vaultwarden:
     image: vaultwarden/server:latest
     container_name: vaultwarden
     environment:
       DOMAIN: "https://vaultwarden.januszex.net"
+      SIGNUPS_ALLOWED: false
     volumes:
       - ${ROOT_APPDATA}/vaultwarden:/data/
     ports:
