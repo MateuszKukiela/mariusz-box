@@ -39,9 +39,9 @@ services:
       - TZ=${TZ}
     volumes:
       - ${ROOT_APPDATA}/qbittorrent:/config
-      - ${ROOT_MEDIA}:/media_data
+      - ${ROOT_DATA_HDD}:/hdd
       - ${ROOT_NEXTCLOUD}/robo/files/hentai:/hentai_comics
-      - ${ROOT_SSD}:/ssd
+      - ${ROOT_DATA_SSD}:/ssd
     restart: unless-stopped
 
   metube:
@@ -54,10 +54,7 @@ services:
       - TZ=${TZ}
     volumes:
       - ${ROOT_APPDATA}/metube:/config
-      - ${ROOT_MEDIA}/downloads/metube:/downloads
-      - ${ROOT_MEDIA}/movies:/downloads/movies
-      - ${ROOT_MEDIA}/tv:/downloads/tv
-      - ${ROOT_MEDIA}/porn:/downloads/porn
+      - ${ROOT_DATA_HDD}:/hdd
       - "/etc/localtime:/etc/localtime:ro"
     ports:
         - 8085:8081
@@ -76,7 +73,7 @@ services:
       - UMASK_SET=022
     volumes:
       - ${ROOT_APPDATA}/sonarr:/config
-      - ${ROOT_MEDIA}:/media_data
+      - ${ROOT_DATA_HDD}:/hdd
     ports:
       - 8989:8989
     networks:
@@ -92,7 +89,7 @@ services:
       - TZ=${TZ}
     volumes:
       - ${ROOT_APPDATA}/radarr:/config
-      - ${ROOT_MEDIA}:/media_data
+      - ${ROOT_DATA_HDD}:/hdd
     ports:
       - 7878:7878
     networks:
@@ -109,7 +106,7 @@ services:
       - UMASK_SET=022
     volumes:
       - ${ROOT_APPDATA}/bazarr:/config
-      - ${ROOT_MEDIA}:/media_data
+      - ${ROOT_DATA_HDD}:/hdd
     ports:
       - 6767:6767
     networks:
@@ -206,14 +203,8 @@ services:
       - FFMPEG_PROBESIZE=2G
     volumes:
       - ${ROOT_APPDATA}/jellyfin:/config
-      - ${ROOT_MEDIA}/tv:/data/tv
-      - ${ROOT_MEDIA}/movies:/data/movies
-      - ${ROOT_MEDIA}/movies4k:/data/movies4k
-      - ${ROOT_MEDIA}/downloads:/downloads
-      - ${ROOT_MEDIA}/porn:/data/porn
-      - ${ROOT_MEDIA}/music:/music
-      - ${ROOT_MEDIA}/random:/random
       - ${ROOT_APPDATA}/jellyfin/config.json:/usr/share/jellyfin/web/config.json
+      - ${ROOT_DATA_HDD}:/hdd
     ports:
       - 8097:8096
     networks:
@@ -265,9 +256,8 @@ services:
       - TZ=${TZ}
     volumes:
       - ${ROOT_APPDATA}/sabnzbd:/config
-      - ${ROOT_MEDIA}:/media_data
-      - ${ROOT_NEXTCLOUD}/robo/files/hentai:/hentai_comics
-      - ${EXTERNAL_SSD}:/ssd
+      - ${ROOT_DATA_HDD}:/hdd
+      - ${ROOT_DATA_SSD}:/ssd
     ports:
       - 8089:8080
     networks:
@@ -352,11 +342,10 @@ services:
   filebrowser:
     container_name: filebrowser
     volumes:
-        - ${ROOT_APPDATA}:/srv/appdata
-        - ${ROOT_MEDIA}:/srv/media
-        - ${ROOT_MARIUSZ}:/srv/mariusz
         - ${ROOT_APPDATA}/filebrowser/filebrowser.db:/database/filebrowser.db
         - ${ROOT_APPDATA}/filebrowser/settings.json:/config/settings.json
+        - ${ROOT_DATA_HDD}:/hdd
+        - ${ROOT_DATA_SSD}:/ssd
     environment:
         - PUID=${PUID}
         - PGID=${PGID}
@@ -457,13 +446,13 @@ services:
       - PGID=${PGID}
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - ${ROOT_MEDIA}/porn:/data
       - ${ROOT_APPDATA}/stash/metadata:/metadata
+      - ${ROOT_APPDATA}/stash/config:/config
+      - ${ROOT_APPDATA}/stash//pip-install:/pip-install
       - ${ROOT_SSD}/stash/cache:/cache
       - ${ROOT_SSD}/stash/blobs:/blobs
       - ${ROOT_SSD}/stash/generated:/generated
-      - ${ROOT_APPDATA}/stash/config:/config
-      - ${ROOT_APPDATA}/stash//pip-install:/pip-install
+      - ${ROOT_DATA_HDD}:/hdd
     runtime: nvidia
     deploy:
       resources:
