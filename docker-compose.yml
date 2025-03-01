@@ -204,7 +204,7 @@ services:
     volumes:
       - ${ROOT_APPDATA}/jellyfin:/config
       - ${ROOT_APPDATA}/jellyfin/config.json:/usr/share/jellyfin/web/config.json
-      - ${ROOT_MEDIA}:/media
+      - ${ROOT_DATA_HDD}:/hdd
     ports:
       - 8097:8096
     networks:
