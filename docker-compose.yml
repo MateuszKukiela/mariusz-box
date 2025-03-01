@@ -549,6 +549,7 @@ services:
 
 
     streamyfin:
+        container_name: streamyfin
         image: fredrikburmester/streamyfin-optimized-versions-server:master
         ports:
             - 3000:3000
