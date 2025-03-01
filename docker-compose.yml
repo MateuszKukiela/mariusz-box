@@ -166,7 +166,8 @@ services:
         reiverr,
         stash,
         coomarr,
-        vaultwarden
+        vaultwarden,
+        streamyfin
       VALIDATION: http
     volumes:
       - ./swag:/config
@@ -551,6 +552,21 @@ services:
       QBITTORRENT_URL: https://qbittorrent.januszex.net
       QBITTORRENT_USERNAME: root
       QBITTORRENT_PASSWORD: ${PASSWORD}
+
+
+  streamyfin:
+    image: fredrikburmester/streamyfin-optimized-versions-server:master
+    ports:
+      - '3000:3000'
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=development
+    restart: always
+    volumes:
+     - ${ROOT_DATA_HDD}/media/cache:/usr/src/app/cache
+    networks:
+      - mariusz-network
 
 
 networks:
