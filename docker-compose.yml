@@ -41,7 +41,6 @@ services:
         volumes:
             - ${ROOT_APPDATA}/qbittorrent:/config
             - ${ROOT_DATA_HDD}:/hdd
-            - ${ROOT_NEXTCLOUD}/robo/files/hentai:/hentai_comics
             - ${ROOT_DATA_SSD}:/ssd
         restart: unless-stopped
 
@@ -150,7 +149,6 @@ services:
                 jellyfin,
                 jellyseerr,
                 metube,
-                nextcloud,
                 ombi,
                 openwebui,
                 portainer,
@@ -228,7 +226,7 @@ services:
         image: mateuszkukiela/comicstreamer:latest
         volumes:
             - ${ROOT_APPDATA}/comicstreamer:/config
-            - ${ROOT_NEXTCLOUD}/robo/files/hentai:/hentai
+            - ${ROOT_DATA_HDD}:/hdd
         ports:
             - 32500:32500
         networks:
@@ -347,8 +345,8 @@ services:
         volumes:
             - ${ROOT_APPDATA}/filebrowser/filebrowser.db:/database/filebrowser.db
             - ${ROOT_APPDATA}/filebrowser/settings.json:/config/settings.json
-            - ${ROOT_DATA_HDD}:/hdd
-            - ${ROOT_DATA_SSD}:/ssd
+            - ${ROOT_DATA_HDD}:/srv/hdd
+            - ${ROOT_DATA_SSD}:/srv/ssd
         environment:
             - PUID=${PUID}
             - PGID=${PGID}
@@ -394,24 +392,6 @@ services:
         network_mode: service:nordvpn
         restart: unless-stopped
 
-#  whisperasr:
-#    container_name: whisperasr
-#    image: onerahmet/openai-whisper-asr-webservice:latest-gpu
-#    environment:
-#      - ASR_MODEL=small
-#      - ASR_ENGINE=faster_whisper
-#    ports:
-#      - 9000:9000
-#    deploy:
-#      resources:
-#        reservations:
-#          devices:
-#            - driver: nvidia
-#              count: 1
-#              capabilities: [ gpu ]
-#    restart: no
-#    networks:
-#      - mariusz-network
 
     reiverr:
         image: ghcr.io/aleksilassila/reiverr:latest
