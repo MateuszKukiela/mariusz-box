@@ -35,7 +35,7 @@ services:
             - 8082:8082
             - 6881:6881/tcp # QbitTorrent
             - 6881:6881/udp # QbitTorrent
-        container_name: QbitTorrent-Nord
+        container_name: qbittorrent
         depends_on:
             - nordvpn
             - swag
