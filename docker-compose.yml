@@ -7,9 +7,6 @@ services:
             - NET_ADMIN
         ports:
             - 8082:8082 # QbitTorrent UI
-            - 9091:9091 # Transmission
-            - 51413:51413 # Transmision
-            - 51413:51413/udp # Transmision
             - 6881:6881/tcp # QbitTorrent
             - 6881:6881/udp # QbitTorrent
 #      - "8085:8081" #metube
