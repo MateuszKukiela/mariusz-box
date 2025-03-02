@@ -17,10 +17,10 @@ services:
             - 11434:11434 # Ollama
         environment:
             - VPN_SERVICE_PROVIDER=nordvpn
-            - OPENVPN_USER=${NORD_U}
-            - OPENVPN_PASSWORD=${NORD_P}
-            - SERVER_REGIONS=Poland
-            - VPN_TYPE=openvpn
+            - SERVER_COUNTRIES=Poland
+            - SERVER_CATEGORIES=P2P
+            - VPN_TYPE=wireguard
+            - WIREGUARD_PRIVATE_KEY=${WIREGUARD_PRIVATE_KEY}
             - FIREWALL_OUTBOUND_SUBNETS=192.168.8.0/24
         networks:
             - mariusz-network
