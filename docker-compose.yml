@@ -10,8 +10,8 @@ services:
             - 9091:9091 # Transmission
             - 51413:51413 # Transmision
             - 51413:51413/udp # Transmision
-            - 6881:6881/tcp # QbitTorrent
-            - 6881:6881/udp # QbitTorrent
+#            - 6881:6881/tcp # QbitTorrent
+#            - 6881:6881/udp # QbitTorrent
 #      - "8085:8081" #metube
             - 8080:8080 # OpenWebUI
             - 11434:11434 # Ollama
@@ -33,6 +33,8 @@ services:
             - mariusz-network
         ports:
             - 8082:8082
+            - 6881:6881/tcp # QbitTorrent
+            - 6881:6881/udp # QbitTorrent
         container_name: QbitTorrent-Nord
         depends_on:
             - nordvpn
