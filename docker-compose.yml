@@ -554,12 +554,14 @@ services:
         environment:
             - PUID=${PUID}
             - PGID=${PGID}
+            - NVIDIA_VISIBLE_DEVICES=nvidia.com/gpu=all
         volumes:
             - ${ROOT_APPDATA}/unmanic:/config
             - ${ROOT_DATA_HDD}:/library
             - ${ROOT_SSD}/unmanic:/tmp/unmanic
         networks:
             - mariusz-network
+        runtime: nvidia
 
 
 networks:
