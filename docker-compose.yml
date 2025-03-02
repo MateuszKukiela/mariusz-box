@@ -558,6 +558,8 @@ services:
             - ${ROOT_APPDATA}/unmanic:/config
             - ${ROOT_DATA_HDD}:/library
             - ${ROOT_SSD}/unmanic:/tmp/unmanic
+        networks:
+            - mariusz-network
 
 
 networks:
