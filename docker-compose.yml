@@ -555,7 +555,7 @@ services:
             - PUID=<PUID>
             - PGID=<PGID>
         volumes:
-            - <${ROOT_APPDATA}/unmanic:/config
+            - ${ROOT_APPDATA}/unmanic:/config
             - ${ROOT_DATA_HDD}:/library
             - ${ROOT_SSD}/unmanic:/tmp/unmanic
 
