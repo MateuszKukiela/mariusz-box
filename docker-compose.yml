@@ -163,6 +163,7 @@ services:
                 streamyfin
                 transmission,
                 truenas,
+                unmanic,
                 vaultwarden,
                 vue,
                 whisparr,
@@ -544,6 +545,19 @@ services:
         networks:
             - mariusz-network
 
+
+    unmanic:
+        container_name: unmanic
+        image: josh5/unmanic:latest
+        ports:
+            - 8888:8888
+        environment:
+            - PUID=<PUID>
+            - PGID=<PGID>
+        volumes:
+            - <${ROOT_APPDATA}/unmanic:/config
+            - ${ROOT_DATA_HDD}:/library
+            - ${ROOT_SSD}/unmanic:/tmp/unmanic
 
 
 networks:
