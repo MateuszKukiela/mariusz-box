@@ -552,8 +552,8 @@ services:
         ports:
             - 8888:8888
         environment:
-            - PUID=<PUID>
-            - PGID=<PGID>
+            - PUID=${PUID}
+            - PGID=${PGID}
         volumes:
             - ${ROOT_APPDATA}/unmanic:/config
             - ${ROOT_DATA_HDD}:/library
