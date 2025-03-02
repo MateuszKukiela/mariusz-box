@@ -9,6 +9,8 @@ services:
             - 8082:8082 # QbitTorrent UI
             - 6881:6881/tcp # QbitTorrent
             - 6881:6881/udp # QbitTorrent
+            - 51420:51420 # QbitTorrent
+            - 51420:51420/udp # QbitTorrent
 #      - "8085:8081" #metube
             - 8080:8080 # OpenWebUI
             - 11434:11434 # Ollama
