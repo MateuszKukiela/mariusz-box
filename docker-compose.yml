@@ -554,7 +554,7 @@ services:
         environment:
             - PUID=${PUID}
             - PGID=${PGID}
-            - NVIDIA_VISIBLE_DEVICES=nvidia.com/gpu=all
+            - NVIDIA_VISIBLE_DEVICES=nvidia.com/gpu=0
         volumes:
             - ${ROOT_APPDATA}/unmanic:/config
             - ${ROOT_DATA_HDD}:/library
