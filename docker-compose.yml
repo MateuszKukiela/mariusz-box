@@ -6,7 +6,7 @@ services:
         cap_add:
             - NET_ADMIN
         ports:
-            - 8082:8082 # QbitTorrent UI
+#            - 8082:8082 # QbitTorrent UI
             - 9091:9091 # Transmission
             - 51413:51413 # Transmision
             - 51413:51413/udp # Transmision
@@ -28,7 +28,11 @@ services:
 
     qbittorrent:
         image: lscr.io/linuxserver/qbittorrent:latest
-        network_mode: service:nordvpn
+#        network_mode: service:nordvpn
+        networks:
+            - mariusz-network
+        ports:
+            - 8082:8082
         container_name: QbitTorrent-Nord
         depends_on:
             - nordvpn
