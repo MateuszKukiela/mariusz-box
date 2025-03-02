@@ -10,16 +10,17 @@ services:
             - 9091:9091 # Transmission
             - 51413:51413 # Transmision
             - 51413:51413/udp # Transmision
-            - 51420:51420 # QbitTorrent
-            - 51420:51420/udp # QbitTorrent
+            - 6881:6881/tcp # QbitTorrent
+            - 6881:6881/udp # QbitTorrent
 #      - "8085:8081" #metube
             - 8080:8080 # OpenWebUI
             - 11434:11434 # Ollama
         environment:
             - VPN_SERVICE_PROVIDER=nordvpn
-            - SERVER_COUNTRIES=Netherlands
-            - SERVER_CATEGORIES=P2P
-            - VPN_TYPE=wireguard
+#            - SERVER_COUNTRIES=Netherlands
+#            - SERVER_CATEGORIES=P2P
+#            - VPN_TYPE=wireguard
+            - SERVER_HOSTNAMES=de1080.nordvpn.com
             - WIREGUARD_PRIVATE_KEY=${WIREGUARD_PRIVATE_KEY}
             - FIREWALL_OUTBOUND_SUBNETS=192.168.8.0/24
         networks:
