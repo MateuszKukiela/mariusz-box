@@ -554,7 +554,7 @@ services:
         environment:
             - PUID=${PUID}
             - PGID=${PGID}
-            - NVIDIA_VISIBLE_DEVICES=nvidia.com/gpu=0
+            - NVIDIA_VISIBLE_DEVICES=nvidia.com/gpu=all
         volumes:
             - ${ROOT_APPDATA}/unmanic:/config
             - ${ROOT_DATA_HDD}:/library
@@ -562,6 +562,13 @@ services:
         networks:
             - mariusz-network
         runtime: nvidia
+        deploy:
+            resources:
+                reservations:
+                    devices:
+                        - driver: nvidia
+                          count: 1
+                          capabilities: [gpu]
 
 
 networks:
