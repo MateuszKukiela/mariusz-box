@@ -17,7 +17,7 @@ services:
             - 11434:11434 # Ollama
         environment:
             - VPN_SERVICE_PROVIDER=nordvpn
-            - SERVER_COUNTRIES=Poland
+            - SERVER_COUNTRIES=Netherlands
             - SERVER_CATEGORIES=P2P
             - VPN_TYPE=wireguard
             - WIREGUARD_PRIVATE_KEY=${WIREGUARD_PRIVATE_KEY}
