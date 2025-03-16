@@ -581,7 +581,7 @@ services:
             - 2283:2283
         depends_on:
             - immich_redis
-            - immich_database
+            - immich_postgres
         restart: always
         healthcheck:
             disable: false
