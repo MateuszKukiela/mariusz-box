@@ -580,8 +580,8 @@ services:
         ports:
             - 2283:2283
         depends_on:
-            - redis
-            - database
+            - immich_redis
+            - immich_database
         restart: always
         healthcheck:
             disable: false
