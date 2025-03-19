@@ -168,6 +168,7 @@ services:
                 www,
                 xbvr,
                 photos,
+                profilarr,
             VALIDATION: http
         volumes:
             - ./swag:/config
@@ -658,6 +659,18 @@ services:
         networks:
             - mariusz-network
 
+    profilarr:
+        image: santiagosayshey/profilarr:latest
+        container_name: profilarr
+        ports:
+            - 6868:6868
+        volumes:
+            - ${ROOT_APPDATA}/profilarr:/config
+        environment:
+            - TZ=${TZ}
+        networks:
+            - mariusz-network
+        restart: unless-stopped
 
 networks:
     mariusz-network:
