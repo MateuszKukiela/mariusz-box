@@ -169,6 +169,7 @@ services:
                 xbvr,
                 photos,
                 profilarr,
+                paperless,
             VALIDATION: http
         volumes:
             - ./swag:/config
@@ -672,6 +673,19 @@ services:
             - mariusz-network
         restart: unless-stopped
 
+    paperless:
+        image: lscr.io/linuxserver/paperless-ngx:latest
+        container_name: paperless-ngx
+        environment:
+            - PUID=${PUID}
+            - PGID=${PGID}
+            - TZ=${TZ}
+        volumes:
+            - ${ROOT_APPDATA}/paperless/config:/config
+            - ${ROOT_APPDATA}/paperless/data:/data
+        ports:
+            - 8000:8000
+        restart: unless-stopped
 networks:
     mariusz-network:
 
