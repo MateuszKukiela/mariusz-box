@@ -708,11 +708,11 @@ services:
         environment:
             USERMAP_UID: ${PUID}
             USERMAP_GID: ${PGID}
-            PAPERLESS_OCR_LANGUAGES: pl
+            PAPERLESS_OCR_LANGUAGES: pol
             PAPERLESS_URL: https://paperless.januszex.net
             PAPERLESS_SECRET_KEY: ${REIVERR_SECRET}
             PAPERLESS_TIME_ZONE: ${TZ}
-            PAPERLESS_OCR_LANGUAGE: pl
+            PAPERLESS_OCR_LANGUAGE: pol
             PAPERLESS_REDIS: redis://broker:6379
             PAPERLESS_DBHOST: db
             PAPERLESS_TIKA_ENABLED: 1
