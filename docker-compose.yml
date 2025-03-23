@@ -170,6 +170,7 @@ services:
                 photos,
                 profilarr,
                 paperless,
+                kopia,
             VALIDATION: http
         volumes:
             - ./swag:/config
@@ -739,6 +740,40 @@ services:
 
     tika:
         image: ghcr.io/paperless-ngx/tika:latest
+        networks:
+            - mariusz-network
+        restart: unless-stopped
+
+    kopia:
+        image: kopia/kopia:latest
+        hostname: kopia
+        domainname: januszex.net
+        container_name: kopia
+        ports:
+            - 51515:51515
+        command:
+            - server
+            - start
+            - --disable-csrf-token-checks
+            - --insecure
+            - --address=0.0.0.0:51515
+            - --server-username=root
+            - --server-password=${PASSWORD}
+        environment:
+            KOPIA_PASSWORD: ${PASSWORD}
+            USER: root
+        volumes:
+            # Mount local folders needed by kopia
+            - ${ROOT_APPDATA}/kopia/config:/app/config
+            - ${ROOT_APPDATA}/kopia/cache:/app/cache
+            - ${ROOT_APPDATA}/kopia/logs:/app/logs
+            # Mount local folders to snapshot
+            - ${ROOT_DATA_HDD}:/data/HDD:ro
+            - ${ROOT_DATA_SSD}:/data/SSD:ro
+            # Mount repository location
+            - ${ROOT_DATA_HDD}/backups/kopia/repository:/repository
+            # Mount path for browsing mounted snaphots
+            - ${ROOT_DATA_HDD}/backups/kopia/tmp:/tmp:shared
         networks:
             - mariusz-network
         restart: unless-stopped
