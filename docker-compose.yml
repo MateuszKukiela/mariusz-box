@@ -722,6 +722,7 @@ services:
             PAPERLESS_TIKA_ENABLED: 1
             PAPERLESS_TIKA_GOTENBERG_ENDPOINT: http://gotenberg:3000
             PAPERLESS_TIKA_ENDPOINT: http://tika:9998
+            PAPERLESS_FILENAME_FORMAT: '{owner_username}/{correspondent}/{created year}/{created} {title} ({correspondent}'
         networks:
             - mariusz-network
         restart: unless-stopped
