@@ -689,7 +689,8 @@ services:
             POSTGRES_USER: paperless
             POSTGRES_PASSWORD: paperless
 
-    webserver:
+    paperless:
+        container_name: paperless
         image: ghcr.io/paperless-ngx/paperless-ngx:latest
         restart: unless-stopped
         depends_on:
@@ -700,10 +701,10 @@ services:
         ports:
             - 8000:8000
         volumes:
-            - data:/usr/src/paperless/data
-            - media:/usr/src/paperless/media
-            - ./export:/usr/src/paperless/export
-            - ./consume:/usr/src/paperless/consume
+            - ${ROOT_APPDATA}/paperless/data:/usr/src/paperless/data
+            - ${ROOT_MEDIA}/paperless/media:/usr/src/paperless/media
+            - ${ROOT_MEDIA}/paperless/export:/usr/src/paperless/export
+            - ${ROOT_MEDIA}/paperless/consume:/usr/src/paperless/consume
         environment:
             USERMAP_UID: ${PUID}
             USERMAP_GID: ${PGID}
