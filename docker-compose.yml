@@ -312,7 +312,7 @@ services:
         restart: unless-stopped
 
     duplicati:
-        image: duplicati/duplicati:latest
+        image: lscr.io/linuxserver/duplicati:latest
         container_name: duplicati
         environment:
             - PUID=${PUID}
