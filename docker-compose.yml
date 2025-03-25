@@ -774,6 +774,8 @@ services:
             - ${ROOT_DATA_HDD}/backups/kopia/repository:/repository
             # Mount path for browsing mounted snaphots
             - ${ROOT_DATA_HDD}/backups/kopia/tmp:/tmp:shared
+            # Mount restore location
+            - ${ROOT_DATA_HDD}/backups/kopia/restore:/restore
         networks:
             - mariusz-network
         restart: unless-stopped
