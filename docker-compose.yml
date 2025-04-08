@@ -798,6 +798,14 @@ services:
           start_period: 300s
           timeout: 2s
 
+    upsnap:
+        container_name: upsnap
+        image: ghcr.io/seriousm4x/upsnap:5 # images are also available on docker hub: seriousm4x/upsnap:5
+        network_mode: host
+        restart: unless-stopped
+        volumes:
+          - {ROOT_APPDATA}/upsnap:/app/pb_data
+
 networks:
     mariusz-network:
 
