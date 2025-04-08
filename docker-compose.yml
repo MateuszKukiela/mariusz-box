@@ -785,18 +785,18 @@ services:
         restart: always
         network_mode: host
         volumes:
-          - ${ROOT_APPDATA}/homebridge:/homebridge
+            - ${ROOT_APPDATA}/homebridge:/homebridge
         logging:
-          driver: json-file
-          options:
-            max-size: '10m'
-            max-file: '1'
+            driver: json-file
+            options:
+                max-size: 10m
+                max-file: '1'
         healthcheck:
-          test: curl --fail localhost:8581 || exit 1
-          interval: 60s
-          retries: 5
-          start_period: 300s
-          timeout: 2s
+            test: curl --fail localhost:8581 || exit 1
+            interval: 60s
+            retries: 5
+            start_period: 300s
+            timeout: 2s
 
     upsnap:
         container_name: upsnap
@@ -810,9 +810,8 @@ services:
             - UPSNAP_SCAN_TIMEOUT=500ms # Scan timeout is nmap's --host-timeout value to wait for devices (https://nmap.org/book/man-performance.html)
             - UPSNAP_PING_PRIVILEGED=true # Set to false if you don't have root user permissions
         volumes:
-          - {ROOT_APPDATA}/upsnap:/app/pb_data
-        dns:
-            - 192.18.8.1
+            - ${ROOT_APPDATA}/upsnap:/app/pb_data
+        dns: 192.168.8.1
         healthcheck:
             test: curl -fs "http://localhost:5000/api/health" || exit 1
             interval: 10s
