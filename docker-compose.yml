@@ -146,10 +146,14 @@ services:
                 files,
                 jellyfin,
                 jellyseerr,
+                kopia,
                 metube,
                 ombi,
                 openwebui,
+                paperless,
+                photos,
                 portainer,
+                profilarr,
                 prowlarr,
                 qbittorrent,
                 radarr,
@@ -159,18 +163,12 @@ services:
                 sonarr,
                 stash,
                 streamyfin
-                transmission,
                 truenas,
-                unmanic,
                 vaultwarden,
                 vue,
                 whisparr,
                 www,
                 xbvr,
-                photos,
-                profilarr,
-                paperless,
-                kopia,
             VALIDATION: http
         volumes:
             - ./swag:/config
@@ -546,31 +544,6 @@ services:
             - ${ROOT_DATA_HDD}/media/cache:/usr/src/app/cache
         networks:
             - mariusz-network
-
-
-    unmanic:
-        container_name: unmanic
-        image: josh5/unmanic:latest
-        ports:
-            - 8888:8888
-        environment:
-            - PUID=${PUID}
-            - PGID=${PGID}
-            - NVIDIA_VISIBLE_DEVICES=nvidia.com/gpu=all
-        volumes:
-            - ${ROOT_APPDATA}/unmanic:/config
-            - ${ROOT_DATA_HDD}:/library
-            - ${ROOT_SSD}/unmanic:/tmp/unmanic
-        networks:
-            - mariusz-network
-        runtime: nvidia
-        deploy:
-            resources:
-                reservations:
-                    devices:
-                        - driver: nvidia
-                          count: 1
-                          capabilities: [gpu]
 
     immich-server:
         container_name: immich_server
