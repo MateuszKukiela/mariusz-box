@@ -135,41 +135,9 @@ services:
             PGID: ${PGID}
             TZ: ${TZ}
             URL: januszex.net
-            SUBDOMAINS: >
-                accounts,
-                bazarr,
-                chat,
-                comicstreamer,
-                coomarr,
-                czat,
-                duplicati,
-                files,
-                jellyfin,
-                jellyseerr,
-                kopia,
-                metube,
-                ombi,
-                openwebui,
-                paperless,
-                photos,
-                portainer,
-                profilarr,
-                prowlarr,
-                qbittorrent,
-                radarr,
-                reiverr,
-                requests,
-                sabnzbd,
-                sonarr,
-                stash,
-                streamyfin
-                truenas,
-                vaultwarden,
-                vue,
-                whisparr,
-                www,
-                xbvr,
-            VALIDATION: http
+            SUBDOMAINS: wildcard
+            DNSPLUGIN: cloudflare
+            VALIDATION: dns
         volumes:
             - ./swag:/config
         ports:
