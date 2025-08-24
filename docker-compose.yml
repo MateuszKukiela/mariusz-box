@@ -757,6 +757,20 @@ services:
             test: curl -fs "http://localhost:5000/api/health" || exit 1
             interval: 10s
 
+    debilarr:
+        container_name: debilarr
+        image: mateuszkukiela/debilarr:latest
+        restart: unless-stopped
+        environment:
+            JELLYFIN_URL: https://jellyfin.januszex.net
+            JELLYFIN_API_KEY: ${JELLYFIN_API_KEY}
+            SAB_URL: https://sabnzbd.januszex.net
+            SAB_API_KEY: ${SAB_API_KEY}
+            INTERVAL: '30'
+            RESUME_COOLDOWN: '60'
+            INCLUDE_PAUSED: 'false'
+            LOG_LEVEL: INFO
+
 networks:
     mariusz-network:
 
