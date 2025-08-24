@@ -770,6 +770,9 @@ services:
             RESUME_COOLDOWN: '60'
             INCLUDE_PAUSED: 'false'
             LOG_LEVEL: INFO
+        depends_on:
+            - jellyfin
+            - sabnzbd
 
 networks:
     mariusz-network:
