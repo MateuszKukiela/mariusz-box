@@ -113,6 +113,7 @@ services:
 
     jellyseerr:
         image: ghcr.io/seerr-team/seerr:latest
+        init: true
         container_name: jellyseerr
         environment:
             - LOG_LEVEL=debug
