@@ -1,95 +1,12 @@
 ---
 services:
-    nordvpn:
-        container_name: gluetun
-        image: qmcgaw/gluetun
-        cap_add:
-            - NET_ADMIN
-        ports:
-            - 8082:8082 # QbitTorrent UI
-            - 6881:6881/tcp # QbitTorrent
-            - 6881:6881/udp # QbitTorrent
-            - 51420:51420 # QbitTorrent
-            - 51420:51420/udp # QbitTorrent
-            - 8080:8080 # OpenWebUI
-            - 11434:11434 # Ollama
+    authelia:
+        image: authelia/authelia:4.21.0
+        container_name: authelia
         environment:
-            - VPN_SERVICE_PROVIDER=nordvpn
-            - SERVER_COUNTRIES=Netherlands
-            - SERVER_CATEGORIES=P2P
-            - VPN_TYPE=wireguard
-            - WIREGUARD_PRIVATE_KEY=${WIREGUARD_PRIVATE_KEY}
-            - FIREWALL_OUTBOUND_SUBNETS=192.168.8.0/24
-        networks:
-            - mariusz-network
-        restart: unless-stopped
-
-    qbittorrent:
-        image: lscr.io/linuxserver/qbittorrent:latest
-        network_mode: service:nordvpn
-        container_name: qbittorrent
-        depends_on:
-            - nordvpn
-            - swag
-        environment:
-            - WEBUI_PORT=8082
-            - PUID=${PUID}
-            - PGID=${PGID}
             - TZ=${TZ}
         volumes:
-            - ${ROOT_APPDATA}/qbittorrent:/config
-            - ${ROOT_DATA_HDD}:/hdd
-            - ${ROOT_DATA_SSD}:/ssd
-        restart: unless-stopped
-
-    metube:
-        image: ghcr.io/alexta69/metube
-        container_name: metube
-        restart: unless-stopped
-        environment:
-            - PUID=${PUID}
-            - PGID=${PGID}
-            - TZ=${TZ}
-        volumes:
-            - ${ROOT_APPDATA}/metube:/config
-            - ${ROOT_DATA_HDD}:/hdd
-            - /etc/localtime:/etc/localtime:ro
-        ports:
-            - 8085:8081
-        networks:
-            - mariusz-network
-        depends_on:
-            - swag
-
-    sonarr:
-        image: ghcr.io/linuxserver/sonarr
-        container_name: sonarr
-        environment:
-            - PUID=${PUID}
-            - PGID=${PGID}
-            - TZ=${TZ}
-            - UMASK_SET=022
-        volumes:
-            - ${ROOT_APPDATA}/sonarr:/config
-            - ${ROOT_DATA_HDD}:/hdd
-        ports:
-            - 8989:8989
-        networks:
-            - mariusz-network
-        restart: unless-stopped
-
-    radarr:
-        image: ghcr.io/linuxserver/radarr:latest
-        container_name: radarr
-        environment:
-            - PUID=${PUID}
-            - PGID=${PGID}
-            - TZ=${TZ}
-        volumes:
-            - ${ROOT_APPDATA}/radarr:/config
-            - ${ROOT_DATA_HDD}:/hdd
-        ports:
-            - 7878:7878
+            - ${ROOT_APPDATA}/authelia:/config
         networks:
             - mariusz-network
         restart: unless-stopped
@@ -111,90 +28,12 @@ services:
             - mariusz-network
         restart: unless-stopped
 
-    jellyseerr:
-        image: ghcr.io/seerr-team/seerr:latest
-        init: true
-        container_name: jellyseerr
-        environment:
-            - LOG_LEVEL=debug
-            - TZ=${TZ}
-        ports:
-            - 5055:5055
+    broker:
+        image: docker.io/library/redis:7
         volumes:
-            - ${ROOT_APPDATA}/jellyseerr:/app/config
+            - redisdata:/data
         networks:
             - mariusz-network
-        healthcheck:
-            test: wget --no-verbose --tries=1 --spider http://localhost:5055/api/v1/status || exit 1
-            start_period: 20s
-            timeout: 3s
-            interval: 15s
-            retries: 3
-        restart: unless-stopped
-
-    swag:
-        image: lscr.io/linuxserver/swag
-        container_name: swag
-        cap_add:
-            - NET_ADMIN
-        environment:
-            PUID: ${PUID}
-            PGID: ${PGID}
-            TZ: ${TZ}
-            URL: januszex.net
-            SUBDOMAINS: wildcard
-            DNSPLUGIN: cloudflare
-            VALIDATION: dns
-        volumes:
-            - ./swag:/config
-        ports:
-            - 443:443
-            - 80:80
-        networks:
-            - mariusz-network
-        restart: unless-stopped
-
-    docker-host:
-        image: qoomon/docker-host
-        container_name: docker-host
-        environment:
-            - DOCKER_HOST=${DOCKER_HOST}
-        cap_add:
-            - NET_ADMIN
-            - NET_RAW
-        networks:
-            - mariusz-network
-        restart: unless-stopped
-
-    jellyfin:
-        image: lscr.io/linuxserver/jellyfin:latest
-        container_name: jellyfin
-        environment:
-            - PUID=${PUID}
-            - PGID=${PGID}
-            - TZ=${TZ}
-            - UMASK_SET=022
-            - NVIDIA_DRIVER_CAPABILITIES=compute,video,utility
-            - NVIDIA_VISIBLE_DEVICES=all
-            - FFMPEG_ANALYZEDURATION=400M
-            - FFMPEG_PROBESIZE=2G
-        volumes:
-            - ${ROOT_APPDATA}/jellyfin:/config
-            - ${ROOT_APPDATA}/jellyfin/config.json:/usr/share/jellyfin/web/config.json
-            - ${ROOT_DATA_HDD}:/hdd
-        ports:
-            - 8097:8096
-        networks:
-            - mariusz-network
-        devices:
-            - /dev/dri:/dev/dri
-        deploy:
-            resources:
-                reservations:
-                    devices:
-                        - driver: nvidia
-                          count: 1
-                          capabilities: [video]
         restart: unless-stopped
 
     comicstreamer:
@@ -209,223 +48,6 @@ services:
             - mariusz-network
         restart: unless-stopped
 
-    prowlarr:
-        image: ghcr.io/linuxserver/prowlarr:develop
-        container_name: prowlarr
-        environment:
-            - PUID=${PUID}
-            - PGID=${PGID}
-            - TZ=${TZ}
-        volumes:
-            - ${ROOT_APPDATA}/prowlarr:/config
-        ports:
-            - 9696:9696
-        networks:
-            - mariusz-network
-        restart: unless-stopped
-
-    sabnzbd:
-        image: lscr.io/linuxserver/sabnzbd:latest
-        container_name: sabnzbd
-        environment:
-            - PUID=${PUID}
-            - PGID=${PGID}
-            - TZ=${TZ}
-        volumes:
-            - ${ROOT_APPDATA}/sabnzbd:/config
-            - ${ROOT_DATA_HDD}:/hdd
-            - ${ROOT_DATA_SSD}:/ssd
-        ports:
-            - 8089:8080
-        networks:
-            - mariusz-network
-        restart: unless-stopped
-
-    authelia:
-        image: authelia/authelia:4.21.0
-        container_name: authelia
-        environment:
-            - TZ=${TZ}
-        volumes:
-            - ${ROOT_APPDATA}/authelia:/config
-        networks:
-            - mariusz-network
-        restart: unless-stopped
-
-    jfa:
-        container_name: jfa
-        ports:
-            - 8056:8056
-        volumes:
-            - ${ROOT_APPDATA}/jfa-go:/data
-            - ${ROOT_APPDATA}/jellyfin:/jf
-            - /etc/localtime:/etc/localtime:ro
-        image: hrfee/jfa-go
-        restart: unless-stopped
-        networks:
-            - mariusz-network
-
-    watchtower:
-        container_name: watchtower
-        image: containrrr/watchtower
-        environment:
-            - WATCHTOWER_CLEANUP=true
-        volumes:
-            - /var/run/docker.sock:/var/run/docker.sock
-        restart: unless-stopped
-
-    portainer:
-        container_name: portainer
-        image: portainer/portainer-ce:latest
-        ports:
-            - 9443:9443
-        volumes:
-            - ${ROOT_APPDATA}/portainer:/data
-            - /var/run/docker.sock:/var/run/docker.sock
-        networks:
-            - mariusz-network
-        restart: unless-stopped
-
-    duplicati:
-        image: lscr.io/linuxserver/duplicati:latest
-        container_name: duplicati
-        environment:
-            - PUID=${PUID}
-            - PGID=${PGID}
-            - TZ=${TZ}
-        volumes:
-            - ${ROOT_APPDATA}/duplicati/config:/config
-            - ${ROOT_BACKUPS}:/backups
-            - ${ROOT_MARIUSZ}:/source
-        ports:
-            - 8200:8200
-        networks:
-            - mariusz-network
-        restart: unless-stopped
-
-    jf-vue:
-        image: jellyfin/jellyfin-vue:unstable
-        container_name: jellyfin-vue-client
-        stdin_open: true
-        tty: true
-        ports:
-            - 3831:80
-        restart: unless-stopped
-        environment:
-            - DEFAULT_SERVERS=https://jellyfin.januszex.net
-        networks:
-            - mariusz-network
-
-    filebrowser:
-        container_name: filebrowser
-        volumes:
-            - ${ROOT_APPDATA}/filebrowser/filebrowser.db:/database/filebrowser.db
-            - ${ROOT_APPDATA}/filebrowser/settings.json:/config/settings.json
-            - ${ROOT_DATA_HDD}:/srv/hdd
-            - ${ROOT_DATA_SSD}:/srv/ssd
-        environment:
-            - PUID=${PUID}
-            - PGID=${PGID}
-            - TZ=${TZ}
-        ports:
-            - 8250:80
-        image: filebrowser/filebrowser:s6
-        networks:
-            - mariusz-network
-        restart: unless-stopped
-
-    openwebui:
-        devices:
-            - /dev/dri:/dev/dri
-        environment:
-            - OLLAMA_BASE_URL=http://127.0.0.1:11434
-        deploy:
-            resources:
-                reservations:
-                    devices:
-                        - driver: nvidia
-                          count: 1
-                          capabilities: [gpu]
-        volumes:
-            - ${ROOT_APPDATA}/openwebui:/app/backend/data
-        container_name: openwebui
-        restart: always
-        image: ghcr.io/open-webui/open-webui:cuda
-        network_mode: service:nordvpn
-
-    ollama:
-        volumes:
-            - ${ROOT_SSD}/ollama:/root/.ollama
-        container_name: ollama
-        image: ollama/ollama
-        deploy:
-            resources:
-                reservations:
-                    devices:
-                        - driver: nvidia
-                          count: 1
-                          capabilities: [gpu]
-        network_mode: service:nordvpn
-        restart: unless-stopped
-
-
-    reiverr:
-        image: ghcr.io/aleksilassila/reiverr:latest
-        container_name: reiverr
-        ports:
-            - 9494:9494
-        environment:
-            - SECRET=${REIVERR_SECRET}
-            - ADMIN_USERNAME=root
-            - ADMIN_PASSWORD=${PASSWORD}
-        volumes:
-            - ${ROOT_APPDATA}/reiverr:/config
-        restart: unless-stopped
-        networks:
-            - mariusz-network
-
-    stash:
-        image: ghcr.io/feederbox826/stash-s6:hwaccel
-        container_name: stash
-        restart: unless-stopped
-        ports:
-            - 9999:9999
-        logging:
-            driver: json-file
-            options:
-                max-file: '10'
-                max-size: 2m
-        environment:
-            - STASH_STASH=/data/
-            - STASH_GENERATED=/generated/
-            - STASH_METADATA=/metadata/
-            - STASH_CACHE=/cache/
-            - STASH_PORT=9999
-            - PUID=${PUID}
-            - PGID=${PGID}
-        volumes:
-            - /etc/localtime:/etc/localtime:ro
-            - ${ROOT_APPDATA}/stash/metadata:/metadata
-            - ${ROOT_APPDATA}/stash/config:/config
-            - ${ROOT_APPDATA}/stash//pip-install:/pip-install
-            - ${ROOT_SSD}/stash/cache:/cache
-            - ${ROOT_SSD}/stash/blobs:/blobs
-            - ${ROOT_SSD}/stash/generated:/generated
-            - ${ROOT_DATA_HDD}:/hdd
-        runtime: nvidia
-        deploy:
-            resources:
-                reservations:
-                    devices:
-                        - driver: nvidia
-                          count: 1
-                          capabilities: [gpu]
-        command: >
-            /bin/bash -c "pip install --user --break-system-packages emojis requests lxml stashapp-tools &&
-                          exec /bin/bash /opt/entrypoint.sh"
-        networks:
-            - mariusz-network
-
     coomarr:
         image: mateuszkukiela/coomarr
         container_name: coomarr
@@ -439,143 +61,9 @@ services:
             - ${ROOT_APPDATA}/coomarr:/config
             - ${ROOT_MEDIA}/porn/coomarr:/downloads
             - /etc/localtime:/etc/localtime:ro
+        networks:
+            - mariusz-network
         restart: unless-stopped
-        networks:
-            - mariusz-network
-
-
-    vaultwarden:
-        image: vaultwarden/server:latest
-        container_name: vaultwarden
-        environment:
-            DOMAIN: https://vaultwarden.januszex.net
-            SIGNUPS_ALLOWED: false
-            ADMIN_TOKEN: ${VAULTWARDEN_ADMIN_TOKEN}
-        volumes:
-            - ${ROOT_APPDATA}/vaultwarden:/data/
-        ports:
-            - 8260:80
-        restart: unless-stopped
-        networks:
-            - mariusz-network
-
-
-    decluttarr:
-        image: ghcr.io/manimatter/decluttarr:latest
-        container_name: decluttarr
-        restart: always
-        networks:
-            - mariusz-network
-        environment:
-            TZ: ${TZ}
-            PUID: ${PUID}
-            PGID: ${PGID}
-            LOG_LEVEL: INFO
-
-      ## Features
-            REMOVE_TIMER: 10
-            REMOVE_FAILED: true
-            REMOVE_FAILED_IMPORTS: true
-            REMOVE_METADATA_MISSING: true
-            REMOVE_MISSING_FILES: true
-            REMOVE_ORPHANS: true
-            REMOVE_SLOW: true
-            REMOVE_STALLED: true
-            REMOVE_UNMONITORED: true
-            RUN_PERIODIC_RESCANS: ' { "SONARR": {"MISSING": true, "CUTOFF_UNMET": true, "MAX_CONCURRENT_SCANS": 3, "MIN_DAYS_BEFORE_RESCAN": 7}, "RADARR":
-                {"MISSING": true, "CUTOFF_UNMET": true, "MAX_CONCURRENT_SCANS": 3, "MIN_DAYS_BEFORE_RESCAN": 7} }'
-
-      # Feature Settings
-            PERMITTED_ATTEMPTS: 3
-            NO_STALLED_REMOVAL_QBIT_TAG: Don't Kill
-            MIN_DOWNLOAD_SPEED: 100
-            FAILED_IMPORT_MESSAGE_PATTERNS: ' [ "Not a Custom Format upgrade for existing", "Not an upgrade for existing" ]'
-
-      ## Radarr
-            RADARR_URL: https://radarr.januszex.net
-            RADARR_KEY: ${RADARR_API_KEY}
-
-      ## Sonarr
-            SONARR_URL: https://sonarr.januszex.net
-            SONARR_KEY: ${SONARR_API_KEY}
-
-      ## qBitorrent
-            QBITTORRENT_URL: https://qbittorrent.januszex.net
-            QBITTORRENT_USERNAME: root
-            QBITTORRENT_PASSWORD: ${PASSWORD}
-
-
-    streamyfin:
-        container_name: streamyfin
-        image: fredrikburmester/streamyfin-optimized-versions-server:master
-        ports:
-            - 3000:3000
-        env_file:
-            - .env
-        environment:
-            - NODE_ENV=development
-        restart: always
-        volumes:
-            - ${ROOT_DATA_HDD}/media/cache:/usr/src/app/cache
-        networks:
-            - mariusz-network
-
-    immich-server:
-        container_name: immich_server
-        image: ghcr.io/immich-app/immich-server:${IMMICH_VERSION:-release}
-        volumes:
-            - ${UPLOAD_LOCATION}:/usr/src/app/upload
-            - /etc/localtime:/etc/localtime:ro
-        env_file:
-            - .env
-        ports:
-            - 2283:2283
-        depends_on:
-            - redis
-            - database
-        restart: always
-        healthcheck:
-            disable: false
-        networks:
-            - mariusz-network
-        runtime: nvidia
-        deploy:
-            resources:
-                reservations:
-                    devices:
-                        - driver: nvidia
-                          count: 1
-                          capabilities: [gpu]
-
-    immich-machine-learning:
-        container_name: immich_machine_learning
-        image: ghcr.io/immich-app/immich-machine-learning:${IMMICH_VERSION:-release}-cuda
-        volumes:
-            - model-cache:/cache
-        env_file:
-            - .env
-        restart: always
-        healthcheck:
-            disable: false
-        networks:
-            - mariusz-network
-        runtime: nvidia
-        deploy:
-            resources:
-                reservations:
-                    devices:
-                        - driver: nvidia
-                          count: 1
-                          capabilities: [gpu]
-
-    redis:
-        container_name: immich_redis
-        image: docker.io/redis:6.2-alpine@sha256:148bb5411c184abd288d9aaed139c98123eeb8824c5d3fce03cf721db58066d8
-        healthcheck:
-            test: redis-cli ping || exit 1
-        restart: always
-        networks:
-            - mariusz-network
 
     database:
         container_name: immich_postgres
@@ -605,30 +93,9 @@ services:
             -c max_wal_size=2GB
             -c shared_buffers=512MB
             -c wal_compression=on
+        networks:
+            - mariusz-network
         restart: always
-        networks:
-            - mariusz-network
-
-    profilarr:
-        image: santiagosayshey/profilarr:latest
-        container_name: profilarr
-        ports:
-            - 6868:6868
-        volumes:
-            - ${ROOT_APPDATA}/profilarr:/config
-        environment:
-            - TZ=${TZ}
-        networks:
-            - mariusz-network
-        restart: unless-stopped
-
-    broker:
-        image: docker.io/library/redis:7
-        volumes:
-            - redisdata:/data
-        networks:
-            - mariusz-network
-        restart: unless-stopped
 
     db:
         image: docker.io/library/postgres:15
@@ -641,6 +108,285 @@ services:
         networks:
             - mariusz-network
         restart: unless-stopped
+
+    debilarr:
+        container_name: debilarr
+        image: mateuszkukiela/debilarr:latest
+        restart: unless-stopped
+        environment:
+            JELLYFIN_URL: https://jellyfin.januszex.net
+            JELLYFIN_API_KEY: ${JELLYFIN_API_KEY}
+            SAB_URL: https://sabnzbd.januszex.net
+            SAB_API_KEY: ${SAB_API_KEY}
+            INTERVAL: '30'
+            RESUME_COOLDOWN: '60'
+            INCLUDE_PAUSED: 'false'
+            LOG_LEVEL: INFO
+        depends_on:
+            - jellyfin
+            - sabnzbd
+
+    decluttarr:
+        image: ghcr.io/manimatter/decluttarr:latest
+        container_name: decluttarr
+        restart: always
+        networks:
+            - mariusz-network
+        environment:
+            TZ: ${TZ}
+            PUID: ${PUID}
+            PGID: ${PGID}
+            LOG_LEVEL: INFO
+            REMOVE_TIMER: 10
+            REMOVE_FAILED: true
+            REMOVE_FAILED_IMPORTS: true
+            REMOVE_METADATA_MISSING: true
+            REMOVE_MISSING_FILES: true
+            REMOVE_ORPHANS: true
+            REMOVE_SLOW: true
+            REMOVE_STALLED: true
+            REMOVE_UNMONITORED: true
+            RUN_PERIODIC_RESCANS: ' { "SONARR": {"MISSING": true, "CUTOFF_UNMET": true, "MAX_CONCURRENT_SCANS": 3, "MIN_DAYS_BEFORE_RESCAN": 7}, "RADARR":
+                {"MISSING": true, "CUTOFF_UNMET": true, "MAX_CONCURRENT_SCANS": 3, "MIN_DAYS_BEFORE_RESCAN": 7} }'
+            PERMITTED_ATTEMPTS: 3
+            NO_STALLED_REMOVAL_QBIT_TAG: Don't Kill
+            MIN_DOWNLOAD_SPEED: 100
+            FAILED_IMPORT_MESSAGE_PATTERNS: ' [ "Not a Custom Format upgrade for existing", "Not an upgrade for existing" ]'
+            RADARR_URL: https://radarr.januszex.net
+            RADARR_KEY: ${RADARR_API_KEY}
+            SONARR_URL: https://sonarr.januszex.net
+            SONARR_KEY: ${SONARR_API_KEY}
+            QBITTORRENT_URL: https://qbittorrent.januszex.net
+            QBITTORRENT_USERNAME: root
+            QBITTORRENT_PASSWORD: ${PASSWORD}
+
+    docker-host:
+        image: qoomon/docker-host
+        container_name: docker-host
+        environment:
+            - DOCKER_HOST=${DOCKER_HOST}
+        cap_add:
+            - NET_ADMIN
+            - NET_RAW
+        networks:
+            - mariusz-network
+        restart: unless-stopped
+
+
+    filebrowser:
+        container_name: filebrowser
+        image: filebrowser/filebrowser:s6
+        environment:
+            - PUID=${PUID}
+            - PGID=${PGID}
+            - TZ=${TZ}
+        volumes:
+            - ${ROOT_APPDATA}/filebrowser/filebrowser.db:/database/filebrowser.db
+            - ${ROOT_APPDATA}/filebrowser/settings.json:/config/settings.json
+            - ${ROOT_DATA_HDD}:/srv/hdd
+            - ${ROOT_DATA_SSD}:/srv/ssd
+        ports:
+            - 8250:80
+        networks:
+            - mariusz-network
+        restart: unless-stopped
+
+    gotenberg:
+        image: docker.io/gotenberg/gotenberg:7.10
+        command:
+            - gotenberg
+            - --chromium-disable-javascript=true
+            - --chromium-allow-list=file:///tmp/.*
+        networks:
+            - mariusz-network
+        restart: unless-stopped
+
+    immich-machine-learning:
+        container_name: immich_machine_learning
+        image: ghcr.io/immich-app/immich-machine-learning:${IMMICH_VERSION:-release}-cuda
+        volumes:
+            - model-cache:/cache
+        env_file:
+            - .env
+        networks:
+            - mariusz-network
+        runtime: nvidia
+        deploy:
+            resources:
+                reservations:
+                    devices:
+                        - driver: nvidia
+                          count: 1
+                          capabilities: [gpu]
+        healthcheck:
+            disable: false
+        restart: always
+
+    immich-server:
+        container_name: immich_server
+        image: ghcr.io/immich-app/immich-server:${IMMICH_VERSION:-release}
+        volumes:
+            - ${UPLOAD_LOCATION}:/usr/src/app/upload
+            - /etc/localtime:/etc/localtime:ro
+        env_file:
+            - .env
+        ports:
+            - 2283:2283
+        depends_on:
+            - redis
+            - database
+        networks:
+            - mariusz-network
+        runtime: nvidia
+        deploy:
+            resources:
+                reservations:
+                    devices:
+                        - driver: nvidia
+                          count: 1
+                          capabilities: [gpu]
+        healthcheck:
+            disable: false
+        restart: always
+
+    jellyfin:
+        image: lscr.io/linuxserver/jellyfin:latest
+        container_name: jellyfin
+        environment:
+            - PUID=${PUID}
+            - PGID=${PGID}
+            - TZ=${TZ}
+            - UMASK_SET=022
+            - NVIDIA_DRIVER_CAPABILITIES=compute,video,utility
+            - NVIDIA_VISIBLE_DEVICES=all
+            - FFMPEG_ANALYZEDURATION=400M
+            - FFMPEG_PROBESIZE=2G
+        volumes:
+            - ${ROOT_APPDATA}/jellyfin:/config
+            - ${ROOT_APPDATA}/jellyfin/config.json:/usr/share/jellyfin/web/config.json
+            - ${ROOT_DATA_HDD}:/hdd
+        ports:
+            - 8097:8096
+        devices:
+            - /dev/dri:/dev/dri
+        deploy:
+            resources:
+                reservations:
+                    devices:
+                        - driver: nvidia
+                          count: 1
+                          capabilities: [video]
+        networks:
+            - mariusz-network
+        restart: unless-stopped
+
+    jellyseerr:
+        image: ghcr.io/seerr-team/seerr:latest
+        init: true
+        container_name: jellyseerr
+        environment:
+            - LOG_LEVEL=debug
+            - TZ=${TZ}
+        ports:
+            - 5055:5055
+        volumes:
+            - ${ROOT_APPDATA}/jellyseerr:/app/config
+        healthcheck:
+            test: wget --no-verbose --tries=1 --spider http://localhost:5055/api/v1/status || exit 1
+            start_period: 20s
+            timeout: 3s
+            interval: 15s
+            retries: 3
+        networks:
+            - mariusz-network
+        restart: unless-stopped
+
+    jfa:
+        container_name: jfa
+        image: hrfee/jfa-go
+        ports:
+            - 8056:8056
+        volumes:
+            - ${ROOT_APPDATA}/jfa-go:/data
+            - ${ROOT_APPDATA}/jellyfin:/jf
+            - /etc/localtime:/etc/localtime:ro
+        networks:
+            - mariusz-network
+        restart: unless-stopped
+
+
+    kopia:
+        image: kopia/kopia:latest
+        hostname: kopia
+        domainname: januszex.net
+        container_name: kopia
+        ports:
+            - 51515:51515
+        command:
+            - server
+            - start
+            - --disable-csrf-token-checks
+            - --insecure
+            - --address=0.0.0.0:51515
+            - --server-username=root
+            - --server-password=${PASSWORD}
+        environment:
+            KOPIA_PASSWORD: ${PASSWORD}
+            USER: root
+        volumes:
+            - ${ROOT_APPDATA}/kopia/config:/app/config
+            - ${ROOT_APPDATA}/kopia/cache:/app/cache
+            - ${ROOT_APPDATA}/kopia/logs:/app/logs
+            - ${ROOT_DATA_HDD}:/data/HDD:ro
+            - ${ROOT_DATA_SSD}:/data/SSD:ro
+            - ${ROOT_DATA_HDD}/backups/kopia/repository:/repository
+            - ${ROOT_DATA_HDD}/backups/kopia/tmp:/tmp:shared
+            - ${ROOT_DATA_HDD}/backups/kopia/restore:/restore
+        networks:
+            - mariusz-network
+        restart: unless-stopped
+
+    metube:
+        image: ghcr.io/alexta69/metube
+        container_name: metube
+        environment:
+            - PUID=${PUID}
+            - PGID=${PGID}
+            - TZ=${TZ}
+        volumes:
+            - ${ROOT_APPDATA}/metube:/config
+            - ${ROOT_DATA_HDD}:/hdd
+            - /etc/localtime:/etc/localtime:ro
+        ports:
+            - 8085:8081
+        depends_on:
+            - swag
+        networks:
+            - mariusz-network
+        restart: unless-stopped
+
+    nordvpn:
+        container_name: gluetun
+        image: qmcgaw/gluetun
+        cap_add:
+            - NET_ADMIN
+        ports:
+            - 8082:8082 # QbitTorrent UI
+            - 6881:6881/tcp # QbitTorrent
+            - 6881:6881/udp # QbitTorrent
+            - 51420:51420 # QbitTorrent
+            - 51420:51420/udp # QbitTorrent
+        environment:
+            - VPN_SERVICE_PROVIDER=nordvpn
+            - SERVER_COUNTRIES=Netherlands
+            - SERVER_CATEGORIES=P2P
+            - VPN_TYPE=wireguard
+            - WIREGUARD_PRIVATE_KEY=${WIREGUARD_PRIVATE_KEY}
+            - FIREWALL_OUTBOUND_SUBNETS=192.168.8.0/24
+        networks:
+            - mariusz-network
+        restart: unless-stopped
+
 
     paperless:
         container_name: paperless
@@ -671,17 +417,204 @@ services:
             PAPERLESS_TIKA_ENABLED: 1
             PAPERLESS_TIKA_GOTENBERG_ENDPOINT: http://gotenberg:3000
             PAPERLESS_TIKA_ENDPOINT: http://tika:9998
-            PAPERLESS_FILENAME_FORMAT: '{owner_username}/{correspondent}/{created year}/{created} {title} ({correspondent}'
+            PAPERLESS_FILENAME_FORMAT: '{owner_username}/{correspondent}/{created year}/{created} {title} ({correspondent}'
         networks:
             - mariusz-network
         restart: unless-stopped
 
-    gotenberg:
-        image: docker.io/gotenberg/gotenberg:7.10
-        command:
-            - gotenberg
-            - --chromium-disable-javascript=true
-            - --chromium-allow-list=file:///tmp/.*
+    portainer:
+        container_name: portainer
+        image: portainer/portainer-ce:latest
+        ports:
+            - 9443:9443
+        volumes:
+            - ${ROOT_APPDATA}/portainer:/data
+            - /var/run/docker.sock:/var/run/docker.sock
+        networks:
+            - mariusz-network
+        restart: unless-stopped
+
+    profilarr:
+        image: santiagosayshey/profilarr:latest
+        container_name: profilarr
+        ports:
+            - 6868:6868
+        volumes:
+            - ${ROOT_APPDATA}/profilarr:/config
+        environment:
+            - TZ=${TZ}
+        networks:
+            - mariusz-network
+        restart: unless-stopped
+
+    prowlarr:
+        image: ghcr.io/linuxserver/prowlarr:develop
+        container_name: prowlarr
+        environment:
+            - PUID=${PUID}
+            - PGID=${PGID}
+            - TZ=${TZ}
+        volumes:
+            - ${ROOT_APPDATA}/prowlarr:/config
+        ports:
+            - 9696:9696
+        networks:
+            - mariusz-network
+        restart: unless-stopped
+
+    qbittorrent:
+        image: lscr.io/linuxserver/qbittorrent:latest
+        container_name: qbittorrent
+        depends_on:
+            - nordvpn
+            - swag
+        environment:
+            - WEBUI_PORT=8082
+            - PUID=${PUID}
+            - PGID=${PGID}
+            - TZ=${TZ}
+        volumes:
+            - ${ROOT_APPDATA}/qbittorrent:/config
+            - ${ROOT_DATA_HDD}:/hdd
+            - ${ROOT_DATA_SSD}:/ssd
+        network_mode: service:nordvpn
+        restart: unless-stopped
+
+    radarr:
+        image: ghcr.io/linuxserver/radarr:latest
+        container_name: radarr
+        environment:
+            - PUID=${PUID}
+            - PGID=${PGID}
+            - TZ=${TZ}
+        volumes:
+            - ${ROOT_APPDATA}/radarr:/config
+            - ${ROOT_DATA_HDD}:/hdd
+        ports:
+            - 7878:7878
+        networks:
+            - mariusz-network
+        restart: unless-stopped
+
+    redis:
+        container_name: immich_redis
+        image: docker.io/redis:6.2-alpine@sha256:148bb5411c184abd288d9aaed139c98123eeb8824c5d3fce03cf721db58066d8
+        healthcheck:
+            test: redis-cli ping || exit 1
+        networks:
+            - mariusz-network
+        restart: always
+
+
+    sabnzbd:
+        image: lscr.io/linuxserver/sabnzbd:latest
+        container_name: sabnzbd
+        environment:
+            - PUID=${PUID}
+            - PGID=${PGID}
+            - TZ=${TZ}
+        volumes:
+            - ${ROOT_APPDATA}/sabnzbd:/config
+            - ${ROOT_DATA_HDD}:/hdd
+            - ${ROOT_DATA_SSD}:/ssd
+        ports:
+            - 8089:8080
+        networks:
+            - mariusz-network
+        restart: unless-stopped
+
+    sonarr:
+        image: ghcr.io/linuxserver/sonarr
+        container_name: sonarr
+        environment:
+            - PUID=${PUID}
+            - PGID=${PGID}
+            - TZ=${TZ}
+            - UMASK_SET=022
+        volumes:
+            - ${ROOT_APPDATA}/sonarr:/config
+            - ${ROOT_DATA_HDD}:/hdd
+        ports:
+            - 8989:8989
+        networks:
+            - mariusz-network
+        restart: unless-stopped
+
+    stash:
+        image: ghcr.io/feederbox826/stash-s6:hwaccel
+        container_name: stash
+        environment:
+            - STASH_STASH=/data/
+            - STASH_GENERATED=/generated/
+            - STASH_METADATA=/metadata/
+            - STASH_CACHE=/cache/
+            - STASH_PORT=9999
+            - PUID=${PUID}
+            - PGID=${PGID}
+        volumes:
+            - /etc/localtime:/etc/localtime:ro
+            - ${ROOT_APPDATA}/stash/metadata:/metadata
+            - ${ROOT_APPDATA}/stash/config:/config
+            - ${ROOT_APPDATA}/stash//pip-install:/pip-install
+            - ${ROOT_SSD}/stash/cache:/cache
+            - ${ROOT_SSD}/stash/blobs:/blobs
+            - ${ROOT_SSD}/stash/generated:/generated
+            - ${ROOT_DATA_HDD}:/hdd
+        ports:
+            - 9999:9999
+        logging:
+            driver: json-file
+            options:
+                max-file: '10'
+                max-size: 2m
+        runtime: nvidia
+        deploy:
+            resources:
+                reservations:
+                    devices:
+                        - driver: nvidia
+                          count: 1
+                          capabilities: [gpu]
+        command: >
+            /bin/bash -c "pip install --user --break-system-packages emojis requests lxml stashapp-tools &&
+                          exec /bin/bash /opt/entrypoint.sh"
+        networks:
+            - mariusz-network
+        restart: unless-stopped
+
+    streamyfin:
+        container_name: streamyfin
+        image: fredrikburmester/streamyfin-optimized-versions-server:master
+        environment:
+            - NODE_ENV=development
+        env_file:
+            - .env
+        ports:
+            - 3000:3000
+        volumes:
+            - ${ROOT_DATA_HDD}/media/cache:/usr/src/app/cache
+        networks:
+            - mariusz-network
+        restart: always
+
+    swag:
+        image: lscr.io/linuxserver/swag
+        container_name: swag
+        cap_add:
+            - NET_ADMIN
+        environment:
+            PUID: ${PUID}
+            PGID: ${PGID}
+            TZ: ${TZ}
+            URL: januszex.net
+            SUBDOMAINS: wildcard
+            DNSPLUGIN: cloudflare
+            VALIDATION: dns
+        volumes:
+            - ./swag:/config
+        ports:
+            - 443:443
+            - 80:80
         networks:
             - mariusz-network
         restart: unless-stopped
@@ -692,106 +625,33 @@ services:
             - mariusz-network
         restart: unless-stopped
 
-    kopia:
-        image: kopia/kopia:latest
-        hostname: kopia
-        domainname: januszex.net
-        container_name: kopia
-        ports:
-            - 51515:51515
-        command:
-            - server
-            - start
-            - --disable-csrf-token-checks
-            - --insecure
-            - --address=0.0.0.0:51515
-            - --server-username=root
-            - --server-password=${PASSWORD}
-        environment:
-            KOPIA_PASSWORD: ${PASSWORD}
-            USER: root
-        volumes:
-            # Mount local folders needed by kopia
-            - ${ROOT_APPDATA}/kopia/config:/app/config
-            - ${ROOT_APPDATA}/kopia/cache:/app/cache
-            - ${ROOT_APPDATA}/kopia/logs:/app/logs
-            # Mount local folders to snapshot
-            - ${ROOT_DATA_HDD}:/data/HDD:ro
-            - ${ROOT_DATA_SSD}:/data/SSD:ro
-            # Mount repository location
-            - ${ROOT_DATA_HDD}/backups/kopia/repository:/repository
-            # Mount path for browsing mounted snaphots
-            - ${ROOT_DATA_HDD}/backups/kopia/tmp:/tmp:shared
-            # Mount restore location
-            - ${ROOT_DATA_HDD}/backups/kopia/restore:/restore
-        networks:
-            - mariusz-network
-        restart: unless-stopped
-    
-    #hbbs:
-    #    container_name: hbbs
-    #    image: rustdesk/rustdesk-server:latest
-    #    command: hbbs
-    #    ports:
-    #        -21114:21114
-    #        -21115:21115
-    #        -21116:21116
-    #        -21118:21118
-    #    volumes:
-    #      - ${ROOT_APPDATA}/hbbs/data:/root
-    #    depends_on:
-    #      - hbbr
-    #    networks:
-    #        - mariusz-network
-    #    restart: unless-stopped
-
-    #hbbr:
-    #    container_name: hbbr
-    #    image: rustdesk/rustdesk-server:latest
-    #    command: hbbr
-    #     ports:
-    #        -21117:21117
-    #        -21118:21118
-    #    volumes:
-    #      - ${ROOT_APPDATA}/hbbr/data:/root
-    #    networks:
-    #        - mariusz-network
-    #    restart: unless-stopped
-
     upsnap:
         container_name: upsnap
-        image: ghcr.io/seriousm4x/upsnap:5 # images are also available on docker hub: seriousm4x/upsnap:5
-        network_mode: host
-        restart: unless-stopped
+        image: ghcr.io/seriousm4x/upsnap:5
         environment:
-            - TZ=${TZ} # Set container timezone for cron schedules
-            - UPSNAP_INTERVAL=*/10 * * * * * # Sets the interval in which the devices are pinged
-            - UPSNAP_SCAN_RANGE=192.168.8.0/24 # Scan range is used for device discovery on local network
-            - UPSNAP_SCAN_TIMEOUT=500ms # Scan timeout is nmap's --host-timeout value to wait for devices (https://nmap.org/book/man-performance.html)
-            - UPSNAP_PING_PRIVILEGED=true # Set to false if you don't have root user permissions
+            - TZ=${TZ}
+            - UPSNAP_INTERVAL=*/10 * * * * *
+            - UPSNAP_SCAN_RANGE=192.168.8.0/24
+            - UPSNAP_SCAN_TIMEOUT=500ms
+            - UPSNAP_PING_PRIVILEGED=true
         volumes:
             - ${ROOT_APPDATA}/upsnap:/app/pb_data
         dns: 192.168.8.1
         healthcheck:
             test: curl -fs "http://localhost:5000/api/health" || exit 1
             interval: 10s
-
-    debilarr:
-        container_name: debilarr
-        image: mateuszkukiela/debilarr:latest
+        network_mode: host
         restart: unless-stopped
+
+
+    watchtower:
+        container_name: watchtower
+        image: containrrr/watchtower
         environment:
-            JELLYFIN_URL: https://jellyfin.januszex.net
-            JELLYFIN_API_KEY: ${JELLYFIN_API_KEY}
-            SAB_URL: https://sabnzbd.januszex.net
-            SAB_API_KEY: ${SAB_API_KEY}
-            INTERVAL: '30'
-            RESUME_COOLDOWN: '60'
-            INCLUDE_PAUSED: 'false'
-            LOG_LEVEL: INFO
-        depends_on:
-            - jellyfin
-            - sabnzbd
+            - WATCHTOWER_CLEANUP=true
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+        restart: unless-stopped
 
 networks:
     mariusz-network:
