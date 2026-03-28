@@ -268,6 +268,7 @@ services:
             - ${ROOT_APPDATA}/jellyfin/config.json:/usr/share/jellyfin/web/config.json
             - ${ROOT_DATA_HDD}:/hdd
             - /usr/lib/wsl/lib:/usr/lib/wsl/lib:ro
+            - /home/mariusz/wsl_drivers_new/nv_dispi.inf_amd64_4bf4c17fa8a478b5:/usr/lib/wsl/drivers/nv_dispi.inf_amd64_4bf4c17fa8a478b5:ro
         ports:
             - 8097:8096
         devices:
