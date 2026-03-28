@@ -42,6 +42,20 @@ curl -s -H "X-Api-Key: $SEERR_KEY" "http://localhost:5055/api/v1/request?take=$T
 echo done
 ```
 
-## 4. Jellyfin
+## 4. Jellyseerr — clear recently added (media cache)
+
+```bash
+SEERR_KEY=$(python3 -c "import json; d=json.load(open('/home/mariusz/appdata/jellyseerr/settings.json')); print(d['main']['apiKey'])")
+TOTAL=$(curl -s -H "X-Api-Key: $SEERR_KEY" 'http://localhost:5055/api/v1/media?take=1&skip=0' | python3 -c 'import sys,json; print(json.load(sys.stdin)["pageInfo"]["results"])')
+echo "Found $TOTAL media entries"
+curl -s -H "X-Api-Key: $SEERR_KEY" "http://localhost:5055/api/v1/media?take=$TOTAL&skip=0" \
+  | python3 -c 'import sys,json; [print(r["id"]) for r in json.load(sys.stdin)["results"]]' \
+  | while read id; do
+    curl -s -X DELETE -H "X-Api-Key: $SEERR_KEY" "http://localhost:5055/api/v1/media/$id" > /dev/null
+  done
+echo done
+```
+
+## 5. Jellyfin
 
 Do nothing. Jellyfin will show empty libraries since there are no files on disk. Content will be picked up automatically when files appear and a library scan runs.
