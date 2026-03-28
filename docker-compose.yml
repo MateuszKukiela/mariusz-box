@@ -564,6 +564,7 @@ services:
         container_name: caddy
         environment:
             - CF_API_TOKEN=${CF_API_TOKEN}
+            - METUBE_PASSWORD_HASH=${METUBE_PASSWORD_HASH}
         volumes:
             - ./caddy/Caddyfile:/etc/caddy/Caddyfile
             - ${ROOT_APPDATA}/caddy/data:/data
