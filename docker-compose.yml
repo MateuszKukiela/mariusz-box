@@ -363,7 +363,7 @@ database:
             PAPERLESS_OCR_LANGUAGE: pol
             PAPERLESS_REDIS: redis://broker:6379
             PAPERLESS_DBHOST: db
-            PG_PASS: ${PASSWORD}
+            PAPERLESS_DBPASS: ${PASSWORD}
             PAPERLESS_TIKA_ENABLED: 1
             PAPERLESS_TIKA_GOTENBERG_ENDPOINT: http://gotenberg:3000
             PAPERLESS_TIKA_ENDPOINT: http://tika:9998
