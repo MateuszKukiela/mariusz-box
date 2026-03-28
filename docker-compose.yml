@@ -331,8 +331,6 @@ services:
             - /etc/localtime:/etc/localtime:ro
         ports:
             - 8085:8081
-        depends_on:
-            - swag
         networks:
             - mariusz-network
         restart: unless-stopped
