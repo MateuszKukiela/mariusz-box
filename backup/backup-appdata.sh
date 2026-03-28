@@ -74,6 +74,8 @@ log "Upload complete"
 # Everything else is deleted.
 log "Pruning — GFS retention targets: ${BACKUP_RETAIN_DAYS} days ago"
 
+declare -A KEEP
+
 BACKUPS=$(rclone lsf --config "$RCLONE_CONFIG" "$RCLONE_REMOTE:$STORJ_BUCKET" \
     | grep '^appdata-' | sort || true)
 
@@ -81,15 +83,15 @@ if [[ -z "$BACKUPS" ]]; then
     log "No backups found to prune"
 else
     # For each retention target, find the backup closest to that date
-    declare -A KEEP
     for days_ago in $BACKUP_RETAIN_DAYS; do
         target_ts=$(date -d "$days_ago days ago" +%s)
         best=""
         best_diff=999999999
         while IFS= read -r f; do
             [[ -z "$f" ]] && continue
-            # Extract timestamp from filename: appdata-2026-03-28T03-00-00.tar.gz
-            fdate=$(echo "$f" | grep -oP '\d{4}-\d{2}-\d{2}T\d{2}-\d{2}-\d{2}' | tr 'T-' ' ' | awk '{print $1"T"$2":"$3":"$4}')
+            # Extract timestamp: appdata-2026-03-28T18-16-46.tar.gz → 2026-03-28T18:16:46
+            raw=$(echo "$f" | grep -oP '\d{4}-\d{2}-\d{2}T\d{2}-\d{2}-\d{2}') || continue
+            fdate="${raw:0:10}T${raw:11:2}:${raw:14:2}:${raw:17:2}"
             fts=$(date -d "$fdate" +%s 2>/dev/null) || continue
             diff=$(( fts - target_ts ))
             [[ $diff -lt 0 ]] && diff=$(( -diff ))
