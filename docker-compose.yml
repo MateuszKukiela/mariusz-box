@@ -274,13 +274,6 @@ services:
         devices:
             - /dev/dri:/dev/dri
             - /dev/dxg:/dev/dxg
-        deploy:
-            resources:
-                reservations:
-                    devices:
-                        - driver: nvidia
-                          count: 1
-                          capabilities: [video]
         networks:
             - mariusz-network
         restart: unless-stopped
