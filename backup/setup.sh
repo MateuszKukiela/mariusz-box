@@ -4,7 +4,7 @@
 # Required .env variables:
 #   STORJ_ACCESS_GRANT   — Storj access grant string
 #   STORJ_BUCKET         — Storj bucket name (e.g. mariusz-appdata-backups)
-#   BACKUP_KEEP          — number of backups to keep (default: 7)
+#   BACKUP_RETAIN_DAYS   — space-separated days-ago targets to retain (default: "0 1 7 30")
 #   BACKUP_SCHEDULE      — systemd OnCalendar expression (default: *-*-* 03:00:00)
 #   LVM_SNAP_SIZE        — LVM snapshot COW size (default: 5G)
 #
@@ -29,7 +29,7 @@ set -a; source "$ENV_FILE"; set +a
 # ── Validate required vars ────────────────────────────────────────────────────
 : "${STORJ_ACCESS_GRANT:?Add STORJ_ACCESS_GRANT to .env}"
 : "${STORJ_BUCKET:?Add STORJ_BUCKET to .env}"
-BACKUP_KEEP="${BACKUP_KEEP:-7}"
+BACKUP_RETAIN_DAYS="${BACKUP_RETAIN_DAYS:-0 1 7 30}"
 BACKUP_SCHEDULE="${BACKUP_SCHEDULE:-*-*-* 03:00:00}"
 LVM_SNAP_SIZE="${LVM_SNAP_SIZE:-5G}"
 LV_PATH="/dev/mariusz-vg/appdata"
@@ -39,7 +39,7 @@ echo "  appdata backup setup"
 echo "══════════════════════════════════════════════"
 echo "  LV:       $LV_PATH"
 echo "  Bucket:   $RCLONE_REMOTE:$STORJ_BUCKET"
-echo "  Keep:     $BACKUP_KEEP backups"
+echo "  Retain:   ${BACKUP_RETAIN_DAYS} days ago"
 echo "  Schedule: $BACKUP_SCHEDULE"
 echo "  Snap COW: $LVM_SNAP_SIZE"
 echo "══════════════════════════════════════════════"
@@ -84,7 +84,7 @@ RCLONE_CONFIG=$RCLONE_CONFIG
 STORJ_BUCKET=$STORJ_BUCKET
 LV_PATH=$LV_PATH
 LVM_SNAP_SIZE=$LVM_SNAP_SIZE
-BACKUP_KEEP=$BACKUP_KEEP
+BACKUP_RETAIN_DAYS=$BACKUP_RETAIN_DAYS
 EOF
 sudo chmod 640 "$CONF_FILE"
 echo "      written"
