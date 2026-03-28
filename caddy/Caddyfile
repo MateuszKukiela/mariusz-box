@@ -89,15 +89,6 @@ uptime.januszex.net {
     reverse_proxy uptime-kuma:3001
 }
 
-truenas.januszex.net {
-    import tls_cf
-    reverse_proxy docker-host:89
-}
-
-wgeasy.januszex.net {
-    import tls_cf
-    reverse_proxy docker-host:30058
-}
 
 homepage.januszex.net {
     import tls_cf
