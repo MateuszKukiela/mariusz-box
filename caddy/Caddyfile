@@ -4,31 +4,112 @@
     }
 }
 
-radarr.januszex.net         { import tls_cf; reverse_proxy radarr:7878 }
-sonarr.januszex.net         { import tls_cf; reverse_proxy sonarr:8989 }
-prowlarr.januszex.net       { import tls_cf; reverse_proxy prowlarr:9696 }
-jellyfin.januszex.net       { import tls_cf; reverse_proxy jellyfin:8096 }
-jellyseerr.januszex.net     { import tls_cf; reverse_proxy jellyseerr:5055 }
-sabnzbd.januszex.net        { import tls_cf; reverse_proxy sabnzbd:8080 }
-bazarr.januszex.net         { import tls_cf; reverse_proxy bazarr:6767 }
-profilarr.januszex.net      { import tls_cf; reverse_proxy profilarr:6868 }
-stash.januszex.net          { import tls_cf; reverse_proxy stash:9999 }
-paperless.januszex.net      { import tls_cf; reverse_proxy paperless:8000 }
-photos.januszex.net         { import tls_cf; reverse_proxy immich-server:2283 }
-filebrowser.januszex.net    { import tls_cf; reverse_proxy filebrowser:80 }
-jfa.januszex.net            { import tls_cf; reverse_proxy jfa:8056 }
-comicstreamer.januszex.net  { import tls_cf; reverse_proxy comicstreamer:32500 }
-streamyfin.januszex.net     { import tls_cf; reverse_proxy streamyfin:3000 }
-uptime.januszex.net         { import tls_cf; reverse_proxy uptime-kuma:3001 }
-truenas.januszex.net        { import tls_cf; reverse_proxy docker-host:89 }
-wgeasy.januszex.net         { import tls_cf; reverse_proxy docker-host:30058 }
-homepage.januszex.net       { import tls_cf; reverse_proxy jellyfin:8096 }
-qbittorrent.januszex.net    { import tls_cf; reverse_proxy qbittorrent:8082 }
+radarr.januszex.net {
+    import tls_cf
+    reverse_proxy radarr:7878
+}
+
+sonarr.januszex.net {
+    import tls_cf
+    reverse_proxy sonarr:8989
+}
+
+prowlarr.januszex.net {
+    import tls_cf
+    reverse_proxy prowlarr:9696
+}
+
+jellyfin.januszex.net {
+    import tls_cf
+    reverse_proxy jellyfin:8096
+}
+
+jellyseerr.januszex.net {
+    import tls_cf
+    reverse_proxy jellyseerr:5055
+}
+
+sabnzbd.januszex.net {
+    import tls_cf
+    reverse_proxy sabnzbd:8080
+}
+
+bazarr.januszex.net {
+    import tls_cf
+    reverse_proxy bazarr:6767
+}
+
+profilarr.januszex.net {
+    import tls_cf
+    reverse_proxy profilarr:6868
+}
+
+stash.januszex.net {
+    import tls_cf
+    reverse_proxy stash:9999
+}
+
+paperless.januszex.net {
+    import tls_cf
+    reverse_proxy paperless:8000
+}
+
+photos.januszex.net {
+    import tls_cf
+    reverse_proxy immich-server:2283
+}
+
+filebrowser.januszex.net {
+    import tls_cf
+    reverse_proxy filebrowser:80
+}
+
+jfa.januszex.net {
+    import tls_cf
+    reverse_proxy jfa:8056
+}
+
+comicstreamer.januszex.net {
+    import tls_cf
+    reverse_proxy comicstreamer:32500
+}
+
+streamyfin.januszex.net {
+    import tls_cf
+    reverse_proxy streamyfin:3000
+}
+
+uptime.januszex.net {
+    import tls_cf
+    reverse_proxy uptime-kuma:3001
+}
+
+truenas.januszex.net {
+    import tls_cf
+    reverse_proxy docker-host:89
+}
+
+wgeasy.januszex.net {
+    import tls_cf
+    reverse_proxy docker-host:30058
+}
+
+homepage.januszex.net {
+    import tls_cf
+    reverse_proxy jellyfin:8096
+}
+
+qbittorrent.januszex.net {
+    import tls_cf
+    reverse_proxy qbittorrent:8082
+}
 
 portainer.januszex.net {
     import tls_cf
     reverse_proxy https://portainer:9443 {
-        transport http { tls_insecure_skip_verify }
+        transport http {
+            tls_insecure_skip_verify
+        }
     }
 }
 
