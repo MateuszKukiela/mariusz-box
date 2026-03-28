@@ -266,6 +266,9 @@ services:
         volumes:
             - ${ROOT_APPDATA}/jellyfin:/config
             - ${ROOT_APPDATA}/jellyfin/config.json:/usr/share/jellyfin/web/config.json
+            - ${ROOT_METADATA}/jellyfin/data:/config/data
+            - ${ROOT_METADATA}/jellyfin/cache:/config/cache
+            - ${ROOT_METADATA}/jellyfin/log:/config/log
             - ${ROOT_DATA_HDD}:/hdd
             - /usr/lib/wsl/lib:/usr/lib/wsl/lib:ro
             - /home/mariusz/wsl_drivers_new/nv_dispi.inf_amd64_4bf4c17fa8a478b5:/usr/lib/wsl/drivers/nv_dispi.inf_amd64_4bf4c17fa8a478b5:ro
@@ -457,6 +460,8 @@ services:
             - TZ=${TZ}
         volumes:
             - ${ROOT_APPDATA}/radarr:/config
+            - ${ROOT_METADATA}/radarr/MediaCover:/config/MediaCover
+            - ${ROOT_METADATA}/radarr/logs:/config/logs
             - ${ROOT_DATA_HDD}:/hdd
         ports:
             - 7878:7878
@@ -501,6 +506,8 @@ services:
             - UMASK_SET=022
         volumes:
             - ${ROOT_APPDATA}/sonarr:/config
+            - ${ROOT_METADATA}/sonarr/MediaCover:/config/MediaCover
+            - ${ROOT_METADATA}/sonarr/logs:/config/logs
             - ${ROOT_DATA_HDD}:/hdd
         ports:
             - 8989:8989
