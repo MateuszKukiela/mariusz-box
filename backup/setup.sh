@@ -61,7 +61,7 @@ if command -v rclone &>/dev/null; then
     echo "      already installed: $(rclone --version | head -1)"
 else
     echo "      installing..."
-    curl -fsSL https://rclone.org/install.sh | sudo bash -s -- --quiet
+    curl -fsSL https://rclone.org/install.sh | sudo bash
     echo "      installed: $(rclone --version | head -1)"
 fi
 
