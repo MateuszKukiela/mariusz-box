@@ -11,7 +11,9 @@ RCLONE_CONFIG="${RCLONE_CONFIG:-/root/.config/rclone/rclone.conf}"
 STORJ_BUCKET="${STORJ_BUCKET:-mariusz-appdata-backups}"
 LV_PATH="${LV_PATH:-/dev/mariusz-vg/appdata}"
 LVM_SNAP_SIZE="${LVM_SNAP_SIZE:-5G}"
-BACKUP_KEEP="${BACKUP_KEEP:-7}"
+# Days ago to retain a backup for — keep the closest backup to each target
+# Default: today, yesterday, 1 week ago, 1 month ago
+BACKUP_RETAIN_DAYS="${BACKUP_RETAIN_DAYS:-0 1 7 30}"
 
 SNAP_NAME="appdata-snap"
 SNAP_PATH="/dev/mariusz-vg/$SNAP_NAME"
@@ -66,22 +68,52 @@ tar \
         "$RCLONE_REMOTE:$STORJ_BUCKET/$BACKUP_NAME"
 log "Upload complete"
 
-# ── Prune old backups ─────────────────────────────────────────────────────────
-log "Pruning old backups (keeping $BACKUP_KEEP)..."
+# ── Prune old backups (GFS retention) ────────────────────────────────────────
+# Keep the backup closest to each target age (today, yesterday, 1w, 1m, etc.)
+# Everything else is deleted.
+log "Pruning — GFS retention targets: ${BACKUP_RETAIN_DAYS} days ago"
+
 BACKUPS=$(rclone lsf --config "$RCLONE_CONFIG" "$RCLONE_REMOTE:$STORJ_BUCKET" \
     | grep '^appdata-' | sort || true)
-COUNT=$(echo "$BACKUPS" | grep -c . || echo 0)
-TO_DELETE=$(( COUNT - BACKUP_KEEP ))
 
-if [[ $TO_DELETE -gt 0 ]]; then
-    echo "$BACKUPS" | head -n "$TO_DELETE" | while read -r f; do
-        [[ -z "$f" ]] && continue
-        log "  Deleting: $f"
-        rclone deletefile --config "$RCLONE_CONFIG" "$RCLONE_REMOTE:$STORJ_BUCKET/$f"
-    done
-    log "Pruned $TO_DELETE old backup(s)"
+if [[ -z "$BACKUPS" ]]; then
+    log "No backups found to prune"
 else
-    log "No pruning needed ($COUNT / $BACKUP_KEEP slots used)"
+    # For each retention target, find the backup closest to that date
+    declare -A KEEP
+    for days_ago in $BACKUP_RETAIN_DAYS; do
+        target_ts=$(date -d "$days_ago days ago" +%s)
+        best=""
+        best_diff=999999999
+        while IFS= read -r f; do
+            [[ -z "$f" ]] && continue
+            # Extract timestamp from filename: appdata-2026-03-28T03-00-00.tar.gz
+            fdate=$(echo "$f" | grep -oP '\d{4}-\d{2}-\d{2}T\d{2}-\d{2}-\d{2}' | tr 'T-' ' ' | awk '{print $1"T"$2":"$3":"$4}')
+            fts=$(date -d "$fdate" +%s 2>/dev/null) || continue
+            diff=$(( fts - target_ts ))
+            [[ $diff -lt 0 ]] && diff=$(( -diff ))
+            if [[ $diff -lt $best_diff ]]; then
+                best_diff=$diff
+                best="$f"
+            fi
+        done <<< "$BACKUPS"
+        if [[ -n "$best" ]]; then
+            KEEP["$best"]=1
+            log "  Keep (${days_ago}d ago target): $best"
+        fi
+    done
+
+    # Delete anything not in the keep set
+    PRUNED=0
+    while IFS= read -r f; do
+        [[ -z "$f" ]] && continue
+        if [[ -z "${KEEP[$f]+x}" ]]; then
+            log "  Delete: $f"
+            rclone deletefile --config "$RCLONE_CONFIG" "$RCLONE_REMOTE:$STORJ_BUCKET/$f"
+            (( PRUNED++ )) || true
+        fi
+    done <<< "$BACKUPS"
+    log "Pruned $PRUNED backup(s), kept ${#KEEP[@]}"
 fi
 
 log "══════════════════════════════════════════════"
