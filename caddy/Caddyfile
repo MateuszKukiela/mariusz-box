@@ -4,6 +4,11 @@
     }
 }
 
+januszex.net {
+    import tls_cf
+    reverse_proxy jellyfin:8096
+}
+
 radarr.januszex.net {
     import tls_cf
     reverse_proxy radarr:7878
