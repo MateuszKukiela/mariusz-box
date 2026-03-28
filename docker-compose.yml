@@ -561,21 +561,15 @@ services:
             - mariusz-network
         restart: always
 
-    swag:
-        image: lscr.io/linuxserver/swag
-        container_name: swag
-        cap_add:
-            - NET_ADMIN
+    caddy:
+        image: ghcr.io/serfriz/caddy-cloudflare:latest
+        container_name: caddy
         environment:
-            PUID: ${PUID}
-            PGID: ${PGID}
-            TZ: ${TZ}
-            URL: januszex.net
-            SUBDOMAINS: wildcard
-            DNSPLUGIN: cloudflare
-            VALIDATION: dns
+            - CF_API_TOKEN=${CF_API_TOKEN}
         volumes:
-            - ./swag:/config
+            - ./caddy/Caddyfile:/etc/caddy/Caddyfile
+            - ${ROOT_APPDATA}/caddy/data:/data
+            - ${ROOT_APPDATA}/caddy/config:/config
         ports:
             - 443:443
             - 80:80
