@@ -606,6 +606,15 @@ services:
             - mariusz-network
         restart: unless-stopped
 
+    uptime-kuma:
+        image: louislam/uptime-kuma:1
+        container_name: uptime-kuma
+        volumes:
+            - ${ROOT_APPDATA}/uptime-kuma:/app/data
+        networks:
+            - mariusz-network
+        restart: unless-stopped
+
     upsnap:
         container_name: upsnap
         image: ghcr.io/seriousm4x/upsnap:5
