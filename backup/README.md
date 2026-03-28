@@ -42,6 +42,12 @@ Installs rclone, configures the Storj remote, creates a systemd timer. Safe to r
 sudo backup-appdata
 ```
 
+## Update after pulling changes from git
+
+```bash
+cd /home/mariusz/mariusz-box && git pull && bash backup/setup.sh --update
+```
+
 ## Setup + run immediately
 
 ```bash

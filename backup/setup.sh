@@ -18,8 +18,10 @@
 set -euo pipefail
 
 RUN_NOW=false
+UPDATE_ONLY=false
 for arg in "$@"; do
-    [[ "$arg" == "--now" ]] && RUN_NOW=true
+    [[ "$arg" == "--now" ]]    && RUN_NOW=true
+    [[ "$arg" == "--update" ]] && UPDATE_ONLY=true
 done
 
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -54,6 +56,15 @@ echo "  Schedule: $BACKUP_SCHEDULE"
 echo "  Snap COW: $LVM_SNAP_SIZE"
 echo "══════════════════════════════════════════════"
 echo
+
+# ── Update-only shortcut ──────────────────────────────────────────────────────
+if $UPDATE_ONLY; then
+    echo "[update] Installing backup script → $BACKUP_SCRIPT_DST"
+    sudo cp "$BACKUP_SCRIPT_SRC" "$BACKUP_SCRIPT_DST"
+    sudo chmod +x "$BACKUP_SCRIPT_DST"
+    echo "[update] Done. Run: sudo backup-appdata"
+    exit 0
+fi
 
 # ── 1. Install rclone ─────────────────────────────────────────────────────────
 echo "[1/6] rclone"
