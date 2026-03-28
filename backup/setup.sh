@@ -2,7 +2,9 @@
 # backup/setup.sh — Idempotent setup for appdata LVM snapshot backups to Storj
 #
 # Required .env variables:
-#   STORJ_ACCESS_GRANT   — Storj access grant string
+#   STORJ_ACCESS_KEY     — Storj S3 access key
+#   STORJ_SECRET_KEY     — Storj S3 secret key
+#   STORJ_ENDPOINT       — Storj S3 endpoint (https://gateway.storjshare.io)
 #   STORJ_BUCKET         — Storj bucket name (e.g. mariusz-appdata-backups)
 #   BACKUP_RETAIN_DAYS   — space-separated days-ago targets to retain (default: "0 1 7 30")
 #   BACKUP_SCHEDULE      — systemd OnCalendar expression (default: *-*-* 03:00:00)
@@ -33,7 +35,9 @@ CONF_FILE="/etc/backup-appdata.conf"
 set -a; source "$ENV_FILE"; set +a
 
 # ── Validate required vars ────────────────────────────────────────────────────
-: "${STORJ_ACCESS_GRANT:?Add STORJ_ACCESS_GRANT to .env}"
+: "${STORJ_ACCESS_KEY:?Add STORJ_ACCESS_KEY to .env}"
+: "${STORJ_SECRET_KEY:?Add STORJ_SECRET_KEY to .env}"
+: "${STORJ_ENDPOINT:?Add STORJ_ENDPOINT to .env}"
 : "${STORJ_BUCKET:?Add STORJ_BUCKET to .env}"
 BACKUP_RETAIN_DAYS="${BACKUP_RETAIN_DAYS:-0 1 7 30}"
 BACKUP_SCHEDULE="${BACKUP_SCHEDULE:-*-*-* 03:00:00}"
@@ -66,8 +70,11 @@ echo "[2/6] rclone Storj remote"
 sudo mkdir -p "$(dirname "$RCLONE_CONFIG")"
 sudo tee "$RCLONE_CONFIG" > /dev/null <<EOF
 [$RCLONE_REMOTE]
-type = storj
-access_grant = $STORJ_ACCESS_GRANT
+type = s3
+provider = Other
+access_key_id = $STORJ_ACCESS_KEY
+secret_access_key = $STORJ_SECRET_KEY
+endpoint = $STORJ_ENDPOINT
 EOF
 sudo chmod 600 "$RCLONE_CONFIG"
 echo "      configured remote '$RCLONE_REMOTE'"
