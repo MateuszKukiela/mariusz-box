@@ -262,14 +262,17 @@ services:
             - NVIDIA_VISIBLE_DEVICES=all
             - FFMPEG_ANALYZEDURATION=400M
             - FFMPEG_PROBESIZE=2G
+            - LD_LIBRARY_PATH=/usr/lib/wsl/lib
         volumes:
             - ${ROOT_APPDATA}/jellyfin:/config
             - ${ROOT_APPDATA}/jellyfin/config.json:/usr/share/jellyfin/web/config.json
             - ${ROOT_DATA_HDD}:/hdd
+            - /usr/lib/wsl/lib:/usr/lib/wsl/lib:ro
         ports:
             - 8097:8096
         devices:
             - /dev/dri:/dev/dri
+            - /dev/dxg:/dev/dxg
         deploy:
             resources:
                 reservations:
