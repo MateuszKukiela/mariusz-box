@@ -29,7 +29,7 @@ jellyfin.januszex.net {
     reverse_proxy jellyfin:8096
 }
 
-jellyseerr.januszex.net {
+jellyseerr.januszex.net, requests.januszex.net {
     import tls_cf
     reverse_proxy jellyseerr:5055
 }
