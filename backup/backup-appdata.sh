@@ -66,6 +66,8 @@ tar \
     -czf - . \
     | rclone rcat \
         --config "$RCLONE_CONFIG" \
+        --stats 5s \
+        --stats-one-line \
         "$RCLONE_REMOTE:$STORJ_BUCKET/$BACKUP_NAME"
 log "Upload complete"
 
