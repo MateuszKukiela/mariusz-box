@@ -621,7 +621,7 @@ services:
         restart: unless-stopped
 
     tika:
-        image: ghcr.io/paperless-ngx/tika:latest
+        image: docker.io/apache/tika:latest
         networks:
             - mariusz-network
         restart: unless-stopped
