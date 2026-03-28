@@ -14,7 +14,7 @@ Configurable via `BACKUP_RETAIN_DAYS` (space-separated days-ago values, e.g. `0 
 
 ## .env variables
 
-Add these to `/home/mariusz/mariusz-box/.env`:
+Add these to `.env`:
 
 ```
 STORJ_ACCESS_KEY=<access key>
@@ -29,7 +29,6 @@ LVM_SNAP_SIZE=5G
 ## Setup
 
 ```bash
-cd /home/mariusz/mariusz-box
 git pull
 bash backup/setup.sh
 ```
@@ -45,7 +44,7 @@ sudo backup-appdata
 ## Update after pulling changes from git
 
 ```bash
-cd /home/mariusz/mariusz-box && git pull && bash backup/setup.sh --update
+git pull && bash backup/setup.sh --update
 ```
 
 ## Setup + run immediately
@@ -64,5 +63,5 @@ systemctl list-timers backup-appdata
 journalctl -fu backup-appdata
 
 # List backups on Storj
-sudo rclone lsf storj-backup:mariusz-appdata-backups
+sudo rclone lsf storj-backup:$STORJ_BUCKET
 ```
