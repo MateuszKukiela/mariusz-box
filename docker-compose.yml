@@ -21,6 +21,7 @@ services:
             - UMASK_SET=022
         volumes:
             - ${ROOT_APPDATA}/bazarr:/config
+            - ${ROOT_METADATA}/bazarr/log:/config/log
             - ${ROOT_DATA_HDD}:/hdd
         ports:
             - 6767:6767
@@ -41,6 +42,7 @@ services:
         image: mateuszkukiela/comicstreamer:latest
         volumes:
             - ${ROOT_APPDATA}/comicstreamer:/config
+            - ${ROOT_METADATA}/comicstreamer/logs:/config/logs
             - ${ROOT_DATA_HDD}:/hdd
         ports:
             - 32500:32500
@@ -292,6 +294,7 @@ services:
             - 5055:5055
         volumes:
             - ${ROOT_APPDATA}/jellyseerr:/app/config
+            - ${ROOT_METADATA}/jellyseerr/logs:/app/config/logs
         healthcheck:
             test: wget --no-verbose --tries=1 --spider http://localhost:5055/api/v1/status || exit 1
             start_period: 20s
@@ -400,6 +403,7 @@ services:
             - 9443:9443
         volumes:
             - ${ROOT_APPDATA}/portainer:/data
+            - ${ROOT_METADATA}/portainer/backups:/data/backups
             - /var/run/docker.sock:/var/run/docker.sock
         networks:
             - mariusz-network
@@ -412,6 +416,8 @@ services:
             - 6868:6868
         volumes:
             - ${ROOT_APPDATA}/profilarr:/config
+            - ${ROOT_METADATA}/profilarr/backups:/config/backups
+            - ${ROOT_METADATA}/profilarr/log:/config/log
         environment:
             - TZ=${TZ}
         networks:
@@ -427,6 +433,8 @@ services:
             - TZ=${TZ}
         volumes:
             - ${ROOT_APPDATA}/prowlarr:/config
+            - ${ROOT_METADATA}/prowlarr/Backups:/config/Backups
+            - ${ROOT_METADATA}/prowlarr/logs:/config/logs
         ports:
             - 9696:9696
         networks:
@@ -461,6 +469,7 @@ services:
         volumes:
             - ${ROOT_APPDATA}/radarr:/config
             - ${ROOT_METADATA}/radarr/MediaCover:/config/MediaCover
+            - ${ROOT_METADATA}/radarr/Backups:/config/Backups
             - ${ROOT_METADATA}/radarr/logs:/config/logs
             - ${ROOT_DATA_HDD}:/hdd
         ports:
@@ -488,6 +497,7 @@ services:
             - TZ=${TZ}
         volumes:
             - ${ROOT_APPDATA}/sabnzbd:/config
+            - ${ROOT_METADATA}/sabnzbd/logs:/config/logs
             - ${ROOT_DATA_HDD}:/hdd
             - ${ROOT_DATA_SSD}:/ssd
         ports:
@@ -507,6 +517,7 @@ services:
         volumes:
             - ${ROOT_APPDATA}/sonarr:/config
             - ${ROOT_METADATA}/sonarr/MediaCover:/config/MediaCover
+            - ${ROOT_METADATA}/sonarr/Backups:/config/Backups
             - ${ROOT_METADATA}/sonarr/logs:/config/logs
             - ${ROOT_DATA_HDD}:/hdd
         ports:
