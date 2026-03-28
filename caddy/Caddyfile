@@ -1,6 +1,6 @@
 (tls_cf) {
     tls {
-        dns cloudflare {env.CF_API_TOKEN}
+        dns cloudflare {$CF_API_TOKEN}
     }
 }
 
@@ -35,7 +35,7 @@ portainer.januszex.net {
 metube.januszex.net {
     import tls_cf
     basicauth {
-        root {env.METUBE_PASSWORD_HASH}
+        root {$METUBE_PASSWORD_HASH}
     }
     reverse_proxy metube:8081
 }
