@@ -339,28 +339,6 @@ services:
             - mariusz-network
         restart: unless-stopped
 
-    nordvpn:
-        container_name: gluetun
-        image: qmcgaw/gluetun
-        cap_add:
-            - NET_ADMIN
-        ports:
-            - 8082:8082 # QbitTorrent UI
-            - 6881:6881/tcp # QbitTorrent
-            - 6881:6881/udp # QbitTorrent
-            - 51420:51420 # QbitTorrent
-            - 51420:51420/udp # QbitTorrent
-        environment:
-            - VPN_SERVICE_PROVIDER=nordvpn
-            - SERVER_COUNTRIES=Netherlands
-            - SERVER_CATEGORIES=P2P
-            - VPN_TYPE=wireguard
-            - WIREGUARD_PRIVATE_KEY=${WIREGUARD_PRIVATE_KEY}
-            - FIREWALL_OUTBOUND_SUBNETS=192.168.8.0/24
-        networks:
-            - mariusz-network
-        restart: unless-stopped
-
 
     paperless:
         container_name: paperless
@@ -444,9 +422,6 @@ services:
     qbittorrent:
         image: lscr.io/linuxserver/qbittorrent:latest
         container_name: qbittorrent
-        depends_on:
-            - nordvpn
-            - swag
         environment:
             - WEBUI_PORT=8082
             - PUID=${PUID}
@@ -456,7 +431,12 @@ services:
             - ${ROOT_APPDATA}/qbittorrent:/config
             - ${ROOT_DATA_HDD}:/hdd
             - ${ROOT_DATA_SSD}:/ssd
-        network_mode: service:nordvpn
+        ports:
+            - 8082:8082
+            - 6881:6881
+            - 6881:6881/udp
+        networks:
+            - mariusz-network
         restart: unless-stopped
 
     radarr:
