@@ -10,9 +10,15 @@
 #
 # Usage:
 #   cd /home/mariusz/mariusz-box
-#   bash backup/setup.sh
+#   bash backup/setup.sh          # setup only
+#   bash backup/setup.sh --now    # setup + run backup immediately
 
 set -euo pipefail
+
+RUN_NOW=false
+for arg in "$@"; do
+    [[ "$arg" == "--now" ]] && RUN_NOW=true
+done
 
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 ENV_FILE="$REPO_DIR/.env"
@@ -131,7 +137,14 @@ echo "      enabled — $(sudo systemctl is-active backup-appdata.timer)"
 echo
 echo "══════════════════════════════════════════════"
 echo "  Setup complete!"
-echo "  Test backup:  sudo backup-appdata"
+echo "  Run now:      bash backup/setup.sh --now"
 echo "  Timer status: systemctl list-timers backup-appdata"
 echo "  Logs:         journalctl -u backup-appdata"
 echo "══════════════════════════════════════════════"
+
+if $RUN_NOW; then
+    echo
+    echo "  Running backup now..."
+    echo "══════════════════════════════════════════════"
+    sudo "$BACKUP_SCRIPT_DST"
+fi
