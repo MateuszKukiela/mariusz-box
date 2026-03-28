@@ -256,7 +256,7 @@ services:
         image: ghcr.io/mateuszkukiela/idiotarr:latest
         container_name: idiotarr
         environment:
-            - PROWLARR_URL=http://prowlarr:9696/prowlarr
+            - PROWLARR_URL=${PROWLARR_URL}
             - PROWLARR_API_KEY=${PROWLARR_API_KEY}
             - FRESH_DAYS=30
             - FRESH_TAG=NZB-FRESH
