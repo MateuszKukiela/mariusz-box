@@ -154,5 +154,6 @@ if $RUN_NOW; then
     echo
     echo "  Running backup now..."
     echo "══════════════════════════════════════════════"
-    sudo "$BACKUP_SCRIPT_DST"
+    sudo systemctl start backup-appdata
+    sudo journalctl -fu backup-appdata
 fi

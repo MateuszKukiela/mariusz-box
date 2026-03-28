@@ -5,7 +5,8 @@
 
 set -euo pipefail
 
-# ── Config (injected by systemd EnvironmentFile or hardcoded defaults) ────────
+# ── Config (from conf file, systemd EnvironmentFile, or hardcoded defaults) ───
+[[ -f /etc/backup-appdata.conf ]] && source /etc/backup-appdata.conf
 RCLONE_REMOTE="${RCLONE_REMOTE:-storj-backup}"
 RCLONE_CONFIG="${RCLONE_CONFIG:-/root/.config/rclone/rclone.conf}"
 STORJ_BUCKET="${STORJ_BUCKET:-mariusz-appdata-backups}"
