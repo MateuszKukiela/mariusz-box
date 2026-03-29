@@ -74,6 +74,11 @@ jfa.januszex.net {
     reverse_proxy jfa:8056
 }
 
+wizarr.januszex.net {
+    import tls_cf
+    reverse_proxy wizarr:5690
+}
+
 comicstreamer.januszex.net {
     import tls_cf
     reverse_proxy comicstreamer:32500
