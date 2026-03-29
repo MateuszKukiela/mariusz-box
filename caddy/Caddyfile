@@ -75,7 +75,7 @@ filebrowser.januszex.net {
     reverse_proxy filebrowser:80
 }
 
-jfa.januszex.net {
+jfa.januszex.net, accounts.januszex.net {
     import tls_cf
     reverse_proxy jfa:8056
 }
