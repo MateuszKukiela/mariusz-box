@@ -305,15 +305,6 @@ services:
             - mariusz-network
         restart: unless-stopped
 
-    wizarr:
-        container_name: wizarr
-        image: ghcr.io/wizarrrr/wizarr:latest
-        volumes:
-            - ${ROOT_APPDATA}/wizarr:/data/database
-        networks:
-            - mariusz-network
-        restart: unless-stopped
-
 
 
     metube:
