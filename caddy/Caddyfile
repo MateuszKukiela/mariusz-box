@@ -26,6 +26,12 @@ prowlarr.januszex.net {
 
 jellyfin.januszex.net {
     import tls_cf
+
+    reverse_proxy /Users/ForgotPassword jellyfin:8096
+    reverse_proxy /Users/ForgotPassword/Pin jellyfin:8096 {
+        header_up X-Forwarded-For 192.168.1.1
+    }
+
     reverse_proxy jellyfin:8096
 }
 
