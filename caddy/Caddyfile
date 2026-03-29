@@ -89,6 +89,11 @@ uptime.januszex.net {
     reverse_proxy uptime-kuma:3001
 }
 
+czymariuszlezy.januszex.net {
+    import tls_cf
+    redir https://uptime.januszex.net/status/mariusz permanent
+}
+
 
 homepage.januszex.net {
     import tls_cf
