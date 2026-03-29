@@ -300,6 +300,7 @@ services:
         volumes:
             - ${ROOT_APPDATA}/jfa-go:/data
             - ${ROOT_APPDATA}/jellyfin:/jf
+            - ${ROOT_METADATA}/jellyfin/data:/jf/data
             - /etc/localtime:/etc/localtime:ro
         networks:
             - mariusz-network
