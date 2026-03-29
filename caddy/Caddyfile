@@ -86,7 +86,10 @@ streamyfin.januszex.net {
 
 uptime.januszex.net {
     import tls_cf
-    reverse_proxy uptime-kuma:3001
+    reverse_proxy uptime-kuma:3001 {
+        header_down -X-Frame-Options
+        header_down -Content-Security-Policy
+    }
 }
 
 czymariuszlezy.januszex.net {
