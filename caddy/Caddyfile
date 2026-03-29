@@ -95,7 +95,7 @@ uptime.januszex.net {
 czymariuszlezy.januszex.net {
     import tls_cf
     header Content-Type "text/html; charset=utf-8"
-    respond `<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"><style>*{margin:0;padding:0}iframe{width:100vw;height:100vh;border:none;display:block}</style></head><body><iframe src="https://uptime.januszex.net/status/mariusz"></iframe></body></html>` 200
+    respond `<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"><style>*{margin:0;padding:0}html,body{background:#161b22}iframe{width:100vw;height:100vh;border:none;display:block}</style></head><body><iframe src="https://uptime.januszex.net/status/mariusz"></iframe></body></html>` 200
 }
 
 
