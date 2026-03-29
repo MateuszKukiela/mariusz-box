@@ -299,7 +299,7 @@ services:
             - 8056:8056
         volumes:
             - ${ROOT_APPDATA}/jfa-go:/data
-            - ${ROOT_METADATA}/jellyfin/data:/jf
+            - ${ROOT_APPDATA}/jellyfin:/jf
             - /etc/localtime:/etc/localtime:ro
         networks:
             - mariusz-network
