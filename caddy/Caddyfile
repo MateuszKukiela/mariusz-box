@@ -91,8 +91,7 @@ uptime.januszex.net {
 
 czymariuszlezy.januszex.net {
     import tls_cf
-    rewrite / /status/mariusz
-    reverse_proxy uptime-kuma:3001
+    respond `<!DOCTYPE html><html><head><style>*{margin:0;padding:0}iframe{width:100vw;height:100vh;border:none}</style></head><body><iframe src="https://uptime.januszex.net/status/mariusz"></iframe></body></html>` 200
 }
 
 
