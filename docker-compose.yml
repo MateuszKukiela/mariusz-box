@@ -580,24 +580,6 @@ services:
             - mariusz-network
         restart: unless-stopped
 
-    upsnap:
-        container_name: upsnap
-        image: ghcr.io/seriousm4x/upsnap:5
-        environment:
-            - TZ=${TZ}
-            - UPSNAP_INTERVAL=*/10 * * * * *
-            - UPSNAP_SCAN_RANGE=192.168.8.0/24
-            - UPSNAP_SCAN_TIMEOUT=500ms
-            - UPSNAP_PING_PRIVILEGED=true
-        volumes:
-            - ${ROOT_APPDATA}/upsnap:/app/pb_data
-        dns: 192.168.8.1
-        healthcheck:
-            test: curl -fs "http://localhost:5000/api/health" || exit 1
-            interval: 10s
-        network_mode: host
-        restart: unless-stopped
-
 
     watchtower:
         container_name: watchtower
