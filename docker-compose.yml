@@ -591,22 +591,64 @@ services:
             - /var/run/docker.sock:/var/run/docker.sock
         restart: unless-stopped
 
-    whisperasr:
-        container_name: whisperasr
-        image: onerahmet/openai-whisper-asr-webservice:latest-gpu
+    lingarr:
+        image: ghcr.io/lingarr-translate/lingarr:latest
+        container_name: lingarr
         environment:
-            - ASR_MODEL=small
-            - ASR_ENGINE=faster_whisper
+            - ASPNETCORE_URLS=http://+:9876
+            - DB_CONNECTION=mysql
+            - DB_HOST=lingarr-db
+            - DB_PORT=3306
+            - DB_DATABASE=lingarr
+            - DB_USERNAME=lingarr
+            - DB_PASSWORD=${PASSWORD}
+        ports:
+            - 9876:9876
+        volumes:
+            - ${ROOT_APPDATA}/lingarr:/app/config
+            - ${ROOT_DATA_HDD}:/hdd
+        networks:
+            - mariusz-network
+        depends_on:
+            lingarr-db:
+                condition: service_healthy
+        restart: unless-stopped
+
+    lingarr-db:
+        image: mariadb:latest
+        container_name: lingarr-db
+        environment:
+            - MYSQL_DATABASE=lingarr
+            - MYSQL_USER=lingarr
+            - MYSQL_PASSWORD=${PASSWORD}
+            - MYSQL_ROOT_PASSWORD=${PASSWORD}
+        volumes:
+            - ${ROOT_APPDATA}/lingarr-db:/var/lib/mysql
+        networks:
+            - mariusz-network
+        healthcheck:
+            test: "mariadb $$MYSQL_DATABASE -u$$MYSQL_USER -p$$MYSQL_PASSWORD -e 'SELECT 1;'"
+            interval: 10s
+            timeout: 5s
+            retries: 5
+        restart: unless-stopped
+
+    libretranslate:
+        image: libretranslate/libretranslate:latest-cuda
+        container_name: libretranslate
+        environment:
             - NVIDIA_DRIVER_CAPABILITIES=compute,video,utility
             - NVIDIA_VISIBLE_DEVICES=all
         ports:
-            - 9000:9000
+            - 5000:5000
+        volumes:
+            - ${ROOT_APPDATA}/libretranslate:/home/libretranslate/.local/share/argos-translate
         devices:
             - /dev/dri:/dev/dri
             - /dev/dxg:/dev/dxg
-        restart: unless-stopped
         networks:
             - mariusz-network
+        restart: unless-stopped
 
 networks:
     mariusz-network:

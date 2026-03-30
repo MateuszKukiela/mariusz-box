@@ -87,6 +87,16 @@ jfa.januszex.net, accounts.januszex.net {
 }
 
 
+libretranslate.januszex.net {
+    import tls_cf
+    reverse_proxy libretranslate:5000
+}
+
+lingarr.januszex.net {
+    import tls_cf
+    reverse_proxy lingarr:9876
+}
+
 comicstreamer.januszex.net {
     import tls_cf
     reverse_proxy comicstreamer:32500
