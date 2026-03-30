@@ -591,6 +591,23 @@ services:
             - /var/run/docker.sock:/var/run/docker.sock
         restart: unless-stopped
 
+    whisperasr:
+        container_name: whisperasr
+        image: onerahmet/openai-whisper-asr-webservice:latest-gpu
+        environment:
+            - ASR_MODEL=small
+            - ASR_ENGINE=faster_whisper
+            - NVIDIA_DRIVER_CAPABILITIES=compute,video,utility
+            - NVIDIA_VISIBLE_DEVICES=all
+        ports:
+            - 9000:9000
+        devices:
+            - /dev/dri:/dev/dri
+            - /dev/dxg:/dev/dxg
+        restart: unless-stopped
+        networks:
+            - mariusz-network
+
 networks:
     mariusz-network:
 
