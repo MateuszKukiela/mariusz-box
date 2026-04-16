@@ -597,7 +597,7 @@ services:
         environment:
             - TZ=${TZ}
         volumes:
-            - ${ROOT_APPDATA}/sillytavern/config:/home/node/app/config
+            - ${ROOT_APPDATA}/sillytavern/config/config.yaml:/home/node/app/config.yaml
             - ${ROOT_APPDATA}/sillytavern/data:/home/node/app/data
         ports:
             - 8087:8000
