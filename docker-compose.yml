@@ -591,6 +591,21 @@ services:
             - /var/run/docker.sock:/var/run/docker.sock
         restart: unless-stopped
 
+    openwebui:
+        image: ghcr.io/open-webui/open-webui:main
+        container_name: openwebui
+        environment:
+            - PUID=${PUID}
+            - PGID=${PGID}
+            - TZ=${TZ}
+        volumes:
+            - ${ROOT_APPDATA}/openwebui:/app/backend/data
+        ports:
+            - 8086:8080
+        networks:
+            - mariusz-network
+        restart: unless-stopped
+
     lingarr:
         image: ghcr.io/lingarr-translate/lingarr:latest
         container_name: lingarr
