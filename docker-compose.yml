@@ -599,8 +599,6 @@ services:
         volumes:
             - ${ROOT_APPDATA}/sillytavern/config/config.yaml:/home/node/app/config.yaml
             - ${ROOT_APPDATA}/sillytavern/data:/home/node/app/data
-        ports:
-            - 8087:8000
         networks:
             - mariusz-network
         restart: unless-stopped
