@@ -136,6 +136,11 @@ portainer.januszex.net {
     }
 }
 
+chat.januszex.net {
+    import tls_cf
+    reverse_proxy openwebui:8080
+}
+
 metube.januszex.net {
     import tls_cf
     basicauth {
