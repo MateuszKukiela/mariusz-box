@@ -596,9 +596,12 @@ services:
         container_name: sillytavern
         environment:
             - TZ=${TZ}
+            - PUID=${PUID}
+            - PGID=${PGID}
         volumes:
             - ${ROOT_APPDATA}/sillytavern/config:/home/node/app/config
             - ${ROOT_APPDATA}/sillytavern/data:/home/node/app/data
+            - ${ROOT_APPDATA}/sillytavern/plugins:/home/node/app/plugins
         networks:
             - mariusz-network
         restart: unless-stopped
