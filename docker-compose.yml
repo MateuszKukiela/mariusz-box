@@ -591,6 +591,20 @@ services:
             - /var/run/docker.sock:/var/run/docker.sock
         restart: unless-stopped
 
+    sillytavern:
+        image: ghcr.io/sillytavern/sillytavern:latest
+        container_name: sillytavern
+        environment:
+            - TZ=${TZ}
+        volumes:
+            - ${ROOT_APPDATA}/sillytavern/config:/home/node/app/config
+            - ${ROOT_APPDATA}/sillytavern/data:/home/node/app/data
+        ports:
+            - 8087:8000
+        networks:
+            - mariusz-network
+        restart: unless-stopped
+
     openwebui:
         image: ghcr.io/open-webui/open-webui:main
         container_name: openwebui
