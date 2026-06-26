@@ -319,6 +319,7 @@ services:
             - ${ROOT_APPDATA}/metube:/config
             - ${ROOT_DATA_HDD}:/hdd
             - /etc/localtime:/etc/localtime:ro
+            - ${ROOT_DATA_HDD}/metube:/downloads
         ports:
             - 8085:8081
         networks:
