@@ -493,6 +493,29 @@ services:
             - mariusz-network
         restart: unless-stopped
 
+    whisper-asr:
+        image: onerahmet/openai-whisper-asr-webservice:latest-gpu
+        container_name: whisper-asr
+        environment:
+            - ASR_ENGINE=faster_whisper
+            - ASR_MODEL=base
+            - TZ=${TZ}
+        volumes:
+            - ${ROOT_APPDATA}/whisper-asr:/root/.cache
+        ports:
+            - 9000:9000
+        networks:
+            - mariusz-network
+        runtime: nvidia
+        deploy:
+            resources:
+                reservations:
+                    devices:
+                        - driver: nvidia
+                          count: 1
+                          capabilities: [gpu]
+        restart: unless-stopped
+
     stash:
         image: ghcr.io/feederbox826/stash-s6:hwaccel
         container_name: stash
@@ -658,7 +681,7 @@ services:
         networks:
             - mariusz-network
         healthcheck:
-            test: "mariadb $$MYSQL_DATABASE -u$$MYSQL_USER -p$$MYSQL_PASSWORD -e 'SELECT 1;'"
+            test: mariadb $$MYSQL_DATABASE -u$$MYSQL_USER -p$$MYSQL_PASSWORD -e 'SELECT 1;'
             interval: 10s
             timeout: 5s
             retries: 5
