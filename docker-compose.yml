@@ -150,7 +150,7 @@ services:
 
     filebrowser:
         container_name: filebrowser
-        image: filebrowser/filebrowser:s6
+        image: /filebrowser:s6
         environment:
             - PUID=${PUID}
             - PGID=${PGID}
@@ -494,14 +494,16 @@ services:
         restart: unless-stopped
 
     whisper-asr:
-        image: onerahmet/openai-whisper-asr-webservice:latest-gpu
+        image: mccloud/subgen:latest
         container_name: whisper-asr
         environment:
-            - ASR_ENGINE=faster_whisper
-            - ASR_MODEL=base
+            - TRANSCRIBE_DEVICE=cuda
+            - WHISPER_MODEL=large-v3-turbo
+            - CONCURRENT_TRANSCRIPTIONS=1
+            - HF_HUB_CACHE=/subgen/models
             - TZ=${TZ}
         volumes:
-            - ${ROOT_APPDATA}/whisper-asr:/root/.cache
+            - ${ROOT_APPDATA}/whisper-asr:/subgen/models
         ports:
             - 9000:9000
         networks:
