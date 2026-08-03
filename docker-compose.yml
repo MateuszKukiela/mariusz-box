@@ -592,6 +592,31 @@ services:
             - mariusz-network
         restart: unless-stopped
 
+    cloudflare-ddns:
+        image: favonia/cloudflare-ddns:latest
+        container_name: cloudflare-ddns
+        environment:
+            - CLOUDFLARE_API_TOKEN=${CF_API_TOKEN}
+            # Only the A records that hold the real WAN IP. Subdomains resolve
+            # through the *.januszex.net CNAME to the apex, so new Caddy sites
+            # need no DNS record at all.
+            - DOMAINS=januszex.net,ssh.januszex.net
+            # Apex stays orange-cloud; ssh must be DNS-only since Cloudflare's
+            # proxy does not pass SSH.
+            - PROXIED=!is(ssh.januszex.net)
+            - IP6_PROVIDER=none
+            - UPDATE_CRON=@every 5m
+            - DELETE_ON_STOP=false
+            - TZ=${TZ}
+        user: ${PUID}:${PGID}
+        read_only: true
+        cap_drop:
+            - ALL
+        security_opt:
+            - no-new-privileges:true
+        network_mode: host
+        restart: unless-stopped
+
     tika:
         image: docker.io/apache/tika:latest
         networks:
