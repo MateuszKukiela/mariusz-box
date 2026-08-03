@@ -146,6 +146,11 @@ chat.januszex.net {
     reverse_proxy openwebui:8080
 }
 
+budget.januszex.net {
+    import tls_cf
+    reverse_proxy actual:5006
+}
+
 metube.januszex.net {
     import tls_cf
     basicauth {
