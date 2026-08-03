@@ -1,24 +1,5 @@
 ---
 services:
-    actual:
-        image: ghcr.io/actualbudget/actual-server:latest
-        container_name: actual
-        environment:
-            - TZ=${TZ}
-        volumes:
-            - ${ROOT_APPDATA}/actual:/data
-        ports:
-            - 5006:5006
-        healthcheck:
-            test: node /app/src/scripts/health-check.js
-            interval: 60s
-            timeout: 10s
-            retries: 3
-            start_period: 20s
-        networks:
-            - mariusz-network
-        restart: unless-stopped
-
     authelia:
         image: authelia/authelia:4.21.0
         container_name: authelia
@@ -183,6 +164,75 @@ services:
             - 8250:80
         networks:
             - mariusz-network
+        restart: unless-stopped
+
+    firefly:
+        image: fireflyiii/core:latest
+        container_name: firefly
+        environment:
+            - TZ=${TZ}
+            - APP_ENV=production
+            - APP_KEY=${FIREFLY_APP_KEY}
+            - APP_URL=https://firefly.januszex.net
+            - TRUSTED_PROXIES=**
+            - DB_CONNECTION=mysql
+            - DB_HOST=firefly-db
+            - DB_PORT=3306
+            - DB_DATABASE=firefly
+            - DB_USERNAME=firefly
+            - DB_PASSWORD=${PASSWORD}
+        volumes:
+            - ${ROOT_APPDATA}/firefly/upload:/var/www/html/storage/upload
+        ports:
+            - 8087:8080
+        networks:
+            - mariusz-network
+        depends_on:
+            firefly-db:
+                condition: service_healthy
+        restart: unless-stopped
+
+    firefly-importer:
+        image: fireflyiii/data-importer:latest
+        container_name: firefly-importer
+        environment:
+            - TZ=${TZ}
+            - FIREFLY_III_URL=http://firefly:8080
+            - VANITY_URL=https://firefly.januszex.net
+            - FIREFLY_III_ACCESS_TOKEN=${FIREFLY_ACCESS_TOKEN}
+            - TRUSTED_PROXIES=**
+            - ENABLE_BANKING_APP_ID=${ENABLE_BANKING_APP_ID}
+            - ENABLE_BANKING_PRIVATE_KEY_FILE=/pem/enablebanking.pem
+            # Some PSD2 banks reject requests without a real client IP header.
+            - ENABLE_BANKING_IMPORT_IP_HEADER=true
+            - ENABLE_BANKING_IMPORT_IP=autodetect
+        volumes:
+            - ${ROOT_APPDATA}/firefly/enablebanking.pem:/pem/enablebanking.pem:ro
+        ports:
+            - 8088:8080
+        networks:
+            - mariusz-network
+        depends_on:
+            - firefly
+        restart: unless-stopped
+
+    firefly-db:
+        image: mariadb:lts
+        container_name: firefly-db
+        environment:
+            - MYSQL_DATABASE=firefly
+            - MYSQL_USER=firefly
+            - MYSQL_PASSWORD=${PASSWORD}
+            - MYSQL_ROOT_PASSWORD=${PASSWORD}
+        volumes:
+            - ${ROOT_APPDATA}/firefly-db:/var/lib/mysql
+        networks:
+            - mariusz-network
+        healthcheck:
+            test: mariadb $$MYSQL_DATABASE -u$$MYSQL_USER -p$$MYSQL_PASSWORD -e 'SELECT 1;'
+            interval: 10s
+            timeout: 5s
+            retries: 5
         restart: unless-stopped
 
     gotenberg:
