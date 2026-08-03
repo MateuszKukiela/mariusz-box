@@ -146,14 +146,9 @@ chat.januszex.net {
     reverse_proxy openwebui:8080
 }
 
-firefly.januszex.net {
+sure.januszex.net {
     import tls_cf
-    reverse_proxy firefly:8080
-}
-
-importer.januszex.net {
-    import tls_cf
-    reverse_proxy firefly-importer:8080
+    reverse_proxy sure:3000
 }
 
 metube.januszex.net {

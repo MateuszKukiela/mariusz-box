@@ -166,71 +166,97 @@ services:
             - mariusz-network
         restart: unless-stopped
 
-    firefly:
-        image: fireflyiii/core:latest
-        container_name: firefly
+    sure:
+        image: ghcr.io/we-promise/sure:stable
+        container_name: sure
         environment:
             - TZ=${TZ}
-            - APP_ENV=production
-            - APP_KEY=${FIREFLY_APP_KEY}
-            - APP_URL=https://firefly.januszex.net
-            - TRUSTED_PROXIES=**
-            - DB_CONNECTION=mysql
-            - DB_HOST=firefly-db
-            - DB_PORT=3306
-            - DB_DATABASE=firefly
-            - DB_USERNAME=firefly
-            - DB_PASSWORD=${PASSWORD}
+            - SELF_HOSTED=true
+            - SECRET_KEY_BASE=${SURE_SECRET_KEY_BASE}
+            # Caddy terminates TLS, so Rails must trust the proxy but not
+            # redirect again.
+            - RAILS_ASSUME_SSL=true
+            - RAILS_FORCE_SSL=false
+            - DB_HOST=sure-db
+            - DB_PORT=5432
+            - POSTGRES_DB=sure_production
+            - POSTGRES_USER=sure
+            - POSTGRES_PASSWORD=${PASSWORD}
+            - REDIS_URL=redis://sure-redis:6379/1
+            # Optional: powers the in-app AI categorisation and chat. Routed
+            # through OpenRouter, so OPENAI_MODEL is required.
+            - OPENAI_ACCESS_TOKEN=${OPENROUTER_API_KEY}
+            - OPENAI_URI_BASE=https://openrouter.ai/api/v1
+            - OPENAI_MODEL=${OPENROUTER_MODEL}
         volumes:
-            - ${ROOT_APPDATA}/firefly/upload:/var/www/html/storage/upload
+            - ${ROOT_APPDATA}/sure/storage:/rails/storage
         ports:
-            - 8087:8080
+            - 8090:3000
         networks:
             - mariusz-network
         depends_on:
-            firefly-db:
+            sure-db:
+                condition: service_healthy
+            sure-redis:
                 condition: service_healthy
         restart: unless-stopped
 
-    firefly-importer:
-        image: fireflyiii/data-importer:latest
-        container_name: firefly-importer
+    sure-worker:
+        image: ghcr.io/we-promise/sure:stable
+        container_name: sure-worker
+        command: bundle exec sidekiq
         environment:
             - TZ=${TZ}
-            - FIREFLY_III_URL=http://firefly:8080
-            - VANITY_URL=https://firefly.januszex.net
-            - FIREFLY_III_ACCESS_TOKEN=${FIREFLY_ACCESS_TOKEN}
-            - TRUSTED_PROXIES=**
-            - ENABLE_BANKING_APP_ID=${ENABLE_BANKING_APP_ID}
-            - ENABLE_BANKING_PRIVATE_KEY_FILE=/pem/enablebanking.pem
-            # Some PSD2 banks reject requests without a real client IP header.
-            - ENABLE_BANKING_IMPORT_IP_HEADER=true
-            - ENABLE_BANKING_IMPORT_IP=autodetect
+            - SELF_HOSTED=true
+            - SECRET_KEY_BASE=${SURE_SECRET_KEY_BASE}
+            - DB_HOST=sure-db
+            - DB_PORT=5432
+            - POSTGRES_DB=sure_production
+            - POSTGRES_USER=sure
+            - POSTGRES_PASSWORD=${PASSWORD}
+            - REDIS_URL=redis://sure-redis:6379/1
+            - OPENAI_ACCESS_TOKEN=${OPENROUTER_API_KEY}
+            - OPENAI_URI_BASE=https://openrouter.ai/api/v1
+            - OPENAI_MODEL=${OPENROUTER_MODEL}
         volumes:
-            - ${ROOT_APPDATA}/firefly/enablebanking.pem:/pem/enablebanking.pem:ro
-        ports:
-            - 8088:8080
+            - ${ROOT_APPDATA}/sure/storage:/rails/storage
         networks:
             - mariusz-network
         depends_on:
-            - firefly
+            sure-db:
+                condition: service_healthy
+            sure-redis:
+                condition: service_healthy
         restart: unless-stopped
 
-    firefly-db:
-        image: mariadb:lts
-        container_name: firefly-db
+    sure-db:
+        image: postgres:16
+        container_name: sure-db
         environment:
-            - MYSQL_DATABASE=firefly
-            - MYSQL_USER=firefly
-            - MYSQL_PASSWORD=${PASSWORD}
-            - MYSQL_ROOT_PASSWORD=${PASSWORD}
+            - POSTGRES_DB=sure_production
+            - POSTGRES_USER=sure
+            - POSTGRES_PASSWORD=${PASSWORD}
         volumes:
-            - ${ROOT_APPDATA}/firefly-db:/var/lib/mysql
+            - ${ROOT_APPDATA}/sure-db:/var/lib/postgresql/data
         networks:
             - mariusz-network
         healthcheck:
-            test: mariadb $$MYSQL_DATABASE -u$$MYSQL_USER -p$$MYSQL_PASSWORD -e 'SELECT 1;'
-            interval: 10s
+            test: [CMD-SHELL, pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB]
+            interval: 5s
+            timeout: 5s
+            retries: 5
+        restart: unless-stopped
+
+    sure-redis:
+        image: redis:7
+        container_name: sure-redis
+        volumes:
+            - ${ROOT_APPDATA}/sure-redis:/data
+        networks:
+            - mariusz-network
+        healthcheck:
+            test: [CMD, redis-cli, ping]
+            interval: 5s
             timeout: 5s
             retries: 5
         restart: unless-stopped
