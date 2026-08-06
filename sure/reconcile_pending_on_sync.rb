@@ -1,14 +1,24 @@
-# Reconcile pending transactions after every Enable Banking sync.
+# Fallback reconciliation of pending transactions, for banks whose settlement
+# breaks Enable Banking's ID matching.
 #
-# Sure pairs a pending transaction with its booked counterpart via
-# Entry.reconcile_pending_duplicates, and drops authorisations that never
-# booked via Entry.auto_exclude_stale_pending. Both are only ever called from
-# the SimpleFIN importer, so Enable Banking connections fetch pending rows and
-# then leave them unreconciled forever, double-counting the spend.
+# The importer already retires settled pending rows ("C4"), matching on the
+# provider fingerprint or a shared entry_reference. That is exact and is the
+# right mechanism where it works — do not replace it.
 #
-# EnableBankingItem::Syncer#perform_post_sync is an empty hook, so fill it.
-# Delete this file and its compose mount once upstream calls the two methods
-# from the shared sync path.
+# mBank defeats both strategies: the authorisation and the posting carry
+# different references (P02000002846... vs 20260805...), and no entry_reference
+# is retained, so the two rows share no identifier. The pair then lingers and
+# the spend is counted twice.
+#
+# Entry.reconcile_pending_duplicates is the heuristic fallback for exactly this
+# situation (name + amount + date window), but it is only wired into the
+# SimpleFIN importer. EnableBankingItem::Syncer#perform_post_sync is an empty
+# hook, so run it there, after C4 has already removed everything it could match
+# properly. Entry.auto_exclude_stale_pending drops authorisations that never
+# booked at all.
+#
+# Delete this once mBank keeps a stable reference across settlement, or once
+# upstream wires the fallback into the shared sync path.
 
 Rails.application.config.to_prepare do
   module ReconcilePendingOnSync
