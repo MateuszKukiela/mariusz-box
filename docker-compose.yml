@@ -195,6 +195,9 @@ services:
             - OPENAI_URI_BASE=https://openrouter.ai/api/v1
         volumes:
             - ${ROOT_APPDATA}/sure/storage:/rails/storage
+            # Upstream never reconciles pending transactions for Enable
+            # Banking; this initializer fills the empty post-sync hook.
+            - ./sure/reconcile_pending_on_sync.rb:/rails/config/initializers/zz_reconcile_pending_on_sync.rb:ro
         ports:
             - 8090:3000
         networks:
@@ -230,6 +233,9 @@ services:
             - OPENAI_URI_BASE=https://openrouter.ai/api/v1
         volumes:
             - ${ROOT_APPDATA}/sure/storage:/rails/storage
+            # Upstream never reconciles pending transactions for Enable
+            # Banking; this initializer fills the empty post-sync hook.
+            - ./sure/reconcile_pending_on_sync.rb:/rails/config/initializers/zz_reconcile_pending_on_sync.rb:ro
         networks:
             - mariusz-network
         depends_on:
