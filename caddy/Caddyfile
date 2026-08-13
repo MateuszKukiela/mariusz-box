@@ -153,7 +153,7 @@ sure.januszex.net {
 
 metube.januszex.net {
     import tls_cf
-    basicauth {
+    basic_auth {
         root {$METUBE_PASSWORD_HASH}
     }
     reverse_proxy metube:8081
