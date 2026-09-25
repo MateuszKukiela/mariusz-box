@@ -161,7 +161,11 @@ metube.januszex.net {
 
 search.januszex.net {
     import tls_cf
-    basic_auth {
+    # Browsers fetch address-bar suggestions without credentials, so
+    # /autocompleter must skip basic auth or suggestions silently fail. It only
+    # returns suggestion strings; results and preferences stay protected.
+    @protected not path /autocompleter
+    basic_auth @protected {
         root {$SEARXNG_PASSWORD_HASH}
     }
     reverse_proxy searxng:8080
