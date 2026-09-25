@@ -763,7 +763,10 @@ services:
 
     watchtower:
         container_name: watchtower
-        image: containrrr/watchtower
+        # containrrr/watchtower is archived, and its Docker API 1.25 client is
+        # rejected by Docker 29 (minimum 1.40). This maintained fork negotiates
+        # the API version.
+        image: nickfedor/watchtower
         environment:
             - WATCHTOWER_CLEANUP=true
         volumes:
