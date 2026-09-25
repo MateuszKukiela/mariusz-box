@@ -584,6 +584,22 @@ services:
             - mariusz-network
         restart: unless-stopped
 
+    searxng:
+        image: docker.io/searxng/searxng:latest
+        container_name: searxng
+        environment:
+            - TZ=${TZ}
+            # Served only through Caddy (basic auth), so no host port is
+            # published. The secret key is generated into settings.yml on first
+            # start, and the limiter stays off because only we can reach it.
+            - SEARXNG_BASE_URL=https://search.januszex.net/
+        volumes:
+            - ${ROOT_APPDATA}/searxng/config:/etc/searxng
+            - ${ROOT_APPDATA}/searxng/cache:/var/cache/searxng
+        networks:
+            - mariusz-network
+        restart: unless-stopped
+
     sonarr:
         image: ghcr.io/linuxserver/sonarr
         container_name: sonarr
@@ -692,6 +708,7 @@ services:
         environment:
             - CF_API_TOKEN=${CF_API_TOKEN}
             - METUBE_PASSWORD_HASH=${METUBE_PASSWORD_HASH}
+            - SEARXNG_PASSWORD_HASH=${SEARXNG_PASSWORD_HASH}
         volumes:
             - ./caddy/Caddyfile:/etc/caddy/Caddyfile
             - ${ROOT_APPDATA}/caddy/data:/data

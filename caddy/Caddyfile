@@ -158,3 +158,11 @@ metube.januszex.net {
     }
     reverse_proxy metube:8081
 }
+
+search.januszex.net {
+    import tls_cf
+    basic_auth {
+        root {$SEARXNG_PASSWORD_HASH}
+    }
+    reverse_proxy searxng:8080
+}
