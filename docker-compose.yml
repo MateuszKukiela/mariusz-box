@@ -113,7 +113,7 @@ services:
             PGID: ${PGID}
             # Decluttarr v2 settings (the v1 variables stopped working in v2.0).
             LOG_LEVEL: INFO
-            TEST_RUN: true
+            TEST_RUN: false
             TIMER: 10
             PROTECTED_TAG: Don't Kill
             MAX_STRIKES: 3
