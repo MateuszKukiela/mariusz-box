@@ -1,16 +1,5 @@
 ---
 services:
-    authelia:
-        image: authelia/authelia:4.21.0
-        container_name: authelia
-        environment:
-            - TZ=${TZ}
-        volumes:
-            - ${ROOT_APPDATA}/authelia:/config
-        networks:
-            - mariusz-network
-        restart: unless-stopped
-
     bazarr:
         image: ghcr.io/linuxserver/bazarr
         container_name: bazarr
@@ -122,31 +111,45 @@ services:
             TZ: ${TZ}
             PUID: ${PUID}
             PGID: ${PGID}
+            # Decluttarr v2 settings (the v1 variables stopped working in v2.0).
             LOG_LEVEL: INFO
-            REMOVE_TIMER: 10
-            REMOVE_FAILED: true
-            REMOVE_FAILED_IMPORTS: true
+            TEST_RUN: true
+            TIMER: 10
+            PROTECTED_TAG: Don't Kill
+            MAX_STRIKES: 3
+            MIN_DAYS_BETWEEN_SEARCHES: 7
+            MAX_CONCURRENT_SEARCHES: 3
+            REMOVE_FAILED_DOWNLOADS: true
+            REMOVE_FAILED_IMPORTS: |
+                message_patterns:
+                    - "*Not a Custom Format upgrade for existing*"
+                    - "*Not an upgrade for existing*"
             REMOVE_METADATA_MISSING: true
             REMOVE_MISSING_FILES: true
             REMOVE_ORPHANS: true
-            REMOVE_SLOW: true
+            REMOVE_SLOW: |
+                min_speed: 100
             REMOVE_STALLED: true
             REMOVE_UNMONITORED: true
-            RUN_PERIODIC_RESCANS: ' { "SONARR": {"MISSING": true, "CUTOFF_UNMET": true, "MAX_CONCURRENT_SCANS": 3, "MIN_DAYS_BEFORE_RESCAN": 7}, "RADARR":
-                {"MISSING": true, "CUTOFF_UNMET": true, "MAX_CONCURRENT_SCANS": 3, "MIN_DAYS_BEFORE_RESCAN": 7} }'
-            PERMITTED_ATTEMPTS: 3
-            NO_STALLED_REMOVAL_QBIT_TAG: Don't Kill
-            MIN_DOWNLOAD_SPEED: 100
-            FAILED_IMPORT_MESSAGE_PATTERNS: ' [ "Not a Custom Format upgrade for existing", "Not an upgrade for existing" ]'
-            RADARR_URL: https://radarr.januszex.net
-            RADARR_KEY: ${RADARR_API_KEY}
-            SONARR_URL: https://sonarr.januszex.net
-            SONARR_KEY: ${SONARR_API_KEY}
-            QBITTORRENT_URL: https://qbittorrent.januszex.net
-            QBITTORRENT_USERNAME: root
-            QBITTORRENT_PASSWORD: ${PASSWORD}
-
-
+            SEARCH_MISSING: true
+            SEARCH_UNMET_CUTOFF: true
+            RADARR: |
+                - base_url: "http://radarr:7878"
+                  api_key: "${RADARR_API_KEY}"
+            SONARR: |
+                - base_url: "http://sonarr:8989"
+                  api_key: "${SONARR_API_KEY}"
+            # One qBittorrent, listed under the download-client name Radarr ("qbit")
+            # and Sonarr ("qbittorrent") each use, because decluttarr matches by name.
+            QBITTORRENT: |
+                - base_url: "http://qbittorrent:8082"
+                  username: "root"
+                  password: "${PASSWORD}"
+                  name: "qbit"
+                - base_url: "http://qbittorrent:8082"
+                  username: "root"
+                  password: "${PASSWORD}"
+                  name: "qbittorrent"
 
     filebrowser:
         container_name: filebrowser
