@@ -8,11 +8,28 @@ next to this README are the live copies; the paths below say where each goes.
 | Disk | Holds | Mounted |
 |---|---|---|
 | Samsung 980 1 TB (LUKS, btrfs) | the OS | `/` |
-| KIOXIA EXCERIA G2 1 TB (ext4) | appdata, metadata, the repo, Docker and containerd storage | `/srv/mariusz-box`, bind-mounted to `/var/lib/docker` and `/var/lib/containerd` |
+| KIOXIA EXCERIA G2 1 TB (btrfs) | appdata, metadata, the repo, Docker and containerd storage | `/srv/mariusz-box`, bind-mounted to `/var/lib/docker` and `/var/lib/containerd` |
 | 3× 14 TB Exos, ZFS raidz1 pool `mariusz` | media, downloads, photos, MeTube, Stash blobs, `archive/` | `/mariusz` |
 
 The fstab entries for the KIOXIA and its two bind mounts use `nofail`, and
 Docker `RequiresMountsFor` all three, so a missing NVMe keeps Docker down.
+
+The KIOXIA is btrfs so backups can snapshot it without stopping anything
+(`backup/README.md`). appdata, metadata and the repo sit in the top-level
+subvolume, so one snapshot captures them together; everything that shouldn't be
+in that snapshot is its own subvolume:
+
+| Subvolume | Why separate |
+|---|---|
+| `docker`, `containerd` | image layers don't belong in backups; `docker` is snapshotted on its own for the volumes |
+| `backup-staging` | tonight's archive shouldn't be pinned by tonight's snapshot |
+| `.snapshots` | where the snapshots go |
+
+```
+UUID=<uuid>  /srv/mariusz-box  btrfs  noatime,compress=zstd:1,nofail,x-systemd.device-timeout=10s  0 0
+/srv/mariusz-box/docker      /var/lib/docker      none  bind,nofail,x-systemd.requires-mounts-for=/srv/mariusz-box  0 0
+/srv/mariusz-box/containerd  /var/lib/containerd  none  bind,nofail,x-systemd.requires-mounts-for=/srv/mariusz-box  0 0
+```
 
 ## ZFS
 

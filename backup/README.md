@@ -1,18 +1,27 @@
 # Backups
 
 Every night at 05:00 (after watchtower's 04:00 run) `mariusz-backup` writes one
-archive of everything the box needs and uploads it to Storj.
+archive of everything the box needs and uploads it to Storj. Nothing is stopped.
 
-1. The running compose services are stopped, so every database is consistent.
-2. `mariusz-box-<timestamp>.tar.zst` is written to `/srv/mariusz-box/backup-staging`.
-3. The same services are started again. They are down for a couple of minutes.
+1. Three snapshots are taken, each instant:
+   - a read-only btrfs snapshot of the KIOXIA's top level, which holds
+     appdata, metadata and the repo, so all three are captured atomically;
+   - one of its `docker` subvolume, for the named volumes;
+   - a ZFS snapshot of the pool, for photos and `/mariusz/ssd`.
+2. They are bind-mounted read-only at their real paths under a tmpfs, and
+   `mariusz-box-<timestamp>.tar.zst` is written from there to
+   `/srv/mariusz-box/backup-staging`.
+3. The docker and ZFS snapshots are dropped; the last 3 top-level snapshots stay
+   in `/srv/mariusz-box/.snapshots` for a quick local rollback.
 4. The archive goes to Storj, and the remote size is checked against the local one.
 5. The previous local archive is deleted, so the newest one stays on the KIOXIA
    for a restore without a download.
 6. Old backups are pruned.
 
-A failure anywhere still starts the services again, and the run shows as failed
-in `systemctl status mariusz-backup`.
+Databases in a snapshot are crash-consistent: Postgres, MariaDB and SQLite
+recover from them the same way they recover from a power cut. A failed run
+cleans up its snapshots and mounts and shows as failed in
+`systemctl status mariusz-backup`.
 
 ## What's in it
 
@@ -79,6 +88,18 @@ docker compose up -d
 ```
 
 Unpack `etc/` into a scratch directory rather than over a different OS install.
+
+### From a local snapshot
+
+The last three nights of appdata, metadata and the repo are also in
+`/srv/mariusz-box/.snapshots/<timestamp>/` (read-only). Copying a service's
+folder back is enough to undo a bad change:
+
+```bash
+docker compose stop radarr
+sudo rsync -aHAX --delete /srv/mariusz-box/.snapshots/<timestamp>/appdata/radarr/ /srv/mariusz-box/appdata/radarr/
+docker compose start radarr
+```
 
 ## Useful commands
 
