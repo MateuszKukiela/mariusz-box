@@ -46,12 +46,13 @@ record. Only the apex and `ssh.` are A records, kept current by cloudflare-ddns.
 | `filebrowser.` | File Browser |
 | `sonarr.`, `radarr.`, `prowlarr.`, `bazarr.`, `profilarr.`, `lingarr.` | the *arrs |
 | `qbittorrent.`, `sabnzbd.` | download clients |
-| `metube.` | MeTube (basic auth) |
-| `search.` | SearXNG (basic auth) |
+| `metube.` | MeTube (login) |
+| `search.` | SearXNG (login) |
+| `auth.` | tinyauth login page for the "(login)" sites |
 | `st.` | SillyTavern |
 | `chat.` | Open WebUI |
 | `sure.` | Sure |
-| `portainer.` | Portainer |
+| `portainer.` | Portainer (login) |
 | `uptime.`, `czymariuszlezy.` | Uptime Kuma, and its public status page |
 | `photos.` | Immich |
 | `paperless.` | Paperless (off) |

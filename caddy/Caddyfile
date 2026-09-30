@@ -1,150 +1,178 @@
+{
+	servers {
+		# All public traffic arrives through Cloudflare: trust its edge ranges
+		# so logs, matchers and backends (tinyauth) see the visitor's IP.
+		trusted_proxies cloudflare
+		client_ip_headers Cf-Connecting-Ip X-Forwarded-For
+	}
+}
+
 (tls_cf) {
-    tls {
-        dns cloudflare {$CF_API_TOKEN}
-    }
+	tls {
+		dns cloudflare {$CF_API_TOKEN}
+	}
+	header {
+		# Only added when the app doesn't send its own. No X-Frame-Options:
+		# czymariuszlezy embeds the Kuma status page in an iframe.
+		?Strict-Transport-Security "max-age=31536000"
+		?X-Content-Type-Options "nosniff"
+	}
+}
+
+# Sends the request to tinyauth first; without a session, the visitor lands
+# on the login page at auth.januszex.net and comes back after signing in.
+(tinyauth) {
+	forward_auth tinyauth:3000 {
+		uri /api/auth/caddy
+	}
+}
+
+auth.januszex.net {
+	import tls_cf
+	reverse_proxy tinyauth:3000
 }
 
 januszex.net, jellyfin.januszex.net {
-    import tls_cf
+	import tls_cf
 
-    reverse_proxy /Users/ForgotPassword jellyfin:8096
-    reverse_proxy /Users/ForgotPassword/Pin jellyfin:8096 {
-        header_up X-Forwarded-For 192.168.1.1
-    }
+	reverse_proxy /Users/ForgotPassword jellyfin:8096
+	reverse_proxy /Users/ForgotPassword/Pin jellyfin:8096 {
+		header_up X-Forwarded-For 192.168.1.1
+	}
 
-    reverse_proxy jellyfin:8096
+	reverse_proxy jellyfin:8096
 }
 
 radarr.januszex.net {
-    import tls_cf
-    reverse_proxy radarr:7878
+	import tls_cf
+	reverse_proxy radarr:7878
 }
 
 sonarr.januszex.net {
-    import tls_cf
-    reverse_proxy sonarr:8989
+	import tls_cf
+	reverse_proxy sonarr:8989
 }
 
 prowlarr.januszex.net {
-    import tls_cf
-    reverse_proxy prowlarr:9696
+	import tls_cf
+	reverse_proxy prowlarr:9696
 }
 
 jellyseerr.januszex.net, requests.januszex.net {
-    import tls_cf
-    reverse_proxy jellyseerr:5055
+	import tls_cf
+	reverse_proxy jellyseerr:5055
 }
 
 sabnzbd.januszex.net {
-    import tls_cf
-    reverse_proxy sabnzbd:8080
+	import tls_cf
+	reverse_proxy sabnzbd:8080
 }
 
 bazarr.januszex.net {
-    import tls_cf
-    reverse_proxy bazarr:6767
+	import tls_cf
+	reverse_proxy bazarr:6767
 }
 
 profilarr.januszex.net {
-    import tls_cf
-    reverse_proxy profilarr:6868
+	import tls_cf
+	reverse_proxy profilarr:6868
 }
 
 stash.januszex.net {
-    import tls_cf
-    reverse_proxy stash:9999
+	import tls_cf
+	reverse_proxy stash:9999
 }
 
 # Paperless is off by default, see compose/paperless.yml.
 paperless.januszex.net {
-    import tls_cf
-    reverse_proxy paperless:8000
+	import tls_cf
+	reverse_proxy paperless:8000
 }
 
 photos.januszex.net {
-    import tls_cf
-    reverse_proxy immich-server:2283
+	import tls_cf
+	reverse_proxy immich-server:2283
 }
 
 filebrowser.januszex.net {
-    import tls_cf
-    reverse_proxy filebrowser:80
+	import tls_cf
+	reverse_proxy filebrowser:80
 }
 
 lingarr.januszex.net {
-    import tls_cf
-    reverse_proxy lingarr:9876
+	import tls_cf
+	reverse_proxy lingarr:9876
 }
 
 comicstreamer.januszex.net {
-    import tls_cf
-    reverse_proxy comicstreamer:32500
+	import tls_cf
+	reverse_proxy comicstreamer:32500
 }
 
 streamyfin.januszex.net {
-    import tls_cf
-    reverse_proxy streamyfin:3000
+	import tls_cf
+	reverse_proxy streamyfin:3000
 }
 
 uptime.januszex.net {
-    import tls_cf
-    reverse_proxy uptime-kuma:3001 {
-        header_down -X-Frame-Options
-        header_down -Content-Security-Policy
-    }
+	import tls_cf
+	reverse_proxy uptime-kuma:3001 {
+		header_down -X-Frame-Options
+		header_down -Content-Security-Policy
+	}
 }
 
 czymariuszlezy.januszex.net {
-    import tls_cf
-    header Content-Type "text/html; charset=utf-8"
-    respond `<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"><style>*{margin:0;padding:0}html,body{background:#161b22}iframe{width:100vw;height:100vh;border:none;display:block}</style></head><body><iframe src="https://uptime.januszex.net/status/mariusz"></iframe></body></html>` 200
+	import tls_cf
+	header Content-Type "text/html; charset=utf-8"
+	respond `<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"><style>*{margin:0;padding:0}html,body{background:#161b22}iframe{width:100vw;height:100vh;border:none;display:block}</style></head><body><iframe src="https://uptime.januszex.net/status/mariusz"></iframe></body></html>` 200
 }
 
 qbittorrent.januszex.net {
-    import tls_cf
-    reverse_proxy qbittorrent:8082
+	import tls_cf
+	reverse_proxy qbittorrent:8082
 }
 
+# Docker-socket admin: the login page in front of Portainer's own.
 portainer.januszex.net {
-    import tls_cf
-    reverse_proxy https://portainer:9443 {
-        transport http {
-            tls_insecure_skip_verify
-        }
-    }
+	import tls_cf
+	import tinyauth
+	reverse_proxy https://portainer:9443 {
+		transport http {
+			tls_insecure_skip_verify
+		}
+	}
 }
 
 st.januszex.net {
-    import tls_cf
-    reverse_proxy sillytavern:8000
+	import tls_cf
+	reverse_proxy sillytavern:8000
 }
 
 chat.januszex.net {
-    import tls_cf
-    reverse_proxy openwebui:8080
+	import tls_cf
+	reverse_proxy openwebui:8080
 }
 
 sure.januszex.net {
-    import tls_cf
-    reverse_proxy sure:3000
+	import tls_cf
+	reverse_proxy sure:3000
 }
 
 metube.januszex.net {
-    import tls_cf
-    basic_auth {
-        root {$METUBE_PASSWORD_HASH}
-    }
-    reverse_proxy metube:8081
+	import tls_cf
+	import tinyauth
+	reverse_proxy metube:8081
 }
 
 search.januszex.net {
-    import tls_cf
-    # Browsers fetch address-bar suggestions without credentials, so
-    # /autocompleter must skip basic auth or suggestions silently fail. It only
-    # returns suggestion strings; results and preferences stay protected.
-    @protected not path /autocompleter
-    basic_auth @protected {
-        root {$SEARXNG_PASSWORD_HASH}
-    }
-    reverse_proxy searxng:8080
+	import tls_cf
+	# Browsers fetch address-bar suggestions without the session cookie, so
+	# /autocompleter must skip the login or suggestions silently fail. It only
+	# returns suggestion strings; results and preferences stay protected.
+	@protected not path /autocompleter
+	forward_auth @protected tinyauth:3000 {
+		uri /api/auth/caddy
+	}
+	reverse_proxy searxng:8080
 }

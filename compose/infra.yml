@@ -6,8 +6,6 @@ services:
         container_name: caddy
         environment:
             - CF_API_TOKEN=${CF_API_TOKEN}
-            - METUBE_PASSWORD_HASH=${METUBE_PASSWORD_HASH}
-            - SEARXNG_PASSWORD_HASH=${SEARXNG_PASSWORD_HASH}
         volumes:
             # The directory, not the file: git pull replaces the Caddyfile with
             # a new inode, which a single-file bind mount would never see.
@@ -55,6 +53,31 @@ services:
             - ${ROOT_APPDATA}/portainer:/data
             - ${ROOT_METADATA}/portainer/backups:/data/backups
             - /var/run/docker.sock:/var/run/docker.sock
+        networks:
+            - mariusz-network
+        restart: unless-stopped
+
+    # Login page for apps without their own (metube, search, portainer), used
+    # through Caddy's forward_auth. The session cookie covers *.januszex.net,
+    # so one login lasts 30 days across all of them.
+    tinyauth:
+        image: ghcr.io/tinyauthapp/tinyauth:v5
+        container_name: tinyauth
+        environment:
+            - TINYAUTH_APPURL=https://auth.januszex.net
+            # username:bcrypt, single-quoted in .env
+            - TINYAUTH_AUTH_USERS=${TINYAUTH_USERS}
+            - TINYAUTH_AUTH_SECURECOOKIE=true
+            - TINYAUTH_AUTH_SESSIONEXPIRY=2592000
+            - TINYAUTH_AUTH_LOGINMAXRETRIES=5
+            # Caddy, which passes the visitor's IP on from Cloudflare.
+            - TINYAUTH_AUTH_TRUSTEDPROXIES=172.16.0.0/12
+            - TINYAUTH_LABELPROVIDER=none
+            - TINYAUTH_ANALYTICS_ENABLED=false
+            - TINYAUTH_DATABASE_PATH=/data/tinyauth.db
+            - TZ=${TZ}
+        volumes:
+            - ${ROOT_APPDATA}/tinyauth:/data
         networks:
             - mariusz-network
         restart: unless-stopped
