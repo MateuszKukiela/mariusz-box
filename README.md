@@ -75,7 +75,10 @@ Paperless and Immich only start when their profile is named:
 docker compose --profile paperless up -d
 ```
 
-Watchtower updates running containers to their latest image on its own.
+Watchtower pulls new images and recreates running containers every night at
+04:00. It copies the old container's labels, so the next manual
+`docker compose up -d` restarts whatever it updated once; that restart changes
+nothing. `docker compose up -d --dry-run` shows what would be recreated.
 
 ## Adding a service
 
@@ -84,3 +87,5 @@ Watchtower updates running containers to their latest image on its own.
 2. Add a Caddy block with `import tls_cf` if it needs a hostname.
 3. Add any new variable to `.env.sample`, and pass containers only the
    variables they read. `env_file: .env` hands them every secret.
+4. Pin databases to a major version (`postgres:16`, `mariadb:13`), or
+   watchtower will upgrade their data directories unattended.

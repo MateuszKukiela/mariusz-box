@@ -22,8 +22,8 @@ STORJ_SECRET_KEY=<secret key>
 STORJ_ENDPOINT=https://gateway.storjshare.io
 STORJ_BUCKET=appdata
 BACKUP_RETAIN_DAYS="0 1 7 30"
-BACKUP_SCHEDULE="*-*-* 03:00:00"
-LVM_SNAP_SIZE=5G
+BACKUP_SCHEDULE="*-*-* 08:00:00"
+LVM_SNAP_SIZE=3G
 ```
 
 ## Setup

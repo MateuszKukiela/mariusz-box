@@ -5,7 +5,7 @@
 #
 #   bash ~/mariusz-box/gpu/update-wsl-driver-vm.sh
 #
-# Keeps the existing DriverStore folder name so docker-compose.yml mounts and
+# Keeps the existing DriverStore folder name so the compose mounts and
 # the /usr/lib/wsl/drivers symlink stay valid (contents refreshed in place).
 
 set -euo pipefail
