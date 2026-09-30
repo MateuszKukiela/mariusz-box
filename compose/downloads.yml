@@ -29,9 +29,6 @@ services:
             - PUID=${PUID}
             - PGID=${PGID}
             - TZ=${TZ}
-            # Date files by when they were downloaded, not when the video was
-            # uploaded, so new downloads sort first in File Browser.
-            - 'YTDL_OPTIONS={"updatetime": false}'
         volumes:
             # Only its own folder: it's reachable from the internet, and it
             # keeps its state in /downloads/.metube.
