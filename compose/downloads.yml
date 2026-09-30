@@ -29,11 +29,17 @@ services:
             - PUID=${PUID}
             - PGID=${PGID}
             - TZ=${TZ}
+            # The whole pool is the download directory, so the Download Folder
+            # field can pick any folder on it (media/tv, media/movies, ...);
+            # it only offers folders inside the download directory. Plain
+            # downloads still go to metube/, and state and partial files stay
+            # hidden there.
+            - DEFAULT_FOLDER=metube
+            - STATE_DIR=/downloads/metube/.metube
+            - TEMP_DIR=/downloads/metube/.tmp
         volumes:
-            # Only its own folder: it's reachable from the internet, and it
-            # keeps its state in /downloads/.metube.
             - /etc/localtime:/etc/localtime:ro
-            - ${ROOT_DATA_HDD}/metube:/downloads
+            - ${ROOT_DATA_HDD}:/downloads
         ports:
             - 8085:8081
         networks:
