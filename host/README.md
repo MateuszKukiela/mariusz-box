@@ -71,10 +71,20 @@ on the 1st at 04:00, and warnings above 45 °C. Results land in
 
 ## SSH and firewall
 
-sshd listens on 22 (LAN) and 2052 (the router forwards it for
-`ssh.januszex.net`), from `/etc/ssh/sshd_config.d/20-ports.conf`. Neither port
-is rate-limited: ufw allows both outright, and `PerSourcePenalties no` is set in
-`10-no-per-source-penalties.conf`.
+The drop-ins in `sshd/` → `/etc/ssh/sshd_config.d/`:
+
+- `20-ports.conf`: sshd listens on 22 (LAN) and 2052 (the router forwards it
+  for `ssh.januszex.net`).
+- `99-wan-keys-only.conf`: passwords only from the LAN (`192.168.8.0/24`,
+  localhost, the LAN's IPv6 ranges); everything else is keys only. Connecting
+  through `ssh.januszex.net` from home counts as WAN, because the router's
+  hairpin NAT makes it arrive from the public IP.
+- `10-no-per-source-penalties.conf`: no per-IP penalties after failed logins.
+
+Check a change with `sudo sshd -t`, and see what a given source gets with
+`sudo sshd -T -C user=mateusz,host=x,addr=8.8.8.8 | grep -i passwordauth`.
+
+ufw allows both ports without rate limiting:
 
 ```bash
 sudo ufw allow 22/tcp
