@@ -25,7 +25,7 @@ compose/
   immich.yml          immich stack       (profile: immich, off)
 caddy/Caddyfile       every public hostname
 sure/                 initializer mounted into Sure
-backup/               nightly LVM snapshot of appdata to Storj
+backup/               nightly archive of all state to Storj
 host/                 OS setup: ZFS, SMART, NVIDIA runtime, SSH, Docker ordering
 docs/                 one-off procedures
 .env.sample           every variable the stack reads
