@@ -4,7 +4,7 @@
     }
 }
 
-januszex.net {
+januszex.net, jellyfin.januszex.net {
     import tls_cf
 
     reverse_proxy /Users/ForgotPassword jellyfin:8096
@@ -28,17 +28,6 @@ sonarr.januszex.net {
 prowlarr.januszex.net {
     import tls_cf
     reverse_proxy prowlarr:9696
-}
-
-jellyfin.januszex.net {
-    import tls_cf
-
-    reverse_proxy /Users/ForgotPassword jellyfin:8096
-    reverse_proxy /Users/ForgotPassword/Pin jellyfin:8096 {
-        header_up X-Forwarded-For 192.168.1.1
-    }
-
-    reverse_proxy jellyfin:8096
 }
 
 jellyseerr.januszex.net, requests.januszex.net {
@@ -66,11 +55,13 @@ stash.januszex.net {
     reverse_proxy stash:9999
 }
 
+# Paperless is off by default, see compose/paperless.yml.
 paperless.januszex.net {
     import tls_cf
     reverse_proxy paperless:8000
 }
 
+# Immich is off until its photos are restored, see compose/immich.yml.
 photos.januszex.net {
     import tls_cf
     reverse_proxy immich-server:2283
@@ -80,12 +71,6 @@ filebrowser.januszex.net {
     import tls_cf
     reverse_proxy filebrowser:80
 }
-
-jfa.januszex.net, accounts.januszex.net {
-    import tls_cf
-    reverse_proxy jfa:8056
-}
-
 
 lingarr.januszex.net {
     import tls_cf
@@ -114,12 +99,6 @@ czymariuszlezy.januszex.net {
     import tls_cf
     header Content-Type "text/html; charset=utf-8"
     respond `<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"><style>*{margin:0;padding:0}html,body{background:#161b22}iframe{width:100vw;height:100vh;border:none;display:block}</style></head><body><iframe src="https://uptime.januszex.net/status/mariusz"></iframe></body></html>` 200
-}
-
-
-homepage.januszex.net {
-    import tls_cf
-    reverse_proxy jellyfin:8096
 }
 
 qbittorrent.januszex.net {

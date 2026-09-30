@@ -9,7 +9,7 @@ Does NOT delete any files.
 ## 1. Radarr — delete all movies
 
 ```bash
-RADARR_KEY=***REMOVED***
+RADARR_KEY=$(grep '^RADARR_API_KEY=' ~/mariusz-box/.env | cut -d= -f2-)
 IDS=$(curl -s -H "X-Api-Key: $RADARR_KEY" http://localhost:7878/api/v3/movie | python3 -c 'import sys,json; ids=[m["id"] for m in json.load(sys.stdin)]; print(json.dumps(ids))')
 echo "Found $(echo $IDS | python3 -c 'import sys,json; print(len(json.load(sys.stdin)))') movies"
 curl -s -X DELETE -H "X-Api-Key: $RADARR_KEY" -H 'Content-Type: application/json' \
@@ -20,7 +20,7 @@ curl -s -X DELETE -H "X-Api-Key: $RADARR_KEY" -H 'Content-Type: application/json
 ## 2. Sonarr — delete all series
 
 ```bash
-SONARR_KEY=***REMOVED***
+SONARR_KEY=$(grep '^SONARR_API_KEY=' ~/mariusz-box/.env | cut -d= -f2-)
 IDS=$(curl -s -H "X-Api-Key: $SONARR_KEY" http://localhost:8989/api/v3/series | python3 -c 'import sys,json; ids=[s["id"] for s in json.load(sys.stdin)]; print(json.dumps(ids))')
 echo "Found $(echo $IDS | python3 -c 'import sys,json; print(len(json.load(sys.stdin)))') series"
 curl -s -X DELETE -H "X-Api-Key: $SONARR_KEY" -H 'Content-Type: application/json' \

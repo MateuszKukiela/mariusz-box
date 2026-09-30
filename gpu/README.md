@@ -185,7 +185,7 @@ LD_LIBRARY_PATH=/usr/lib/wsl/lib /usr/lib/wsl/lib/nvidia-smi
 
 ## Step 5 — Configure Docker for Jellyfin
 
-In `docker-compose.yml`, the Jellyfin service needs these additions.
+In `compose/media.yml`, the Jellyfin service (and whisper-asr in `compose/arr.yml`) needs these additions.
 
 **Environment:**
 ```yaml
@@ -261,16 +261,19 @@ In Jellyfin web UI:
 
 ## After updating NVIDIA drivers on Windows host
 
-The DriverStore folder name changes with each driver version. After updating:
+The DriverStore folder name changes with each driver version, but the VM keeps
+the old name (`nv_dispi.inf_amd64_4bf4c17fa8a478b5`) and only refreshes its
+contents, so the compose mounts never need editing. Two scripts in this folder
+do the whole update:
 
-1. Find the new folder name: `ls "C:\Windows\System32\DriverStore\FileRepository\" | Where-Object { $_.Name -like "nv_dispi*" }`
-2. SCP the new folder to the VM
-3. Update the symlink in `/usr/lib/wsl/drivers/`
-4. Re-copy WSL libs from `lxss\lib` and `WSL\lib`
-5. Run `sudo ldconfig`
-6. Recreate the Jellyfin container with the updated volume path in docker-compose
+1. **Windows host**, PowerShell: `update-wsl-driver.ps1` finds the newest
+   `nv_dispi*` folder and SCPs it plus the WSL libs to `/tmp` on the VM.
+2. **VM**: `bash ~/mariusz-box/gpu/update-wsl-driver-vm.sh` backs up the current
+   libs, swaps the new ones in, fixes the symlinks, runs `ldconfig`, recreates
+   jellyfin and whisper-asr, and checks `cuInit` inside the container.
 
-See `after-nvidia-driver-update.md` for the full procedure.
+If `cuInit` still returns 100, the partition lost its compute allocation: run
+`fix-gpu-partition.ps1` in an elevated PowerShell on the host (Step 1, scripted).
 
 ---
 

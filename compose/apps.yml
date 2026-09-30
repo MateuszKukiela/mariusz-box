@@ -1,0 +1,51 @@
+---
+# Search and AI chat front-ends.
+services:
+    openwebui:
+        image: ghcr.io/open-webui/open-webui:main
+        container_name: openwebui
+        environment:
+            - PUID=${PUID}
+            - PGID=${PGID}
+            - TZ=${TZ}
+        volumes:
+            - ${ROOT_APPDATA}/openwebui:/app/backend/data
+        ports:
+            - 8086:8080
+        networks:
+            - mariusz-network
+        restart: unless-stopped
+
+    searxng:
+        image: docker.io/searxng/searxng:latest
+        container_name: searxng
+        environment:
+            - TZ=${TZ}
+            # Served only through Caddy (basic auth), so no host port is
+            # published. The secret key is generated into settings.yml on first
+            # start, and the limiter stays off because only we can reach it.
+            - SEARXNG_BASE_URL=https://search.januszex.net/
+        volumes:
+            - ${ROOT_APPDATA}/searxng/config:/etc/searxng
+            - ${ROOT_APPDATA}/searxng/cache:/var/cache/searxng
+        networks:
+            - mariusz-network
+        restart: unless-stopped
+
+    sillytavern:
+        image: ghcr.io/sillytavern/sillytavern:latest
+        container_name: sillytavern
+        environment:
+            - TZ=${TZ}
+            - PUID=${PUID}
+            - PGID=${PGID}
+        volumes:
+            - ${ROOT_APPDATA}/sillytavern/config:/home/node/app/config
+            - ${ROOT_APPDATA}/sillytavern/data:/home/node/app/data
+            - ${ROOT_APPDATA}/sillytavern/plugins:/home/node/app/plugins
+        networks:
+            - mariusz-network
+        restart: unless-stopped
+
+networks:
+    mariusz-network:

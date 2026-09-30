@@ -1,0 +1,84 @@
+---
+# Reverse proxy, DNS, image updates and monitoring.
+services:
+    caddy:
+        image: ghcr.io/serfriz/caddy-cloudflare:latest
+        container_name: caddy
+        environment:
+            - CF_API_TOKEN=${CF_API_TOKEN}
+            - METUBE_PASSWORD_HASH=${METUBE_PASSWORD_HASH}
+            - SEARXNG_PASSWORD_HASH=${SEARXNG_PASSWORD_HASH}
+        volumes:
+            # The directory, not the file: git pull replaces the Caddyfile with
+            # a new inode, which a single-file bind mount would never see.
+            - ./caddy:/etc/caddy:ro
+            - ${ROOT_APPDATA}/caddy/data:/data
+            - ${ROOT_APPDATA}/caddy/config:/config
+        ports:
+            - 443:443
+            - 80:80
+        networks:
+            - mariusz-network
+        restart: unless-stopped
+
+    cloudflare-ddns:
+        image: favonia/cloudflare-ddns:latest
+        container_name: cloudflare-ddns
+        environment:
+            - CLOUDFLARE_API_TOKEN=${CF_API_TOKEN}
+            # Only the A records that hold the real WAN IP. Subdomains resolve
+            # through the *.januszex.net CNAME to the apex, so new Caddy sites
+            # need no DNS record at all.
+            - DOMAINS=januszex.net,ssh.januszex.net
+            # Apex stays orange-cloud; ssh must be DNS-only since Cloudflare's
+            # proxy does not pass SSH.
+            - PROXIED=!is(ssh.januszex.net)
+            - IP6_PROVIDER=none
+            - UPDATE_CRON=@every 5m
+            - DELETE_ON_STOP=false
+            - TZ=${TZ}
+        user: ${PUID}:${PGID}
+        read_only: true
+        cap_drop:
+            - ALL
+        security_opt:
+            - no-new-privileges:true
+        network_mode: host
+        restart: unless-stopped
+
+    portainer:
+        container_name: portainer
+        image: portainer/portainer-ce:latest
+        ports:
+            - 9443:9443
+        volumes:
+            - ${ROOT_APPDATA}/portainer:/data
+            - ${ROOT_METADATA}/portainer/backups:/data/backups
+            - /var/run/docker.sock:/var/run/docker.sock
+        networks:
+            - mariusz-network
+        restart: unless-stopped
+
+    uptime-kuma:
+        image: ghcr.io/mateuszkukiela/uptime-kuma:latest
+        container_name: uptime-kuma
+        volumes:
+            - ${ROOT_APPDATA}/uptime-kuma:/app/data
+        networks:
+            - mariusz-network
+        restart: unless-stopped
+
+    watchtower:
+        container_name: watchtower
+        # containrrr/watchtower is archived, and its Docker API 1.25 client is
+        # rejected by Docker 29 (minimum 1.40). This maintained fork negotiates
+        # the API version.
+        image: nickfedor/watchtower
+        environment:
+            - WATCHTOWER_CLEANUP=true
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+        restart: unless-stopped
+
+networks:
+    mariusz-network:

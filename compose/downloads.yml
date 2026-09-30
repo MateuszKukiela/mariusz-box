@@ -1,0 +1,81 @@
+---
+# Download clients.
+services:
+    # Pauses SABnzbd while someone is streaming from Jellyfin.
+    debilarr:
+        container_name: debilarr
+        image: mateuszkukiela/debilarr:latest
+        restart: unless-stopped
+        environment:
+            JELLYFIN_URL: http://jellyfin:8096
+            JELLYFIN_API_KEY: ${JELLYFIN_API_KEY}
+            SAB_URL: http://sabnzbd:8080
+            SAB_API_KEY: ${SAB_API_KEY}
+            INTERVAL: '30'
+            RESUME_COOLDOWN: '60'
+            INCLUDE_PAUSED: 'false'
+            LOG_LEVEL: INFO
+        networks:
+            - mariusz-network
+        depends_on:
+            - jellyfin
+            - sabnzbd
+
+    metube:
+        image: ghcr.io/alexta69/metube
+        container_name: metube
+        environment:
+            - PUID=${PUID}
+            - PGID=${PGID}
+            - TZ=${TZ}
+        volumes:
+            - ${ROOT_APPDATA}/metube:/config
+            - ${ROOT_DATA_HDD}:/hdd
+            - /etc/localtime:/etc/localtime:ro
+            - ${ROOT_DATA_HDD}/metube:/downloads
+        ports:
+            - 8085:8081
+        networks:
+            - mariusz-network
+        restart: unless-stopped
+
+    qbittorrent:
+        image: lscr.io/linuxserver/qbittorrent:latest
+        container_name: qbittorrent
+        environment:
+            - WEBUI_PORT=8082
+            - PUID=${PUID}
+            - PGID=${PGID}
+            - TZ=${TZ}
+        volumes:
+            - ${ROOT_APPDATA}/qbittorrent:/config
+            - ${ROOT_DATA_HDD}:/hdd
+            - ${ROOT_DATA_SSD}:/ssd
+        ports:
+            - 8082:8082
+            - 6881:6881
+            - 6881:6881/udp
+        networks:
+            - mariusz-network
+        restart: unless-stopped
+
+    sabnzbd:
+        image: lscr.io/linuxserver/sabnzbd:latest
+        container_name: sabnzbd
+        environment:
+            - PUID=${PUID}
+            - PGID=${PGID}
+            - TZ=${TZ}
+        volumes:
+            - ${ROOT_APPDATA}/sabnzbd:/config
+            - ${ROOT_METADATA}/sabnzbd/logs:/config/logs
+            - ${ROOT_DATA_HDD}:/hdd
+            - ${ROOT_DATA_SSD}:/ssd
+        ports:
+            - 8089:8080
+        networks:
+            - mariusz-network
+        restart: unless-stopped
+
+networks:
+    mariusz-network:

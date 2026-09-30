@@ -1,0 +1,227 @@
+---
+# Finding, grabbing and tidying media: the *arrs and their helpers.
+services:
+    bazarr:
+        image: ghcr.io/linuxserver/bazarr
+        container_name: bazarr
+        environment:
+            - PUID=${PUID}
+            - PGID=${PGID}
+            - TZ=${TZ}
+            - UMASK_SET=022
+        volumes:
+            - ${ROOT_APPDATA}/bazarr:/config
+            - ${ROOT_METADATA}/bazarr/log:/config/log
+            - ${ROOT_DATA_HDD}:/hdd
+        ports:
+            - 6767:6767
+        networks:
+            - mariusz-network
+        restart: unless-stopped
+
+    decluttarr:
+        image: ghcr.io/manimatter/decluttarr:latest
+        container_name: decluttarr
+        restart: always
+        networks:
+            - mariusz-network
+        environment:
+            TZ: ${TZ}
+            PUID: ${PUID}
+            PGID: ${PGID}
+            # Decluttarr v2 settings (the v1 variables stopped working in v2.0).
+            LOG_LEVEL: INFO
+            TEST_RUN: false
+            TIMER: 10
+            PROTECTED_TAG: Don't Kill
+            MAX_STRIKES: 3
+            MIN_DAYS_BETWEEN_SEARCHES: 7
+            MAX_CONCURRENT_SEARCHES: 3
+            REMOVE_FAILED_DOWNLOADS: true
+            REMOVE_FAILED_IMPORTS: |
+                message_patterns:
+                    - "*Not a Custom Format upgrade for existing*"
+                    - "*Not an upgrade for existing*"
+            REMOVE_METADATA_MISSING: true
+            REMOVE_MISSING_FILES: true
+            REMOVE_ORPHANS: true
+            REMOVE_SLOW: |
+                min_speed: 100
+            REMOVE_STALLED: true
+            REMOVE_UNMONITORED: true
+            SEARCH_MISSING: true
+            SEARCH_UNMET_CUTOFF: true
+            RADARR: |
+                - base_url: "http://radarr:7878"
+                  api_key: "${RADARR_API_KEY}"
+            SONARR: |
+                - base_url: "http://sonarr:8989"
+                  api_key: "${SONARR_API_KEY}"
+            # One qBittorrent, listed under the download-client name Radarr ("qbit")
+            # and Sonarr ("qbittorrent") each use, because decluttarr matches by name.
+            QBITTORRENT: |
+                - base_url: "http://qbittorrent:8082"
+                  username: "root"
+                  password: "${PASSWORD}"
+                  name: "qbit"
+                - base_url: "http://qbittorrent:8082"
+                  username: "root"
+                  password: "${PASSWORD}"
+                  name: "qbittorrent"
+
+    idiotarr:
+        image: ghcr.io/mateuszkukiela/idiotarr:latest
+        container_name: idiotarr
+        environment:
+            - PROWLARR_URL=${PROWLARR_URL}
+            - PROWLARR_API_KEY=${PROWLARR_API_KEY}
+            - TIER_DAYS=30,60,90,120,150,180,210,240,270,300,330,360,390,420,450,480,510,540,570,600,630,660,690,720,750,780,810,840,870,900,930,960,990,1020,1050,1080
+            - TIER_TAGS=NZB-AGE-1M,NZB-AGE-2M,NZB-AGE-3M,NZB-AGE-4M,NZB-AGE-5M,NZB-AGE-6M,NZB-AGE-7M,NZB-AGE-8M,NZB-AGE-9M,NZB-AGE-10M,NZB-AGE-11M,NZB-AGE-12M,NZB-AGE-13M,NZB-AGE-14M,NZB-AGE-15M,NZB-AGE-16M,NZB-AGE-17M,NZB-AGE-18M,NZB-AGE-19M,NZB-AGE-20M,NZB-AGE-21M,NZB-AGE-22M,NZB-AGE-23M,NZB-AGE-24M,NZB-AGE-25M,NZB-AGE-26M,NZB-AGE-27M,NZB-AGE-28M,NZB-AGE-29M,NZB-AGE-30M,NZB-AGE-31M,NZB-AGE-32M,NZB-AGE-33M,NZB-AGE-34M,NZB-AGE-35M,NZB-AGE-36M
+            - TORRENT_TAG=TORRENT-LAST-RESORT
+        ports:
+            - 9797:9797
+        networks:
+            - mariusz-network
+        restart: unless-stopped
+
+    lingarr:
+        image: ghcr.io/lingarr-translate/lingarr:latest
+        container_name: lingarr
+        environment:
+            - ASPNETCORE_URLS=http://+:9876
+            - DB_CONNECTION=mysql
+            - DB_HOST=lingarr-db
+            - DB_PORT=3306
+            - DB_DATABASE=lingarr
+            - DB_USERNAME=lingarr
+            - DB_PASSWORD=${PASSWORD}
+        ports:
+            - 9876:9876
+        volumes:
+            - ${ROOT_APPDATA}/lingarr:/app/config
+            - ${ROOT_DATA_HDD}:/hdd
+        networks:
+            - mariusz-network
+        depends_on:
+            lingarr-db:
+                condition: service_healthy
+        restart: unless-stopped
+
+    lingarr-db:
+        image: mariadb:latest
+        container_name: lingarr-db
+        environment:
+            - MYSQL_DATABASE=lingarr
+            - MYSQL_USER=lingarr
+            - MYSQL_PASSWORD=${PASSWORD}
+            - MYSQL_ROOT_PASSWORD=${PASSWORD}
+        volumes:
+            - ${ROOT_APPDATA}/lingarr-db:/var/lib/mysql
+        networks:
+            - mariusz-network
+        healthcheck:
+            test: mariadb $$MYSQL_DATABASE -u$$MYSQL_USER -p$$MYSQL_PASSWORD -e 'SELECT 1;'
+            interval: 10s
+            timeout: 5s
+            retries: 5
+        restart: unless-stopped
+
+    profilarr:
+        image: santiagosayshey/profilarr:latest
+        container_name: profilarr
+        ports:
+            - 6868:6868
+        volumes:
+            - ${ROOT_APPDATA}/profilarr:/config
+            - ${ROOT_METADATA}/profilarr/backups:/config/backups
+            - ${ROOT_METADATA}/profilarr/log:/config/log
+        environment:
+            - TZ=${TZ}
+        networks:
+            - mariusz-network
+        restart: unless-stopped
+
+    prowlarr:
+        image: ghcr.io/linuxserver/prowlarr:develop
+        container_name: prowlarr
+        environment:
+            - PUID=${PUID}
+            - PGID=${PGID}
+            - TZ=${TZ}
+        volumes:
+            - ${ROOT_APPDATA}/prowlarr:/config
+            - ${ROOT_METADATA}/prowlarr/Backups:/config/Backups
+            - ${ROOT_METADATA}/prowlarr/logs:/config/logs
+        ports:
+            - 9696:9696
+        networks:
+            - mariusz-network
+        restart: unless-stopped
+
+    radarr:
+        image: ghcr.io/linuxserver/radarr:latest
+        container_name: radarr
+        environment:
+            - PUID=${PUID}
+            - PGID=${PGID}
+            - TZ=${TZ}
+        volumes:
+            - ${ROOT_APPDATA}/radarr:/config
+            - ${ROOT_METADATA}/radarr/MediaCover:/config/MediaCover
+            - ${ROOT_METADATA}/radarr/Backups:/config/Backups
+            - ${ROOT_METADATA}/radarr/logs:/config/logs
+            - ${ROOT_DATA_HDD}:/hdd
+        ports:
+            - 7878:7878
+        networks:
+            - mariusz-network
+        restart: unless-stopped
+
+    sonarr:
+        image: ghcr.io/linuxserver/sonarr
+        container_name: sonarr
+        environment:
+            - PUID=${PUID}
+            - PGID=${PGID}
+            - TZ=${TZ}
+            - UMASK_SET=022
+        volumes:
+            - ${ROOT_APPDATA}/sonarr:/config
+            - ${ROOT_METADATA}/sonarr/MediaCover:/config/MediaCover
+            - ${ROOT_METADATA}/sonarr/Backups:/config/Backups
+            - ${ROOT_METADATA}/sonarr/logs:/config/logs
+            - ${ROOT_DATA_HDD}:/hdd
+        ports:
+            - 8989:8989
+        networks:
+            - mariusz-network
+        restart: unless-stopped
+
+    # Bazarr's Whisper provider. GPU-P CUDA like Jellyfin, see gpu/README.md.
+    whisper-asr:
+        image: mccloud/subgen:latest
+        container_name: whisper-asr
+        environment:
+            - TRANSCRIBE_DEVICE=cuda
+            - WHISPER_MODEL=large-v3-turbo
+            - CONCURRENT_TRANSCRIPTIONS=1
+            - HF_HUB_CACHE=/subgen/models
+            - NVIDIA_DRIVER_CAPABILITIES=compute,utility
+            - NVIDIA_VISIBLE_DEVICES=all
+            - LD_LIBRARY_PATH=/usr/lib/wsl/lib
+            - TZ=${TZ}
+        volumes:
+            - ${ROOT_APPDATA}/whisper-asr:/subgen/models
+            - /usr/lib/wsl/lib:/usr/lib/wsl/lib:ro
+            - /home/mariusz/wsl_drivers_new/nv_dispi.inf_amd64_4bf4c17fa8a478b5:/usr/lib/wsl/drivers/nv_dispi.inf_amd64_4bf4c17fa8a478b5:ro
+        ports:
+            - 9000:9000
+        devices:
+            - /dev/dri:/dev/dri
+            - /dev/dxg:/dev/dxg
+        networks:
+            - mariusz-network
+        restart: unless-stopped
+
+networks:
+    mariusz-network:

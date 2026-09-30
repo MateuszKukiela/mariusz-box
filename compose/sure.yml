@@ -1,0 +1,92 @@
+---
+# Sure (personal finance): web app, Sidekiq worker, Postgres and Redis.
+
+# The web app and worker run the same image with the same settings.
+x-sure: &sure
+    image: ghcr.io/we-promise/sure:stable
+    environment: &sure-env
+        TZ: ${TZ}
+        SELF_HOSTED: 'true'
+        SECRET_KEY_BASE: ${SURE_SECRET_KEY_BASE}
+        # Encrypts bank tokens and the Enable Banking key at rest. Changing
+        # these makes existing encrypted rows unreadable.
+        ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY: ${ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY}
+        ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY: ${ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY}
+        ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT: ${ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT}
+        DB_HOST: sure-db
+        DB_PORT: '5432'
+        POSTGRES_DB: sure_production
+        POSTGRES_USER: sure
+        POSTGRES_PASSWORD: ${PASSWORD}
+        REDIS_URL: redis://sure-redis:6379/1
+        # Optional: powers the in-app AI categorisation and chat. The model
+        # is deliberately not set here — an env var overrides the in-app
+        # setting, so leaving it out keeps model choice in the UI.
+        OPENAI_ACCESS_TOKEN: ${OPENROUTER_API_KEY}
+        OPENAI_URI_BASE: https://openrouter.ai/api/v1
+    volumes:
+        - ${ROOT_APPDATA}/sure/storage:/rails/storage
+        # Upstream never reconciles pending transactions for Enable
+        # Banking; this initializer fills the empty post-sync hook.
+        - ./sure/reconcile_pending_on_sync.rb:/rails/config/initializers/zz_reconcile_pending_on_sync.rb:ro
+    networks:
+        - mariusz-network
+    depends_on:
+        sure-db:
+            condition: service_healthy
+        sure-redis:
+            condition: service_healthy
+    restart: unless-stopped
+
+services:
+    sure:
+        <<: *sure
+        container_name: sure
+        environment:
+            <<: *sure-env
+            # Caddy terminates TLS, so Rails must trust the proxy but not
+            # redirect again.
+            RAILS_ASSUME_SSL: 'true'
+            RAILS_FORCE_SSL: 'false'
+        ports:
+            - 8090:3000
+
+    sure-worker:
+        <<: *sure
+        container_name: sure-worker
+        command: bundle exec sidekiq
+
+    sure-db:
+        image: postgres:16
+        container_name: sure-db
+        environment:
+            - POSTGRES_DB=sure_production
+            - POSTGRES_USER=sure
+            - POSTGRES_PASSWORD=${PASSWORD}
+        volumes:
+            - ${ROOT_APPDATA}/sure-db:/var/lib/postgresql/data
+        networks:
+            - mariusz-network
+        healthcheck:
+            test: [CMD-SHELL, pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB]
+            interval: 5s
+            timeout: 5s
+            retries: 5
+        restart: unless-stopped
+
+    sure-redis:
+        image: redis:7
+        container_name: sure-redis
+        volumes:
+            - ${ROOT_APPDATA}/sure-redis:/data
+        networks:
+            - mariusz-network
+        healthcheck:
+            test: [CMD, redis-cli, ping]
+            interval: 5s
+            timeout: 5s
+            retries: 5
+        restart: unless-stopped
+
+networks:
+    mariusz-network:

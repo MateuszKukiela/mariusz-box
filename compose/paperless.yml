@@ -1,0 +1,90 @@
+---
+# Paperless is off (Sep 2026): nothing was ever imported. Its database and
+# settings are kept, so it picks up where it left off with
+#   docker compose --profile paperless up -d
+services:
+    paperless:
+        container_name: paperless
+        profiles: [paperless]
+        image: ghcr.io/paperless-ngx/paperless-ngx:latest
+        depends_on:
+            - paperless-db
+            - paperless-redis
+            - paperless-gotenberg
+            - paperless-tika
+        ports:
+            - 8000:8000
+        volumes:
+            - ${ROOT_APPDATA}/paperless/data:/usr/src/paperless/data
+            - ${ROOT_MEDIA}/paperless/media:/usr/src/paperless/media
+            - ${ROOT_MEDIA}/paperless/export:/usr/src/paperless/export
+            - ${ROOT_MEDIA}/paperless/consume:/usr/src/paperless/consume
+        environment:
+            USERMAP_UID: ${PUID}
+            USERMAP_GID: ${PGID}
+            PAPERLESS_OCR_LANGUAGES: pol
+            PAPERLESS_URL: https://paperless.januszex.net
+            PAPERLESS_SECRET_KEY: ${PAPERLESS_SECRET_KEY}
+            PAPERLESS_TIME_ZONE: ${TZ}
+            PAPERLESS_OCR_LANGUAGE: pol
+            PAPERLESS_REDIS: redis://paperless-redis:6379
+            PAPERLESS_DBHOST: paperless-db
+            PAPERLESS_DBPASS: ${PASSWORD}
+            PAPERLESS_TIKA_ENABLED: 1
+            PAPERLESS_TIKA_GOTENBERG_ENDPOINT: http://paperless-gotenberg:3000
+            PAPERLESS_TIKA_ENDPOINT: http://paperless-tika:9998
+            PAPERLESS_FILENAME_FORMAT: '{owner_username}/{correspondent}/{created_year}/{created} {title} ({correspondent})'
+        networks:
+            - mariusz-network
+        restart: unless-stopped
+
+    paperless-db:
+        container_name: paperless-db
+        profiles: [paperless]
+        image: docker.io/library/postgres:15
+        volumes:
+            - pgdata:/var/lib/postgresql/data
+        environment:
+            POSTGRES_DB: paperless
+            POSTGRES_USER: paperless
+            POSTGRES_PASSWORD: ${PASSWORD}
+        networks:
+            - mariusz-network
+        restart: unless-stopped
+
+    paperless-gotenberg:
+        container_name: paperless-gotenberg
+        profiles: [paperless]
+        image: docker.io/gotenberg/gotenberg:7.10
+        command:
+            - gotenberg
+            - --chromium-disable-javascript=true
+            - --chromium-allow-list=file:///tmp/.*
+        networks:
+            - mariusz-network
+        restart: unless-stopped
+
+    paperless-redis:
+        container_name: paperless-redis
+        profiles: [paperless]
+        image: docker.io/library/redis:7
+        volumes:
+            - redisdata:/data
+        networks:
+            - mariusz-network
+        restart: unless-stopped
+
+    paperless-tika:
+        container_name: paperless-tika
+        profiles: [paperless]
+        image: docker.io/apache/tika:latest
+        networks:
+            - mariusz-network
+        restart: unless-stopped
+
+networks:
+    mariusz-network:
+
+volumes:
+    pgdata:
+    redisdata:
