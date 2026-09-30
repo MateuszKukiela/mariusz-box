@@ -29,17 +29,21 @@ services:
             - PUID=${PUID}
             - PGID=${PGID}
             - TZ=${TZ}
-            # The whole pool is the download directory, so the Download Folder
-            # field can pick any folder on it (media/tv, media/movies, ...);
-            # it only offers folders inside the download directory. Plain
-            # downloads still go to metube/, and state and partial files stay
-            # hidden there.
+            # The pool is the download directory, at /hdd like in the *arrs: the
+            # Download Folder field lists every folder on it, and a path copied
+            # from Radarr/Sonarr (/hdd/media/movies/...) works as typed. Plain
+            # downloads still go to metube/, with state and partial files in
+            # hidden folders there.
+            - DOWNLOAD_DIR=/hdd
             - DEFAULT_FOLDER=metube
-            - STATE_DIR=/downloads/metube/.metube
-            - TEMP_DIR=/downloads/metube/.tmp
+            - STATE_DIR=/hdd/metube/.metube
+            - TEMP_DIR=/hdd/metube/.tmp
+            # The entrypoint otherwise runs chown -R on the download directory,
+            # i.e. the whole pool.
+            - CHOWN_DIRS=false
         volumes:
             - /etc/localtime:/etc/localtime:ro
-            - ${ROOT_DATA_HDD}:/downloads
+            - ${ROOT_DATA_HDD}:/hdd
         ports:
             - 8085:8081
         networks:
