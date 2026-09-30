@@ -1,0 +1,34 @@
+#!/bin/bash
+# Refuse a kernel that the installed zfs-dkms can't build for.
+# Run by /etc/pacman.d/hooks/00-zfs-kernel-guard.hook before linux-omarchy is
+# installed or upgraded. zfs-dkms comes from the AUR, so a repo kernel update
+# can outrun it, and a failed DKMS build means no pool after the next reboot.
+#
+# To let one upgrade through anyway: touch /etc/zfs/allow-kernel-upgrade
+set -uo pipefail
+
+KERNEL_PKG=linux-omarchy
+OVERRIDE=/etc/zfs/allow-kernel-upgrade
+
+if [[ -e $OVERRIDE ]]; then
+    echo "zfs-kernel-guard: $OVERRIDE present, allowing this upgrade and removing it"
+    rm -f "$OVERRIDE"
+    exit 0
+fi
+
+meta=$(ls -d /usr/src/zfs-*/META 2>/dev/null | sort -V | tail -1)
+[[ -n $meta ]] || { echo "zfs-kernel-guard: no zfs-dkms sources found, nothing to check"; exit 0; }
+max=$(awk '/^Linux-Maximum:/{print $2}' "$meta")
+zfs=$(awk '/^Version:/{print $2}' "$meta")
+
+new=$(pacman -Si "$KERNEL_PKG" 2>/dev/null | awk '/^Version/{print $3; exit}')
+[[ -n $new ]] || { echo "zfs-kernel-guard: can't read the new $KERNEL_PKG version, allowing"; exit 0; }
+new_mm=$(echo "$new" | grep -oE '^[0-9]+\.[0-9]+')
+
+if [[ $(printf '%s\n%s\n' "$new_mm" "$max" | sort -V | tail -1) != "$max" ]]; then
+    echo "zfs-kernel-guard: $KERNEL_PKG $new is newer than zfs $zfs supports (up to Linux $max)."
+    echo "  Update ZFS first:  yay -S zfs-dkms zfs-utils"
+    echo "  Or, to install this kernel anyway:  sudo touch $OVERRIDE"
+    exit 1
+fi
+echo "zfs-kernel-guard: $KERNEL_PKG $new is within zfs $zfs support (<= $max)"

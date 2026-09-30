@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = linux-omarchy
+
+[Action]
+Description = Checking the new kernel against zfs-dkms support...
+When = PreTransaction
+Exec = /usr/local/bin/zfs-kernel-guard
+AbortOnFail

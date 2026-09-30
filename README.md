@@ -26,7 +26,7 @@ compose/
 caddy/Caddyfile       every public hostname
 sure/                 initializer mounted into Sure
 backup/               nightly LVM snapshot of appdata to Storj
-gpu/                  NVIDIA container runtime setup
+host/                 OS setup: ZFS, SMART, NVIDIA runtime, SSH, Docker ordering
 docs/                 one-off procedures
 .env.sample           every variable the stack reads
 ```

@@ -53,7 +53,7 @@ services:
             - ${ROOT_DATA_HDD}:/hdd
         ports:
             - 8097:8096
-        # NVENC/NVDEC through the NVIDIA container toolkit, see gpu/README.md.
+        # NVENC/NVDEC through the NVIDIA container toolkit, see host/README.md.
         runtime: nvidia
         networks:
             - mariusz-network

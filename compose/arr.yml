@@ -199,7 +199,7 @@ services:
             - mariusz-network
         restart: unless-stopped
 
-    # Bazarr's Whisper provider, on the GPU (see gpu/README.md).
+    # Bazarr's Whisper provider, on the GPU (see host/README.md).
     whisper-asr:
         image: mccloud/subgen:latest
         container_name: whisper-asr
