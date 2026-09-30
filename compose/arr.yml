@@ -108,7 +108,9 @@ services:
         restart: unless-stopped
 
     lingarr-db:
-        image: mariadb:latest
+        # Pinned to the major it runs, so watchtower can't upgrade the data
+        # directory to a new major version unattended.
+        image: mariadb:13
         container_name: lingarr-db
         environment:
             - MYSQL_DATABASE=lingarr

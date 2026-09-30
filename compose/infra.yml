@@ -76,6 +76,10 @@ services:
         image: nickfedor/watchtower
         environment:
             - WATCHTOWER_CLEANUP=true
+            # Nightly at 04:00 local time. Without a schedule it runs every 24h
+            # from whenever the container last started, which drifts.
+            - WATCHTOWER_SCHEDULE=0 0 4 * * *
+            - TZ=${TZ}
         volumes:
             - /var/run/docker.sock:/var/run/docker.sock
         restart: unless-stopped
