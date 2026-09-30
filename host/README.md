@@ -23,6 +23,7 @@ in that snapshot is its own subvolume:
 |---|---|
 | `docker`, `containerd` | image layers don't belong in backups; `docker` is snapshotted on its own for the volumes |
 | `backup-staging` | tonight's archive shouldn't be pinned by tonight's snapshot |
+| `torrent-incomplete` | qBittorrent's in-progress downloads: churn that isn't worth snapshotting; `chattr +C` so random piece writes don't fragment it |
 | `.snapshots` | where the snapshots go |
 
 ```

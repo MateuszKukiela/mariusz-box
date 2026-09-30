@@ -39,6 +39,11 @@ services:
             - mariusz-network
         restart: unless-stopped
 
+    # Set in qBittorrent itself (Tools > Options > Advanced), not here:
+    # disk IO type "Simple pread/pwrite" (libtorrent 2's default mmap crawls on
+    # ZFS), anonymous mode off (it hides the listen port from peers), UPnP off
+    # (the router forwards 6881 to this box), 10 active uploads / 20 active
+    # torrents, and the incomplete folder set to /incomplete.
     qbittorrent:
         image: lscr.io/linuxserver/qbittorrent:latest
         container_name: qbittorrent
@@ -51,6 +56,10 @@ services:
             - ${ROOT_APPDATA}/qbittorrent:/config
             - ${ROOT_DATA_HDD}:/hdd
             - ${ROOT_DATA_SSD}:/ssd
+            # Incomplete torrents on the KIOXIA: pieces arrive as random 16 KiB
+            # writes, which the pool (1M records) turns into read-modify-write.
+            # Finished files move to /hdd/downloads/complete in one copy.
+            - ${ROOT_INCOMPLETE}:/incomplete
         ports:
             - 8082:8082
             - 6881:6881
