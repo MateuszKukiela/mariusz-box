@@ -31,7 +31,7 @@ BACKUP_PUSH_URL="${BACKUP_PUSH_URL:-}"
 # Paths relative to /. Missing ones are skipped.
 BACKUP_PATHS="${BACKUP_PATHS:-srv/mariusz-box/appdata srv/mariusz-box/metadata srv/mariusz-box/mariusz-box var/lib/docker/volumes mariusz/data/media/photos mariusz/ssd etc usr/local root home/mateusz/.ssh}"
 # Anchored tar patterns: caches that rebuild themselves, and Docker's own files.
-BACKUP_EXCLUDES="${BACKUP_EXCLUDES:-srv/mariusz-box/appdata/lost+found srv/mariusz-box/metadata/jellyfin/cache srv/mariusz-box/metadata/jellyfin/data/transcodes srv/mariusz-box/metadata/jellyfin/data/temp var/lib/docker/volumes/mariusz-box_model-cache var/lib/docker/volumes/backingFsBlockDev var/lib/docker/volumes/metadata.db}"
+BACKUP_EXCLUDES="${BACKUP_EXCLUDES:-srv/mariusz-box/appdata/lost+found srv/mariusz-box/metadata/jellyfin/cache srv/mariusz-box/metadata/jellyfin/data/transcodes srv/mariusz-box/metadata/jellyfin/data/temp var/lib/docker/volumes/mariusz-box_model-cache var/lib/docker/volumes/backingFsBlockDev var/lib/docker/volumes/metadata.db mariusz/data/media/photos/encoded-video}"
 
 TIMESTAMP="$(date +%Y-%m-%dT%H-%M-%S)"
 BACKUP_NAME="mariusz-box-${TIMESTAMP}.tar.zst"

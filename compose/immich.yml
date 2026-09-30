@@ -1,14 +1,12 @@
 ---
-# Immich is off (Sep 2026): most original photos have been missing from
-# UPLOAD_LOCATION since the March 2026 rebuild, and the DB still lists them.
-# Keep it off until they're restored, or the mobile app treats them as backed up.
-# Before re-enabling, switch immich-db to the VectorChord image (v3 dropped
-# pgvecto.rs), then remove the `profiles: [immich]` lines below.
+# Immich, following the official compose file of the v3 release
+# (github.com/immich-app/immich/releases/latest/download/docker-compose.yml),
+# with our service names, network and GPU. Check that file before upgrading
+# across a major version: the database image in particular moves with it.
 
 # Only the variables Immich reads; it used to get the whole .env.
 x-immich-env: &immich-env
     TZ: ${TZ}
-    IMMICH_VERSION: ${IMMICH_VERSION:-release}
     DB_HOSTNAME: immich-db
     DB_USERNAME: ${DB_USERNAME}
     DB_PASSWORD: ${DB_PASSWORD}
@@ -18,10 +16,11 @@ x-immich-env: &immich-env
 services:
     immich-server:
         container_name: immich_server
-        profiles: [immich]
-        image: ghcr.io/immich-app/immich-server:${IMMICH_VERSION:-release}
+        image: ghcr.io/immich-app/immich-server:${IMMICH_VERSION:-v3}
         volumes:
-            - ${UPLOAD_LOCATION}:/usr/src/app/upload
+            - ${UPLOAD_LOCATION}:/data
+            # Thumbnails on the KIOXIA so the timeline doesn't wait on the pool.
+            - ${THUMB_LOCATION}:/data/thumbs
             - /etc/localtime:/etc/localtime:ro
         environment: *immich-env
         ports:
@@ -31,6 +30,7 @@ services:
             - immich-db
         networks:
             - mariusz-network
+        # NVENC video transcoding (set in Administration > Video transcoding).
         runtime: nvidia
         deploy:
             resources:
@@ -38,15 +38,14 @@ services:
                     devices:
                         - driver: nvidia
                           count: 1
-                          capabilities: [gpu]
+                          capabilities: [gpu, compute, video]
         healthcheck:
             disable: false
         restart: always
 
     immich-machine-learning:
         container_name: immich_machine_learning
-        profiles: [immich]
-        image: ghcr.io/immich-app/immich-machine-learning:${IMMICH_VERSION:-release}-cuda
+        image: ghcr.io/immich-app/immich-machine-learning:${IMMICH_VERSION:-v3}-cuda
         volumes:
             - model-cache:/cache
         environment: *immich-env
@@ -66,8 +65,7 @@ services:
 
     immich-db:
         container_name: immich_postgres
-        profiles: [immich]
-        image: docker.io/tensorchord/pgvecto-rs:pg14-v0.2.0@sha256:739cdd626151ff1f796dc95a6591b55a714f341c737e27f045019ceabf8e8c52
+        image: ghcr.io/immich-app/postgres:14-vectorchord0.4.3-pgvectors0.2.0@sha256:bcf63357191b76a916ae5eb93464d65c07511da41e3bf7a8416db519b40b1c23
         environment:
             POSTGRES_PASSWORD: ${DB_PASSWORD}
             POSTGRES_USER: ${DB_USERNAME}
@@ -75,35 +73,18 @@ services:
             POSTGRES_INITDB_ARGS: --data-checksums
         volumes:
             - ${DB_DATA_LOCATION}:/var/lib/postgresql/data
-        healthcheck:
-            test: >-
-                pg_isready --dbname="$${POSTGRES_DB}" --username="$${POSTGRES_USER}" || exit 1;
-                Chksum="$$(psql --dbname="$${POSTGRES_DB}" --username="$${POSTGRES_USER}"
-                --tuples-only --no-align
-                --command='SELECT COALESCE(SUM(checksum_failures), 0) FROM pg_stat_database')";
-                echo "checksum failure count is $$Chksum";
-                [ "$$Chksum" = '0' ] || exit 1
-            interval: 5m
-            start_interval: 30s
-            start_period: 5m
-        command: >-
-            postgres
-            -c shared_preload_libraries=vectors.so
-            -c 'search_path="$$user", public, vectors'
-            -c logging_collector=on
-            -c max_wal_size=2GB
-            -c shared_buffers=512MB
-            -c wal_compression=on
+        shm_size: 128mb
         networks:
             - mariusz-network
+        healthcheck:
+            disable: false
         restart: always
 
     immich-redis:
         container_name: immich_redis
-        profiles: [immich]
-        image: docker.io/redis:6.2-alpine@sha256:148bb5411c184abd288d9aaed139c98123eeb8824c5d3fce03cf721db58066d8
+        image: docker.io/valkey/valkey:9@sha256:70739f85ad2ee01a726a965584a0f94895f01b0c60b3cc8b0aeef11eaa6888cf
         healthcheck:
-            test: redis-cli ping || exit 1
+            test: redis-cli ping | grep -q PONG || exit 1
         networks:
             - mariusz-network
         restart: always

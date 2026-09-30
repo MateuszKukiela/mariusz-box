@@ -61,7 +61,6 @@ paperless.januszex.net {
     reverse_proxy paperless:8000
 }
 
-# Immich is off until its photos are restored, see compose/immich.yml.
 photos.januszex.net {
     import tls_cf
     reverse_proxy immich-server:2283

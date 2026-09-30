@@ -22,7 +22,7 @@ compose/
   sure.yml            sure, sure-worker, sure-db, sure-redis
   apps.yml            searxng, sillytavern, openwebui
   paperless.yml       paperless stack    (profile: paperless, off)
-  immich.yml          immich stack       (profile: immich, off)
+  immich.yml          immich (server, ML, Postgres, Valkey)
 caddy/Caddyfile       every public hostname
 sure/                 initializer mounted into Sure
 backup/               nightly archive of all state to Storj
@@ -53,7 +53,8 @@ record. Only the apex and `ssh.` are A records, kept current by cloudflare-ddns.
 | `sure.` | Sure |
 | `portainer.` | Portainer |
 | `uptime.`, `czymariuszlezy.` | Uptime Kuma, and its public status page |
-| `paperless.`, `photos.` | Paperless, Immich (both off) |
+| `photos.` | Immich |
+| `paperless.` | Paperless (off) |
 
 Internal only: decluttarr, idiotarr (Prowlarr's indexer proxy), debilarr,
 whisper-asr (Bazarr's Whisper provider), the databases, watchtower.
@@ -73,7 +74,7 @@ reload:
 docker exec caddy caddy reload --config /etc/caddy/Caddyfile
 ```
 
-Paperless and Immich only start when their profile is named:
+Paperless only starts when its profile is named:
 
 ```bash
 docker compose --profile paperless up -d

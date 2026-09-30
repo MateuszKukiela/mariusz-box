@@ -33,7 +33,7 @@ Every path is stored relative to `/`, with numeric owners, ACLs and xattrs.
 | `/srv/mariusz-box/metadata` | Jellyfin's database, plugins and artwork; *arr backups (caches left out) |
 | `/srv/mariusz-box/mariusz-box` | this repo, with `.env` |
 | `/var/lib/docker/volumes` | named volumes such as Paperless's database (Immich's model cache left out) |
-| `/mariusz/data/media/photos`, `/mariusz/ssd` | photos and Stash blobs from the pool |
+| `/mariusz/data/media/photos`, `/mariusz/ssd` | Immich's originals and its own DB dumps (transcoded video left out; thumbnails live elsewhere), and Stash blobs |
 | `/etc`, `/usr/local`, `/root`, `/home/mateusz/.ssh` | host config: ufw, sshd, Docker, ZFS, smartd, the backup itself |
 
 The rest of the pool (media, downloads) isn't backed up. Change the lists with

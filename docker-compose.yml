@@ -3,7 +3,7 @@
 # project_directory keeps relative paths and .env resolving from the repo
 # root, so `docker compose up -d` here still runs everything.
 #
-# Paperless and Immich are behind profiles and stay off; see their files.
+# Paperless is behind a profile and stays off; see compose/paperless.yml.
 include:
     - path: compose/infra.yml
       project_directory: .
