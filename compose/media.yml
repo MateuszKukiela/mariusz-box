@@ -44,7 +44,6 @@ services:
             - NVIDIA_VISIBLE_DEVICES=all
             - FFMPEG_ANALYZEDURATION=400M
             - FFMPEG_PROBESIZE=2G
-            - LD_LIBRARY_PATH=/usr/lib/wsl/lib
         volumes:
             - ${ROOT_APPDATA}/jellyfin:/config
             - ${ROOT_APPDATA}/jellyfin/config.json:/usr/share/jellyfin/web/config.json
@@ -52,14 +51,10 @@ services:
             - ${ROOT_METADATA}/jellyfin/cache:/config/cache
             - ${ROOT_METADATA}/jellyfin/log:/config/log
             - ${ROOT_DATA_HDD}:/hdd
-            # GPU-P CUDA/NVENC, see gpu/README.md.
-            - /usr/lib/wsl/lib:/usr/lib/wsl/lib:ro
-            - /home/mariusz/wsl_drivers_new/nv_dispi.inf_amd64_4bf4c17fa8a478b5:/usr/lib/wsl/drivers/nv_dispi.inf_amd64_4bf4c17fa8a478b5:ro
         ports:
             - 8097:8096
-        devices:
-            - /dev/dri:/dev/dri
-            - /dev/dxg:/dev/dxg
+        # NVENC/NVDEC through the NVIDIA container toolkit, see gpu/README.md.
+        runtime: nvidia
         networks:
             - mariusz-network
         restart: unless-stopped

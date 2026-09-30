@@ -1,9 +1,13 @@
 # mariusz-box
 
-Home server: a Debian VM on Hyper-V (GPU-P for NVENC/CUDA), with the ZFS pool
-`mariusz` at `/mariusz` and appdata on its own LVM volume. Everything runs as
-one compose project from `~/mariusz-box`, fronted by Caddy with Cloudflare
-DNS-01 certificates.
+Home server: bare-metal Omarchy (Arch) with an RTX 3070. Media lives on the
+ZFS pool `mariusz` (3×14 TB) at `/mariusz`; appdata, metadata and Docker's
+storage live on a 1 TB NVMe at `/srv/mariusz-box`, and `~/mariusz-box` links to
+the repo there. Everything runs as one compose project, fronted by Caddy with
+Cloudflare DNS-01 certificates.
+
+SSH: `ssh mateusz@192.168.8.10` on the LAN (port 22), or
+`ssh -p 2052 mateusz@ssh.januszex.net` from outside.
 
 ## Layout
 
@@ -22,7 +26,7 @@ compose/
 caddy/Caddyfile       every public hostname
 sure/                 initializer mounted into Sure
 backup/               nightly LVM snapshot of appdata to Storj
-gpu/                  GPU-P CUDA setup and driver-update scripts
+gpu/                  NVIDIA container runtime setup
 docs/                 one-off procedures
 .env.sample           every variable the stack reads
 ```

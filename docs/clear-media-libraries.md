@@ -31,7 +31,7 @@ curl -s -X DELETE -H "X-Api-Key: $SONARR_KEY" -H 'Content-Type: application/json
 ## 3. Jellyseerr — delete all requests
 
 ```bash
-SEERR_KEY=$(python3 -c "import json; d=json.load(open('/home/mariusz/appdata/jellyseerr/settings.json')); print(d['main']['apiKey'])")
+SEERR_KEY=$(python3 -c "import json; d=json.load(open('/srv/mariusz-box/appdata/jellyseerr/settings.json')); print(d['main']['apiKey'])")
 TOTAL=$(curl -s -H "X-Api-Key: $SEERR_KEY" 'http://localhost:5055/api/v1/request?take=1&skip=0' | python3 -c 'import sys,json; print(json.load(sys.stdin)["pageInfo"]["results"])')
 echo "Found $TOTAL requests"
 curl -s -H "X-Api-Key: $SEERR_KEY" "http://localhost:5055/api/v1/request?take=$TOTAL&skip=0" \
@@ -45,7 +45,7 @@ echo done
 ## 4. Jellyseerr — clear recently added (media cache)
 
 ```bash
-SEERR_KEY=$(python3 -c "import json; d=json.load(open('/home/mariusz/appdata/jellyseerr/settings.json')); print(d['main']['apiKey'])")
+SEERR_KEY=$(python3 -c "import json; d=json.load(open('/srv/mariusz-box/appdata/jellyseerr/settings.json')); print(d['main']['apiKey'])")
 TOTAL=$(curl -s -H "X-Api-Key: $SEERR_KEY" 'http://localhost:5055/api/v1/media?take=1&skip=0' | python3 -c 'import sys,json; print(json.load(sys.stdin)["pageInfo"]["results"])')
 echo "Found $TOTAL media entries"
 curl -s -H "X-Api-Key: $SEERR_KEY" "http://localhost:5055/api/v1/media?take=$TOTAL&skip=0" \

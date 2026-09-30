@@ -199,7 +199,7 @@ services:
             - mariusz-network
         restart: unless-stopped
 
-    # Bazarr's Whisper provider. GPU-P CUDA like Jellyfin, see gpu/README.md.
+    # Bazarr's Whisper provider, on the GPU (see gpu/README.md).
     whisper-asr:
         image: mccloud/subgen:latest
         container_name: whisper-asr
@@ -210,17 +210,12 @@ services:
             - HF_HUB_CACHE=/subgen/models
             - NVIDIA_DRIVER_CAPABILITIES=compute,utility
             - NVIDIA_VISIBLE_DEVICES=all
-            - LD_LIBRARY_PATH=/usr/lib/wsl/lib
             - TZ=${TZ}
         volumes:
             - ${ROOT_APPDATA}/whisper-asr:/subgen/models
-            - /usr/lib/wsl/lib:/usr/lib/wsl/lib:ro
-            - /home/mariusz/wsl_drivers_new/nv_dispi.inf_amd64_4bf4c17fa8a478b5:/usr/lib/wsl/drivers/nv_dispi.inf_amd64_4bf4c17fa8a478b5:ro
         ports:
             - 9000:9000
-        devices:
-            - /dev/dri:/dev/dri
-            - /dev/dxg:/dev/dxg
+        runtime: nvidia
         networks:
             - mariusz-network
         restart: unless-stopped
