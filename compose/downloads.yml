@@ -4,7 +4,7 @@ services:
     # Pauses SABnzbd while someone is streaming from Jellyfin.
     debilarr:
         container_name: debilarr
-        image: mateuszkukiela/debilarr:latest
+        image: ghcr.io/mateuszkukiela/debilarr:latest
         restart: unless-stopped
         environment:
             JELLYFIN_URL: http://jellyfin:8096
