@@ -66,7 +66,6 @@ services:
         volumes:
             - ${ROOT_APPDATA}/qbittorrent:/config
             - ${ROOT_DATA_HDD}:/hdd
-            - ${ROOT_DATA_SSD}:/ssd
             # Incomplete torrents on the KIOXIA: pieces arrive as random 16 KiB
             # writes, which the pool (1M records) turns into read-modify-write.
             # Finished files move to /hdd/downloads/complete in one copy.
@@ -90,7 +89,6 @@ services:
             - ${ROOT_APPDATA}/sabnzbd:/config
             - ${ROOT_METADATA}/sabnzbd/logs:/config/logs
             - ${ROOT_DATA_HDD}:/hdd
-            - ${ROOT_DATA_SSD}:/ssd
             # In-progress articles, par2 and direct-unpack reads on the KIOXIA;
             # unrar writes straight to /hdd/downloads/complete. SAB's
             # download_dir is /incomplete, with download_free at 100G so it
