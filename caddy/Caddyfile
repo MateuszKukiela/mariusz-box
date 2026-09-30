@@ -94,11 +94,9 @@ photos.januszex.net {
 	reverse_proxy immich-server:2283
 }
 
-# Archived project with read/write access to the whole pool: the login page
-# in front of its own.
+# Not behind tinyauth: its share links have to open for anyone who has one.
 filebrowser.januszex.net {
 	import tls_cf
-	import tinyauth
 	reverse_proxy filebrowser:80
 }
 

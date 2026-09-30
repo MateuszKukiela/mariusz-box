@@ -43,7 +43,7 @@ record. Only the apex and `ssh.` are A records, kept current by cloudflare-ddns.
 | `streamyfin.` | Streamyfin optimized-versions server |
 | `comicstreamer.` | ComicStreamer |
 | `stash.` | Stash |
-| `filebrowser.` | File Browser (login) |
+| `filebrowser.` | File Browser (own login; share links are public) |
 | `sonarr.`, `radarr.`, `prowlarr.`, `bazarr.`, `profilarr.`, `lingarr.` | the *arrs |
 | `qbittorrent.`, `sabnzbd.` | download clients |
 | `metube.` | MeTube (login) |
