@@ -25,7 +25,6 @@ services:
             - ${ROOT_APPDATA}/filebrowser/filebrowser.db:/database/filebrowser.db
             - ${ROOT_APPDATA}/filebrowser/settings.json:/config/settings.json
             - ${ROOT_DATA_HDD}:/srv/hdd
-            - ${ROOT_DATA_SSD}:/srv/ssd
         ports:
             - 8250:80
         networks:
@@ -42,8 +41,6 @@ services:
             - UMASK_SET=022
             - NVIDIA_DRIVER_CAPABILITIES=compute,video,utility
             - NVIDIA_VISIBLE_DEVICES=all
-            - FFMPEG_ANALYZEDURATION=400M
-            - FFMPEG_PROBESIZE=2G
         volumes:
             - ${ROOT_APPDATA}/jellyfin:/config
             - ${ROOT_APPDATA}/jellyfin/config.json:/usr/share/jellyfin/web/config.json
@@ -53,6 +50,8 @@ services:
             - ${ROOT_DATA_HDD}:/hdd
         ports:
             - 8097:8096
+            # Client auto-discovery on the LAN.
+            - 7359:7359/udp
         # NVENC/NVDEC through the NVIDIA container toolkit, see host/README.md.
         runtime: nvidia
         networks:
@@ -64,7 +63,7 @@ services:
         init: true
         container_name: jellyseerr
         environment:
-            - LOG_LEVEL=debug
+            - LOG_LEVEL=info
             - TZ=${TZ}
         ports:
             - 5055:5055
@@ -117,7 +116,7 @@ services:
                           count: 1
                           capabilities: [gpu]
         command: >
-            /bin/bash -c "pip install --user --break-system-packages emojis requests lxml stashapp-tools &&
+            /bin/bash -c "pip install --user --break-system-packages emojis requests lxml stashapp-tools || true;
                           exec /bin/bash /opt/entrypoint.sh"
         networks:
             - mariusz-network
@@ -127,9 +126,10 @@ services:
         container_name: streamyfin
         image: fredrikburmester/streamyfin-optimized-versions-server:master
         environment:
-            - NODE_ENV=development
-            # Only what the server reads; it used to get the whole .env.
-            - JELLYFIN_URL=${JELLYFIN_URL}
+            - NODE_ENV=production
+            # It downloads each transcoded file from here, so internal: going
+            # through Cloudflare meant the ISP link and a second trip.
+            - JELLYFIN_URL=http://jellyfin:8096
             - TZ=${TZ}
         ports:
             - 3000:3000

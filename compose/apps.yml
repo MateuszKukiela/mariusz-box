@@ -8,6 +8,10 @@ services:
             - PUID=${PUID}
             - PGID=${PGID}
             - TZ=${TZ}
+            # Without a fixed key it makes a new one on every recreate, so each
+            # watchtower update logged everyone out.
+            - WEBUI_SECRET_KEY=${OPENWEBUI_SECRET_KEY}
+            - CORS_ALLOW_ORIGIN=https://chat.januszex.net
         volumes:
             - ${ROOT_APPDATA}/openwebui:/app/backend/data
         ports:

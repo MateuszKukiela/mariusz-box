@@ -50,6 +50,9 @@ services:
             REMOVE_STALLED: true
             REMOVE_UNMONITORED: true
             SEARCH_MISSING: true
+            # It has no media mount, and the *arrs notice deleted files on their
+            # own refreshes anyway.
+            DETECT_DELETIONS: false
             SEARCH_UNMET_CUTOFF: true
             RADARR: |
                 - base_url: "http://radarr:7878"

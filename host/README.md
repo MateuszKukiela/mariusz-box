@@ -82,6 +82,11 @@ in `NVIDIA_DRIVER_CAPABILITIES` Jellyfin falls back to software encoding. A
 driver update needs nothing here; restart the GPU containers after rebooting
 into it.
 
+## Kernel
+
+`sysctl-99-redis.conf` → `/etc/sysctl.d/99-redis.conf` (`sudo sysctl --system`):
+`vm.overcommit_memory = 1`, which the Redis containers ask for.
+
 ## SMART
 
 `smartd.conf` → `/etc/smartd.conf`, then `sudo systemctl enable --now smartd`.
