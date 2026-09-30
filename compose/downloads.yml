@@ -15,6 +15,7 @@ services:
             RESUME_COOLDOWN: '60'
             INCLUDE_PAUSED: 'false'
             LOG_LEVEL: INFO
+            TZ: ${TZ}
         networks:
             - mariusz-network
         depends_on:
@@ -29,8 +30,8 @@ services:
             - PGID=${PGID}
             - TZ=${TZ}
         volumes:
-            - ${ROOT_APPDATA}/metube:/config
-            - ${ROOT_DATA_HDD}:/hdd
+            # Only its own folder: it's reachable from the internet, and it
+            # keeps its state in /downloads/.metube.
             - /etc/localtime:/etc/localtime:ro
             - ${ROOT_DATA_HDD}/metube:/downloads
         ports:
@@ -80,6 +81,11 @@ services:
             - ${ROOT_METADATA}/sabnzbd/logs:/config/logs
             - ${ROOT_DATA_HDD}:/hdd
             - ${ROOT_DATA_SSD}:/ssd
+            # In-progress articles, par2 and direct-unpack reads on the KIOXIA;
+            # unrar writes straight to /hdd/downloads/complete. SAB's
+            # download_dir is /incomplete, with download_free at 100G so it
+            # pauses itself long before the NVMe fills.
+            - ${ROOT_SAB_INCOMPLETE}:/incomplete
         ports:
             - 8089:8080
         networks:
