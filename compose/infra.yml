@@ -27,10 +27,11 @@ services:
             # Only the A records that hold the real WAN IP. Subdomains resolve
             # through the *.januszex.net CNAME to the apex, so new Caddy sites
             # need no DNS record at all.
-            - DOMAINS=januszex.net,ssh.januszex.net
+            - DOMAINS=januszex.net,ssh.januszex.net,photos.januszex.net
             # Apex stays orange-cloud; ssh must be DNS-only since Cloudflare's
-            # proxy does not pass SSH.
-            - PROXIED=!is(ssh.januszex.net)
+            # proxy does not pass SSH, and photos because the proxy caps
+            # uploads at 100 MB, which videos from Immich's web and app hit.
+            - PROXIED=!is(ssh.januszex.net,photos.januszex.net)
             - IP6_PROVIDER=none
             - UPDATE_CRON=@every 5m
             - DELETE_ON_STOP=false
