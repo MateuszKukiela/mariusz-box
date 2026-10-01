@@ -96,9 +96,9 @@ services:
             - ${ROOT_APPDATA}/stash/metadata:/metadata
             - ${ROOT_APPDATA}/stash/config:/config
             - ${ROOT_APPDATA}/stash/pip-install:/pip-install
-            - ${ROOT_SSD}/stash/cache:/cache
-            - ${ROOT_SSD}/stash/blobs:/blobs
-            - ${ROOT_SSD}/stash/generated:/generated
+            - ${ROOT_APPDATA}/stash/cache:/cache
+            - ${ROOT_APPDATA}/stash/blobs:/blobs
+            - ${ROOT_APPDATA}/stash/generated:/generated
             - ${ROOT_DATA_HDD}:/hdd
         ports:
             - 9999:9999

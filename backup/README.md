@@ -7,7 +7,7 @@ archive of everything the box needs and uploads it to Storj. Nothing is stopped.
    - a read-only btrfs snapshot of the KIOXIA's top level, which holds
      appdata, metadata and the repo, so all three are captured atomically;
    - one of its `docker` subvolume, for the named volumes;
-   - a ZFS snapshot of the pool, for photos and `/mariusz/ssd`.
+   - a ZFS snapshot of the pool, for photos.
 2. They are bind-mounted read-only at their real paths under a tmpfs, and
    `mariusz-box-<timestamp>.tar.zst` is written from there to
    `/srv/mariusz-box/backup-staging`.
@@ -29,11 +29,11 @@ Every path is stored relative to `/`, with numeric owners, ACLs and xattrs.
 
 | Path | What |
 |---|---|
-| `/srv/mariusz-box/appdata` | every service's config and database |
+| `/srv/mariusz-box/appdata` | every service's config and database (Stash's cache and generated previews left out) |
 | `/srv/mariusz-box/metadata` | Jellyfin's database, plugins and artwork; *arr backups (caches left out) |
 | `/srv/mariusz-box/mariusz-box` | this repo, with `.env` |
 | `/var/lib/docker/volumes` | named volumes such as Paperless's database (Immich's model cache left out) |
-| `/mariusz/data/media/photos`, `/mariusz/ssd` | Immich's originals and its own DB dumps (transcoded video left out; thumbnails live elsewhere), and Stash blobs |
+| `/mariusz/data/media/photos` | Immich's originals and its own DB dumps (transcoded video left out; thumbnails live elsewhere) |
 | `/etc`, `/usr/local`, `/root`, `/home/mateusz/.ssh` | host config: ufw, sshd, Docker, ZFS, smartd, the backup itself |
 
 The rest of the pool (media, downloads) isn't backed up. Change the lists with

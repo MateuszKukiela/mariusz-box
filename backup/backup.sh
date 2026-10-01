@@ -6,7 +6,7 @@
 # Nothing is stopped. The archive is read from snapshots: one read-only btrfs
 # snapshot of the KIOXIA's top level (appdata, metadata and the repo, taken
 # atomically), one of its docker subvolume (for the volumes), and one of the
-# ZFS pool (photos, /mariusz/ssd). Databases in them are crash-consistent,
+# ZFS pool (photos). Databases in them are crash-consistent,
 # which Postgres, MariaDB and SQLite recover from like a power cut. Each file
 # sits at its real path in the archive, so a restore is `tar -xf … -C /`.
 
@@ -29,9 +29,9 @@ BACKUP_RETAIN_DAYS="${BACKUP_RETAIN_DAYS:-0 1 7 30}"
 # Optional Uptime Kuma push URL, pinged with the result of every run.
 BACKUP_PUSH_URL="${BACKUP_PUSH_URL:-}"
 # Paths relative to /. Missing ones are skipped.
-BACKUP_PATHS="${BACKUP_PATHS:-srv/mariusz-box/appdata srv/mariusz-box/metadata srv/mariusz-box/mariusz-box var/lib/docker/volumes mariusz/data/media/photos mariusz/ssd etc usr/local root home/mateusz/.ssh}"
+BACKUP_PATHS="${BACKUP_PATHS:-srv/mariusz-box/appdata srv/mariusz-box/metadata srv/mariusz-box/mariusz-box var/lib/docker/volumes mariusz/data/media/photos etc usr/local root home/mateusz/.ssh}"
 # Anchored tar patterns: caches that rebuild themselves, and Docker's own files.
-BACKUP_EXCLUDES="${BACKUP_EXCLUDES:-srv/mariusz-box/appdata/lost+found srv/mariusz-box/metadata/jellyfin/cache srv/mariusz-box/metadata/jellyfin/data/transcodes srv/mariusz-box/metadata/jellyfin/data/temp var/lib/docker/volumes/mariusz-box_model-cache var/lib/docker/volumes/backingFsBlockDev var/lib/docker/volumes/metadata.db mariusz/data/media/photos/encoded-video}"
+BACKUP_EXCLUDES="${BACKUP_EXCLUDES:-srv/mariusz-box/appdata/lost+found srv/mariusz-box/appdata/stash/cache srv/mariusz-box/appdata/stash/generated srv/mariusz-box/metadata/jellyfin/cache srv/mariusz-box/metadata/jellyfin/data/transcodes srv/mariusz-box/metadata/jellyfin/data/temp var/lib/docker/volumes/mariusz-box_model-cache var/lib/docker/volumes/backingFsBlockDev var/lib/docker/volumes/metadata.db mariusz/data/media/photos/encoded-video}"
 
 TIMESTAMP="$(date +%Y-%m-%dT%H-%M-%S)"
 BACKUP_NAME="mariusz-box-${TIMESTAMP}.tar.zst"
