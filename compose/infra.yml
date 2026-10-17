@@ -58,7 +58,7 @@ services:
             - mariusz-network
         restart: unless-stopped
 
-    # Login page for apps without their own (metube, search, portainer), used
+    # Login page for apps without their own (metube, search, portainer, fog), used
     # through Caddy's forward_auth. The session cookie covers *.januszex.net,
     # so one login lasts 30 days across all of them.
     tinyauth:

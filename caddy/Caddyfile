@@ -160,6 +160,13 @@ sure.januszex.net {
 	reverse_proxy sure:3000
 }
 
+# Shows where every photo was taken, and holds the Immich API key.
+fog.januszex.net {
+	import tls_cf
+	import tinyauth
+	reverse_proxy fog-map:8080
+}
+
 metube.januszex.net {
 	import tls_cf
 	import tinyauth

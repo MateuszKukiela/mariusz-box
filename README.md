@@ -20,7 +20,7 @@ compose/
                       idiotarr, lingarr (+db), whisper-asr
   downloads.yml       qbittorrent, sabnzbd, metube, debilarr
   sure.yml            sure, sure-worker, sure-db, sure-redis
-  apps.yml            searxng, sillytavern, openwebui
+  apps.yml            fog-map, searxng, sillytavern, openwebui
   paperless.yml       paperless stack    (profile: paperless, off)
   immich.yml          immich (server, ML, Postgres, Valkey)
 caddy/Caddyfile       every public hostname
@@ -55,6 +55,7 @@ record. Only the apex and `ssh.` are A records, kept current by cloudflare-ddns.
 | `portainer.` | Portainer (login) |
 | `uptime.`, `czymariuszlezy.` | Uptime Kuma, and its public status page |
 | `photos.` | Immich |
+| `fog.` | Fog Map, travel map from Immich and Google Timeline (login) |
 | `paperless.` | Paperless (off) |
 
 Internal only: decluttarr, idiotarr (Prowlarr's indexer proxy), debilarr,
