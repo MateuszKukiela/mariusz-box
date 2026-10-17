@@ -15,6 +15,10 @@ services:
             - AFFINE_SERVER_EXTERNAL_URL=https://affine.januszex.net
             - AFFINE_SERVER_HOST=affine.januszex.net
             - AFFINE_SERVER_HTTPS=true
+            # Node assumes self-hosted, but the native copilot runtime reads
+            # this var itself and otherwise acts as the cloud build, which hides
+            # custom BYOK endpoints (OpenRouter).
+            - DEPLOYMENT_TYPE=selfhosted
             # shortcut: PASSWORD goes into a URL unescaped, so it must stay
             # free of :/@#?%; switch to a dedicated AFFINE_DB_PASSWORD if not.
             - DATABASE_URL=postgresql://affine:${PASSWORD}@affine-db:5432/affine
