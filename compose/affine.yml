@@ -19,6 +19,9 @@ services:
             # this var itself and otherwise acts as the cloud build, which hides
             # custom BYOK endpoints (OpenRouter).
             - DEPLOYMENT_TYPE=selfhosted
+            # Same reason: the native runtime only looks for config.json in
+            # /app, so hand it the mounted one explicitly.
+            - AFFINE_BACKEND_RUNTIME_CONFIG_PATH=/root/.affine/config/config.json
             # shortcut: PASSWORD goes into a URL unescaped, so it must stay
             # free of :/@#?%; switch to a dedicated AFFINE_DB_PASSWORD if not.
             - DATABASE_URL=postgresql://affine:${PASSWORD}@affine-db:5432/affine
