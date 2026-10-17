@@ -1,0 +1,70 @@
+---
+# AFFiNE (docs + whiteboard, the Miro replacement): server, Postgres and Redis.
+# Local-first: the desktop and mobile apps keep a full copy and sync when the
+# server is reachable, so only the browser needs it up. Through Caddy only.
+services:
+    affine:
+        image: ghcr.io/toeverything/affine:stable
+        container_name: affine
+        # Upstream runs the migrations in a separate one-shot container, which
+        # watchtower would never rerun after pulling a new image. Running them
+        # before the server on every start keeps unattended updates safe.
+        command: [sh, -c, node ./scripts/self-host-predeploy.js && exec node ./dist/main.js]
+        environment:
+            - TZ=${TZ}
+            - AFFINE_SERVER_EXTERNAL_URL=https://affine.januszex.net
+            - AFFINE_SERVER_HOST=affine.januszex.net
+            - AFFINE_SERVER_HTTPS=true
+            # shortcut: PASSWORD goes into a URL unescaped, so it must stay
+            # free of :/@#?%; switch to a dedicated AFFINE_DB_PASSWORD if not.
+            - DATABASE_URL=postgresql://affine:${PASSWORD}@affine-db:5432/affine
+            - REDIS_SERVER_HOST=affine-redis
+            # Full-text search would need a Manticore container too.
+            - AFFINE_INDEXER_ENABLED=false
+        volumes:
+            # Uploads, and the server's signing key (private.key) under config.
+            - ${ROOT_APPDATA}/affine/storage:/root/.affine/storage
+            - ${ROOT_APPDATA}/affine/config:/root/.affine/config
+        networks:
+            - mariusz-network
+        depends_on:
+            affine-db:
+                condition: service_healthy
+            affine-redis:
+                condition: service_healthy
+        restart: unless-stopped
+
+    affine-db:
+        # AFFiNE needs the pgvector extension, so not plain postgres.
+        image: pgvector/pgvector:pg16
+        container_name: affine-db
+        environment:
+            - POSTGRES_DB=affine
+            - POSTGRES_USER=affine
+            - POSTGRES_PASSWORD=${PASSWORD}
+            - POSTGRES_INITDB_ARGS=--data-checksums
+        volumes:
+            - ${ROOT_APPDATA}/affine-db:/var/lib/postgresql/data
+        networks:
+            - mariusz-network
+        healthcheck:
+            test: [CMD-SHELL, pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB]
+            interval: 5s
+            timeout: 5s
+            retries: 5
+        restart: unless-stopped
+
+    affine-redis:
+        image: redis:7
+        container_name: affine-redis
+        networks:
+            - mariusz-network
+        healthcheck:
+            test: [CMD, redis-cli, ping]
+            interval: 5s
+            timeout: 5s
+            retries: 5
+        restart: unless-stopped
+
+networks:
+    mariusz-network:

@@ -17,6 +17,8 @@ include:
       project_directory: .
     - path: compose/apps.yml
       project_directory: .
+    - path: compose/affine.yml
+      project_directory: .
     - path: compose/paperless.yml
       project_directory: .
     - path: compose/immich.yml
