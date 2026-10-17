@@ -26,6 +26,7 @@ compose/
   immich.yml          immich (server, ML, Postgres, Valkey)
 caddy/Caddyfile       every public hostname
 sure/                 initializer mounted into Sure
+affine/               config.json mounted into AFFiNE (AI on, bring your own key)
 backup/               nightly archive of all state to Storj
 host/                 OS setup: ZFS, SMART, NVIDIA runtime, SSH, Docker ordering
 docs/                 one-off procedures

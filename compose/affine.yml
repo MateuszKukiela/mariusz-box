@@ -25,6 +25,10 @@ services:
             # Uploads, and the server's signing key (private.key) under config.
             - ${ROOT_APPDATA}/affine/storage:/root/.affine/storage
             - ${ROOT_APPDATA}/affine/config:/root/.affine/config
+            # Turns AI on. No key here: each workspace owner pastes their own
+            # under Workspace Settings > Integrations > AI (OpenRouter works as
+            # an OpenAI custom endpoint).
+            - ./affine/config.json:/root/.affine/config/config.json:ro
         networks:
             - mariusz-network
         depends_on:
