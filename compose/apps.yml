@@ -5,11 +5,13 @@ services:
     # Only reachable through Caddy behind tinyauth, so no host port and no
     # BASIC_AUTH. The Immich URL and API key are set in the page (⚙ Settings) and
     # saved to /data; use http://immich-server:2283 to stay on the Docker network.
+    # /api/owntracks skips tinyauth (see Caddyfile) and uses OWNTRACKS_AUTH instead.
     fog-map:
         image: ghcr.io/mateuszkukiela/fog-map:latest
         container_name: fog-map
         environment:
             - TZ=${TZ}
+            - OWNTRACKS_AUTH=${FOG_OWNTRACKS_AUTH}
         volumes:
             - ${ROOT_APPDATA}/fog-map:/data
         networks:

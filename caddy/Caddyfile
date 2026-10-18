@@ -167,9 +167,15 @@ affine.januszex.net {
 }
 
 # Shows where every photo was taken, and holds the Immich API key.
+# The OwnTracks phone app can't do the tinyauth login, so /api/owntracks skips
+# it; fog-map checks its own password there (OWNTRACKS_AUTH). It only accepts
+# new location points and returns nothing.
 fog.januszex.net {
 	import tls_cf
-	import tinyauth
+	@protected not path /api/owntracks
+	forward_auth @protected tinyauth:3000 {
+		uri /api/auth/caddy
+	}
 	reverse_proxy fog-map:8080
 }
 
