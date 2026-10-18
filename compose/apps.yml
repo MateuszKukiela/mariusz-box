@@ -11,7 +11,7 @@ services:
         container_name: fog-map
         environment:
             - TZ=${TZ}
-            - OWNTRACKS_AUTH=${FOG_OWNTRACKS_AUTH}
+            - OWNTRACKS_AUTH=phone:${PASSWORD}
         volumes:
             - ${ROOT_APPDATA}/fog-map:/data
         networks:
