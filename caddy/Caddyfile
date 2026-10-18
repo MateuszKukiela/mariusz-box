@@ -185,6 +185,13 @@ metube.januszex.net {
 	reverse_proxy metube:8081
 }
 
+# Accounting; holds the Gmail password and bank PDFs, so always behind tinyauth.
+ksiegowy.januszex.net {
+	import tls_cf
+	import tinyauth
+	reverse_proxy ksiegowy:8000
+}
+
 search.januszex.net {
 	import tls_cf
 	# Browsers fetch address-bar suggestions without the session cookie, so

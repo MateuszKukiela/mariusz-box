@@ -18,6 +18,37 @@ services:
             - mariusz-network
         restart: unless-stopped
 
+    # Monthly accounting: Fakturownia invoice, mBank PDFs, KSeF XML, one email to
+    # the accountant. Holds the Gmail app password and bank documents, so only
+    # through Caddy behind tinyauth: no host port. State is files under /app/data.
+    ksiegowy:
+        image: ghcr.io/mateuszkukiela/ksiegowy:latest
+        container_name: ksiegowy
+        environment:
+            - TZ=${TZ}
+            - DATA_DIR=/app/data
+            - FAKTUROWNIA_DOMAIN=${KSIEGOWY_FAKTUROWNIA_DOMAIN}
+            - FAKTUROWNIA_TOKEN=${KSIEGOWY_FAKTUROWNIA_TOKEN}
+            - FAKTUROWNIA_CLIENT_ID=${KSIEGOWY_FAKTUROWNIA_CLIENT_ID}
+            - FAKTUROWNIA_KSEF_SEND=${KSIEGOWY_FAKTUROWNIA_KSEF_SEND}
+            - CLIENT_EMAIL=${KSIEGOWY_CLIENT_EMAIL}
+            - INVOICE_NAME=${KSIEGOWY_INVOICE_NAME}
+            - INVOICE_NET=${KSIEGOWY_INVOICE_NET}
+            - INVOICE_VAT=${KSIEGOWY_INVOICE_VAT}
+            - INVOICE_CURRENCY=${KSIEGOWY_INVOICE_CURRENCY}
+            - INVOICE_LANG=${KSIEGOWY_INVOICE_LANG}
+            - INVOICE_PAYMENT_DAYS=${KSIEGOWY_INVOICE_PAYMENT_DAYS}
+            - KSEF_NIP=${KSIEGOWY_KSEF_NIP}
+            - KSEF_TOKEN=${KSIEGOWY_KSEF_TOKEN}
+            - GMAIL_USER=${KSIEGOWY_GMAIL_USER}
+            - GMAIL_APP_PASSWORD=${KSIEGOWY_GMAIL_APP_PASSWORD}
+            - ACCOUNTANT_EMAIL=${KSIEGOWY_ACCOUNTANT_EMAIL}
+        volumes:
+            - ${ROOT_APPDATA}/ksiegowy:/app/data
+        networks:
+            - mariusz-network
+        restart: unless-stopped
+
     openwebui:
         image: ghcr.io/open-webui/open-webui:main
         container_name: openwebui

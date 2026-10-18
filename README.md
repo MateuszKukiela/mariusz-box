@@ -20,7 +20,7 @@ compose/
                       idiotarr, lingarr (+db), whisper-asr
   downloads.yml       qbittorrent, sabnzbd, metube, debilarr
   sure.yml            sure, sure-worker, sure-db, sure-redis
-  apps.yml            fog-map, searxng, sillytavern, openwebui
+  apps.yml            fog-map, ksiegowy, searxng, sillytavern, openwebui
   affine.yml          affine, affine-db, affine-redis
   paperless.yml       paperless stack    (profile: paperless, off)
   immich.yml          immich (server, ML, Postgres, Valkey)
@@ -59,6 +59,7 @@ record. Only the apex and `ssh.` are A records, kept current by cloudflare-ddns.
 | `uptime.`, `czymariuszlezy.` | Uptime Kuma, and its public status page |
 | `photos.` | Immich |
 | `fog.` | Fog Map, travel map from Immich and Google Timeline (login) |
+| `ksiegowy.` | ksiegowy, monthly accounting bundle (login) |
 | `paperless.` | Paperless (off) |
 
 Internal only: decluttarr, idiotarr (Prowlarr's indexer proxy), debilarr,
