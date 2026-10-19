@@ -36,7 +36,8 @@ docs/                 one-off procedures
 ## Hostnames
 
 All `*.januszex.net` names CNAME to the apex, so a new Caddy site needs no DNS
-record. Only the apex and `ssh.` are A records, kept current by cloudflare-ddns.
+record. Only the apex, `ssh.`, `photos.` and the two `ethangazda.*` apexes are A
+records, kept current by cloudflare-ddns. Every zone lives on Cloudflare.
 
 | Host | Service |
 |---|---|
@@ -54,7 +55,7 @@ record. Only the apex and `ssh.` are A records, kept current by cloudflare-ddns.
 | `st.` | SillyTavern |
 | `chat.` | Open WebUI |
 | `sure.` | Sure |
-| `affine.` | AFFiNE (docs and whiteboard) |
+| `ethangazda.pl` | AFFiNE (docs and whiteboard); `ethangazda.online` and `affine.` redirect to it |
 | `portainer.` | Portainer (login) |
 | `uptime.`, `czymariuszlezy.` | Uptime Kuma, and its public status page |
 | `photos.` | Immich |

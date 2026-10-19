@@ -161,9 +161,15 @@ sure.januszex.net {
 }
 
 # Own accounts; the desktop app signs in here too, so no tinyauth.
-affine.januszex.net {
+ethangazda.pl {
 	import tls_cf
 	reverse_proxy affine:3010
+}
+
+# AFFiNE knows one external URL, so the spare names redirect to it.
+ethangazda.online, affine.januszex.net {
+	import tls_cf
+	redir https://ethangazda.pl{uri} permanent
 }
 
 # Shows where every photo was taken, and holds the Immich API key.
