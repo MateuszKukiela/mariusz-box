@@ -26,7 +26,7 @@ compose/
   immich.yml          immich (server, ML, Postgres, Valkey)
 caddy/Caddyfile       every public hostname
 sure/                 initializer mounted into Sure
-affine/               config.json mounted into AFFiNE (AI on, bring your own key)
+affine/               config.json mounted into AFFiNE (hosts, no guest demo, AI with own key)
 backup/               nightly archive of all state to Storj
 host/                 OS setup: ZFS, SMART, NVIDIA runtime, SSH, Docker ordering
 docs/                 one-off procedures
@@ -55,7 +55,7 @@ records, kept current by cloudflare-ddns. Every zone lives on Cloudflare.
 | `st.` | SillyTavern |
 | `chat.` | Open WebUI |
 | `sure.` | Sure |
-| `ethangazda.pl` | AFFiNE (docs and whiteboard); `ethangazda.online` and `affine.` redirect to it |
+| `ethangazda.pl`, `ethangazda.online`, `affine.` | AFFiNE (docs and whiteboard); links it generates use `ethangazda.pl` |
 | `portainer.` | Portainer (login) |
 | `uptime.`, `czymariuszlezy.` | Uptime Kuma, and its public status page |
 | `photos.` | Immich |
