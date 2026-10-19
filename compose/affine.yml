@@ -12,8 +12,8 @@ services:
         command: [sh, -c, node ./scripts/self-host-predeploy.js && exec node ./dist/main.js]
         environment:
             - TZ=${TZ}
-            - AFFINE_SERVER_EXTERNAL_URL=https://ethangazda.pl
-            - AFFINE_SERVER_HOST=ethangazda.pl
+            - AFFINE_SERVER_EXTERNAL_URL=https://ethangazda.online
+            - AFFINE_SERVER_HOST=ethangazda.online
             - AFFINE_SERVER_HTTPS=true
             # Node assumes self-hosted, but the native copilot runtime reads
             # this var itself and otherwise acts as the cloud build, which hides

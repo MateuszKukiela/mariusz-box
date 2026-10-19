@@ -55,7 +55,7 @@ records, kept current by cloudflare-ddns. Every zone lives on Cloudflare.
 | `st.` | SillyTavern |
 | `chat.` | Open WebUI |
 | `sure.` | Sure |
-| `ethangazda.pl`, `ethangazda.online`, `affine.` | AFFiNE (docs and whiteboard); links it generates use `ethangazda.pl` |
+| `ethangazda.online`, `ethangazda.pl`, `affine.` | AFFiNE (docs and whiteboard); links it generates use `ethangazda.online` |
 | `portainer.` | Portainer (login) |
 | `uptime.`, `czymariuszlezy.` | Uptime Kuma, and its public status page |
 | `photos.` | Immich |

@@ -1,7 +1,7 @@
 {
   "$schema": "https://github.com/toeverything/affine/releases/latest/download/config.schema.json",
   "server": {
-    "hosts": ["ethangazda.pl", "ethangazda.online", "affine.januszex.net"]
+    "hosts": ["ethangazda.online", "ethangazda.pl", "affine.januszex.net"]
   },
   "flags": {
     "allowGuestDemoWorkspace": false

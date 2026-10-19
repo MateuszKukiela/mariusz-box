@@ -162,8 +162,8 @@ sure.januszex.net {
 
 # Own accounts; the desktop app signs in here too, so no tinyauth. All three
 # names are listed in affine/config.json (server.hosts), so each is served as
-# itself; ethangazda.pl is the one AFFiNE puts in generated links.
-ethangazda.pl, ethangazda.online, affine.januszex.net {
+# itself; ethangazda.online is the one AFFiNE puts in generated links.
+ethangazda.online, ethangazda.pl, affine.januszex.net {
 	import tls_cf
 	reverse_proxy affine:3010
 }
