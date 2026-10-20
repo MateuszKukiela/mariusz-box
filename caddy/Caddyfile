@@ -188,9 +188,14 @@ metube.januszex.net {
 }
 
 # Accounting; holds the Gmail password and bank PDFs, so always behind tinyauth.
+# The mBank userscript can't do the tinyauth login; requests carrying X-Upload-Token
+# skip it and ksiegowy checks the token itself.
 ksiegowy.januszex.net {
 	import tls_cf
-	import tinyauth
+	@protected not header X-Upload-Token *
+	forward_auth @protected tinyauth:3000 {
+		uri /api/auth/caddy
+	}
 	reverse_proxy ksiegowy:8000
 }
 

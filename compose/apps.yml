@@ -44,6 +44,9 @@ services:
             - GMAIL_USER=${KSIEGOWY_GMAIL_USER}
             - GMAIL_APP_PASSWORD=${KSIEGOWY_GMAIL_APP_PASSWORD}
             - ACCOUNTANT_EMAIL=${KSIEGOWY_ACCOUNTANT_EMAIL}
+            - UPLOAD_TOKEN=${KSIEGOWY_UPLOAD_TOKEN}
+            - PUBLIC_URL=https://ksiegowy.januszex.net
+            - MBANK_PRODUCT_IDS=${KSIEGOWY_MBANK_PRODUCT_IDS}
         volumes:
             - ${ROOT_APPDATA}/ksiegowy:/app/data
         networks:
