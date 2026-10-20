@@ -44,6 +44,7 @@ services:
             - GMAIL_USER=${KSIEGOWY_GMAIL_USER}
             - GMAIL_APP_PASSWORD=${KSIEGOWY_GMAIL_APP_PASSWORD}
             - ACCOUNTANT_EMAIL=${KSIEGOWY_ACCOUNTANT_EMAIL}
+            - MBANK_PRODUCT_IDS=${KSIEGOWY_MBANK_PRODUCT_IDS}
         volumes:
             - ${ROOT_APPDATA}/ksiegowy:/app/data
         networks:
