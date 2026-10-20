@@ -187,10 +187,11 @@ metube.januszex.net {
 	reverse_proxy metube:8081
 }
 
-# Accounting; holds the Gmail password and bank PDFs, so always behind tinyauth.
+# Accounting; holds the Gmail password and bank PDFs. Login is Cloudflare Access
+# (Google account + 2FA), checked by the app itself on every request, so a
+# request that skips Cloudflare is refused too.
 ksiegowy.januszex.net {
 	import tls_cf
-	import tinyauth
 	reverse_proxy ksiegowy:8000
 }
 

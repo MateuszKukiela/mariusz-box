@@ -60,7 +60,7 @@ records, kept current by cloudflare-ddns. Every zone lives on Cloudflare.
 | `uptime.`, `czymariuszlezy.` | Uptime Kuma, and its public status page |
 | `photos.` | Immich |
 | `fog.` | Fog Map, travel map from Immich and Google Timeline (login) |
-| `ksiegowy.` | ksiegowy, monthly accounting bundle (login) |
+| `ksiegowy.` | ksiegowy, monthly accounting bundle (Cloudflare Access) |
 | `paperless.` | Paperless (off) |
 
 Internal only: decluttarr, idiotarr (Prowlarr's indexer proxy), debilarr,

@@ -20,7 +20,7 @@ services:
 
     # Monthly accounting: Fakturownia invoice, mBank PDFs, KSeF XML, one email to
     # the accountant. Holds the Gmail app password and bank documents, so only
-    # through Caddy behind tinyauth: no host port. State is files under /app/data.
+    # through Caddy behind Cloudflare Access: no host port. State is files under /app/data.
     ksiegowy:
         image: ghcr.io/mateuszkukiela/ksiegowy:latest
         container_name: ksiegowy
@@ -45,6 +45,10 @@ services:
             - GMAIL_APP_PASSWORD=${KSIEGOWY_GMAIL_APP_PASSWORD}
             - ACCOUNTANT_EMAIL=${KSIEGOWY_ACCOUNTANT_EMAIL}
             - MBANK_PRODUCT_IDS=${KSIEGOWY_MBANK_PRODUCT_IDS}
+            # Cloudflare Access replaces tinyauth here: the app verifies the Access JWT itself.
+            - CF_ACCESS_TEAM_DOMAIN=${KSIEGOWY_CF_ACCESS_TEAM_DOMAIN}
+            - CF_ACCESS_AUD=${KSIEGOWY_CF_ACCESS_AUD}
+            - CF_ACCESS_EMAILS=${KSIEGOWY_CF_ACCESS_EMAILS}
         volumes:
             - ${ROOT_APPDATA}/ksiegowy:/app/data
         networks:
