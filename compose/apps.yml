@@ -49,6 +49,8 @@ services:
             - CF_ACCESS_TEAM_DOMAIN=${KSIEGOWY_CF_ACCESS_TEAM_DOMAIN}
             - CF_ACCESS_AUD=${KSIEGOWY_CF_ACCESS_AUD}
             - CF_ACCESS_EMAILS=${KSIEGOWY_CF_ACCESS_EMAILS}
+            - ACCOUNTANT_RESULTS_FROM=${KSIEGOWY_ACCOUNTANT_RESULTS_FROM}
+            - ACCOUNTANT_NIP=${KSIEGOWY_ACCOUNTANT_NIP}
         volumes:
             - ${ROOT_APPDATA}/ksiegowy:/app/data
         networks:
